@@ -1,0 +1,55 @@
+
+.XhU6EdLqF5MP2nD6i5CO{ 
+	background: #e3e3e3 !important;
+}
+
+#user-profile-page-root input{
+	background-color: grey;
+	padding: 20px;
+}
+
+#user-profile-page-root button, #user-profile-page-root a{
+	color: red;
+}
+
+#user-profile-page-root button, #user-profile-page-root a{
+	color: red;
+}
+
+
+
+#user-profile-page-root [data-test="sign-out"]:before{
+
+	font-family: 'squarespace-ui-font';  
+	font-style: normal;  
+	font-weight: normal;  
+	-webkit-font-smoothing: antialiased;  
+	display: inline-block;  
+	vertical-align: middle;  
+	speak: none;  
+	content: "\E02E";
+	
+}
+
+
+
+#user-profile-page-root .UmZq8u739qWVV27XhwjG{
+	text-align: center !important;
+}
+#user-profile-page-root a:after{
+	content: "\E02E";
+	font-family: 'squarespace-ui-font';  
+	font-style: normal;  
+	font-weight: normal;  
+	-webkit-font-smoothing: antialiased;  
+	display: inline-block;  
+	vertical-align: middle;  
+	speak: none;  
+	
+}
+.UmZq8u739qWVV27XhwjG + button{
+	background: yellow !important;
+}
+.UmZq8u739qWVV27XhwjG + button:after{
+	display: block;
+}

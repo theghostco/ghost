@@ -1,0 +1,302 @@
+/* 
+
+  ⚠️ Ghost Plugin Code Start ⚠️ 
+  Copyright 2020.
+   
+  */
+.flex-wrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.align-items-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+}
+.justify-content-space-between {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.align-items-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+}
+/* PLEASE DON'T edit bellow the line
+  ______________________________________________
+  */.sqs-block-summary-v2 .sqs-gallery-design-list {
+  position: relative;
+  overflow: hidden;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item {
+  float: none !important;
+  position: relative;
+  background-color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
+  -webkit-transition: all 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
+  z-index: 1;
+  border-radius: 0px;
+  will-change: transform;
+  overflow: visible;
+  margin-bottom: 50px !important;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .slide-custom-link {
+  position: relative;
+  padding-bottom: 150%;
+  display: block;
+  z-index: 100;
+  display: none;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-thumbnail-outer-container {
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
+  -webkit-transition: opacity 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
+  position: relative;
+  top: 0;
+  width: 100% !important;
+  height: 100%;
+  overflow: hidden;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-thumbnail-outer-container .summary-thumbnail-container.sqs-gallery-image-container {
+  padding: 0px;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-thumbnail-outer-container .summary-thumbnail-container.sqs-gallery-image-container .summary-thumbnail.img-wrapper {
+  padding-bottom: 150% !important;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-thumbnail-outer-container .summary-thumbnail-container.sqs-gallery-image-container .summary-thumbnail.img-wrapper img {
+  opacity: 1;
+  height: 100% !important;
+  width: 100% !important;
+  left: 0px !important;
+  object-fit: cover;
+  top: 0px !important;
+  text-indent: -9999px;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-content.sqs-gallery-meta-container {
+  position: relative;
+  height: auto;
+  top: 0;
+  background-color: #ffffff;
+  overflow: hidden;
+  padding: 30px;
+  width: 100% !important;
+  transition: opacity 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
+  opacity: 0;
+  pointer-events: none;
+  margin-top: -20%;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-title {
+  padding-bottom: 0px !important;
+  font-family: inherit;
+  letter-spacing: 0px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #000000;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: center;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-title a {
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-title:after {
+  content: '';
+  max-width: 12%;
+  width: 100%;
+  display: block;
+  height: 1px;
+  background-color: #924949;
+  margin: 0 auto;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-excerpt {
+  text-align: center;
+  transition: opacity 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
+  transition-delay: .15s;
+  margin-bottom: 0px;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-excerpt p {
+  color: #333333;
+  font-size: 16px;
+  text-align: center;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-excerpt a[href="#read-duration"] {
+  display: none;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-metadata-container {
+  opacity: 1;
+  text-align: center;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-metadata-container span,
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-metadata-container a {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0px;
+  font-weight: 600;
+  color: #2f211c;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  line-height: 1;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .go-ico {
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  background-image: url('https://www.ghostplugins.dev/assets/imgs/go-link.png');
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  opacity: 0;
+  z-index: 1000;
+  transition: opacity 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
+  -webkit-transition: opacity 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
+  transform: translate(-25px, 20px);
+  -webkit-transform: translate(-25px, 20px);
+  width: 75px;
+  height: 75px;
+  padding: 0px;
+  top: 0px;
+  right: 0px;
+}
+@media only screen and (max-width: 1100px) {
+  .sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .go-ico {
+    width: 35px;
+    height: 35px;
+  }
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item:after {
+  position: absolute;
+  content: "";
+  width: 85%;
+  height: 100%;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  background-color: transparent;
+  box-shadow: 0 20px 45px 0 rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.38, 0.41, 0.27, 1);
+  z-index: -1;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item:hover:after {
+  opacity: 1;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item.mouseover .go-ico {
+  opacity: 1;
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .tns-controls {
+  position: absolute;
+  top: 43%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  width: 100%;
+}
+@media only screen and (max-width: 1100px) {
+  .sqs-block-summary-v2 .sqs-gallery-design-list .tns-controls {
+    top: 35%;
+  }
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .tns-controls button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  outline: none;
+  transition: all .3s ease;
+  padding: 0px !important;
+}
+@media only screen and (max-width: 1100px) {
+  .sqs-block-summary-v2 .sqs-gallery-design-list .tns-controls button {
+    width: 30px;
+    height: 30px;
+  }
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .tns-controls button[data-controls="prev"] {
+  left: 10px;
+  background-image: url('https://www.ghostplugins.dev/assets/imgs/left-arrow-black.png');
+}
+@media only screen and (max-width: 1100px) {
+  .sqs-block-summary-v2 .sqs-gallery-design-list .tns-controls button[data-controls="prev"] {
+    left: 5px;
+  }
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .tns-controls button[data-controls="next"] {
+  right: 10px;
+  background-image: url('https://www.ghostplugins.dev/assets/imgs/right-arrow-black.png');
+}
+@media only screen and (max-width: 1100px) {
+  .sqs-block-summary-v2 .sqs-gallery-design-list .tns-controls button[data-controls="next"] {
+    right: 5px;
+  }
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .tns-controls button:hover {
+  filter: drop-shadow(2px 4px 6px #000000);
+}
+.sqs-block-summary-v2 .sqs-gallery-design-list .tns-nav {
+  display: none;
+}
+html:not(.touch) .sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item:hover .summary-content.sqs-gallery-meta-container {
+  opacity: 1;
+  pointer-events: none;
+}
+html.touch .sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item:after {
+  opacity: 1;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+}
+html.touch .sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .summary-content.sqs-gallery-meta-container {
+  opacity: 1;
+  pointer-events: none;
+}
+html.touch .sqs-block-summary-v2 .sqs-gallery-design-list .summary-item-list .summary-item .go-ico {
+  opacity: 1;
+}
+
+.box-sizing-style .content-wrapper{
+    -webkit-box-sizing: border-box !important;
+
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+  
+}
+/* 
+
+  ⚠️ Ghost Plugin Code End ⚠️ 
+   
+  */

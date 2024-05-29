@@ -1,0 +1,33 @@
+// Ghost Naton Product Slider Code - start //
+@naton-ghost-loading-background: #EBE4DC;
+@naton-ghost-slider-height: 100; // num only
+@naton-ghost-slider-height-mobile: 70;
+@naton-ghost-slider-overlay: rgba(0,0,0, .3);
+
+
+//title (inherit h3 font style)
+@naton-ghost-title-font-size: 3.75em;
+@naton-ghost-title-font-color: #fff;
+
+//description
+@naton-ghost-desc-font-size: 1.125em;
+@naton-ghost-desc-font-color: #fff;
+
+
+//controls
+@naton-ghost-counter-size: 1rem;
+@naton-ghost-arrow-size: 2em;
+@naton-ghost-arrow-color: #fff;
+@naton-ghost-counter-color: #fff;
+
+//mobile style
+@naton-ghost-slider-mobile-height: 90; //nums only
+@naton-ghost-title-mobile-font-size: .7em;
+@naton-ghost-desc-mobile-font-size: 1em;
+
+
+
+
+
+body{.section-with-full-width-slider{background-color: @naton-ghost-loading-background;.section-background{ background-color: @naton-ghost-loading-background;}}.naton-plugin{background-color: @naton-ghost-loading-background;.image-slide-inner{padding-bottom: @naton-ghost-slider-height*1vh;@media only screen and (max-width: 640px){padding-bottom: @naton-ghost-slider-mobile-height*1vh;}&:after{background-color: @naton-ghost-slider-overlay;}}.info-slide{@media only screen and (max-width: 640px){bottom: ~"calc(30px + @{naton-ghost-arrow-size})";}h3{font-size: @naton-ghost-title-font-size;color: @naton-ghost-title-font-color;@media only screen and (max-width: 640px){font-size: @naton-ghost-title-mobile-font-size;}}p{font-size: @naton-ghost-desc-font-size;color: @naton-ghost-desc-font-color;a{color: @naton-ghost-desc-font-color;}}.desc-wrapper{@media only screen and (max-width: 640px){p{font-size: @naton-ghost-desc-mobile-font-size;}}}}  }.naton-control-wrapper{.nums-slider{font-size: @naton-ghost-counter-size;color: @naton-ghost-counter-color;  }.naton-control{.swiper-button-next, .swiper-button-prev{color: @naton-ghost-arrow-color;&:after{font-size: @naton-ghost-arrow-size;}}}}}
+// Ghost NATON Product Slider Code - end //

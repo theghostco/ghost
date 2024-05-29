@@ -1,0 +1,167 @@
+
+// Ghost number-counter - start //
+
+@number-counter-ghost-card-background: #fff;
+@number-counter-ghost-card-shadow-color: #000; // transparent option is available
+@number-counter-ghost-card-width: 33.333%; // 1 col = 100%; 2 cols = 50%; 3 cols = 33.333%; 4 cols = 25%; 5 cols = 20%;
+
+
+//title (inherit h3 font style)
+@number-counter-ghost-title-font-size: 1.5em;
+@number-counter-ghost-title-font-color: #000;
+
+//description
+@number-counter-ghost-desc-font-size: 1em;
+@number-counter-ghost-desc-font-color: #000;
+
+// numbers
+@number-counter-ghost-numbers-font-size: 1.5em;
+@number-counter-ghost-numbers-font-color: rgb(241, 166, 56);
+@number-counter-ghost-numbers-font-weight: bold;
+
+
+//mobile style
+@number-counter-ghost-title-mobile-font-size: 1.3em;
+@number-counter-ghost-desc-mobile-font-size: 1.2em;
+@number-counter-ghost-numbers-mobile-font-size: 1.2em;
+
+
+
+.section-with-number-counter-slider{
+  .content-wrapper{
+    box-sizing: border-box !important;
+  }
+}
+
+
+.number-counter-plugin{
+  opacity: 1 !important;
+  margin: 0px !important;
+  transform: none !important;
+  .summary-item-list-container.sqs-gallery-container{
+    display: none;
+  }
+  .summary-block-header{
+    display: none;
+  }
+  .summary-item-list{
+    margin: 0px !important;
+    transform: none !important;
+  }
+  .summary-excerpt{
+    margin-bottom:5px;
+  }
+  .summary-item{
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    white-space: normal;
+    font-size: inherit;
+  }
+  .number-counter-inner-wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0px -10px;
+  }
+  .number-counter-slide{
+    visibility: visible !important;
+    margin-bottom: 10px;
+    overflow: visible !important;
+    position: relative;
+    background: @number-counter-ghost-card-background;
+    padding: 20px;
+    width:~"calc(@{number-counter-ghost-card-width} - 20px )";
+    margin: 0px 10px 20px;
+    @media only screen and (max-width: 640px){
+      padding: 15px;
+      width:~"calc(100% - 20px )";
+
+    }
+    border-radius: 5px; 
+    &:after{
+      content: '';
+      top: 0;
+      width: 100%;
+      bottom: 0;
+      left: 0%;
+      position: absolute;
+      opacity: 1;
+      z-index: 10;
+      background-color: @number-counter-ghost-card-background;
+      border-radius: 5px;
+    }
+    &:before{
+      content: '';
+      top: 0;
+      width: 100%;
+      bottom: 0;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      box-shadow: 0px 1px 5px 5px @number-counter-ghost-card-shadow-color;
+      position: absolute;
+      opacity: .1;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+      border-radius: 5px;
+    }
+  }
+  .desc-slide, .author-info{
+    position: relative;
+    z-index: 1000;
+  }
+
+
+  h1,h2,h3,p{
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  h3{
+    font-size: @number-counter-ghost-title-font-size;
+    color: @number-counter-ghost-title-font-color;
+    margin: 0px;
+    margin-bottom: 5px;
+    @media only screen and (max-width: 640px){
+      font-size: @number-counter-ghost-title-mobile-font-size;
+    }
+  }
+  p{
+    font-size: @number-counter-ghost-desc-font-size;
+    color: @number-counter-ghost-desc-font-color;
+    margin: 0px;
+    margin-bottom: 0;
+    a{
+      border-bottom: 1px solid;
+      color: @number-counter-ghost-desc-font-color;
+    }
+  }
+  a[href*="#number"]{
+    display: none;
+  }
+
+  .desc-wrapper{
+    p{
+      opacity: 1 !important;
+      margin: 0px !important;
+      font-size: @number-counter-ghost-desc-font-size;
+      @media only screen and (max-width: 640px){
+        font-size: @number-counter-ghost-desc-mobile-font-size;
+      }
+    }
+
+  }
+  .conter-number{
+    position: relative;
+    z-index: 1000;
+    font-size: @number-counter-ghost-numbers-font-size;
+    color: @number-counter-ghost-numbers-font-color;
+    font-weight: @number-counter-ghost-numbers-font-weight;
+    @media only screen and (max-width: 640px){
+      font-size: @number-counter-ghost-numbers-mobile-font-size;
+    }
+  }
+}
+
+// Ghost number-counter - end //

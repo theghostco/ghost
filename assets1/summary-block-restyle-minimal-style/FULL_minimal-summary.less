@@ -1,0 +1,424 @@
+
+  /* 
+
+  ⚠️ Ghost Plugin Code Start ⚠️ 
+  Copyright 2020.
+   
+  */
+
+  //mixins
+  .flex-wrap{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .transition(@dur){
+    -o-transition: all @dur ease;
+    -moz-transition: all @dur ease;
+    transition: all @dur ease;
+    -webkit-transition: all @dur ease;
+  }
+  .align-items-center{
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+  }
+  .justify-content-space-between{
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  .align-items-center{
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+  }
+
+  @gallery-items-min-style-gaps: 10px;
+
+  @gallery-items-min-style-bg-color: rgb(255,255,255);
+  @gallery-item-percent-width: 25%; // 100% = 1 column; 50% = 2 columns; 33.333% = 3 columns; 25% = 4 columns; 20% = 5 colums;
+  @gallery-items-min-style-height: 150%;
+  @gallery-items-min-style-text-offset: 20px;
+  @gallery-items-min-style-border-radius: 0px;
+
+
+  @gallery-items-min-style-title-font-size: 18px;
+  @gallery-items-min-style-title-font-color: #000;
+  @gallery-items-min-style-title-font-family: inherit; 
+  //use one which you've alredy used on the website.
+
+
+
+  @gallery-items-min-style-text-font-size: 16px;
+  @gallery-items-min-style-text-font-color: #333;
+
+
+
+
+  /* PLEASE DON'T edit bellow the line
+  ______________________________________________
+  */ 
+
+
+  @query-media-1-minimal: 1441px;
+
+
+
+
+
+
+
+  .sqs-block-summary-v2{
+    .sqs-gallery-design-list{
+      .summary-item-list{
+
+
+        .summary-item{
+
+          float: none !important;
+          position: relative;
+          background-color: @gallery-items-min-style-bg-color;
+          transition: all .3s cubic-bezier(.38,.41,.27,1);
+          -webkit-transition: all .3s cubic-bezier(.38,.41,.27,1);
+          z-index: 1;
+          border-radius: @gallery-items-min-style-border-radius;
+          will-change: transform;
+          overflow: visible;
+
+          margin-bottom: 50px !important;
+          .slide-custom-link{
+
+            position: relative;
+            padding-bottom: @gallery-items-min-style-height;
+            display: block;
+            z-index: 100;
+            display: none;
+          }
+          .summary-thumbnail-outer-container{
+            opacity: 1;
+            transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+            -webkit-transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+            position: relative;
+            top: 0;
+            width: 100% !important;
+            height: 100%;
+
+            overflow: hidden;
+
+            .summary-thumbnail-container.sqs-gallery-image-container{
+
+              padding: 0px;
+              .summary-thumbnail.img-wrapper{
+                padding-bottom: @gallery-items-min-style-height !important;
+
+                img{
+                  opacity: 1;
+                  height: 100% !important;
+                  width: 100% !important;
+                  left: 0px !important;
+                  object-fit: cover;
+                  top: 0px !important;
+                  text-indent:-9999px;
+                }
+
+              }
+            }
+          }
+          .summary-content.sqs-gallery-meta-container{
+            position: relative;
+
+            height: auto;
+            top: 0;
+            background-color: @gallery-items-min-style-bg-color;
+
+            overflow: hidden;
+            padding: 30px;
+
+            width: 100% !important;
+
+            transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+            opacity: 0;
+            //visibility: hidden;
+            pointer-events: none;
+            margin-top: -20%;
+
+
+          }
+
+          .summary-title{
+            padding-bottom: 0px !important;
+            font-family: @gallery-items-min-style-title-font-family;
+            letter-spacing: 0px;
+            font-weight: 500;
+            font-size: @gallery-items-min-style-title-font-size;
+            color: @gallery-items-min-style-title-font-color;
+            text-transform: uppercase;
+            line-height: 1.2;
+            text-align: center;
+            a{
+              text-overflow: ellipsis;
+              width: 100%;
+              white-space: nowrap;
+              overflow: hidden;
+              display: block;
+            }
+            &:after{
+              content: '';
+              max-width: 12%;
+              width: 100%;
+              display: block;
+              height: 1px;
+              background-color: rgb(146, 73, 73);
+              margin: 0 auto;
+              margin-top: 12px;
+              margin-bottom: 10px;
+            }
+          }
+          .summary-excerpt{
+
+            text-align: center;
+            transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+            transition-delay: .15s;
+            margin-bottom: 0px;
+
+            p{
+              color: @gallery-items-min-style-text-font-color;
+              font-size: @gallery-items-min-style-text-font-size;
+              text-align: center;
+              text-overflow: ellipsis;
+              width: 100%;
+              white-space: nowrap;
+              overflow: hidden;
+              display: block;
+
+            }
+            a[href="#read-duration"]{
+              display: none;
+            }
+          }
+          .summary-metadata-container{
+            opacity: 1;
+            text-align: center;
+            span, a{
+             text-transform: uppercase;
+             font-size: 12px;
+             letter-spacing: 0px;
+             font-weight: 600;
+             color: #2f211c;
+             text-overflow: ellipsis;
+             width: 100%;
+             white-space: nowrap;
+             overflow: hidden;
+             display: inline-block;
+             line-height: 1;
+           }
+
+         }
+         .go-ico{
+          width: 0px;
+          height: 0px;
+          border-radius:50%;
+          display: block;
+          position: absolute;
+          background-image: url('https://www.ghostplugins.dev/assets/imgs/go-link.png');
+          background-size: 50%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-color: rgb(255, 255, 255);
+          opacity: 0;
+          z-index: 1000;
+          transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+          -webkit-transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+          transform: translate(-25px, 20px);
+          -webkit-transform: translate(-25px, 20px);
+          width: 75px;
+          height: 75px;
+          padding: 0px;
+          top: 0px;
+          right: 0px;
+
+          @media only screen and (max-width: 1100px){
+            width: 35px;
+            height: 35px;
+          }
+
+        }
+        &:after{
+          position: absolute;
+          content: "";
+          width: 85%;
+          height: 100%;
+          top: -35px;
+          left: 50%;
+          transform: translateX(-50%);
+          -webkit-transform: translateX(-50%);
+          background-color: transparent;
+          box-shadow: 0 20px 45px 0 rgba(0,0,0,.3);
+          opacity: 0;
+          transition: opacity .2s cubic-bezier(.38,.41,.27,1);
+          z-index: -1;
+        }
+        &:hover{
+
+         &:after{
+          opacity: 1;
+        }
+
+
+      }
+      &.mouseover{
+        .go-ico{
+          opacity: 1;
+        }
+      }
+    }
+  }
+  position: relative;
+  overflow: hidden;
+  .tns-controls{
+    position: absolute;
+    top: 43%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    @media only screen and (max-width: 1100px){
+     top: 35%;
+   }
+   width: 100%;
+   button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+
+
+    background-color: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    @media only screen and (max-width: 1100px){
+      width: 30px;
+      height: 30px;
+    }
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    outline: none;
+    transition: all .3s ease;
+    padding: 0px !important;
+    &[data-controls="prev"]{
+      left: 10px;
+      @media only screen and (max-width: 1100px){
+        left: 5px;
+      }
+
+      background-image: url('https://www.ghostplugins.dev/assets/imgs/left-arrow-black.png');
+
+    }
+    &[data-controls="next"]{
+      right: 10px;
+      @media only screen and (max-width: 1100px){
+        right: 5px;
+      }
+      background-image: url('https://www.ghostplugins.dev/assets/imgs/right-arrow-black.png');
+    }
+    &:hover{
+      filter: drop-shadow(2px 4px 6px black);
+    }
+  }
+}
+.tns-nav{
+  display: none;
+}
+}
+
+}
+
+html:not(.touch){
+
+ .sqs-block-summary-v2{
+  .sqs-gallery-design-list{
+    .summary-item-list{
+      .summary-item{
+
+        &:hover{
+
+          .summary-thumbnail-outer-container{
+
+          }
+          .summary-content.sqs-gallery-meta-container{
+
+            opacity: 1;
+
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+}
+}
+
+
+html.touch{
+  .sqs-block-summary-v2{
+    .sqs-gallery-design-list{
+      .summary-item-list{
+        .summary-item{
+         &:after{
+          opacity: 1;
+          box-shadow: 0 10px 30px 0 rgba(0,0,0,.3);
+
+        }
+
+        .summary-content.sqs-gallery-meta-container{
+          opacity: 1;
+          pointer-events: none;
+        }
+        .go-ico{
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+}
+.box-sizing-style{
+  .content-wrapper{
+    -webkit-box-sizing: border-box !important;
+
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+  }
+}
+  /* 
+
+  ⚠️ Ghost Plugin Code End ⚠️ 
+   
+  */
+
+
+
+  // 
+
+
+
+
+
+
+
+
+

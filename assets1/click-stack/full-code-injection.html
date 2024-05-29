@@ -1,0 +1,180 @@
+<script>
+  var ghostGlobalClickStack = {
+    animationDuration: 800,
+    animationDelay: 100
+  }
+</script>
+
+
+<script>
+  let checkPlugin = document.querySelectorAll('[data-ghost-plugin-name]');
+  if (typeof(checkPlugin) != 'undefined' && checkPlugin != null){
+    var sliderCount = 1;
+    checkPlugin.forEach(function(el){
+      var getSliderContentUrl = el.getAttribute('data-blog-href');
+      var getPluginName = el.getAttribute('data-ghost-plugin-name');
+      if( getPluginName == 'click-stack' ){
+        const utils = (function () {
+          function getParentEl(el, tagName) {
+            let searchEl = el;
+
+            while (searchEl.parentElement) {
+              if (searchEl.parentElement.tagName.toLowerCase() === tagName.toLowerCase()) {
+                return searchEl.parentElement;
+              }
+              searchEl = searchEl.parentElement;
+            }
+
+            return null;
+          }
+
+          function setAttrParents(attr, tag) {
+            let list = document.querySelectorAll(`[${attr}]`);
+            list.forEach((el) => {
+              const tagEl = getParentEl(el, tag);
+
+              if (!tagEl) {
+                return;
+              }
+              tagEl.setAttribute(attr, '');
+            })
+          }
+
+          function fetchData(path) {
+            const url = path + '?format=json-pretty';
+
+            return fetch(url)
+            .then((response) => response.json())
+
+          }
+
+          return {
+            setAttrParents, fetchData
+          };
+        })();
+
+
+        (
+          function (animationDuration, animationDelay, apiPath, dataAttr) {
+
+            function setAnimationSection() {
+              utils.setAttrParents(dataAttr, 'section'); 
+            }
+
+
+            setAnimationSection();
+
+            const section = document.querySelector('section[data-pic-animation]');
+            const innerBox = document.createElement('div');
+            innerBox.setAttribute("class", "animation-inner-box");
+            innerBox.style.display = "none";
+            section.appendChild(innerBox);
+
+            function buildContent(items) {
+
+              const result = [];
+              for (let i = 0; i < items.length; i++) {
+                const getItemUrl = items[i].assetUrl;
+                const createItem = `
+                <li class="pic-item" data-hidden>
+                <img src=${getItemUrl} alt="">
+                </li>
+                `;
+                result.push(createItem);
+              }
+              return result.join('');
+            }
+
+            function getListOfPictures() {
+
+              const listOfPictures = document.createElement('ul');
+              listOfPictures.setAttribute('className', 'pic-list');
+
+              utils.fetchData(apiPath)
+              .then((response) => (buildContent(response.items)))
+              .then((html) => {
+                listOfPictures.innerHTML = html;
+              });
+
+
+              return listOfPictures;
+            }
+
+            innerBox.appendChild(getListOfPictures());
+
+            section.addEventListener('mouseenter', showBox);
+            section.addEventListener('mouseleave', hideBox);
+            section.addEventListener('mousemove', moveInnerBox);
+            section.addEventListener('click', showPictures);
+
+            let timeOut;
+
+            function setBoxPosition(box, top, left) {
+              box.style.top = `${top}px`;
+              box.style.left = `${left + 10}px`;
+            }
+
+            function moveInnerBox(e) {
+              innerBox.style.display = "block";
+              setBoxPosition(innerBox, e.clientY, e.clientX);
+            }
+
+            function hideBox() {
+              innerBox.style.display = "none";
+              animatePictures();
+            }
+
+            function showBox() {
+              innerBox.style.display = "block";
+            }
+
+
+            function showPictures() {
+              const pictureItems = document.querySelectorAll('.pic-item');
+              clearTimeout(timeOut);
+              innerBox.setAttribute('data-open-pictures', '');
+
+              for (let i = 0; i < pictureItems.length; i++) {
+                if (pictureItems[i].hasAttribute('data-hidden')) {
+                  pictureItems[i].removeAttribute('data-hidden');
+                  pictureItems[i].style.top = `${i * -5}px`;
+                  pictureItems[i].style.left = `${i * 10}px`;
+
+                  if (i === pictureItems.length - 1) {
+                    animatePictures();
+                  }
+                  break;
+                }
+              }
+
+              timeOut = setTimeout(() => {
+                animatePictures();
+              }, 2000);
+            }
+
+
+            function animatePictures() {
+              const pictureItems = document.querySelectorAll('.pic-item');
+              Array.from(pictureItems)
+              .filter((item) => !item.hasAttribute('data-hidden'))
+              .forEach((item, index) => item
+               .animate([
+               {
+                transform: 'translateY(0)'
+              },
+              {
+                transform: 'translateY(200%)'
+              }
+              ], {duration: animationDuration, delay: animationDelay * index})
+
+               .onfinish = () => {
+                item.setAttribute('data-hidden', '')
+              });
+            }
+
+          })(ghostGlobalClickStack.animationDuration, ghostGlobalClickStack.animationDelay, getSliderContentUrl, 'data-pic-animation');
+
+        }
+      })    
+}
+</script>

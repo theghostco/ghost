@@ -1,0 +1,608 @@
+.section-with-shape-slider .content-wrapper {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+.section-with-shape-slider .sqs-gallery-design-carousel.summary-block-wrapper {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  -webkit-transition: opacity 0.3s ease;
+}
+.section-with-shape-slider {
+  z-index: 1;
+  min-height: auto !important;
+  position: relative;
+  overflow: hidden;
+}
+.section-with-shape-slider .sqs-block {
+  padding: 0px !important;
+}
+.section-with-shape-slider .summary-item-list-container.sqs-gallery-container {
+  display: none;
+}
+.shape-plugin.summary-block-wrapper .summary-block-wrapper {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out !important;
+  -moz-transition: all 0.3s ease-out !important;
+  -o-transition: all 0.3s ease-out !important;
+  transition: all 0.3s ease-out !important;
+}
+.shape-plugin.summary-block-wrapper .swiper-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  object-fit: cover;
+}
+
+
+@media only screen and (max-width: 800px) {
+  .shape-plugin.summary-block-wrapper .swiper-slide > a{
+    padding: 0px 17px;
+    display: block;
+  } 
+}
+.shape-plugin .slide-title {
+  margin: 0px;
+  font-size: 22px;
+  color: #000;
+  margin-top: 1em;
+}
+@media only screen and (max-width: 640px) {
+  .shape-plugin .slide-title {
+    font-size: 15px;
+  }
+}
+.shape-plugin .slide-title:empty {
+  display: none;
+}
+@media only screen and (max-width: 800px) {
+
+}
+.shape-plugin .desc-wrapper p {
+  font-size: 15px;
+  color: #000;
+}
+.shape-plugin .sqsrte-large, .shape-plugin p, .shape-plugin .sqsrte-small{
+  margin:0.5rem 0;
+}
+@media only screen and (max-width: 640px) {
+  .shape-plugin .desc-wrapper p {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 800px) {
+
+}
+.section-with-shape-slider .sqs-gallery-design-carousel.summary-block-wrapper {
+  opacity: 0;
+}
+.section-with-shape-slider .section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  
+}
+.container {
+  width: 100%;
+}
+.section-with-shape-slider .swiper-slide:nth-child(1) img {
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  animation-delay: -5s;
+  animation: anim-ramka-1 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(2) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-2 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(3) img {
+  clip-path: polygon(13% 49%, 53% 0, 98% 48%, 56% 99%);
+  -webkit-clip-path: polygon(13% 49%, 53% 0, 98% 48%, 56% 99%);
+  animation-delay: -5s;
+  animation: anim-ramka-3 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(4) img {
+  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+  -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+  animation-delay: -5s;
+  animation: anim-ramka-4 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(5) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-5 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(6) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-6 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(7) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-7 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(8) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-8 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(9) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-9 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(10) img {
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  animation-delay: -5s;
+  animation: anim-ramka-1 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(10n + 1) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-2 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(10n + 2) img {
+  clip-path: polygon(13% 49%, 53% 0, 98% 48%, 56% 99%);
+  -webkit-clip-path: polygon(13% 49%, 53% 0, 98% 48%, 56% 99%);
+  animation-delay: -5s;
+  animation: anim-ramka-3 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(10n + 3) img {
+  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+  -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+  animation-delay: -5s;
+  animation: anim-ramka-4 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(10n + 4) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-5 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(10n + 5) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-6 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(10n + 6) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-7 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(10n + 7) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-8 10s ease-in-out infinite;
+}
+.section-with-shape-slider .swiper-slide:nth-child(10n + 8) img {
+  clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  animation-delay: -5s;
+  animation: anim-ramka-9 10s ease-in-out infinite;
+}
+.index__wrap {
+  display: flex;
+}
+.index__wrap span {
+  color: #000;
+  white-space: nowrap;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2em;
+  letter-spacing: 0;
+  text-rendering: geometricPrecision;
+  text-transform: none;
+  text-decoration: none;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.index__wrap .index-total {
+  margin-left: 5px;
+}
+.swiper__button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.slide__wrap {
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px;
+  position: relative;
+}
+.button__wrap {
+  padding: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.button__wrap .btn {
+  cursor: pointer;
+  padding: 0;
+  border: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.button__wrap .btn img {
+  max-width: 20px;
+}
+.frame {
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.frame img {
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  animation-delay: -5s;
+  animation: anim-ramka-1 10s ease-in-out infinite;
+}
+.slide__text {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  z-index: 1;
+}
+.slide__text span {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2em;
+  letter-spacing: 0;
+  text-rendering: geometricPrecision;
+  text-transform: none;
+  text-decoration: none;
+  font-size: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+@keyframes anim-ramka-1 {
+  0%,
+  100% {
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(0 39%, 100% 0, 100% 56%, 0 100%);
+    -webkit-clip-path: polygon(0 39%, 100% 0, 100% 56%, 0 100%);
+  }
+  50% {
+    clip-path: polygon(0 0, 66% 0, 100% 100%, 24% 100%);
+    -webkit-clip-path: polygon(0 0, 66% 0, 100% 100%, 24% 100%);
+  }
+}
+@-webkit-keyframes anim-ramka-1 {
+  0%,
+  100% {
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(0 39%, 100% 0, 100% 56%, 0 100%);
+    -webkit-clip-path: polygon(0 39%, 100% 0, 100% 56%, 0 100%);
+  }
+  50% {
+    clip-path: polygon(0 0, 66% 0, 100% 100%, 24% 100%);
+    -webkit-clip-path: polygon(0 0, 66% 0, 100% 100%, 24% 100%);
+  }
+}
+@keyframes anim-ramka-2 {
+  0%,
+  100% {
+    clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+    -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(6% 42%, 62% 0, 100% 61%, 44% 93%);
+    -webkit-clip-path: polygon(6% 42%, 62% 0, 100% 61%, 44% 93%);
+  }
+  50% {
+    clip-path: polygon(30% 32%, 93% 8%, 100% 81%, 44% 93%);
+    -webkit-clip-path: polygon(30% 32%, 93% 8%, 100% 81%, 44% 93%);
+  }
+}
+@-webkit-keyframes anim-ramka-2 {
+  0%,
+  100% {
+    clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+    -webkit-clip-path: polygon(27% 20%, 87% 0, 100% 61%, 29% 71%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(6% 42%, 62% 0, 100% 61%, 44% 93%);
+    -webkit-clip-path: polygon(6% 42%, 62% 0, 100% 61%, 44% 93%);
+  }
+  50% {
+    clip-path: polygon(30% 32%, 93% 8%, 100% 81%, 44% 93%);
+    -webkit-clip-path: polygon(30% 32%, 93% 8%, 100% 81%, 44% 93%);
+  }
+}
+@keyframes anim-ramka-3 {
+  0%,
+  100% {
+    clip-path: polygon(13% 49%, 53% 0, 98% 48%, 56% 99%);
+    -webkit-clip-path: polygon(13% 49%, 53% 0, 98% 48%, 56% 99%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(7% 69%, 24% 7%, 80% 40%, 72% 100%);
+    -webkit-clip-path: polygon(7% 69%, 24% 7%, 80% 40%, 72% 100%);
+  }
+  50% {
+    clip-path: polygon(4% 77%, 2% 15%, 60% 32%, 72% 100%);
+    -webkit-clip-path: polygon(4% 77%, 2% 15%, 60% 32%, 72% 100%);
+  }
+}
+@-webkit-keyframes anim-ramka-3 {
+  0%,
+  100% {
+    clip-path: polygon(13% 49%, 53% 0, 98% 48%, 56% 99%);
+    -webkit-clip-path: polygon(13% 49%, 53% 0, 98% 48%, 56% 99%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(7% 69%, 24% 7%, 80% 40%, 72% 100%);
+    -webkit-clip-path: polygon(7% 69%, 24% 7%, 80% 40%, 72% 100%);
+  }
+  50% {
+    clip-path: polygon(4% 77%, 2% 15%, 60% 32%, 72% 100%);
+    -webkit-clip-path: polygon(4% 77%, 2% 15%, 60% 32%, 72% 100%);
+  }
+}
+@keyframes anim-ramka-4 {
+  0%,
+  100% {
+    clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+    -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(0 100%, 0 30%, 100% 0, 100% 69%);
+    -webkit-clip-path: polygon(0 100%, 0 30%, 100% 0, 100% 69%);
+  }
+  50% {
+    clip-path: polygon(0 80%, 0 0, 100% 22%, 100% 100%);
+    -webkit-clip-path: polygon(0 80%, 0 0, 100% 22%, 100% 100%);
+  }
+}
+@-webkit-keyframes anim-ramka-4 {
+  0%,
+  100% {
+    clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+    -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(0 100%, 0 30%, 100% 0, 100% 69%);
+    -webkit-clip-path: polygon(0 100%, 0 30%, 100% 0, 100% 69%);
+  }
+  50% {
+    clip-path: polygon(0 80%, 0 0, 100% 22%, 100% 100%);
+    -webkit-clip-path: polygon(0 80%, 0 0, 100% 22%, 100% 100%);
+  }
+}
+@keyframes anim-ramka-5 {
+  0%,
+  100% {
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(13% 0, 59% 0, 94% 23%, 100% 51%, 84% 96%, 53% 80%, 21% 88%, 0 45%);
+    -webkit-clip-path: polygon(13% 0, 59% 0, 94% 23%, 100% 51%, 84% 96%, 53% 80%, 21% 88%, 0 45%);
+  }
+  50% {
+    clip-path: polygon(33% 33%, 59% 0, 84% 34%, 100% 51%, 84% 96%, 52% 100%, 29% 63%, 0 45%);
+    -webkit-clip-path: polygon(33% 33%, 59% 0, 84% 34%, 100% 51%, 84% 96%, 52% 100%, 29% 63%, 0 45%);
+  }
+}
+@-webkit-keyframes anim-ramka-5 {
+  0%,
+  100% {
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(13% 0, 59% 0, 94% 23%, 100% 51%, 84% 96%, 53% 80%, 21% 88%, 0 45%);
+    -webkit-clip-path: polygon(13% 0, 59% 0, 94% 23%, 100% 51%, 84% 96%, 53% 80%, 21% 88%, 0 45%);
+  }
+  50% {
+    clip-path: polygon(33% 33%, 59% 0, 84% 34%, 100% 51%, 84% 96%, 52% 100%, 29% 63%, 0 45%);
+    -webkit-clip-path: polygon(33% 33%, 59% 0, 84% 34%, 100% 51%, 84% 96%, 52% 100%, 29% 63%, 0 45%);
+  }
+}
+@keyframes anim-ramka-6 {
+  0%,
+  100% {
+    clip-path: polygon(20% 0%, 80% 0%, 100% 68%, 1% 78%);
+    -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 68%, 1% 78%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(0 23%, 80% 0%, 100% 68%, 31% 100%);
+    -webkit-clip-path: polygon(0 23%, 80% 0%, 100% 68%, 31% 100%);
+  }
+  50% {
+    clip-path: polygon(0 23%, 63% 23%, 100% 100%, 31% 100%);
+    -webkit-clip-path: polygon(0 23%, 63% 23%, 100% 100%, 31% 100%);
+  }
+}
+@-webkit-keyframes anim-ramka-6 {
+  0%,
+  100% {
+    clip-path: polygon(20% 0%, 80% 0%, 100% 68%, 1% 78%);
+    -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 68%, 1% 78%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(0 23%, 80% 0%, 100% 68%, 31% 100%);
+    -webkit-clip-path: polygon(0 23%, 80% 0%, 100% 68%, 31% 100%);
+  }
+  50% {
+    clip-path: polygon(0 23%, 63% 23%, 100% 100%, 31% 100%);
+    -webkit-clip-path: polygon(0 23%, 63% 23%, 100% 100%, 31% 100%);
+  }
+}
+@keyframes anim-ramka-7 {
+  0%,
+  100% {
+    clip-path: polygon(0 23%, 63% 23%, 100% 100%, 31% 100%);
+    -webkit-clip-path: polygon(0 23%, 63% 23%, 100% 100%, 31% 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(48% 23%, 100% 25%, 56% 100%, 0 100%);
+    -webkit-clip-path: polygon(48% 23%, 100% 25%, 56% 100%, 0 100%);
+  }
+  50% {
+    clip-path: polygon(0 24%, 57% 24%, 56% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 24%, 57% 24%, 56% 100%, 0 100%);
+  }
+}
+@-webkit-keyframes anim-ramka-7 {
+  0%,
+  100% {
+    clip-path: polygon(0 23%, 63% 23%, 100% 100%, 31% 100%);
+    -webkit-clip-path: polygon(0 23%, 63% 23%, 100% 100%, 31% 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(48% 23%, 100% 25%, 56% 100%, 0 100%);
+    -webkit-clip-path: polygon(48% 23%, 100% 25%, 56% 100%, 0 100%);
+  }
+  50% {
+    clip-path: polygon(0 24%, 57% 24%, 56% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 24%, 57% 24%, 56% 100%, 0 100%);
+  }
+}
+@keyframes anim-ramka-8 {
+  0%,
+  100% {
+    clip-path: polygon(0 24%, 57% 24%, 56% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 24%, 57% 24%, 56% 100%, 0 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(18% 25%, 70% 25%, 100% 100%, 21% 99%);
+    -webkit-clip-path: polygon(18% 25%, 70% 25%, 100% 100%, 21% 99%);
+  }
+  50% {
+    clip-path: polygon(9% 40%, 100% 29%, 73% 100%, 21% 99%);
+    -webkit-clip-path: polygon(9% 40%, 100% 29%, 73% 100%, 21% 99%);
+  }
+}
+@-webkit-keyframes anim-ramka-8 {
+  0%,
+  100% {
+    clip-path: polygon(0 24%, 57% 24%, 56% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 24%, 57% 24%, 56% 100%, 0 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(18% 25%, 70% 25%, 100% 100%, 21% 99%);
+    -webkit-clip-path: polygon(18% 25%, 70% 25%, 100% 100%, 21% 99%);
+  }
+  50% {
+    clip-path: polygon(9% 40%, 100% 29%, 73% 100%, 21% 99%);
+    -webkit-clip-path: polygon(9% 40%, 100% 29%, 73% 100%, 21% 99%);
+  }
+}
+@keyframes anim-ramka-9 {
+  0%,
+  100% {
+    clip-path: polygon(0 0, 75% 36%, 100% 100%, 20% 100%);
+    -webkit-clip-path: polygon(0 0, 75% 36%, 100% 100%, 20% 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 31% 63%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 31% 63%);
+  }
+  50% {
+    clip-path: polygon(0 53%, 56% 0, 100% 51%, 81% 100%);
+    -webkit-clip-path: polygon(0 53%, 56% 0, 100% 51%, 81% 100%);
+  }
+}
+@-webkit-keyframes anim-ramka-9 {
+  0%,
+  100% {
+    clip-path: polygon(0 0, 75% 36%, 100% 100%, 20% 100%);
+    -webkit-clip-path: polygon(0 0, 75% 36%, 100% 100%, 20% 100%);
+  }
+  25%,
+  75% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 31% 63%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 31% 63%);
+  }
+  50% {
+    clip-path: polygon(0 53%, 56% 0, 100% 51%, 81% 100%);
+    -webkit-clip-path: polygon(0 53%, 56% 0, 100% 51%, 81% 100%);
+  }
+}
+
+
+
+.shape-plugin .image-slide-inner{
+  padding-bottom: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.shape-plugin .image-slide-inner img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.shape-plugin .btn svg{
+  width: 30px;
+  height: 30px;
+}
+
+.shape-plugin .btn.prev svg{
+  transform: rotate(180deg);
+}
+
+.shape-plugin .index__wrap .index-total{
+  opacity: .6;
+}
+
+
+

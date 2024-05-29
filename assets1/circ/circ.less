@@ -1,0 +1,111 @@
+
+/* FAQ Plugin */
+@faq-section-bg-color: transparent;
+@faq-section-width: 70%;
+
+@faq-item-description-width: 90%;
+@faq-item-horizontal-paddings: 15px;
+
+@faq-active-item-bg-color: #389ffe;
+@faq-active-item-text-color: #FFFFFF;
+@faq-inactive-item-text-color: #000000;
+@faq-border-lines-color: #000000;
+
+@faq-item-title-font-size: 22px;
+@faq-item-title-line-height: 1.1em;
+@faq-item-title-font-weight: 500;
+
+@faq-item-description-font-size: 16px;
+@faq-item-description-line-height: 1.45em;
+@faq-item-description-font-weight: 500;
+
+@faq-section-alignment: right; //available options: left, center & right;
+
+.accordion-block-align() when (@faq-section-alignment = left) {
+  margin: 0 auto 0 0;
+}
+.accordion-block-align() when (@faq-section-alignment = center) {
+   margin: 0 auto;
+}
+.accordion-block-align() when (@faq-section-alignment = right) {
+  margin: 0 0 0 auto;
+}
+
+.accordion-section {
+  .section-background {
+    background-color: @faq-section-bg-color;
+  }
+  .content-wrapper {
+    width: 100%;
+    padding: 0 !important;
+    .content {
+      width: 100% !important;
+    }
+  }
+  .accordion-block {
+    width: @faq-section-width !important;
+    .accordion-item {
+      cursor: pointer;
+      &[data-is-open="true"] {
+        background-color: @faq-active-item-bg-color;
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        .accordion-item__title-wrapper span,
+        .accordion-item__description p{
+          color: @faq-active-item-text-color; 
+        }
+      }
+      .accordion-item__title-wrapper {
+        padding: 0 @faq-item-horizontal-paddings;
+        span {
+          font-size: @faq-item-title-font-size;
+          line-height: @faq-item-title-line-height;
+          font-weight: @faq-item-title-font-weight;
+          color: @faq-inactive-item-text-color;
+        }
+      }
+      .accordion-item__description {
+        max-width: @faq-item-description-width;
+        padding: 0 @faq-item-horizontal-paddings !important;
+        p {
+          font-size: @faq-item-description-font-size;
+          line-height: @faq-item-description-line-height;
+          font-weight: @faq-item-description-font-weight;
+          color: @faq-inactive-item-text-color;
+        }
+      }
+      &:hover {
+        background-color: @faq-active-item-bg-color;
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        * {
+        //  color: @faq-active-item-text-color; 
+        }
+      }
+      -webkit-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+    }
+    .accordion-divider {
+      height: 2px !important;
+      color: @faq-border-lines-color;
+    }
+    [data-accordion-description-placement="right"] .accordion-item__description {
+      text-align: right;
+    }
+    [data-accordion-icon-placement="left"] .accordion-item__title {
+      text-align: right;
+    }
+    [data-accordion-icon-placement="right"] .accordion-item__description {
+      text-align: left;
+      margin-left: inherit;
+      margin-right: auto; 
+    }
+  }
+}
+
+.sqs-block.accordion-block {
+  @media only screen and (min-width: 641px) {
+    .accordion-block-align;
+  }
+}
+/* FAQ Plugin */

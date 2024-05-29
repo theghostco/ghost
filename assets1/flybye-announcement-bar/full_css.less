@@ -1,0 +1,39 @@
+.sqs-announcement-bar-text{
+  padding-left: 0px;
+  pading-right: 0px;
+}
+#announcement-bar-text-inner-id{
+  position: relative;
+  
+  p{
+    padding: 10px 5vw;
+  }
+  .slick-list.draggable{
+    padding: 0px !important;
+  }
+}
+
+ .flickity-button{
+    display: none !important;
+  }
+  #announcement-bar-text-inner-id p{
+    width: 50vw;
+  }
+  .marquee{
+    display: flex;
+  }
+  .sqs-announcement-bar-dropzone{
+    //opacity: 0;
+    -webkit-transition: all .5s ease-out !important;
+    -moz-transition: all .5s ease-out !important;
+    -o-transition: all .5s ease-out !important;
+    transition: all .5s ease-out !important;
+height: 0px;
+    overflow: hidden;
+    &.show-announcement{
+      height: auto;
+       overflow: visible;
+      
+    }
+    
+  }

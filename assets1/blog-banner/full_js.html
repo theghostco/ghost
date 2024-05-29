@@ -1,0 +1,128 @@
+<script>
+  var ghostGlobalParamBlogBanner = {
+    animations: true
+  } 
+</script>
+<script>
+  var isBlogItem =  document.querySelector('.blog-item-wrapper');
+  if (typeof(isBlogItem) != 'undefined' && isBlogItem != null){
+    var blogItemImgSrc = document.head.querySelector("[property='og:image']").content;
+    var blogTitleEl = isBlogItem.querySelector('.blog-item-title');
+    var blogTitle = blogTitleEl.innerText || blogTitleEl.textContent;
+    var bannerMarkup = '<div class="blog-item-hero-banner zoom-animation-true"><img src="'+blogItemImgSrc+'"><div class="blog-item-title"><h1 class="ml3">'+blogTitle+'</h1></div></div>';
+    isBlogItem.insertAdjacentHTML('afterbegin', bannerMarkup);
+
+    if(ghostGlobalParamBlogBanner.animations){
+      var textWrapper = document.querySelector('.ml3');
+      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+      anime.timeline({loop: false})
+      .add({
+        targets: '.ml3 .letter',
+        opacity: [0,1],
+        easing: "easeInOutQuad",
+        duration: 1250,
+        delay: (el, i) => 50 * (i+1)
+      }).add({
+        targets: '.ml3',
+        opacity: 1,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+      });
+    }
+
+    document.querySelector('.blog-item-hero-banner').classList.add('loaded');
+
+  }
+
+</script>
+
+<script>
+  var ghostGlobalParamBlogBanner = {
+    animations: true
+  } 
+</script>
+<script>
+  var isBlogItem =  document.querySelector('.blog-item-wrapper');
+  if (typeof(isBlogItem) != 'undefined' && isBlogItem != null){
+    var blogItemImgSrc = document.head.querySelector("[property='og:image']").content;
+    var blogTitleEl = isBlogItem.querySelector('.blog-item-title');
+    var blogTitle = blogTitleEl.innerText || blogTitleEl.textContent;
+    var bannerMarkup = '<div class="blog-item-hero-banner zoom-animation-true"><img src="'+blogItemImgSrc+'"><div class="blog-item-title"><h1 class="ml3">'+blogTitle+'</h1></div></div>';
+    isBlogItem.insertAdjacentHTML('afterbegin', bannerMarkup);
+
+    if(ghostGlobalParamBlogBanner.animations){
+      var textWrapper = document.querySelector('.ml3');
+      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+      anime.timeline({loop: false})
+      .add({
+        targets: '.ml3 .letter',
+        opacity: [0,1],
+        easing: "easeInOutQuad",
+        duration: 1250,
+        delay: (el, i) => 50 * (i+1)
+      }).add({
+        targets: '.ml3',
+        opacity: 1,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+      });
+    }
+
+    document.querySelector('.blog-item-hero-banner').classList.add('loaded');
+
+  }
+
+</script>
+
+
+<script>
+  var isBlogItem =  document.querySelector('.blog-item-wrapper');
+  if (typeof(isBlogItem) != 'undefined' && isBlogItem != null){
+    var blogItemImgSrc = '';
+    var blogTitleEl = isBlogItem.querySelector('.blog-item-title');
+    var blogTitle = blogTitleEl.innerText || blogTitleEl.textContent;
+    var getUrl = window.location.href;
+    var pageLink = getUrl.substring(0, getUrl.indexOf('?'))
+    var bannerMarkup = '<div class="blog-item-hero-banner zoom-animation-true"><img src=""><div class="blog-item-title"><h1 class="ml3">'+blogTitle+'</h1></div></div>';
+    isBlogItem.insertAdjacentHTML('afterbegin', bannerMarkup);
+    var request = new XMLHttpRequest();
+    request.open('GET', ''+pageLink+'?format=json-pretty', true);
+    request.onload = function(curEl) {
+      if (this.status >= 200 && this.status < 400) {
+        // Success!
+        var data = JSON.parse(this.response);
+        var getImage = document.querySelector('.blog-item-hero-banner img');
+        getImage.setAttribute('src', data.item.assetUrl)
+      } else {
+        // We reached our target server, but it returned an error
+      }
+    };
+    request.onerror = function() {
+      // There was a connection error of some sort
+    };
+    request.send();
+    if(ghostGlobalParamBlogBanner.animations){
+      var textWrapper = document.querySelector('.ml3');
+      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+      anime.timeline({loop: false})
+      .add({
+        targets: '.ml3 .letter',
+        opacity: [0,1],
+        easing: "easeInOutQuad",
+        duration: 1250,
+        delay: (el, i) => 50 * (i+1)
+      }).add({
+        targets: '.ml3',
+        opacity: 1,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+      });
+    }
+    document.querySelector('.blog-item-hero-banner').classList.add('loaded');
+  }
+</script>

@@ -1,0 +1,70 @@
+
+
+@phase-changer-ghost-card-bg-color: #fff;
+@phase-changer-ghost-card-active-bg-color: #EEF5F9;
+
+@phase-changer-ghost-image-height: 50%;
+@phase-changer-ghost-image-mobile-height: 125%;
+@phase-changer-ghost-image-position: right; //availabe left or right
+
+
+@phase-changer-ghost-titles-font-size: 22px;
+@phase-changer-ghost-titles-font-color: #000;
+
+@phase-changer-ghost-desc-size: 13px;
+@phase-changer-ghost-desc-color: #95979b;
+
+
+
+.reverse-image() when (@phase-changer-ghost-image-position = left){
+  -webkit-box-orient: horizontal;  
+  -webkit-box-direction: reverse; 
+   -ms-flex-direction: row-reverse; 
+    flex-direction: row-reverse;
+  .phase-image-changer-images-wrapper  {
+    margin-right: 35px;margin-left: 0px;
+  }
+}
+
+body{
+  .phase-image-changer-plugin.summary-block-wrapper{
+    .reverse-image();
+    .summary-item{
+      .summary-title{
+        font-size: @phase-changer-ghost-titles-font-size;
+        color: @phase-changer-ghost-titles-font-color;
+        @media only screen and (max-width: 640px){
+          font-size: @phase-changer-ghost-titles-font-size/1.1;
+        }
+        &:before{
+          left: -@phase-changer-ghost-titles-font-size/1.1;
+          font-size: @phase-changer-ghost-titles-font-size/1.6;
+          color: @phase-changer-ghost-titles-font-color;
+          @media only screen and (max-width: 640px){
+            font-size: @phase-changer-ghost-titles-font-size/1.8;
+          }
+        }
+      }
+      p{
+        color: @phase-changer-ghost-desc-color;
+        font-size: @phase-changer-ghost-desc-size;
+        @media only screen and (max-width: 640px){
+          font-size: @phase-changer-ghost-desc-size/1.1;
+        }
+      }
+      &.current-active{
+        background-color: @phase-changer-ghost-card-active-bg-color;
+      }
+      &:hover{
+        border-color: @phase-changer-ghost-card-active-bg-color;
+      }
+    }
+    .phase-image-changer-images-wrapper{
+      padding-bottom: @phase-changer-ghost-image-height;
+      @media only screen and (max-width: 800px){
+        padding-bottom: @phase-changer-ghost-image-mobile-height;
+
+      }    
+    }
+  }
+}

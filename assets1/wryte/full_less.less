@@ -1,0 +1,178 @@
+
+
+@wryte-ghost-form-max-width: 850px;
+@wryte-ghost-form-alignment: right; //available options = left, center, right
+
+@wryte-ghost-background-color: transparent;
+@wryte-ghost-font-size: 35px;
+@wryte-ghost-font-color: #fff;
+
+@wryte-ghost-input-width: 320px;
+@wryte-ghost-input-font-size: 20px;
+@wryte-ghost-input-color: #fff;
+@wryte-ghost-input-focus-color: #333;
+
+@wryte-ghost-post-text-color: #fff;
+@wryte-ghost-post-text-size: 27px;
+
+
+/*Mobile size*/
+@wryte-ghost-font-size-mobile: 20px;
+@wryte-ghost-input-font-size-mobile: 18px;
+@wryte-ghost-post-text-size-mobile: 20px;
+@wryte-ghost-input-width-mobile: 150px;
+
+
+.form-1-ghost-button-style{
+  font-size: 20px;
+  padding: 15px 55px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 0px;
+  font-family: inherit;
+}
+
+
+.form-alignment() when (@wryte-ghost-form-alignment = right){
+  margin: 0 0 0 auto;
+}
+.form-alignment2() when (@wryte-ghost-form-alignment = center){
+  margin: 0 auto;
+}
+
+
+.form-wrapper{
+  opacity: 0;
+  transition: opacity .3s ease;
+  &.loaded{
+    opacity: 1;
+  }
+  &.wryte-ghost-plugin{
+    opacity: 1;
+    max-width: @wryte-ghost-form-max-width;
+    .form-alignment();
+    .form-alignment2();
+    .wrap-custom-form{
+      margin-bottom: 30px !important;
+
+      input{
+        display: inline;
+        background-color: @wryte-ghost-background-color;
+        border: none;
+        box-shadow: none;
+        border-radius: 0px;
+        border-bottom: 1px solid;
+        outline: none !important;
+        min-width: @wryte-ghost-input-width;
+        width: @wryte-ghost-input-width;
+        vertical-align: middle;
+        padding-top: 0px;
+        padding-bottom: 5px;
+        opacity: .7;
+        transition: all .3s ease;
+        line-height: 1;
+        font-size: @wryte-ghost-input-font-size;
+        margin-right: 10px;
+        box-sizing: border-box;
+        max-width: 100%;
+        color:@wryte-ghost-input-color;
+        @media only screen and (max-width: 640px) {
+          min-width: @wryte-ghost-input-width-mobile;
+          width: @wryte-ghost-input-width-mobile;
+          padding-bottom: 0px;
+          font-size:@wryte-ghost-input-font-size-mobile;
+        }
+        &:focus{
+          opacity: 1;
+          padding: .3em 10px;
+          background-color: @wryte-ghost-input-focus-color;
+        }
+
+        &::placeholder { 
+          color: @wryte-ghost-input-color;
+          font-size: @wryte-ghost-input-font-size;
+          @media only screen and (max-width: 640px) {
+            font-size:@wryte-ghost-input-font-size-mobile;
+          }
+          line-height: 1;
+
+        }
+
+        &:-ms-input-placeholder { 
+          color: @wryte-ghost-input-color;
+          font-size: @wryte-ghost-input-font-size;
+          @media only screen and (max-width: 640px) {
+            font-size:@wryte-ghost-input-font-size-mobile;
+          }
+          line-height: 1;
+        }
+        &::-ms-input-placeholder { 
+          color: @wryte-ghost-input-color;
+          font-size: @wryte-ghost-input-font-size;
+          @media only screen and (max-width: 640px) {
+            font-size:@wryte-ghost-input-font-size-mobile;
+          }
+          line-height: 1;
+        }
+      }
+      label{
+        font-size: @wryte-ghost-font-size !important;
+        line-height: 1.6em;
+        color: @wryte-ghost-font-color;
+        padding: 0px;
+        display: inline;
+        vertical-align: middle;
+        @media only screen and (max-width: 640px) {
+          font-size: @wryte-ghost-font-size-mobile !important;
+          line-height: 2em;
+        }
+        
+        span{
+          display: none;
+        }
+        &.from-label{
+          margin-right: 10px;
+        }
+      }
+    } 
+    .form-submission-text{
+      font-size: @wryte-ghost-post-text-size;
+      color: @wryte-ghost-post-text-color;
+      @media only screen and (max-width: 640px) {
+        font-size: @wryte-ghost-post-text-size-mobile;
+      }
+      margin-top: 0px;
+    }
+
+
+    form{
+      .field-error + .field-list{
+        margin-bottom: 20px;
+      }
+      .button.sqs-button-element--primary{
+        .form-1-ghost-button-style;
+      }
+      .field-list{
+        display: flex;
+        .field-error{
+          margin-right: 10px;
+        }
+        .form-item{
+          margin: 0px !important;
+          .title, .field-element, .description{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.squarespace-damask{
+  .form-wrapper{
+    opacity: 1 !important;
+    .wrap-custom-form{
+     // display: none;
+   }
+ }
+}

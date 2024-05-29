@@ -1,0 +1,28 @@
+/* NAVIGATION HOVER */
+header .header-nav-list .header-nav-item {
+  height: 1.6em;
+  line-height: 1.6em;
+  overflow: hidden;
+}
+header .header-nav-list .header-nav-item a {
+  line-height: 1.4em;
+  -webkit-transform: unset;
+  transform: unset;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+header .header-nav-list .header-nav-item a.menu-item-text {
+  -webkit-transform: unset;
+  transform: unset;
+}
+header .header-nav-list .header-nav-item:hover a {
+  -webkit-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+header .header-nav-list .header-nav-item:hover a.menu-item-text {
+  -webkit-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+}
+/* NAVIGATION HOVER */

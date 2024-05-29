@@ -1,0 +1,52 @@
+<script>
+  var globalGhostTimeRangeObject = {
+    timeZone: 'America/Los_Angeles', // timezone 
+    startToHide: '8:00 AM', // start to hide
+    endToHide: '10:00 PM', // stop to hide
+    elementToHide: '.sqs-announcement-bar-dropzone' // element to hide (announcement bar by default)
+  }
+</script>
+<script>
+  ;(function(){
+    let formatMin = moment(globalGhostTimeRangeObject.startToHide, ["HH:mm A"]).format("h:m"),
+        formatMax = moment(globalGhostTimeRangeObject.endToHide, ["HH:mm A"]).format("h:m"),  
+        start_time = formatMin.split(':').map(Number),
+        end_time = formatMax.split(':').map(Number),
+        now = moment(), // current timestamp, using your machine's time zone
+        currentHoursLA = now.tz(globalGhostTimeRangeObject.timeZone).format('h'),
+        currentMinLa = now.tz(globalGhostTimeRangeObject.timeZone).format('m'),
+        //We've got the two start times as an array of hours/minutes values.
+        dateObj = new Date(), //I just feel dirty making multiple calls to new Date().etc
+        nowArray = [+currentHoursLA, +currentMinLa]; //Gets the current Hours/Minutes
+    console.log(nowArray + ' = nowArray');
+
+    if(end_time[0] < start_time[0] && nowArray[0] < start_time[0]){
+      start_time[0] -= 24; //This is something I came up with because I do a lot of math.
+    }else if(start_time[0] > end_time[0]){
+      end_time[0]+=24;
+    }
+
+
+    var start_string = to_hms_string(start_time); //the start string converted to a string format. Made comparisons easier.
+    var end_string = to_hms_string(end_time); //See Above
+    var now_string = to_hms_string(nowArray); //Above
+
+    console.log('start_string = '+ start_string, 'now_string = '+ now_string, 'end_string = ' + end_string);
+
+    var status = (start_string < now_string && now_string < end_string) ?   document.querySelector(globalGhostTimeRangeObject.elementToHide).style.display = 'none' : console.log("Do not hide");
+
+
+
+    //Function to_hms_string stands for "hour-minute-second" string. First name that came up.
+    function to_hms_string(timearr){
+      var minutes = 60+timearr[1];
+      var hours = "";
+      if(Math.abs(timearr[0]) < 10){
+        hours = "0";
+      }
+      hours = (timearr[0]<0) ? "-"+hours+Math.abs(timearr[0]) : hours+timearr[0];
+      return hours+":"+minutes;
+    }
+
+  }());
+</script>

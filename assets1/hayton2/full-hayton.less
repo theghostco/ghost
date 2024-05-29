@@ -1,0 +1,204 @@
+/* Hayton2 Plugin */
+@hayton2-ghost-card-bg-color: #000;
+@hayton2-ghost-item-vertical-spacings: 50px;
+@hayton2-ghost-item-horizontal-spacings: 20px;
+
+//title
+@hayton2-ghost-title-width: 50%; //recommend 66.6667%; 
+@hayton2-ghost-titles-font-size: 42px;
+@hayton2-ghost-titles-font-color: #fff;
+
+//subtitle
+@hayton2-ghost-sub-title-width: 40%; //recommend 33.333%;
+@hayton2-ghost-desc-size: 20px; 
+@hayton2-ghost-desc-color: #fff;
+
+/* Please note @hayton2-ghost-sub-title-width + @hayton2-ghost-title-width should be less than 100% (for example: 50% width/40% subtitle and 10% margin between them will be added automaticly ) */
+
+@hayton2-divider-line-width: 1px;
+@hayton2-divider-line-type: solid; //available options: solid, dashed, dotted
+@hayton2-divider-line-color: #fff;
+
+
+//mobile
+@hayton2-ghost-titles-font-size-mobile: 32px;
+@hayton2-ghost-desc-font-size-mobile: 17px;
+
+
+//hover
+@hayton2-overlay-direction: left;
+//available options: top, bottom, left & right;
+@hayton2-ghost-hover-title-animation: 10px;
+@hayton2-hover-bg-color: #fff;
+@hayton2-hover-text-color: #000;
+
+.overlay-slide-orintation() when (@hayton2-overlay-direction = left) {
+  width: 0%;
+  top: -2px;
+  left: auto;
+  right: -1em;
+  bottom: -2px;
+  @media only screen and (min-width: 480px) {
+    right: -2.5rem;
+  }
+}
+.overlay-slide-animation() when (@hayton2-overlay-direction = left) {
+  width: ~"calc(100% + 2rem)";
+  @media only screen and (min-width: 480px) {
+    width: ~"calc(100% + 5rem)";
+  }
+}
+
+.overlay-slide-orintation() when (@hayton2-overlay-direction = top) {
+  width: 100%;
+  height: 0;
+  top: auto;
+  left: -2px;
+  right: -2px;
+  bottom: -1em;
+  @media only screen and (min-width: 480px) {
+    bottom: 0rem;
+  }
+}
+.overlay-slide-animation() when (@hayton2-overlay-direction = top) {
+  height: 100%;
+}
+.overlay-content-slide() when (@hayton2-overlay-direction = top) {
+  transform: translate(0, -20px);
+  -webkit-transform: translate(0, -20px);
+}
+
+.overlay-slide-orintation() when (@hayton2-overlay-direction = bottom) {
+  width: 100%;
+  height: 0;
+  top: -1em;
+  left: -2px;
+  right: -2px;
+  bottom: auto;
+  @media only screen and (min-width: 480px) {
+    top: 0rem;
+  }
+}
+.overlay-slide-animation() when (@hayton2-overlay-direction = bottom) {
+  height: 100%;
+}
+.overlay-content-slide() when (@hayton2-overlay-direction = bottom) {
+  transform: translate(0, 20px);
+  -webkit-transform: translate(0, 20px);
+}
+
+.overlay-slide-orintation() when (@hayton2-overlay-direction = right) {
+  width: 0%;
+  top: -2px;
+  left: -1rem;
+  bottom: -2px;
+  @media only screen and (min-width: 480px) {
+    left: -2.5rem;
+  }
+}
+.overlay-slide-animation() when (@hayton2-overlay-direction = right) {
+  width: ~"calc(100% + 2rem)";
+  @media only screen and (min-width: 480px) {
+    width: ~"calc(100% + 5rem)";
+  }
+}
+
+body {
+  .section-with-hayton2-slider {
+    .section-background {
+      background-color: @hayton2-ghost-card-bg-color !important;
+    }
+  }
+  .hayton2-plugin.summary-block-wrapper {
+    .summary-item-list {
+      .summary-item {
+        padding: @hayton2-ghost-item-vertical-spacings @hayton2-ghost-item-horizontal-spacings !important;
+        border-bottom: @hayton2-divider-line-width @hayton2-divider-line-type @hayton2-divider-line-color;
+        .summary-thumbnail-outer-container {
+          display: none;
+        }
+        .summary-content {
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          .summary-title {
+            width: @hayton2-ghost-title-width;
+            -webkit-transition: 2s -webkit-transform ease;
+            transition: 2s -webkit-transform ease;
+            transition: 2s transform ease;
+            transition: 2s transform ease, 2s -webkit-transform ease;
+            .summary-title-link {
+              .overlay-content-slide;
+            }
+          }
+          .summary-excerpt {
+            width: @hayton2-ghost-sub-title-width;
+          }
+        }
+        .summary-title,
+        .summary-title-link {
+          font-size: @hayton2-ghost-titles-font-size;
+          color: @hayton2-ghost-titles-font-color;
+          @media only screen and (max-width: 640px){
+            font-size: @hayton2-ghost-titles-font-size-mobile;
+          }
+        }
+        .summary-excerpt {
+          p {
+            font-size: @hayton2-ghost-desc-size;
+            color: @hayton2-ghost-desc-color;
+            -webkit-transition: 1s all ease;
+            transition: 1s all ease;
+            transition: 1s all ease;
+            transition: 1s all ease, 1s all ease;
+            @media only screen and (max-width: 800px){
+              font-size: @hayton2-ghost-desc-font-size-mobile;
+            }
+          }
+        }
+        &:first-of-type {
+          border-top: @hayton2-divider-line-width @hayton2-divider-line-type @hayton2-divider-line-color;
+        }
+        &:last-of-type {
+          border-bottom: @hayton2-divider-line-width @hayton2-divider-line-type @hayton2-divider-line-color;
+        }
+        &:before {
+          background-color: @hayton2-hover-bg-color;
+          content: "";
+          position: absolute;
+          .overlay-slide-orintation;
+          -webkit-transition: ease-out 0.5s;
+          -o-transition: ease-out 0.5s;
+          transition: ease-out 0.5s;
+
+        }
+        &:hover {
+          .summary-title {
+            .summary-title-link {
+              -webkit-transform: translateX(@hayton2-ghost-hover-title-animation);
+              -ms-transform: translateX(@hayton2-ghost-hover-title-animation);
+              transform: translateX(@hayton2-ghost-hover-title-animation);          
+              -webkit-transition-delay: 0.15s;
+              transition-delay: 0.15s;
+            }
+            & * {
+              color: @hayton2-hover-text-color;
+            }
+          }
+          .summary-excerpt p {
+            -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+            color: @hayton2-hover-text-color;
+          }
+          .summary-thumbnail.img-wrapper img {
+            opacity: 0;
+          }
+          &:before {
+            .overlay-slide-animation;
+            }
+          }
+        }
+      }
+    }
+  }
+/*Hayton2 Plugin */

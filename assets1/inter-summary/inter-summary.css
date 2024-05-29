@@ -1,0 +1,236 @@
+/* Variables */
+.section-with-inter-summary .content-wrapper {
+  box-sizing: border-box !important;
+}
+.section-with-inter-summary .summary-item-list-container .summary-item-list .summary-item {
+  overflow: hidden;
+  border-radius: 12px !important;
+  transition: all .3s ease;
+}
+.section-with-inter-summary .summary-item-list-container .summary-item-list .summary-item .summary-thumbnail-outer-container {
+  width: 100% !important;
+  float: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.section-with-inter-summary .summary-item-list-container .summary-item-list .summary-item .summary-thumbnail-outer-container .summary-thumbnail-container {
+  padding: 0px;
+}
+.section-with-inter-summary .summary-item-list-container .summary-item-list .summary-item .summary-content.sqs-gallery-meta-container {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  bottom: 0%;
+  -webkit-backdrop-filter: blur(11px);
+  backdrop-filter: blur(11px);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: 2rem;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+@media only screen and (max-width: 640px) {
+  .section-with-inter-summary .summary-item-list-container .summary-item-list .summary-item .summary-content.sqs-gallery-meta-container {
+    width: 100% !important;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    padding: 17px;
+    top: auto;
+    border-radius: 0px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+}
+.section-with-inter-summary .summary-item-list-container .summary-item-list .summary-item .summary-content.sqs-gallery-meta-container .summary-title {
+  width: 100%;
+}
+.section-with-inter-summary .summary-item-list-container .summary-item-list .summary-item .summary-content.sqs-gallery-meta-container .summary-excerpt {
+  width: 100%;
+}
+.section-with-inter-summary .summary-item-list-container .summary-item-list .summary-item .summary-content.sqs-gallery-meta-container .summary-metadata-item--tags {
+  color: transparent;
+}
+.section-with-inter-summary .summary-item-list-container .summary-item-list .summary-item .summary-content.sqs-gallery-meta-container .summary-metadata-item--tags a {
+  padding: 2px 13px;
+  line-height: 1.2;
+  border-radius: 15px;
+  margin-right: 5px;
+}
+.section-with-inter-summary .swiper-container {
+  font-size: 0px;
+  white-space: nowrap;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item {
+  border-radius: 12px;
+  padding-bottom: 0 !important;
+}
+.section-with-inter-summary .swiper-container .summary-item-list{
+  white-space: normal;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .main-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 12px;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-thumbnail {
+  border-radius: 12px;
+  padding-bottom: 50% !important;
+}
+@media only screen and (max-width: 1200px) {
+  .section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-thumbnail {
+    padding-bottom: 65% !important;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-thumbnail {
+    padding-bottom: 75% !important;
+  }
+  .section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-thumbnail img {
+    top: 0 !important;
+    height: 100% !important;
+  }
+}
+@media only screen and (max-width: 1050px) {
+  .section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-thumbnail {
+    padding-bottom: 50% !important;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-thumbnail {
+    padding-bottom: 120% !important;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-thumbnail img {
+    border-radius: 12px;
+  }
+}
+@media only screen and (max-width: 480px) {
+
+}
+@media only screen and (max-width: 420px) {
+
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content {
+  align-content: center;
+  width: 50% !important;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content .summary-title .summary-title-link {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: sans-serif;
+  display: block;
+  line-height: 1;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content .summary-excerpt {
+  color: #ffffff !important;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content .summary-excerpt h3 {
+  font-size: 1.6900000000000002rem;
+  margin: 0px;
+  margin-bottom: 10px;
+  color: #ffffff !important;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content .summary-excerpt p {
+  font-size: 1.3rem;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content .summary-metadata-item.summary-metadata-item--tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content .summary-metadata {
+  margin-top: 10px;
+}
+@media only screen and (max-width: 1200px) {
+  .section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content .summary-metadata {
+    margin-top: 5px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content .summary-metadata {
+    margin-top: 0;
+  }
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-content .summary-metadata a {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 1.3rem;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  transition: all .3s ease;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item .summary-thumbnail img {
+  transition: all .3s ease;
+  will-change: transform;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.section-with-inter-summary .swiper-container .summary-item-list .summary-item:hover {
+  opacity: .85;
+}
+.section-with-inter-summary .swiper-container .slider-control {
+  display: inline-block;
+  width: 50%;
+}
+.section-with-inter-summary .swiper-container .summary-block-header {
+  display: inline-block;
+  width: 50%;
+}
+.section-with-inter-summary .swiper-container .summary-block-header .summary-heading {
+  display: block;
+}
+.section-with-inter-summary .swiper-container .summary-block-header .summary-heading .summary-header-text {
+  font-size: 3rem;
+  color: #000000;
+}
+.section-with-inter-summary .swiper-container .slider-control-inner {
+  display: flex;
+  align-items: center;
+  max-width: 70px;
+  margin: 0 0 10px auto;
+  justify-content: space-between;
+}
+.section-with-inter-summary .swiper-container .slider-control-inner .swiper-button-next-custom,
+.section-with-inter-summary .swiper-container .slider-control-inner .swiper-button-prev-custom {
+  cursor: pointer;
+  outline: none;
+}
+.section-with-inter-summary .swiper-container .slider-control-inner .swiper-button-next-custom figure,
+.section-with-inter-summary .swiper-container .slider-control-inner .swiper-button-prev-custom figure {
+  display: block;
+  margin: 0px;
+}
+.section-with-inter-summary .swiper-container .slider-control-inner .swiper-button-next-custom svg,
+.section-with-inter-summary .swiper-container .slider-control-inner .swiper-button-prev-custom svg {
+  max-width: 20px;
+  max-height: 20px;
+  fill: #000000;
+}
+.section-with-inter-summary .swiper-container .slider-control-inner .swiper-button-prev-custom svg {
+  transform: rotate(-180deg);
+}
+.firefox-agent .section-with-inter-summary .content-wrapper .summary-item-list-container .summary-item-list .summary-item .summary-content.sqs-gallery-meta-container {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.with-one-slide .slider-control{
+
+  display: none !important;
+}
+@media only screen and (max-width: 640px) {
+  html body .section-with-inter-summary .summary-block-wrapper .swiper-container .summary-item-list .summary-item .summary-content {
+    width: 100% !important;
+  }
+}
+
+

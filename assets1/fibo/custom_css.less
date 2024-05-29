@@ -1,0 +1,38 @@
+
+// Ghost fibo Product Slider Code - start //
+
+@fibo-ghost-card-background: #fff;
+@fibo-ghost-card-shadow-color: #000;
+
+
+//title (inherit h3 font style)
+@fibo-ghost-title-font-size: 1em;
+@fibo-ghost-title-font-color: #000;
+
+//description
+@fibo-ghost-desc-font-size: .8em;
+@fibo-ghost-desc-font-color: #000;
+
+//avatar
+@fibo-ghost-avatar-size: 70px;
+
+//author position
+@fibo-ghost-position-size: .8em;
+@fibo-ghost-position-color: #333;
+
+//controls
+@fibo-ghost-arrow-size: 2em;
+@fibo-ghost-arrow-color: #333;
+
+//mobile style
+@fibo-ghost-desc-mobile-font-size: .7em;
+@fibo-ghost-title-mobile-font-size: .9em;
+@fibo-ghost-position-mobile-font-size: .8em;
+
+
+
+
+
+body{.fibo-plugin{.image-slide{background: @fibo-ghost-card-background;padding: 50px;@media only screen and (max-width: 640px){padding: 25px;}&:after{background-color: @fibo-ghost-card-background;}&:before{box-shadow: 0px 1px 5px 5px @fibo-ghost-card-shadow-color;opacity: .1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";}}.image-slide-inner{width: @fibo-ghost-avatar-size;min-width: @fibo-ghost-avatar-size;height: @fibo-ghost-avatar-size;}h3{font-size: @fibo-ghost-title-font-size;color: @fibo-ghost-title-font-color;@media only screen and (max-width: 640px){font-size: @fibo-ghost-title-mobile-font-size;}}p{font-size: @fibo-ghost-desc-font-size;color: @fibo-ghost-desc-font-color;a{color: @fibo-ghost-desc-font-color;}}.desc-wrapper{p{@media only screen and (max-width: 640px){font-size: @fibo-ghost-desc-mobile-font-size;}}}.author-info{p{font-size: @fibo-ghost-position-size;color: @fibo-ghost-position-color;@media only screen and (max-width: 640px){font-size: @fibo-ghost-position-mobile-font-size;}}}}.fibo-control-wrapper{height: @fibo-ghost-arrow-size;.fibo-control{height: @fibo-ghost-arrow-size;.swiper-button-next, .swiper-button-prev{color: @fibo-ghost-arrow-color;&:after{font-size: @fibo-ghost-arrow-size;}}}}}
+
+// Ghost fibo Product Slider Code - end //

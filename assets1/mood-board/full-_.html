@@ -1,0 +1,264 @@
+<script>
+  var ghostPluginsMoodBoardParams = {
+    randomImgMinHeigh: 100,
+    randomImgMaxHeigh: 300,
+    randomImgMinHeighMobile: 20,
+    randomImgMaxHeighMobile: 50,
+    spreading: 75 // from 20 to 100. Recommended -- 75
+  }
+</script>
+<script>
+  let checkPlugin = document.querySelectorAll('[data-ghost]');
+  if (typeof(checkPlugin) != 'undefined' && checkPlugin != null){
+    var sliderCount = 1;
+    checkPlugin.forEach(function(el){
+      let getSliderContentUrl = el.getAttribute('data-blog-href'),
+      getPluginName = el.getAttribute('data-ghost-plugin-name'),
+      parentCanvas = el.closest('.code-block.sqs-block-code'),
+      parentHeight = parentCanvas.offsetHeight,
+      minHeight = ghostPluginsMoodBoardParams.randomImgMinHeigh,
+      maxHeight = ghostPluginsMoodBoardParams.randomImgMaxHeigh,
+      mobMinHeight = ghostPluginsMoodBoardParams.randomImgMinHeighMobile,
+      mobMaxHeight = ghostPluginsMoodBoardParams.randomImgMaxHeighMobile,
+      spr = ghostPluginsMoodBoardParams.spreading;
+
+
+
+
+      if( getPluginName == 'mood-board' ){
+        //main markup
+        el.innerHTML = '<div class="'+getPluginName+' mood-board swiper-'+sliderCount+'"><div class="mood-wrapper images background" id="" style="height:'+parentHeight+'px;"></div></div>'
+        //vanilla js JSON request
+        var request = new XMLHttpRequest();
+        request.open('GET', ''+document.location.origin+''+getSliderContentUrl+'?format=json-pretty', true);
+        request.onload = function(curEl) {
+          if (this.status >= 200 && this.status < 400) {
+            /* Success!*/
+            var data = JSON.parse(this.response);
+            for (var i = 0; i < data.items.length; i++) {
+              var getItemTitle = data.items[i].title
+              var getItemExcerpt = data.items[i].excerpt
+              var getItemImage = data.items[i].assetUrl
+              //slide markup
+              var createItem = '<div class="mood-item element draggable resizeable"><img src="'+getItemImage+'"></div>';
+              var getParent = el.querySelector('.mood-wrapper');
+              getParent.innerHTML =  getParent.innerHTML + createItem;
+            }
+          }
+          var draggable = $('.draggable');
+          var resizable = $('.resizeable');
+          var element = $('.element');
+
+          element.each(setRandomSize);
+          element.each(setRandomPosition);
+
+          resizable.resizable({
+            containment: ".background",
+            aspectRatio: true,
+            handles: "n, w, s, e"
+          });
+
+          draggable.draggable({
+            cursor: "move",
+            containment: ".background",
+            stack: ".element",
+          });
+          if(window.innerHeight > window.innerWidth){
+
+          }
+
+          function setRandomSize(){
+            //Get IMG size
+            var img = $(this).find('.mood-item');
+            imgHeight = img.outerHeight();
+            imgWidth = img.outerWidth();
+
+            if(window.innerHeight > window.innerWidth){
+
+              let randomWidth = (window.innerWidth > 650) ? randomIntFromInterval(minHeight, maxHeight) : randomIntFromInterval(mobMinHeight, mobMaxHeight);
+
+              $(this).css({
+                width: randomWidth + '%'
+              });
+            } else {
+             let randomHeight = (window.innerWidth > 650) ? randomIntFromInterval(minHeight, maxHeight) : randomIntFromInterval(mobMinHeight, mobMaxHeight);
+              //Calc proportional width
+              var proportionalWidth = (imgWidth * randomHeight) / imgHeight; 
+              $(this).css({
+                height: randomHeight + 'px',
+                width: proportionalWidth + 'px'
+              });
+            }
+          }
+
+          function setRandomPosition(){
+            //Generate random Top % [0, 75]
+            var randomTop = randomIntFromInterval(0, ghostPluginsMoodBoardParams.spreading);
+            //Generate randon Left % [0, 85]
+            var randomLeft = randomIntFromInterval(0, ghostPluginsMoodBoardParams.spreading);
+            $(this).css({
+              top: randomTop + '%',
+              left: randomLeft + '%'
+            });    
+          }
+
+
+          function randomIntFromInterval(min,max) {
+            return Math.floor(Math.random()*(max-min+1)+min);
+          }
+
+        };
+        request.onerror = function() {};
+        request.send(); 
+        //end vanilla js JSON request
+        sliderCount++;
+      }
+    })    
+}
+
+
+
+
+
+
+</script>
+
+
+
+let checkPlugin=document.querySelectorAll("[data-ghost]");if(void 0!==checkPlugin&&null!=checkPlugin){var e=1;checkPlugin.forEach(function(i){let t=i.getAttribute("data-blog-href"),n=i.getAttribute("data-ghost-plugin-name"),r=i.closest(".code-block.sqs-block-code").offsetHeight,o=ghostPluginsMoodBoardParams.randomImgMinHeigh,a=ghostPluginsMoodBoardParams.randomImgMaxHeigh,s=ghostPluginsMoodBoardParams.randomImgMinHeighMobile,d=ghostPluginsMoodBoardParams.randomImgMaxHeighMobile;if(ghostPluginsMoodBoardParams.spreading,"mood-board"==n){i.innerHTML='<div class="'+n+" mood-board swiper-"+e+'"><div class="mood-wrapper images background" id="" style="height:'+r+'px;"></div></div>';var l=new XMLHttpRequest;l.open("GET",""+document.location.origin+t+"?format=json-pretty",!0),l.onload=function(e){if(this.status>=200&&this.status<400)for(var t=JSON.parse(this.response),n=0;n<t.items.length;n++){t.items[n].title,t.items[n].excerpt;var r='<div class="mood-item element draggable resizeable"><img src="'+t.items[n].assetUrl+'"></div>',l=i.querySelector(".mood-wrapper");l.innerHTML=l.innerHTML+r}var c=$(".draggable"),g=$(".resizeable"),h=$(".element");function m(e,i){return Math.floor(Math.random()*(i-e+1)+e)}h.each(function e(){var i=$(this).find(".mood-item");if(imgHeight=i.outerHeight(),imgWidth=i.outerWidth(),window.innerHeight>window.innerWidth){let t=window.innerWidth>650?m(o,a):m(s,d);$(this).css({width:t+"%"})}else{let n=window.innerWidth>650?m(o,a):m(s,d);var r=imgWidth*n/imgHeight;$(this).css({height:n+"px",width:r+"px"})}}),h.each(function e(){var i=m(0,ghostPluginsMoodBoardParams.spreading),t=m(0,ghostPluginsMoodBoardParams.spreading);$(this).css({top:i+"%",left:t+"%"})}),g.resizable({containment:".background",aspectRatio:!0,handles:"n, w, s, e"}),c.draggable({cursor:"move",containment:".background",stack:".element"}),window.innerHeight,window.innerWidth},l.onerror=function(){},l.send(),e++}})}
+<!--fix 7 December -->
+
+<!-- mood board -->
+<script>
+  var ghostPluginsMoodBoardParams = {
+    randomImgMinHeigh: 200,
+    randomImgMaxHeigh: 500,
+    randomImgMinHeighMobile: 20,
+    randomImgMaxHeighMobile: 50,
+    spreading: 75 // from 20 to 100. Recommended -- 75
+  }
+</script>
+<script src="https://www.ghostplugins.dev/assets/helpers/jq/jq.js"></script>
+<script src="https://www.ghostplugins.dev/assets/helpers/jq/jq-ui.js"></script>
+
+<script>
+  let checkPlugin = document.querySelectorAll('[data-ghost]');
+  if (typeof(checkPlugin) != 'undefined' && checkPlugin != null){
+    var sliderCount = 1;
+    checkPlugin.forEach(function(el){
+      let getSliderContentUrl = el.getAttribute('data-blog-href'),
+      getPluginName = el.getAttribute('data-ghost-plugin-name'),
+      parentCanvas = el.closest('.code-block.sqs-block-code'),
+      parentHeight = parentCanvas.offsetHeight,
+      minHeight = ghostPluginsMoodBoardParams.randomImgMinHeigh,
+      maxHeight = ghostPluginsMoodBoardParams.randomImgMaxHeigh,
+      mobMinHeight = ghostPluginsMoodBoardParams.randomImgMinHeighMobile,
+      mobMaxHeight = ghostPluginsMoodBoardParams.randomImgMaxHeighMobile,
+      spr = ghostPluginsMoodBoardParams.spreading;
+
+
+      if( getPluginName == 'mood-board' ){
+        //main markup
+        el.innerHTML = '<div class="'+getPluginName+' mood-board swiper-'+sliderCount+'"><div class="mood-wrapper images background" id="" style="height:'+parentHeight+'px;"></div></div>'
+        //vanilla js JSON request
+        var request = new XMLHttpRequest();
+        request.open('GET', ''+document.location.origin+''+getSliderContentUrl+'?format=json-pretty', true);
+        request.onload = function(curEl) {
+          if (this.status >= 200 && this.status < 400) {
+            /* Success!*/
+            var data = JSON.parse(this.response);
+            for (var i = 0; i < data.items.length; i++) {
+              var getItemTitle = data.items[i].title
+              var getItemExcerpt = data.items[i].excerpt
+              var getItemImage = data.items[i].assetUrl
+              //slide markup
+              var createItem = '<div class="mood-item element draggable resizeable"><img src="'+getItemImage+'"></div>';
+              var getParent = el.querySelector('.mood-wrapper');
+              getParent.innerHTML =  getParent.innerHTML + createItem;
+            }
+            
+            const list = Array.from(document.querySelectorAll('.mood-item img'));
+            
+            Promise.all(list.map((img) => loadImage(img))).then(() => {
+              var draggable = $('.draggable');
+              var resizable = $('.resizeable');
+              var element = $('.element');
+              element.each(setRandomSize);
+              element.each(setRandomPosition);
+
+              resizable.resizable({ 
+                containment: ".background",
+                aspectRatio: true,
+                handles: "n, w, s, e"
+              });
+
+              draggable.draggable({
+                cursor: "move",
+                containment: ".background",
+                
+                stack: ".element",
+              });
+              
+
+              function setRandomSize(){
+            //Get IMG size
+            
+            var img = $(this);
+            
+            imgHeight = img.outerHeight();
+            imgWidth = img.outerWidth();
+            
+            if(window.innerHeight > window.innerWidth){
+
+              let randomWidth = (window.innerWidth > 650) ? randomIntFromInterval(minHeight, maxHeight) : randomIntFromInterval(mobMinHeight, mobMaxHeight);
+
+              $(this).css({
+                width: randomWidth + '%'
+              });
+            } else {
+              
+             let randomHeight = (window.innerWidth > 650) ? randomIntFromInterval(minHeight, maxHeight) : randomIntFromInterval(mobMinHeight, mobMaxHeight);
+              //Calc proportional width
+              var proportionalWidth = (imgWidth * randomHeight) / imgHeight; 
+              $(this).css({
+                height: randomHeight + 'px',
+                width: proportionalWidth + 'px'
+              });
+            }
+          }
+
+          function setRandomPosition(){
+            //Generate random Top % [0, 75]
+            var randomTop = randomIntFromInterval(0, ghostPluginsMoodBoardParams.spreading);
+            //Generate randon Left % [0, 85]
+            var randomLeft = randomIntFromInterval(0, ghostPluginsMoodBoardParams.spreading);
+            $(this).css({
+              top: randomTop + '%',
+              left: randomLeft + '%'
+            });    
+          }
+
+          function randomIntFromInterval(min,max) {
+            return Math.floor(Math.random()*(max-min+1)+min);
+          }
+          
+        })
+          }
+        };
+        request.onerror = function() {};
+        request.send(); 
+        //end vanilla js JSON request
+        sliderCount++;
+      }
+    })    
+}
+
+function loadImage(img) {
+ return new Promise((fullFill) => {
+  img.onload = () => fullFill()
+})
+}
+
+
+</script>
+<!-- mood board end -->

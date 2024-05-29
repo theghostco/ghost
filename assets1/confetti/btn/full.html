@@ -1,0 +1,66 @@
+<script src="https://www.ghostplugins.dev/assets/helpers/confetti.js"></script>
+
+<script>
+  var ghostCartConfettiOptions = {
+    colors: ['#a864fd', "#29cdff", "#78ff44", "#ff718d", "#fdff6a"], // confetti colors - up to 5 hex colors
+    spread: 150, // confetti distance after submission
+    particleCount: 15, // number of confetti - 200 or less recommended
+    loop: false, // keep confetti pop going after submission - true or false 
+    loopDelay: 2000, // delay in confetti pop if loop is set to true
+    duration: 10, // duration of confetti
+    redirectDelay: 0, // in miliseconds
+    targetElement: '.sqs-block-button-element--small.sqs-button-element--tertiary' //target element. small buttons by dafaulr
+  }
+</script>
+<script>
+
+ 
+  
+  // Function to create and trigger confetti
+  function triggerConfetti() {
+    const duration = ghostCartConfettiOptions.duration; // Duration of the confetti animation in milliseconds (5 seconds)
+    const animationEnd = Date.now() + duration;
+
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createConfettiParticle() {
+      return {
+        colors: ghostCartConfettiOptions.colors,
+        spread: ghostCartConfettiOptions.spread, 
+        particleCount: ghostCartConfettiOptions.particleCount,
+      };
+    }
+
+    function animateConfetti() {
+      const now = Date.now();
+      if (now < animationEnd) {
+        requestAnimationFrame(animateConfetti);
+      }
+
+      const delta = animationEnd - now;
+      const pctComplete = 1 - delta / duration;
+
+      if (pctComplete > 0) {
+        confetti(createConfettiParticle());
+      }
+    }
+
+    animateConfetti();
+  }
+
+  // Add click event listener to the button
+  var btnClick = document.querySelectorAll(ghostCartConfettiOptions.targetElement)
+  btnClick.forEach(function(button) {
+    var timeToRedirect = ghostCartConfettiOptions.redirectDelay;
+    button.addEventListener('click', function(event){
+      var getLink = this.getAttribute('href')
+      event.preventDefault();
+      triggerConfetti();
+      setTimeout(function(){
+         window.location.href = getLink;
+      }, timeToRedirect)
+    });
+  });
+</script>

@@ -1,0 +1,89 @@
+.the-same-tranisiton {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#header .header-announcement-bar-wrapper {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#header .header-menu-nav-list {
+  -webkit-transform: translateY(0) !important;
+  transform: translateY(0) !important;
+}
+#header .header-menu {
+  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  width: 50%;
+
+  visibility: visible;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#header .header-menu-bg {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#header .header-menu-nav-item a {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#header .header-menu-actions,
+#header .header-menu-cta {
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+}
+#header .header-title-text a {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#header .header-menu {
+  z-index: 2;
+}
+#header .header-menu-close-trigger {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity,visibility, transform;
+  user-select: none;
+  text-align: center;
+  pointer-events: auto;
+}
+#header .header-announcement-bar-wrapper {
+  z-index: 3;
+}
+@media only screen and (max-width: 1000px) {
+  #header .header-menu {
+    width: 76%;
+  }
+}
+.header--menu-open #header .header-menu-close-trigger {
+  opacity: 1;
+  visibility: visible;
+}
+.header--menu-open #header .header-menu {
+  opacity: 1;
+  transform: translateX(0%);
+  -webkit-transform: translateX(0%);
+}
+
+
+.header-menu-nav-folder:not([data-folder="root"]) {
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.header-menu-nav-folder:not([data-folder="root"]).header-menu-nav-folder--active {
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 1200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/*#header .header-menu .header-menu-nav-list .header-menu-nav-folder{
+  position: absolute;
+}*/

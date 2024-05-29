@@ -1,0 +1,44 @@
+
+//GHOST verification pop-up plugin code start//
+//pop-up colors
+@verification-pop-up-ghost-pop-up-overlay: rgba(0,0,0, .95);
+@verification-pop-up-ghost-color: #e3e3e3;
+
+//pop-up options
+@verification-pop-up-ghost-pop-up-max-width: 1200px;
+@verification-pop-up-ghost-vertical-spacers: 50px;
+@verification-pop-up-ghost-pop-up-text-alignment: center; 
+
+//pop-up title
+@verification-pop-up-ghost-title-size: 3rem;
+@verification-pop-up-ghost-title-color: #000;
+
+
+//pop-up description
+@verification-pop-up-ghost-desc-size: 1.5rem;
+@verification-pop-up-ghost-desc-color: #333;
+
+//pop-up buttons
+@verification-pop-up-ghost-button-size: 1rem;
+@verification-pop-up-ghost-button-border-radius: 4px;
+
+@verification-pop-up-ghost-confirm-button-font-color: #fff;
+@verification-pop-up-ghost-confirm-button-background-color: #000;
+
+@verification-pop-up-ghost-reject-button-font-color: #000;
+@verification-pop-up-ghost-reject-button-background-color: transparent;
+
+//logo options
+@verification-pop-up-ghost-logo-max-size: 50px;
+
+
+//pop-up mobile fonts
+@verification-pop-up-ghost-title-mobile-size: 3rem;
+@verification-pop-up-ghost-desc-mobile-size: 1.5rem;
+@verification-pop-up-ghost-button-mobile-size: 1rem;
+
+@verification-pop-up-ghost-vertical-mobile-spacers: 35px;
+
+
+//verification
+body{.verification-main-overlay{background: @verification-pop-up-ghost-pop-up-overlay;.verification-pop-up{.verification-pop-up-inner{max-width: @verification-pop-up-ghost-pop-up-max-width; background: @verification-pop-up-ghost-color;}.verification-left-part{.verification-left-part-inner{padding: @verification-pop-up-ghost-vertical-spacers 20px;@media only screen and (max-width: 640px){padding: @verification-pop-up-ghost-vertical-mobile-spacers 20px;}}h2{font-size: @verification-pop-up-ghost-title-size;@media only screen and (max-width: 640px){font-size: @verification-pop-up-ghost-title-mobile-size;}}p{font-size: @verification-pop-up-ghost-desc-size;@media only screen and (max-width: 640px){font-size: @verification-pop-up-ghost-desc-mobile-size;}}.verification-options{ button{font-size: @verification-pop-up-ghost-button-size;@media only screen and (max-width: 640px){font-size: @verification-pop-up-ghost-button-mobile-size;}border-radius: @verification-pop-up-ghost-button-border-radius;&.verify-confirm-button{color: @verification-pop-up-ghost-confirm-button-font-color;background-color:@verification-pop-up-ghost-confirm-button-background-color;}&.verify-reject-button{color: @verification-pop-up-ghost-reject-button-font-color;background-color: @verification-pop-up-ghost-reject-button-background-color;}}}.verifyLogo{max-width: @verification-pop-up-ghost-logo-max-size;}}}.fail-verification{background-color: @verification-pop-up-ghost-title-color;color: @verification-pop-up-ghost-color;}text-align:@verification-pop-up-ghost-pop-up-text-alignment !important;}}

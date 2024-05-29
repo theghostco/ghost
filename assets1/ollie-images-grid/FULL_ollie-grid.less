@@ -1,0 +1,183 @@
+@image-un-ghost-grid-column-width: 50%
+
+@image-un-ghost-grid-pre-title-color: #ddd;
+
+@image-un-ghost-grid-title-size: 3rem;
+@image-un-ghost-grid-title-color: #fff;
+@image-un-ghost-grid-arrow-color: rgb(239, 58, 80);
+
+@image-un-ghost-grid-text-size: 1.1rem;
+@image-un-ghost-grid-text-color: #ddd;
+
+@image-un-ghost-grid-overlay-color: rgba(0,0,0, .5);
+
+
+
+
+.summary-item-list.sqs-gallery.sqs-gallery-design-autogrid{
+  margin: 0px;
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: 0px -10px !important;
+  .summary-item{
+
+    width: ~"calc(@{image-un-ghost-grid-column-width} - 20px) !important";
+    @media only screen and (max-width: 1000px){
+      width: ~"calc(100% - 20px) !important";
+    }
+    margin: 0px 10px 20px !important;
+    &:before{
+      transition: background .3s ease;
+      background-color: rgba(0,0,0,0);
+      z-index: 1;
+      position: absolute;
+      top: -5%;
+      left: -5%;
+      right: -5%;
+      bottom: -5%;
+      width: 110%;
+      height: 110%;
+      content: '';
+
+    }
+    .slide-custom-uni-link{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 11;
+
+    }
+    .summary-thumbnail-container{
+      margin: 0px !important;
+      img{
+        transition: transform 4s ease-out 0s;
+        height: 100% !important;
+        left: 0px !important;
+        object-fit: cover;
+        position: absolute;
+        top: 0px !important;
+        width: 100% !important;
+      }
+    }
+    .summary-content{
+      position: absolute;
+      top: 0;
+      top: 10%;
+      left: 5%;
+      bottom: 10%;
+      right: 5%;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      z-index: 10;
+      align-content: space-between;
+      .summary-title{
+        flex-wrap: wrap;
+        display:flex;
+        width: 100%;
+        .summary-metadata-container{
+          order: -1;
+          width: 100%;
+          opacity:1;
+          .summary-metadata-item{
+            opacity: 1;
+          }
+          a{
+            text-transform: uppercase;
+            font-size: @image-un-ghost-grid-text-size/1.2;
+            color: @image-un-ghost-grid-pre-title-color;
+            @media only screen and (max-width: 640px){
+              font-size: .7rem;
+            }
+            opacity: 1;
+            font-weight: 400;
+            font-family: sans-serif;
+          }
+        }
+        .summary-title-link{
+          font-size: @image-un-ghost-grid-title-size;
+          color: @image-un-ghost-grid-title-color;
+          @media only screen and (max-width: 640px){
+            font-size: 1.9rem;
+          }
+          line-height: 1.1;
+          max-width: 95%;
+          display: block;
+          &:after{
+            content: '→';
+            font-size: @image-un-ghost-grid-title-size/1.5;
+            line-height: 1;
+            @media only screen and (max-width: 640px){
+              font-size: 1.4rem;
+            }
+            margin-left: 5px;
+            position: relative;
+            left: -15px;
+            transition: all .3s ease;
+            opacity: 0;
+            color: @image-un-ghost-grid-arrow-color;
+          }
+        }
+
+      }
+
+      .summary-excerpt{
+        opacity: 0;
+        transition: opacity .3s ease;
+        width: 100%;
+        max-width: 80%;
+        @media only screen and (max-width: 640px){
+          max-width: 100%;
+        }
+        p{
+          font-size: @image-un-ghost-grid-text-size;
+          color: @image-un-ghost-grid-text-color;
+          @media only screen and (max-width: 640px){
+            font-size: .8rem;
+          }
+          font-family: sans-serif;
+        }
+      }
+    }
+    &:hover{ 
+      .summary-thumbnail-container{
+        img{
+          transform: scale(1.1);
+        }
+      }
+      .summary-excerpt{
+        opacity: 1;
+      }
+      .summary-content .summary-title .summary-title-link:after{
+        left: 0;
+        opacity: 1;
+      }
+      &:before{
+        background-color: @image-un-ghost-grid-overlay-color;
+      }
+    }
+  }
+}
+html.touch{
+  .summary-item-list.sqs-gallery.sqs-gallery-design-autogrid{
+
+    .summary-item{
+      .summary-excerpt{
+        opacity: 1;
+      }
+      .summary-content .summary-title .summary-title-link:after{
+        left: 0;
+        opacity: 1;
+      }
+      &:before{
+        background-color: @image-un-ghost-grid-overlay-color;
+      }
+    }
+  }
+}
+

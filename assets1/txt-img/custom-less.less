@@ -1,0 +1,19 @@
+@ghost-plugin-image-radius: 20%; // to make circle set 50% and set aspectRatio: 'square' in the code injection
+
+a[href*="80%5Bimg%5D"]{
+  display: none;
+}
+
+.text-img{
+  vertical-align: middle;
+  position: relative;
+  object-fit: cover;
+  object-position: center;
+  border-radius: @ghost-plugin-image-radius;
+}
+.sqs-edit-mode-active a[href^="#img#"]{
+  display: inline;
+  opacity: 0.6;
+  position: relative;
+  border: 1px solid;
+}

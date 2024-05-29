@@ -1,0 +1,12 @@
+
+//loader
+@ghost-load-title-color: #fff;
+@ghost-load-branding-size: 38px;
+
+@ghost-load-loader-color: #000;
+@ghost-load-loader-size: 38px;
+
+@ghost-load-background-color: rgba(255,255,255, 0); // use hex code for solid colors or rgba(255,255,255, 0) for blur.
+@ghost-load-background-blur: 30px; //blur set-up
+
+body{.preloaded {background-color: @ghost-load-background-color;-webkit-backdrop-filter: blur(@ghost-load-background-blur);backdrop-filter: blur(@ghost-load-background-blur);.logo-animation{h2{color: @ghost-load-title-color;font-size: @ghost-load-branding-size;img{max-height: @ghost-load-branding-size;}}svg{stroke: @ghost-load-loader-color;width: @ghost-load-loader-size;height: @ghost-load-loader-size;}}}}

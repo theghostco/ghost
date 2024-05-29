@@ -1,0 +1,23 @@
+// Ghost Code Start //
+
+// Grid Gallery Options //
+
+@overlay-title-font-size: 1em;
+@overlay-title-font-color: #ffffff;
+
+@overlay-sub-title-font-size: 1em;
+@overlay-sub-title-font-color: #dddddd;
+
+@line-height-title-font: 1.5em;
+
+@scale-on-hover: 1.05; // set "1" if you want to reset zoom on hover
+
+@overlay-background-color: rgba(17,96,60, .5);
+
+// Grid Gallery Style //
+body{.sqs-gallery-container.sqs-gallery-block-grid{.custom-gallery-desc{&:hover{background-color: @overlay-background-color;+ .content-wrapper img{transform: scale(@scale-on-hover);-webkit-transform: scale(@scale-on-hover);}}h3{font-size: @overlay-title-font-size;color: @overlay-title-font-color;line-height: @line-height-title-font;}p{font-size: @overlay-sub-title-font-size;color: @overlay-sub-title-font-color;}}.active-gallery-item{.custom-gallery-desc{background-color: @overlay-background-color;}}}}.touch{body{.custom-gallery-desc{opacity: 1 !important;}}}
+
+
+
+
+

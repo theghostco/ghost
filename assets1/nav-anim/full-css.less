@@ -1,0 +1,79 @@
+
+
+@newnav-items-vertical-spacing: 10px;
+@newnav-items-vertical-mobile-spacing:10px;
+
+
+.forced-mobile-menu .header-menu{
+  visibility: visible;
+  transition: transform 700ms ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, -100%, 0);
+  transition: opacity 700ms step-end, transform 700ms cubic-bezier(0.8, 0, 0.55, 0.94), visibility 700ms step-end, background-color 700ms cubic-bezier(0.8, 0, 0.55, 0.94) !important;
+}
+
+#site-title, .header-actions .icon--fill svg, .primary-button-style-outline .btn{
+  transition: all cubic-bezier(0.8, 0, 0.55, 0.94) 700ms, margin ease 0s !important;
+}
+.header-menu{
+  .header-menu-nav-list {
+    opacity: 0;
+    transition: all cubic-bezier(0.8, 0, 0.55, 0.94) 700ms;
+    transition-delay: 600ms;
+  }
+}
+.forced-mobile-menu.header--menu-open .header-menu{
+  transform: translate3d(0, 0, 0);
+  transition: opacity 700ms step-start, transform 700ms cubic-bezier(0.8, 0, 0.55, 0.94), visibility 700ms step-start, background-color 700ms cubic-bezier(0.8, 0, 0.55, 0.94)  !important;
+  opacity: 1;
+  //new
+  .header-menu-nav-list .header-menu-nav-folder-content{
+    transition-property: right;
+    transition-timing-function: ease-in-out;
+    transition-delay: 600ms;
+  }
+  .header-menu-nav-list {
+    opacity: 1;
+  }
+}
+
+
+.header-menu-nav-folder-content{
+  opacity: 0;
+  transition: opacity 700ms cubic-bezier(0.8, 0, 0.55, 0.94) 700ms;
+}
+.forced-mobile-menu.header--menu-open{
+  .header-menu-nav-folder-content{
+    opacity: 1;
+  }
+}
+.header-menu-nav-item a{
+  margin: @newnav-items-vertical-spacing 0px;
+  text-align: left;
+  @media only screen and (max-width: 640px){
+    margin: @newnav-items-vertical-mobile-spacing 0px;
+  }
+}
+.header-menu-actions{
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+.header-menu-actions.header-announcement-bar-wrapper, .header-menu-nav-item.header-announcement-bar-wrapper{
+  margin: 0px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  transition: none !important;
+  transform: none !important;
+  top: 0 !important;
+  .header-menu-actions-action:first-child{
+    margin-left: 0px;
+  }
+  .header-menu-actions-action:last-child{
+    margin-right: 0px;
+  }
+}
+.header-menu-nav-list .header-menu-cta{
+  transform: translatey(0) !important;
+}

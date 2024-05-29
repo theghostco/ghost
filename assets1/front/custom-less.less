@@ -1,0 +1,33 @@
+@front-ghost-card-background: #fff;
+@front-ghost-card-border-radius: 8px;
+
+@front-ghost-image-height: 150%; // recomended value -- 150%
+@front-ghost-image-radius: 8px;
+
+
+@front-ghost-title-font-size: 14px;
+@front-ghost-title-font-color: #000;
+
+@front-ghost-desc-font-size: 20px;
+@front-ghost-desc-font-color: #4e4e4e;
+
+
+@front-ghost-position-size: 14px;
+@front-ghost-position-color: #4e4e4e;
+
+@front-ghost-arrow-size: 20px;
+@front-ghost-arrow-bg-color: #fff;
+@front-ghost-arrow-color: #000;
+@front-ghost-arrow-border-radius: 50%;
+
+@front-ghost-bullet-color: #000;
+
+@front-ghost-desc-mobile-font-size: 1em;
+@front-ghost-title-mobile-font-size: .9em;
+@front-ghost-position-mobile-font-size: .8em;
+@front-ghost-image-height-mobile: 75%;
+
+
+
+
+body{.front-plugin{.front-wrapper{.right-part{.desc-slide{background-color: @front-ghost-card-background;border-radius: @front-ghost-card-border-radius;@media only screen and (max-width: 640px){border-top-right-radius: 0px;border-top-left-radius: 0px;}}}}.image-slide{border-radius: @front-ghost-card-border-radius;}.image-slide-inner{padding-bottom: @front-ghost-image-height;border-radius: @front-ghost-image-radius;@media only screen and (max-width: 640px){padding-bottom:   @front-ghost-image-height-mobile;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;}}h3{font-size: @front-ghost-title-font-size;color: @front-ghost-title-font-color;@media only screen and (max-width: 640px){font-size: @front-ghost-title-mobile-font-size;}}p{font-size: @front-ghost-desc-font-size;color: @front-ghost-desc-font-color;a{color: @front-ghost-desc-font-color;}}.desc-wrapper{p{@media only screen and (max-width: 640px){font-size: @front-ghost-desc-mobile-font-size;}}}.author-info{p{font-size: @front-ghost-position-size;color: @front-ghost-position-color;@media only screen and (max-width: 640px){font-size: @front-ghost-position-mobile-font-size;}}.author-position p, p a{color: @front-ghost-position-color;}}}.swiper-pagination{.swiper-pagination-bullet{background-color: @front-ghost-bullet-color;}}.front-control-wrapper{height: @front-ghost-arrow-size;.front-control{.swiper-button-prev{color: @front-ghost-arrow-color;left: ~"calc(-@{front-ghost-arrow-size}/2 - 5px)";background-color: @front-ghost-arrow-bg-color;border-radius: @front-ghost-arrow-border-radius;&:after{font-size: @front-ghost-arrow-size;}}.swiper-button-next{left: auto;right: ~"calc(-@{front-ghost-arrow-size}/2 - 5px)";&:after{content: "\E02D";}}}}}

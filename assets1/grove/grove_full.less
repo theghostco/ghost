@@ -1,0 +1,226 @@
+
+/*General Settings*/
+@grove-ghost-section-max-width: 1100px;
+@grove-ghost-background: #ffa801;
+@grove-ghost-cart-radius: 8px;
+
+@grove-ghost-vertical-space: 50px;
+@grove-ghost-horizontal-space: 100px;
+@grove-ghost-quote-bottom-space: 20px;
+
+/*Fonts Settings*/
+//quote font
+@grove-ghost-quote-color: #fff;
+@grove-ghost-quote-size: 35px;
+@grove-ghost-quote-line-height: 1.5;
+
+
+// person info
+@grove-ghost-title-color: #fff;
+@grove-ghost-title-size: 16px;
+
+@grove-ghost-subtitle-color: #fafafa;
+@grove-ghost-subtitle-size: 14px;
+
+/* Other */
+@grove-ghost-image-size: 100px;
+@grove-ghost-image-radius: 5px;
+@grove-ghost-dots-size: 13px;
+@grove-ghost-dots-color: #ffa801;
+@grove-ghost-mobile-style-from: 640px; // 640px recomended 
+
+
+
+/* Mobile settings */
+//genaral
+@grove-ghost-mob-vertical-space: 30px;
+@grove-ghost-mob-horizontal-space: 25px;
+@grove-ghost-mob-quote-bottom-space: 10px;
+
+//fonts
+@grove-ghost-mob-quote-size: 22px;
+@grove-ghost-mob-title-size: 16px;
+@grove-ghost-mob-subtitle-size: 14px;
+
+/* Other */
+@grove-ghost-mob-image-size: 70px;
+@grove-ghost-mob-dots-size: 13px;
+
+
+section[class*='section-with-grove-ghost-plugin']{
+  overflow-x: hidden;
+  .content-wrapper{
+    box-sizing: border-box !important;
+    .user-items-list{
+      margin: 0 auto;
+      max-width: @grove-ghost-section-max-width !important;
+      overflow: hidden;
+      @media only screen and (max-width: @grove-ghost-section-max-width){
+        margin: 0px 17px;
+      }
+    }
+  }
+  .list-section-title a[href="https://ghostplugins.com"]{
+    display: none;
+  }
+  .list-item-content__description{
+    display: none !important;
+  }
+  .user-items-list-item-container.grove-wrapper{
+    &[data-title-alignment="right"]{
+      .main-quote-place{
+        text-align: right;
+      }
+    }
+    &[data-title-alignment="center"]{
+      .main-quote-place{
+        text-align: center;
+      }
+    }
+    grid-template-columns: initial !important;
+    gap: 0px !important;
+    padding: 0px !important;
+    max-width: none !important;
+    .list-item{
+      background: @grove-ghost-background;
+      border-radius: @grove-ghost-cart-radius;
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: auto;
+      grid-gap: 15px;
+      &.swiper-slide {
+        opacity: 0 !important;
+        &.swiper-slide-active{
+          opacity: 1 !important;
+        }
+      }
+      .main-quote-place{
+        padding-left:@grove-ghost-horizontal-space;
+        padding-right:@grove-ghost-horizontal-space;
+        padding-top: @grove-ghost-vertical-space;
+        margin-bottom: @grove-ghost-quote-bottom-space;
+        @media only screen and (max-width: @grove-ghost-mobile-style-from){
+          padding-left:@grove-ghost-mob-horizontal-space;
+          padding-right:@grove-ghost-mob-horizontal-space;
+          padding-top: @grove-ghost-mob-vertical-space;
+          margin-bottom: @grove-ghost-mob-quote-bottom-space;
+        }
+        padding-bottom: 0px;
+        width: auto !important;
+        grid-column: ~"1/3";
+        grid-row: ~"1/2";
+        p,h2{
+          margin: 0px !important;
+        }
+        p{
+          color: @grove-ghost-quote-color;
+          font-size: @grove-ghost-quote-size;
+          @media only screen and (max-width: @grove-ghost-mobile-style-from){
+            font-size: @grove-ghost-mob-quote-size;
+          }
+          line-height: @grove-ghost-quote-line-height;
+        }
+      }
+      .list-item-media{
+        padding-top: 0px;
+        padding-left: @grove-ghost-horizontal-space;
+        padding-bottom: @grove-ghost-vertical-space;
+
+        @media only screen and (max-width: @grove-ghost-mobile-style-from){
+          padding-left: @grove-ghost-mob-horizontal-space;
+          padding-bottom: @grove-ghost-mob-vertical-space;
+        }
+        grid-column: ~"1/2";
+        grid-row: ~"2/3";
+        max-width: none;
+        width: auto !important;
+        margin: 0px !important;
+        .list-item-media-inner{
+          padding-bottom: 0px !important;
+          width: @grove-ghost-image-size;
+          height: @grove-ghost-image-size !important;
+          @media only screen and (max-width: @grove-ghost-mobile-style-from){
+            width: @grove-ghost-mob-image-size;
+            height: @grove-ghost-mob-image-size !important;
+          }
+          margin: 0 0 0 auto;
+          border-radius: @grove-ghost-image-radius;
+          overflow: hidden;
+        }
+      }
+      .list-item-content{
+        padding-top: 0px;
+        padding-right: @grove-ghost-horizontal-space;
+        padding-bottom: @grove-ghost-vertical-space;
+
+        @media only screen and (max-width: @grove-ghost-mobile-style-from){
+          padding-right: @grove-ghost-mob-horizontal-space;
+          padding-bottom: @grove-ghost-mob-vertical-space;
+        }
+
+        width: auto !important;
+        display: grid;
+        align-items: center;
+        grid-column: ~"2/3";
+        grid-row: ~"2/3";
+        .list-item-content__title{
+          color: @grove-ghost-title-color;
+          font-size: @grove-ghost-title-size;
+          @media only screen and (max-width: @grove-ghost-mobile-style-from){
+            font-size: @grove-ghost-mob-title-size;
+          }
+          text-align: left !important;
+        }
+        .subtitle{
+          margin: 0px;
+          color: @grove-ghost-subtitle-color;
+          line-height:1.1;
+          font-size: @grove-ghost-subtitle-size;
+          @media only screen and (max-width: @grove-ghost-mobile-style-from){
+            font-size: @grove-ghost-mob-subtitle-size;
+          }
+        }
+      }
+      .swiper-pagination-bullets{
+        position: absolute;
+        bottom: -(@grove-ghost-dots-size*3);
+        width: 100%;
+        text-align: center;
+        .swiper-pagination-bullet{
+          width: @grove-ghost-dots-size;
+          height:  @grove-ghost-dots-size;
+          @media only screen and (max-width: @grove-ghost-mobile-style-from){
+            width: @grove-ghost-mob-dots-size;
+            height:  @grove-ghost-mob-dots-size;
+          }
+          margin: 0px ( @grove-ghost-dots-size/4);
+          background-color:  @grove-ghost-dots-color;
+        }
+      }
+    }
+  }
+}
+.ghost-error-tracking{
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  background-color: #000;
+  border-radius: 8px;
+  color: #fff;
+  padding: 25px 17px;
+  z-index: 100;
+  .logo{
+    max-width: 20px;
+    margon-bottom: 15px;
+    img{
+      display: block;
+      width: 100%;
+      filter: invert(1) !important;
+    }
+  }
+  p{
+    margin: 5px 0px;
+    line-height:1;
+    
+  }
+}

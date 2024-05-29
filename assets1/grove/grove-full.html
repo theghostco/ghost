@@ -1,0 +1,165 @@
+<script src="https://www.ghostplugins.dev/assets/helpers/swiper/swiper.js"></script>
+
+<script>
+  var globalGhostGrove = {
+    showErrorBar: true,
+    autoplay: false,
+    autoplayDelay: 8000,
+    showErrorBar: true
+  }
+</script>
+
+
+<script>
+
+  ;(function(){
+    let isGallery = document.querySelectorAll('.user-items-list')[0],
+        pluginName = 'grove';
+
+    if (typeof(isGallery) != 'undefined' && isGallery != null){
+      document.querySelectorAll('.user-items-list').forEach(function($thisSummary){
+
+        let thisHeadingElement = $thisSummary.querySelector('.list-section-title a[href="https://ghostplugins.com"]'),
+            thisHeadText = '';
+        if(thisHeadingElement){
+          thisHeadText = thisHeadingElement.innerText || thisHeadingElement.textContent;
+        }else{
+          return false;
+        }
+        console.log(thisHeadingElement + ' = thisHeadingElement');
+        console.log(thisHeadText + ' = thisHeadText');
+
+
+
+        if(thisHeadText == pluginName){
+          function wrap(el, wrapper) {
+            el.append(wrapper);
+            wrapper.append(el);
+          }
+
+          if(globalGhostGrove.showErrorBar){
+            hundlePluginErrors(thisHeadText);
+          }
+
+
+          $thisSummary.closest('section').classList.add('section-with-'+pluginName+'-ghost-plugin');
+          $thisSummary.classList.add(pluginName+'-plugin');
+          $thisSummary.classList.add('swiper');
+
+          let $thisSummaryMainWrapper =  $thisSummary.querySelector('.user-items-list-item-container'); 
+          let thisSummaryId = $thisSummaryMainWrapper.getAttribute('data-section-id');
+
+          $thisSummaryMainWrapper.classList.add('swiper-wrapper', pluginName+'-wrapper');
+          console.log(thisSummaryId); // id of section
+
+          $thisSummary.classList.add('swiper-'+thisSummaryId);
+
+          let countItems = 0;
+          $thisSummary.querySelectorAll('.list-item').forEach(function($thisSlide, i){  
+            countItems++;
+            let newId = thisSummaryId+'-slide-'+i;
+            $thisSlide.setAttribute('data-slide-id', newId);
+            $thisSlide.classList.add('swiper-slide');
+
+            //add subtitle
+            $thisSlide.querySelector('.list-item-content__title').insertAdjacentHTML('afterend','<p class="subtitle">'+ $thisSlide.querySelector('.list-image').getAttribute('alt')+'</p>');
+            //wrap($thisSlide, document.createElement('div'));
+
+            //create place for main quote
+            $thisSlide.querySelector('.list-item-media').insertAdjacentHTML('beforebegin','<div class="main-quote-place quote-font">'+$thisSlide.querySelector('.list-item-content__description').innerHTML+'</div>');
+            $thisSlide.insertAdjacentHTML('beforeend','<div class="swiper-pagination-'+thisSummaryId+'"></div>');
+
+          });
+
+
+          var autoplayObject = false;
+
+          if(globalGhostGrove.autoplay){
+            autoplayObject = {
+              delay: globalGhostGrove.autoplayDelay
+            }
+          }
+
+          var mySwiper = new Swiper ('.swiper-'+thisSummaryId ,{
+            loop: true,
+            autoplay: autoplayObject,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            speed: 600,
+            effect: "fade",
+            pagination: {
+              el: '.swiper-pagination-'+thisSummaryId,
+              clickable: true,
+            }
+          });
+        }
+      });
+    }
+
+
+
+
+    function hundlePluginErrors(namePlugin){
+      setTimeout(function(){
+        if(document.getElementsByTagName('html')[0].classList.contains('squarespace-damask')){
+
+          document.querySelectorAll("section[class*='user-items-list-section'").forEach(function($thisSummary){
+
+            let thisHeadingElement = $thisSummary.querySelector('.list-section-title a[href="https://ghostplugins.com"]'),
+                thisHeadText = '';
+            if(thisHeadingElement){
+              thisHeadText = thisHeadingElement.innerText || thisHeadingElement.textContent;
+            }else{
+              return false;
+            }
+
+            if(namePlugin == thisHeadText){
+
+              let swiperCSSFile = document.querySelector("link[href*='ghostplugins.dev/assets/helpers/swiper/swiper.css']"),
+                  pluginCSSFile = document.querySelector("link[href*='ghostplugins.dev/assets/grove/grove.css']")
+
+
+              console.log(swiperCSSFile);
+              console.log(pluginCSSFile);
+
+              let messageForSummary = {
+                ghostLogoImg: '<div class="logo"><img src="https://images.squarespace-cdn.com/content/v1/5ba5e044b10f25cb908c506f/b9ee89ec-6dc8-4295-b138-3b68a5bd6d57/Ghost_Single_Dark.png?format=1500w"></div>',
+                sucessInstall: '<p>Well done! Looks like the plugin was installed correctly.</p>',
+                pluginNameInstalled: thisHeadText,
+                messageOfPlugin: '<p>Ghost Plugin is installed in this summary.</p>',
+                pluginName: '<p>Plugin name: '+namePlugin+'</p>',
+                steps: {
+                  codeInjectionHeader: 
+                  (swiperCSSFile && pluginCSSFile) ? "<p>Code Injection Header was set up correctly for this plugin.</p><p>If something looks incorect, plaese check the block settings. </p>" :
+                  (!swiperCSSFile && !pluginCSSFile) ? "<p>We haven't found the CSS files in the Code Injection Header. <br> Please, add the following code to the Code Injection Header area: <xmp><link rel='stylesheet' href='https://www.ghostplugins.dev/assets/grove/grove.css'></xmp><xmp><link rel='stylesheet' href='https://www.ghostplugins.dev/assets/helpers/swiper/swiper.css'></xmp></p>" :
+                  (!swiperCSSFile) ? "<p>We haven't found swiper CSS file in the Code Injection Header. Please, add the following code to the Code Injection Header area:  <xmp><link rel='stylesheet' href='https://www.ghostplugins.dev/assets/helpers/swiper/swiper.css'></xmp></p>" : 
+                  (!pluginCSSFile) ? "<p>We haven't found plugin CSS file in the Code Injection Header. Please, add the following code to the Code Injection Header area: <xmp><link rel='stylesheet' href='https://www.ghostplugins.dev/assets/grove/grove.css'></xmp></p>" :
+                  "<p>Something went wrong. Please contact support.</p>"
+                }
+              }
+
+
+              document.head.insertAdjacentHTML("beforeend", '<style>.ghost-error-tracking.hide {display: none;}.ghost-error-tracking {position: absolute;top: 17px;left: 17px;background-color: #000;border-radius: 8px;color: #fff;padding: 25px 17px;z-index: 100; max-width: 100%;}.ghost-error-tracking .logo {max-width: 20px;margin-bottom: 15px;}.ghost-error-tracking .logo img {display: block;width: 100%;filter: invert(1) !important;}.ghost-error-tracking p {margin: 5px 0px 10px;line-height: 1;}.ghost-error-tracking-button{cursor: pointer; padding: 20px 20px;}.ghost-error-tracking-button .logo{margin: 0px;}</style>');
+
+
+
+              //let fullMessage = '<p>We recognized "' +namePlugin+'" plugin in this section.</p> '+'<p>Check custom CSS and code injection to personilize your plugin!</p>';
+              let fullMessage = messageForSummary.ghostLogoImg + messageForSummary.messageOfPlugin + messageForSummary.pluginName + messageForSummary.steps.codeInjectionHeader;
+
+              $thisSummary.querySelector('.content').insertAdjacentHTML('beforebegin', '<div class="ghost-error-tracking ghost-error-tracking-button">'+messageForSummary.ghostLogoImg+'</div><div class="ghost-error-tracking ghost-error-tracking-pop hide">'+fullMessage+'</div>');
+
+              $thisSummary.querySelector('.ghost-error-tracking-button').addEventListener("click", function (e) {
+                $thisSummary.querySelector('.ghost-error-tracking-pop').classList.remove('hide');
+              });
+            }
+
+          });
+        }
+      }, 5000);
+    }
+
+  }());
+</script>
+
+
+

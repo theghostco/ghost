@@ -1,0 +1,138 @@
+
+body:not(.header--menu-open){
+  .header-nav-item--external{
+    a:hover{
+      + .mm-item{
+        opacity: 1;
+      }
+    }
+  }
+}
+html:not(.squarespace-damask){
+  #mega-menu-item-host-element{
+    section{
+      padding-top: 0px !important;;
+    }
+  }
+}
+#mega-menu-host-element{
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  top: 124px;
+  opacity: 1;
+  position: fixed;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  overflow: hidden;
+  transition: transform .3s ease;
+  -webkit-transition: transform .3s ease;
+  z-index: 2;
+  section{
+    // padding-top: 0px !important;;
+  }
+
+}
+.mm-item{
+  position: fixed;
+  width: 100%;
+  top: 124px;
+  margin: 0px 20px;
+  width: auto;
+  left: 0;
+  right: 0;
+  border: 1px solid rgba(0,0,0, .3);
+  // left: 0;
+  // opacity: 0;
+
+  transition: all .3s ease;
+  // transform: translateY(~"calc(-100% - 124px)");
+  visibility: hidden;
+  opacity: 0;
+
+  .content{
+    //  padding-top: 17px;
+  }
+
+  &.active-menu{
+    transform: translateY(0%);
+    opacity: 1;
+    visibility: visible;
+  }
+  &:hover{
+    transform: translateY(0%);
+  }
+
+
+  .page-section{
+    min-height: auto !important;
+    // background-color: transparent;
+    padding-top: 0px !important;
+    .section-background{
+      // background-color: transparent;
+    }
+
+    .content-wrapper{
+      padding-top: 50px !important;
+      padding-bottom: 50px !important;
+      // background-color: #fff;
+    }
+  }
+  &:hover{
+    opacity: 1;
+  }
+}
+.mega-menu-mob-close{
+  @media only screen and (min-width: 640px) {
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+}
+
+.active-header-item{
+  &:after{
+    transform: rotate(90deg);
+  }
+}
+
+.header-menu-mega-menu-parent,
+.header-mobile-mega-menu-parent-mobile{
+  &:after{
+    content: '>';
+    display: inline-block;
+    transition: transform .4s ease;
+    margin-left: 5px;
+    font-weight: 600;
+    line-height: 1;
+    vertical-align: middle;
+  }
+}
+.mm-item-mobile{
+  position: fixed;
+  display: block;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  transform: translatex(100%);
+  transition: transform 600ms cubic-bezier(.4,0,.2,1);
+  -webkit-overflow-scrolling: touch;
+  &.active-mm-mobile{
+    transform: translatex(0%);
+  }
+  *{
+    text-align: center !important;
+  }
+  .page-section{
+    min-height: 100vh !important;
+    padding-bottom: 50px;
+  }
+  .content-wrapper{
+    padding-top: 3vw !important;
+  }
+}

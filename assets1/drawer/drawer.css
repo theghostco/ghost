@@ -1,0 +1,48 @@
+
+.sqs-edit-mode-active .canvas__container:before{
+  content: 'Doodle Pen by Ghost - Canvas Area';
+  color: #000;
+  position: absolute;
+  top: 25px;
+  left: 250px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.sqs-edit-mode-active .canvas__container {
+  border-top: 5px solid #EC7272;
+}
+.canvas-section .content-wrapper{
+
+}
+
+.canvas-section .fe-block:not(.canvas-block):not(.button-fluid) {
+  pointer-events: none;
+}
+
+.canvas-section::-moz-selection {
+  background-color: transparent;
+}
+.canvas-section ::selection {
+  background-color: transparent;
+}
+.canvas-section::-moz-selection {
+  background-color: transparent;
+}
+.canvas-section::-o-selection {
+  background-color: transparent;
+}
+.canvas-section::-ms-selection {
+  background-color: transparent;
+}
+.canvas-section::-webkit-selection {
+  background-color: transparent;
+}
+
+.touch .ghostCanvas{
+  display: none;
+}
+@media only screen and (max-width: 640px){
+  .ghostCanvas{
+    display: none;
+  }
+}

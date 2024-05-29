@@ -1,0 +1,30 @@
+<script>
+  var ghostTextImageOptions = {
+    imageSizeMultiplicator: 1, // change images size. 1 = inherit text size. To make smaller set < 1 (ex: 0.6). To make bigger set > 1(ex: 1.2);
+    aspectRatio: 'square' //available options: 'square', 'original'
+  }
+</script>
+<script>
+  function setUpImages(){
+    document.querySelectorAll('a[href*="80%5Bimg%5D"]').forEach(function(thisLink){
+      thisLink.classList.add('img-link');
+      thisLink.parentNode.classList.add('img-parent');
+      let fontSize = window.getComputedStyle(thisLink.parentNode).fontSize.split('px')[0],
+      imgSrc = thisLink.getAttribute('href').split('80%5Bimg%5D')[0],
+      altText = thisLink.textContent,
+      imageSize = fontSize*ghostTextImageOptions.imageSizeMultiplicator+'px',
+      imageHeight = (ghostTextImageOptions.aspectRatio !== 'original') ? imageSize : 'auto';
+      thisLink.insertAdjacentHTML('afterend', '<img src="'+imgSrc+'" class="text-img" style="width: '+imageSize+';height:'+imageHeight+';" alt="'+altText+'">'); 
+    });
+  }
+  
+
+  window.addEventListener('resize', function(event) {
+    document.querySelectorAll('a[href*="80%5Bimg%5D"]').forEach(function(thisEl){
+      thisEl.remove();
+    });
+    setUpImages();
+  }, true);
+  setUpImages();
+  
+</script>

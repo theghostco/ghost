@@ -1,0 +1,74 @@
+.blog-item-wrapper .blog-item-hero-banner {
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+.blog-item-wrapper .blog-item-hero-banner:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 1;
+}
+.blog-item-wrapper .blog-item-hero-banner .blog-item-title {
+  padding: 20% 4vw;
+  position: relative;
+  z-index: 10;
+  text-align: left;
+  display: inline-block;
+  max-width: 1200px;
+}
+@media only screen and (max-width: 640px) {
+  .blog-item-wrapper .blog-item-hero-banner .blog-item-title {
+    padding: 40% 4vw;
+  }
+}
+.blog-item-wrapper .blog-item-hero-banner .blog-item-title h1 {
+  color: #fff;
+  font-size: 80px;
+  font-size: 5rem;
+}
+@media only screen and (max-width: 640px) {
+  .blog-item-wrapper .blog-item-hero-banner .blog-item-title h1 {
+    font-size: 35px;
+  }
+}
+.blog-item-wrapper .blog-item-hero-banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  bottom: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: bottom;
+     object-position: bottom;
+  -webkit-transition: -webkit-transform 2s ease;
+  transition: -webkit-transform 2s ease;
+  transition: transform 2s ease;
+  transition: transform 2s ease, -webkit-transform 2s ease;
+}
+.blog-item-wrapper .blog-item-hero-banner.zoom-animation-true img {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+.blog-item-wrapper .blog-item-hero-banner.loaded img {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.blog-item-inner-wrapper .blog-item-title {
+  display: none;
+}
+.blog-item-inner-wrapper .blog-item-meta-wrapper {
+  margin-bottom: 0px !important;
+}
+.squarespace-damask .blog-item-title {
+  display: block !important;
+}

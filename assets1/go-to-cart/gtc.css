@@ -1,0 +1,25 @@
+ .product-details .sqs-add-to-cart-button + .go-to-cart{
+ 	display: none !important;
+ }
+ .product-details .sqs-add-to-cart-button.cart-added + .go-to-cart{
+ 	display: flex !important;
+ 	justify-content: center
+ }
+ .product-details .sqs-add-to-cart-button.cart-added{
+ 	display: none !important;
+ }
+
+ .product-details .sqs-add-to-cart-button-wrapper{
+ 	width: auto !important;
+ }
+
+ /*for 7.0*/
+ .sqs-add-to-cart-button + .go-to-cart{
+ 	display: none !important;
+ }
+ .sqs-add-to-cart-button.cart-added + .go-to-cart{
+ 	display: inline-block !important;
+ }
+ .sqs-add-to-cart-button.cart-added{
+ 	display: none !important;
+ }

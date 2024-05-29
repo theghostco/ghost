@@ -1,0 +1,146 @@
+
+@contact-link-size: 80px;
+@contact-link-size-mobile: 50px;
+@contact-link-bg-color: rgb(214, 41, 44);
+@contact-link-color: #fff;
+
+@contact-links-text-color:  #fff;
+@contact-links-text-backgroud: rgb(214, 41, 44);
+
+@contact-links-icons-size: 20px;
+
+
+.floating-button{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: @contact-link-bg-color;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1000;
+  width: @contact-link-size;
+  height: @contact-link-size;
+  &.hide-icons{
+   a svg{
+    display: none;
+  }
+  a span{
+    margin: 0px;
+  }
+}
+
+@media only screen and (max-width: 640px){
+  width: @contact-link-size-mobile;
+  height: @contact-link-size-mobile;
+}
+
+box-shadow: 7px 8px 10px 2px rgba(0,0,0,.52);
+@media only screen and (max-width: 640px){
+  box-shadow: 3px 4px 5px 1px rgba(0,0,0,.42);
+
+}
+  //cursor: pointer;
+  .floating-info{
+    position: fixed;
+    bottom: @contact-link-size;
+    @media only screen and (max-width: 640px){
+      bottom: @contact-link-size-mobile;
+    }
+
+    right: 20px;
+    overflow:hidden;
+    transition: all .3s ease;
+    margin-bottom: 20px;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    opacity: 0;
+    .floating-info-inner{
+      background-color: @contact-links-text-backgroud;
+      border: 1px solid @contact-link-bg-color;
+      border-radius: 12px;
+      padding: 15px 20px 5px;
+      margin-bottom: 10px;
+    }
+    .floating-item{
+
+    }
+    @media only screen and (max-width: 640px){
+      margin-bottom: 15px;
+    }
+  }
+  a{
+    color: @contact-links-text-color;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    svg{
+      width: @contact-links-icons-size;
+      height: @contact-links-icons-size;
+      fill: @contact-links-text-color;
+    }
+    span{
+      margin-left:8px;
+    }
+  }
+  &.active-button{
+    .floating-info{
+      transform: translateX(0%);
+      -webkit-transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+  svg{
+    margin: 0px !important;
+    color: @contact-link-color;
+    //font-size: @contact-link-size/2;
+    width: @contact-link-size/2.3;
+    height: @contact-link-size/2.3;
+    g,path,circle,ellipse{
+      stroke: @contact-link-color;
+      fill: @contact-link-color;
+    }
+    @media only screen and (max-width: 640px){
+      //font-size: @contact-link-size-mobile/2;
+      width: @contact-link-size-mobile/2.3;
+    }
+  }
+  p{
+    margin: 0px !important;
+    font-size:  @contact-link-size/2.4;
+    line-height: 1;
+    //width: @contact-link-size/2.4;
+    //height: @contact-link-size/2.4;
+    text-align: center;
+    @media only screen and (max-width: 640px){
+      font-size: @contact-link-size-mobile/2.4;
+     // width: @contact-link-size-mobile/2.4;
+    //height: @contact-link-size-mobile/2.4;
+    }
+  }
+}
+
+html:not(.touch){
+  .floating-button{
+    &:hover{
+      .floating-info{
+        transform: translateX(0%);
+        opacity: 1;
+      }
+    }
+  }
+}

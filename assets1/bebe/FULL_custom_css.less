@@ -1,0 +1,292 @@
+// Ghost bebe  Slider Code - start //
+
+@bebe-ghost-max-width: 900px;
+@bebe-ghost-card-background: coral;
+@bebe-ghost-card-border-radius: 15px;
+@bebe-ghost-card-image-size: 165px;
+@bebe-ghost-card-image-border-radius: 50%;
+@bebe-ghost-card-shadow-color: transparent; // can be "transparent"
+
+
+//title, person name (inherit h3 font style)
+@bebe-ghost-title-font-size: 2em;
+@bebe-ghost-title-font-color: #fff;
+
+//description, testimonials body (inherit p font style)
+@bebe-ghost-desc-font-size: 1.2em;
+@bebe-ghost-desc-font-color: #fff;
+
+
+//author position, tag (inherit body font style)
+@bebe-ghost-position-size: 1em;
+@bebe-ghost-position-color: #fff;
+
+
+//controls (bullets)
+@bebe-ghost-bullet-size: 12px;
+@bebe-ghost-bullet-color: #fff;
+
+//mobile style
+@bebe-ghost-card-mobile-image-size: 100px;
+@bebe-ghost-desc-mobile-font-size: 1em;
+@bebe-ghost-title-mobile-font-size: .9em;
+@bebe-ghost-position-mobile-font-size: .8em;
+
+
+
+
+.section-with-bebe-slider{
+  .content-wrapper{
+    box-sizing: border-box !important;
+  }
+}
+
+.sqs-gallery-design-carousel{
+  opacity: 0;
+  transition: opacity .3s ease;
+  &.loaded-carousel{
+    opacity: 1 !important;
+  }
+}
+.bebe-plugin{
+  max-width: @bebe-ghost-max-width;
+  margin: 0 auto;
+  position: relative;
+  opacity: 1 !important;
+  transform: none !important;
+  text-align: center;
+  .bebe-pagination{
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    @media only screen and (max-width: 1000px){
+      bottom: 3px;  
+    }
+  }
+  .summary-item-list-container.sqs-gallery-container{
+    display: none;
+  }
+  .summary-block-header{
+    display: none;
+  }
+  .summary-item-list{
+    margin: 0px !important;
+    transform: none !important;
+  }
+  .summary-item{
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    white-space: normal;
+    font-size: inherit;
+  }
+  .bebe-wrapper{
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    .left-part{
+      width: 100%;
+      margin-right: 0%;
+      @media only screen and (max-width: 1000px){
+        // width: 100%;
+        // margin-right: 0;
+      }
+      @media only screen and (max-width: 640px){
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+    .right-part{
+      width: 100%;
+      @media only screen and (max-width: 1000px){
+        // width: 55%;
+      }
+      @media only screen and (max-width: 640px){
+        //width: 100%;
+      }
+    }
+  }
+  .swiper-container{
+    overflow-y: visible;
+    padding: 10px;
+    padding-bottom: 0px;
+    z-index: 100;
+  }
+  .image-slide{
+    visibility: visible !important;
+    margin-bottom: 10px;
+    overflow: visible !important;
+    position: relative;
+    padding: 45px;
+    border-radius: @bebe-ghost-card-border-radius;
+    padding-top: 0px !important;
+    @media only screen and (max-width: 1000px){
+      padding: 25px;
+    }
+    @media only screen and (max-width: 640px){
+      padding: 17px;
+    }
+
+
+  }
+  &:after{
+    content: '';
+    top: @bebe-ghost-card-image-size/3;
+    width: 100%;
+    bottom: 0;
+    left: 0%;
+    position: absolute;
+    opacity: 1;
+    z-index: 10;
+    background-color: @bebe-ghost-card-background;
+    border-radius: @bebe-ghost-card-border-radius;
+  }
+  &:before{
+    content: '';
+    top: @bebe-ghost-card-image-size/3;
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    box-shadow: 0px 1px 5px 5px @bebe-ghost-card-shadow-color;
+    position: absolute;
+    opacity: .1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    border-radius: @bebe-ghost-card-border-radius;
+  }
+  .desc-slide, .author-info{
+    position: relative;
+    z-index: 1000;
+  }
+  .image-slide-wrapper{
+    max-width: @bebe-ghost-card-image-size;
+    @media only screen and (max-width: 640px){
+     max-width: @bebe-ghost-card-mobile-image-size
+   }
+   margin: 0 auto;
+ }
+ .image-slide-inner{
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding-bottom: 100%;
+  z-index: 1000;
+  @media only screen and (max-width: 1000px){
+  }
+  img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-positon: center;
+    border-radius: @bebe-ghost-card-image-border-radius;
+  }
+}
+
+h1,h2,h3,p{
+  opacity: 1 !important;
+  transform: none !important;
+}
+h3{
+  font-size: @bebe-ghost-title-font-size;
+  color: @bebe-ghost-title-font-color;
+  margin: 0px;
+  margin-bottom: 5px;
+    //font-weight: 800;
+    @media only screen and (max-width: 640px){
+      //margin-bottom: 10px;
+      font-size: @bebe-ghost-title-mobile-font-size;
+    }
+  }
+  p{
+    font-size: @bebe-ghost-desc-font-size;
+    line-height: 1.2;
+    color: @bebe-ghost-desc-font-color;
+    margin: 0px;
+    margin-bottom: 0;
+    a{
+      border-bottom: 1px solid;
+      color: @bebe-ghost-desc-font-color;
+    }
+  }
+  .desc-wrapper{
+    margin-bottom: 24px;
+    margin-top: 20px;
+
+    @media only screen and (max-width: 1000px){
+      margin-bottom: 16px;
+      margin-top: 0;
+    }
+    p{
+      opacity: 1 !important;
+      margin: 0px !important;
+      @media only screen and (max-width: 640px){
+        font-size: @bebe-ghost-desc-mobile-font-size;
+      }
+    }
+
+  }
+
+  .author-info{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    .info{
+      text-align: center;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    a{
+      pointer-events: none;
+      border: none;
+    }
+    .image-slide-inner{
+      margin-right: 20px;
+    }
+    p{
+      line-height: 1.2;
+      font-size: @bebe-ghost-position-size;
+      font-weight: 600;
+      color: @bebe-ghost-position-color;
+      @media only screen and (max-width: 640px){
+        font-size: @bebe-ghost-position-mobile-font-size;
+      }
+    }
+    .author-position p, p a{
+      color: @bebe-ghost-position-color;
+    }
+  }
+}
+.bebe-pagination.swiper-pagination{
+  position: absolute;
+  margin-top: 20px;
+  z-index: 1000;
+  .swiper-pagination-bullet{
+    width: @bebe-ghost-bullet-size;
+    height: @bebe-ghost-bullet-size;
+    margin: @bebe-ghost-bullet-size/2;
+    background-color: @bebe-ghost-bullet-color;
+  }
+}
+.slider-control.bebe-control{
+  display: none;
+}
+
+// Ghost bebe Product Slider Code - end //
+
+
+

@@ -1,0 +1,12 @@
+@gallery-overlay-images-grid-title-color: #fff;
+@gallery-overlay-images-grid-title-size: 2rem;
+
+@gallery-overlay-images-grid-sub-title-color: #ddd;
+@gallery-overlay-images-grid-subtitle-size: 1rem;
+
+@gallery-overlay-images-grid-button-accent-color:#eb4d4b;
+
+@gallery-overlay-images-grid-hover-overlay: rgba(0,0,0,6);
+
+
+body{.margin-wrapper.custom-gallery-images-wrapper{&:after{background-color: @gallery-overlay-images-grid-hover-overlay;}.custom-images-gallery-desc{.inner-cust-wrapper{h3{color: @gallery-overlay-images-grid-title-color;font-size: @gallery-overlay-images-grid-title-size;@media only screen and (max-width: 800px){font-size: 1.3rem;}&:after{background-color:@gallery-overlay-images-grid-title-color;}}p{color: @gallery-overlay-images-grid-sub-title-color;font-size: @gallery-overlay-images-grid-subtitle-size;@media only screen and (max-width: 800px){font-size: .9rem;}a{border: 1px solid @gallery-overlay-images-grid-button-accent-color;color: @gallery-overlay-images-grid-button-accent-color;}}}}&:hover{.custom-images-gallery-desc{p{a{background-color: @gallery-overlay-images-grid-button-accent-color;color: @gallery-overlay-images-grid-title-color;}}}}}}

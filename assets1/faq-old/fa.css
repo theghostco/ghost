@@ -1,0 +1,102 @@
+
+
+.ghost-section-contains-faq .ghost-faq-wrapper-item .faq-item{
+    position: relative;
+    cursor: pointer;
+    padding: 20px 20px;
+    margin-bottom: 25px;
+}
+
+@media only screen and (max-width: 640px){
+    .ghost-section-contains-faq .ghost-faq-wrapper-item .faq-item{
+     padding: 20px 24px;
+ }
+}
+
+.ghost-section-contains-faq .faq-item ul{
+    margin: 0px;
+}
+
+.ghost-section-contains-faq .faq-item h3{
+    display: block;
+    max-width: 85%;
+    margin: 0px;
+    margin-left: 25px;
+}
+
+.ghost-section-contains-faq .faq-item p{
+    display: block;
+    max-width: 90%;
+    margin: 0px;
+    margin-left: 35px;
+    opacity: 1 !important;
+    transform: none !important;
+
+}
+
+.ghost-section-contains-faq .faq-item .ghost-faq-body{
+    display: none;
+}
+
+.ghost-section-contains-faq .faq-item .plusminus-wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    cursor: pointer;
+    top: 11px;
+    left: 0;
+}
+
+@media only screen and (max-width: 640px){
+    .plusminus-wrapper{
+    }
+}
+
+.ghost-section-contains-faq .faq-item .plusminus{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.ghost-section-contains-faq .faq-item .plusminus:before,
+.ghost-section-contains-faq .faq-item .plusminus:after{
+    content: "";
+    display: block;
+    position: absolute;		
+    top: 50%; 
+    left: 0;      
+    width: 100%;
+    height: 3px;
+    transition: .35s;
+}
+
+.ghost-section-contains-faq .faq-item .plusminus:before{		
+    transform: translatey(-50%);
+}
+
+.ghost-section-contains-faq .faq-item .plusminus:after{
+    transform: translatey(-50%) rotate(90deg);
+}
+
+.ghost-section-contains-faq .active-faq-item .plusminus:before{
+    transform: translatey(-50%) rotate(-90deg);
+    opacity: 0;
+}
+
+.ghost-section-contains-faq .active-faq-item .plusminus:after{
+    transform: translatey(-50%) rotate(0);
+}
+.start-faq-section, .end-faq-section{
+    padding: 0px !important;
+}
+
+
+
+

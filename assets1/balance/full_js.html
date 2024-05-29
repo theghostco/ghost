@@ -1,0 +1,196 @@
+
+<script>
+  var globalGhostbalanceParams = {
+    cardsGapsPx: 10,
+    cardsButton: '' // add text if you want to show the button on posts. For ex: 'Learn More'
+  }
+</script>
+
+<script>
+  // ;(function(){
+  //   var isGallery = document.querySelectorAll('.sqs-gallery-design-carousel')[0],
+  //   pluginName = 'balance',
+  //   pluginGlobalObject = globalGhostbalanceParams,
+  //   pluginButtonText = pluginGlobalObject.cardsButton,
+  //   pluginCardsGaps = pluginGlobalObject.cardsGapsPx;
+
+  //   if (typeof(isGallery) != 'undefined' && isGallery != null){
+
+  //     function hoverAndClickBeh(slide, summary){
+
+  //       console.log(slide.getAttribute('data-slide-id'));
+  //       if(slide.classList.contains('current-active')){
+  //         return;
+  //       }else{
+  //         summary.querySelector('.current-active').classList.remove('current-active');
+  //         summary.querySelector('.active-slide').classList.remove('active-slide');
+  //         slide.classList.add('current-active');
+  //         summary.querySelector('.image-slide[data-slide-img-id="'+slide.getAttribute('data-slide-id')+'"]').classList.add('active-slide');
+  //       }
+
+  //     }
+  //     document.querySelectorAll('.sqs-gallery-design-carousel').forEach(function(thisSummary){
+  //       var thisHeadingElement = thisSummary.querySelector('.summary-header-text');
+  //       var thisHeadText = thisHeadingElement.innerText || thisHeadingElement.textContent;
+
+  //       if(thisHeadText == pluginName){
+  //         thisSummary.classList.add(pluginName+'-plugin');
+  //         var thisSummaryParent = thisSummary.closest('.sqs-block');
+  //         var thisSummaryId = thisSummaryParent.getAttribute('id');
+  //         thisSummary.closest('section').classList.add('section-with-'+pluginName+'-slider');
+
+
+  //         thisSummary.insertAdjacentHTML('afterbegin', '<div class="'+pluginName+'-images-wrapper "><div class="'+pluginName+'-inner-wrapper" style="margin:-'+pluginCardsGaps+'px;" ></div></div>');
+  //         var imagesPlace = thisSummary.querySelector('.'+pluginName+'-inner-wrapper');
+
+  //         thisSummary.querySelector('.summary-item').classList.add('current-active'); //set default
+  //         //
+  //         var countItems = 0;
+  //         thisSummary.querySelectorAll('.summary-item').forEach(function(thisSlide, i){  
+  //           countItems++;
+  //           var newId = thisSummaryId+'-slide-'+i;
+
+  //           thisSlide.setAttribute('data-slide-id', newId);
+
+  //           //content vars
+  //           let summaryTitle = thisSlide.querySelector('.summary-title-link');
+  //           let summaryTitleText =  summaryTitle.innerText || summaryTitle.textContent
+  //           let summaryDescription = thisSlide.querySelector('.summary-excerpt p').outerHTML || thisSlide.querySelector('.summary-excerpt p').textContent;
+  //           let summaryLink = thisSlide.querySelector('.summary-thumbnail-outer-container > a').getAttribute('href');
+		// 	let sliderButton = '';
+  //           if(pluginGlobalObject.cardsButton){
+  //             sliderButton = '<button class="slider-button">'+pluginGlobalObject.cardsButton+'</button>';
+  //           }
+            
+
+  //           let tagElement = thisSlide.querySelector('.summary-metadata-item--tags a');
+  //           let summaryTag = '100%';
+  //           if (typeof(tagElement) != 'undefined' && tagElement != null){
+  //             summaryTag = thisSlide.querySelector('.summary-metadata-item--tags a').textContent;
+  //           }
+  //           console.log(summaryTag);
+
+
+  //           //markup
+  //           let slideImage = '<div class="image-slide-inner"><img src="'+thisSlide.querySelector('.summary-thumbnail img').getAttribute('data-src')+'?format=2500'+'"></div>';
+  //           let slideTitle = '<div class="title-wrapper"><h3>'+summaryTitleText+'</h3></div>';
+  //           let description = '<div class="desc-wrapper"><p>'+summaryDescription+'</p></div>';
+
+  //           let mainMarkup = '<div class="'+pluginName+'-slide image-slide" data-slide-img-id="'+newId+'" style="width:calc('+summaryTag+' - '+pluginCardsGaps*2+'px);margin:'+pluginCardsGaps+'px;" data-width="'+summaryTag+'"><a href="'+summaryLink+'">' + slideImage + '<div class="info-slide">'+ slideTitle + description +'</div><div class="wrap-button">'+sliderButton+'</div></a></div>';
+  //           imagesPlace.insertAdjacentHTML('beforeend', mainMarkup);
+  //           thisSlide.addEventListener("click", function (e) {
+  //             console.log(thisSlide.getAttribute('data-slide-id'));
+  //             if(thisSlide.classList.contains('current-active')){
+  //               return;
+  //             }else{
+  //               thisSummary.querySelector('.current-active').classList.remove('current-active');
+  //               thisSummary.querySelector('.active-slide').classList.remove('active-slide');
+
+  //               thisSlide.classList.add('current-active');
+  //               thisSummary.querySelector('.image-slide[data-slide-img-id="'+thisSlide.getAttribute('data-slide-id')+'"]').classList.add('active-slide');
+  //             }
+  //           });
+  //         });
+  //         thisSummary.querySelector('.summary-item').classList.add('current-active');
+  //         thisSummary.querySelector('.image-slide').classList.add('active-slide');
+  //       }
+  //     });
+  //   }
+  // }());
+
+    ;(function(){
+    var isGallery = document.querySelectorAll('.sqs-gallery-design-carousel')[0],
+    pluginName = 'balance',
+    pluginGlobalObject = globalGhostbalanceParams,
+    pluginButtonText = pluginGlobalObject.cardsButton,
+    pluginCardsGaps = pluginGlobalObject.cardsGapsPx;
+
+    if (typeof(isGallery) != 'undefined' && isGallery != null){
+
+      function hoverAndClickBeh(slide, summary){
+
+        console.log(slide.getAttribute('data-slide-id'));
+        if(slide.classList.contains('current-active')){
+          return;
+        }else{
+          summary.querySelector('.current-active').classList.remove('current-active');
+          summary.querySelector('.active-slide').classList.remove('active-slide');
+          slide.classList.add('current-active');
+          summary.querySelector('.image-slide[data-slide-img-id="'+slide.getAttribute('data-slide-id')+'"]').classList.add('active-slide');
+        }
+
+      }
+      document.querySelectorAll('.sqs-gallery-design-carousel').forEach(function(thisSummary){
+        var thisHeadingElement = thisSummary.querySelector('.summary-header-text');
+        var thisHeadText = thisHeadingElement.innerText || thisHeadingElement.textContent;
+
+        if(thisHeadText == pluginName){
+          thisSummary.classList.add(pluginName+'-plugin');
+          var thisSummaryParent = thisSummary.closest('.sqs-block');
+          var thisSummaryId = thisSummaryParent.getAttribute('id');
+          thisSummary.closest('section').classList.add('section-with-'+pluginName+'-slider');
+
+
+          thisSummary.insertAdjacentHTML('afterbegin', '<div class="'+pluginName+'-images-wrapper "><div class="'+pluginName+'-inner-wrapper" style="margin:-'+pluginCardsGaps+'px;" ></div></div>');
+          var imagesPlace = thisSummary.querySelector('.'+pluginName+'-inner-wrapper');
+
+          thisSummary.querySelector('.summary-item').classList.add('current-active'); //set default
+          //
+          var countItems = 0;
+          thisSummary.querySelectorAll('.summary-item').forEach(function(thisSlide, i){  
+            countItems++;
+            var newId = thisSummaryId+'-slide-'+i;
+
+            thisSlide.setAttribute('data-slide-id', newId);
+
+            //content vars
+            let summaryTitle = thisSlide.querySelector('.summary-title-link');
+            let summaryTitleText =  summaryTitle.innerText || summaryTitle.textContent
+            let summaryDescription = thisSlide.querySelector('.summary-excerpt p').outerHTML || thisSlide.querySelector('.summary-excerpt p').textContent;
+            let summaryLink = thisSlide.querySelector('.summary-thumbnail-outer-container > a').getAttribute('href');
+      let sliderButton = '';
+            if(pluginGlobalObject.cardsButton){
+              sliderButton = '<button class="slider-button">'+pluginGlobalObject.cardsButton+'</button>';
+            }
+            
+
+            let tagElement = thisSlide.querySelector('.summary-metadata-item--tags a');
+            let summaryTag = '100%';
+            if (typeof(tagElement) != 'undefined' && tagElement != null){
+              summaryTag = thisSlide.querySelector('.summary-metadata-item--tags a').textContent;
+            }
+            console.log(summaryTag);
+
+
+            //markup
+            let slideImage = '<div class="image-slide-inner"><img src="'+thisSlide.querySelector('.summary-thumbnail img').getAttribute('data-src')+'?format=2500'+'"></div>';
+            let slideTitle = '<div class="title-wrapper"><h3>'+summaryTitleText+'</h3></div>';
+            let description = '<div class="desc-wrapper"><p>'+summaryDescription+'</p></div>';
+
+            let mainMarkup = '<div class="'+pluginName+'-slide image-slide" data-slide-img-id="'+newId+'" style="width:calc('+summaryTag+' - '+pluginCardsGaps*2+'px);margin:'+pluginCardsGaps+'px;" data-width="'+summaryTag+'"><a href="'+summaryLink+'">' + slideImage + '<div class="info-slide"><div class="info-slide-inner">'+ slideTitle + description +'</div><div class="wrap-button">'+sliderButton+'</div></div></a></div>'; 
+            imagesPlace.insertAdjacentHTML('beforeend', mainMarkup);
+            thisSlide.addEventListener("click", function (e) {
+              console.log(thisSlide.getAttribute('data-slide-id'));
+              if(thisSlide.classList.contains('current-active')){
+                return;
+              }else{
+                thisSummary.querySelector('.current-active').classList.remove('current-active');
+                thisSummary.querySelector('.active-slide').classList.remove('active-slide');
+
+                thisSlide.classList.add('current-active');
+                thisSummary.querySelector('.image-slide[data-slide-img-id="'+thisSlide.getAttribute('data-slide-id')+'"]').classList.add('active-slide');
+              }
+            });
+          });
+          thisSummary.querySelector('.summary-item').classList.add('current-active');
+          thisSummary.querySelector('.image-slide').classList.add('active-slide');
+        }
+      });
+    }
+  }());
+
+//old for 7.1
+// !function(){var e=document.querySelectorAll(".sqs-gallery-design-carousel")[0],t=globalGhostbalanceParams,a=(t.cardsButton,t.cardsGapsPx);if(void 0!==e&&null!=e){document.querySelectorAll(".sqs-gallery-design-carousel").forEach(function(e){var r=e.querySelector(".summary-header-text");if("balance"==(r.innerText||r.textContent)){e.classList.add("balance-plugin");var i=e.closest(".sqs-block").getAttribute("id");e.closest("section").classList.add("section-with-balance-slider"),e.insertAdjacentHTML("afterbegin",'<div class="balance-images-wrapper "><div class="balance-inner-wrapper" style="margin:-'+a+'px;" ></div></div>');var s=e.querySelector(".balance-inner-wrapper");e.querySelector(".summary-item").classList.add("current-active");e.querySelectorAll(".summary-item").forEach(function(r,l){0;var c=i+"-slide-"+l;r.setAttribute("data-slide-id",c);let d=r.querySelector(".summary-title-link"),n=d.innerText||d.textContent,o=r.querySelector(".summary-excerpt p").outerHTML||r.querySelector(".summary-excerpt p").textContent,u=r.querySelector(".summary-thumbnail-outer-container > a").getAttribute("href"),m="";t.cardsButton&&(m='<button class="slider-button">'+t.cardsButton+"</button>");let v=r.querySelector(".summary-metadata-item--tags a"),y="100%";void 0!==v&&null!=v&&(y=r.querySelector(".summary-metadata-item--tags a").textContent),console.log(y);let g='<div class="image-slide-inner"><img src="'+r.querySelector(".summary-thumbnail img").getAttribute("data-src")+'?format=2500"></div>',b='<div class="balance-slide image-slide" data-slide-img-id="'+c+'" style="width:calc('+y+" - "+2*a+"px);margin:"+a+'px;" data-width="'+y+'"><a href="'+u+'">'+g+'<div class="info-slide">'+('<div class="title-wrapper"><h3>'+n+"</h3></div>")+('<div class="desc-wrapper"><p>'+o+"</p></div>")+m+"</div></a></div>";s.insertAdjacentHTML("beforeend",b),r.addEventListener("click",function(t){console.log(r.getAttribute("data-slide-id")),r.classList.contains("current-active")||(e.querySelector(".current-active").classList.remove("current-active"),e.querySelector(".active-slide").classList.remove("active-slide"),r.classList.add("current-active"),e.querySelector('.image-slide[data-slide-img-id="'+r.getAttribute("data-slide-id")+'"]').classList.add("active-slide"))})}),e.querySelector(".summary-item").classList.add("current-active"),e.querySelector(".image-slide").classList.add("active-slide")}})}}();
+
+</script>
+

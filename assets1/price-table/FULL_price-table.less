@@ -1,0 +1,247 @@
+/*
+@price-table-cta-button-text: "CHOOSE";
+@price-table-heading-font-size: 2.4rem;
+@price-table-text-font-size: 1.4rem;
+@price-table-items-background-color: #fff;
+@price-table-items-font-color: #000;
+
+
+
+
+.summary-item-list{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0px auto !important;
+  justify-content: center;
+  .summary-item{
+    margin: 0px 20px 40px !important;
+    width: ~"calc(33.333% - 42px)";
+    @media only screen and (max-width: 1150px){
+      width: ~"calc(50% - 42px)";
+    }
+    @media only screen and (max-width: 640px){
+      width: 100%;
+      margin: 0 0 50px !important;
+    }
+    background-color: @price-table-items-background-color;
+    border-top: 1px solid #000;
+
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    transition: all .3s ease;
+    will-change: transform;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    .slide-price-link{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      z-index: 10000;
+    }
+    .summary-thumbnail-outer-container{
+      display: none;
+      width: 100% !important;
+    }
+    .sqs-gallery-meta-container{
+      width: 100% !important;
+    }
+
+    p,h1,h2,h3, .summary-title-link{
+      color: @price-table-items-font-color;
+    }
+    p{
+      font-size: @price-table-text-font-size;
+      &:before{
+        content: '';
+        display: inline-block;
+        width: @price-table-text-font-size;
+        height: @price-table-text-font-size;
+        vertical-align: middle;
+        background-image:url('https://www.ghostplugins.dev/assets/imgs/check.png');
+        background-size: cover;
+        margin-bottom: 4px;
+      }
+      &.x-icon{
+        em{
+          font-style: normal;
+        }
+        &:before{
+          background-image:url('https://www.ghostplugins.dev/assets/imgs/x-red.png');
+        }
+      }
+      &.plus-icon{
+        strong{
+          font-weight: 400;
+        }
+        &:before{
+          background-image:url('https://www.ghostplugins.dev/assets/imgs/plus.png');
+        }
+      }
+    }
+    h1{
+      font-size: @price-table-heading-font-size;
+    }
+
+    .summary-title-link{
+      font-size: @price-table-text-font-size;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 8px 15px;
+      color: @price-table-items-background-color;
+      display: inline-block;
+      border-radius: 8px;
+    }
+
+    position: relative;
+    .summary-content{
+      z-index: 100;
+      position: relative;
+      padding: 25px;
+      padding-bottom: 7rem;
+      @media only screen and (max-width: 640px){
+        padding: 17px;
+        padding-bottom: 7rem;
+      }
+
+    }
+    .svg-bg-item{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      svg{
+        width: 140% !important; 
+        height: 100% !important;
+        min-height: 7rem;
+        display: block;
+        transition: transform .3s ease;
+      }
+    }
+    .cta-button-price{
+      font-size: @price-table-text-font-size/1.2;
+      background-color:@price-table-items-background-color; 
+      color: @price-table-items-font-color;
+      position: absolute;
+      bottom: 0;
+      bottom: 15px;
+      left: 50%;
+      line-height: 1;
+      padding: 10px 30px;
+      border-radius: 22px;
+      text-transform: uppercase;
+      max-width: 100%;
+      text-align: center;
+      max-width: 60%;
+      width: 100%;
+      transition: all .3s ease;
+      transform: translate(-50%, 0%);
+      -webkit-transform: translate(-50%, 0%);
+      will-change:transform;
+      svg{
+          // font-size: @price-table-text-font-size/1.2;
+          will-change:transform;
+        }
+        &:before{
+          content: @price-table-cta-button-text;
+
+        }
+      }
+      &:hover{
+        transform: scale(1.03);
+        -webkit-transform: scale(1.03);
+        box-shadow: 0px 12px 13px 1px rgba(0, 0, 0, 0.15);
+        svg{
+          transform: translateX(-8%);
+          -webkit-transform: translateX(-8%);
+        }
+        .cta-button-price{
+          transform: translate(-50%, -5px);
+          -webkit-transform: translate(-50%, -5px);
+
+        }
+      }
+    }
+    .summary-metadata-item--tags{
+      display: none !important;
+    }
+  }
+
+
+  */
+
+
+
+  @price-table-cta-button-text: "CHOOSE";
+  @price-table-heading-font-size: 2.4rem;
+  @price-table-text-font-size: 1.4rem;
+  @price-table-items-background-color: #fff;
+  @price-table-items-font-color: #000;
+  @price-table-items-radius: 8px;
+
+
+
+body{
+
+
+  .summary-item-list{
+    .summary-item{
+      background-color: @price-table-items-background-color;
+      border-bottom-right-radius: @price-table-items-radius;
+      border-bottom-left-radius: @price-table-items-radius;
+      p,h1,h2,h3, .summary-title-link{
+        color: @price-table-items-font-color;
+      }
+      p{
+        font-size: @price-table-text-font-size;
+        &:before{
+          width: @price-table-text-font-size;
+          height: @price-table-text-font-size;
+        }
+        &.x-icon{
+          em{
+            font-style: normal;
+          }
+          &:before{
+            background-image:url('https://www.ghostplugins.dev/assets/imgs/x-red.png');
+          }
+        }
+        &.plus-icon{
+          strong{
+            font-weight: 400;
+          }
+          &:before{
+            background-image:url('https://www.ghostplugins.dev/assets/imgs/plus.png');
+          }
+        }
+      }
+      h1{
+        font-size: @price-table-heading-font-size;
+      }
+      .summary-title-link{
+        font-size: @price-table-text-font-size;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 8px 15px;
+        color: @price-table-items-background-color;
+        border-radius: @price-table-items-radius;
+      }
+      .cta-button-price{
+        font-size: @price-table-text-font-size/1.2;
+        background-color:@price-table-items-background-color; 
+        color: @price-table-items-font-color;
+
+        svg{
+          will-change:transform;
+        }
+        &:before{
+          content: @price-table-cta-button-text;
+        }
+      }
+    }
+  }
+
+}

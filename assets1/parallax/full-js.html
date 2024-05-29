@@ -1,0 +1,47 @@
+
+<script>
+  ;(function(){
+    console.log(document.querySelector('html').classList.contains('touch'));
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    let isGallery = document.querySelectorAll('.sqs-gallery-design-carousel')[0];
+    let pluginName = 'parallax';
+
+    if (typeof(isGallery) != 'undefined' && isGallery != null){
+
+      document.querySelectorAll('.sqs-gallery-design-carousel').forEach(function(thisSummary){
+        var thisHeadingElement = thisSummary.querySelector('.summary-header-text');
+        var thisHeadText = thisHeadingElement.innerText || thisHeadingElement.textContent;
+
+        if(thisHeadText == pluginName){
+          thisSummary.classList.add(pluginName+'-plugin');
+          var thisSummaryParent = thisSummary.closest('.sqs-block');
+          var thisSummaryId = thisSummaryParent.getAttribute('id');
+          thisSummary.closest('section').classList.add('section-with-'+pluginName+'-slider');
+          var countItems = 0;
+          thisSummary.querySelectorAll('.summary-item').forEach(function(thisSlide, i){ 
+            countItems++;
+            var newId = thisSummaryId+'-slide-'+i;
+            thisSlide.setAttribute('data-slide-id', newId);
+          });
+        }
+      });
+    }
+
+    if (!isMobile) {
+      let sections = document.querySelectorAll('.parallax-plugin .summary-item');
+      sections.forEach(el =>{
+        let title = el;
+        window.addEventListener('scroll', function() {
+          let $window = this;
+          let offset = title.offsetTop;
+          let scrollTop =  $window.pageYOffset;
+          let  yPos =   -(offset - scrollTop) / 1.5;
+          title.querySelector('.summary-content').style.transform =  'translateY(' + yPos + 'px)';
+        });
+      });
+    }
+
+
+  }());
+</script>

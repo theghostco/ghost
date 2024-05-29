@@ -1,0 +1,163 @@
+
+
+@phase-changer-ghost-card-bg-color: #fff;
+@phase-changer-ghost-card-active-bg-color: #EEF5F9;
+
+@phase-changer-ghost-image-height: 50%;
+@phase-changer-ghost-image-mobile-height: 125%;
+@phase-changer-ghost-image-position: right; //availabe left or right
+
+
+@phase-changer-ghost-titles-font-size: 22px;
+@phase-changer-ghost-titles-font-color: #000;
+
+@phase-changer-ghost-desc-size: 13px;
+@phase-changer-ghost-desc-color: #95979b;
+
+
+
+.reverse-image() when (@phase-changer-ghost-image-position = left){-webkit-box-orient: horizontal;  -webkit-box-direction: reverse;  -ms-flex-direction: row-reverse;  flex-direction: row-reverse;.phase-image-changer-images-wrapper  {margin-right: 35px;margin-left: 0px;}
+.sqs-gallery-design-carousel.summary-block-wrapper{
+  opacity: 0;
+  transition: opacity .3s ease;
+  -webkit-transition: opacity .3s ease;
+}
+
+
+.phase-image-changer-plugin.summary-block-wrapper{
+  opacity: 1;
+
+  margin: 0px !important;
+  transform: none !important;
+  display: -webkit-box;display: -webkit-flex;display: -moz-box;display: -ms-flexbox;display: flex;
+  -webkit-flex-wrap: wrap;-ms-flex-wrap: wrap;flex-wrap: wrap;
+  -webkit-box-align: center;-webkit-align-items: center;-moz-box-align: center;-ms-flex-align: center;-ms-grid-row-align: center;align-items: center;
+  .reverse-image();
+  .summary-block-header{
+    display: none;
+  }
+  .summary-item-list{
+    margin: 0px !important;
+    transform: none !important;
+  }
+  .summary-item{
+    display: block !important;
+    width: 100% !important;
+    padding: 20px 20px 20px 40px !important;
+    white-space: normal;
+    font-size: inherit;
+    display: block;
+    margin-bottom: 20px;
+    padding: 15px 25px 15px 35px !important;
+    margin-bottom: 10px;
+  }
+  &:last-child{
+    margin-bottom: 0px;
+  }
+  border-radius: 20px;
+  transition: all .3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  .summary-title{
+    position: relative;
+    font-size: @phase-changer-ghost-titles-font-size;
+    color: @phase-changer-ghost-titles-font-color;
+    margin-bottom: 5px;
+
+    @media only screen and (max-width: 640px){
+      font-size: @phase-changer-ghost-titles-font-size/1.1;
+    }
+
+    &:before{
+      font-family: 'squarespace-ui-font';  
+      font-style: normal;  
+      font-weight: normal;  
+      -webkit-font-smoothing: antialiased;  
+      display: inline-block;  
+      vertical-align: middle;  
+      speak: none;  
+      content: "\e02d";
+      position: absolute;
+      top: 0px;
+      left: -@phase-changer-ghost-titles-font-size/1.1;
+      font-size: @phase-changer-ghost-titles-font-size/1.6;
+      color: @phase-changer-ghost-titles-font-color;
+      opacity: .7;
+      @media only screen and (max-width: 640px){
+        font-size: @phase-changer-ghost-titles-font-size/1.8;
+      }
+    }
+  }
+  a{
+    pointer-events: none;
+  }
+  p{
+    color: @phase-changer-ghost-desc-color;
+    font-size: @phase-changer-ghost-desc-size;
+    @media only screen and (max-width: 640px){
+      font-size: @phase-changer-ghost-desc-size/1.1;
+    }
+  }
+  .summary-excerpt{
+    margin: 0px;
+    p{margin-bottom:0px;}
+  }
+  &.current-active{
+    background-color: @phase-changer-ghost-card-active-bg-color;
+  }
+  &:hover{
+    border-color: @phase-changer-ghost-card-active-bg-color;
+  }
+  .summary-thumbnail-outer-container{
+    display: none;
+  }
+  .summary-metadata-container{
+    display: none;
+  }
+}
+.summary-item-list-container{
+  width: 50%;
+  @media only screen and (max-width: 800px){
+    width: 100%;
+  }
+}
+.phase-image-changer-images-wrapper{
+  width: ~"calc(50% - 35px)";
+  margin-left: 35px;
+  padding-bottom: @phase-changer-ghost-image-height;
+  @media only screen and (max-width: 800px){
+    width: 100%;
+    margin-left: 0px;
+    padding-bottom: @phase-changer-ghost-image-mobile-height;
+    margin-top: 25px;
+  }
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  .image-slide{
+    opacity: 0;
+    transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    &.active-slide{
+      opacity: 1;
+    }
+  }
+  .image-slide-inner{
+    img{
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  img{
+    display: block;
+    width: 100%;
+  }
+}
+}

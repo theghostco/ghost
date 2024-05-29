@@ -1,0 +1,169 @@
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T98FCH7"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!--
+<script>
+window.Squarespace.onInitialize(Y, function() {
+console.log(Y.all('#collection-6142203cdda0c678e250cc2d').size() > 0);
+if(Y.all('#collection-6142203cdda0c678e250cc2d').size() > 0){
+
+
+
+var iframe = document.querySelectorAll('.custom--video')[0];
+var player = new Vimeo.Player(iframe);
+var icon = '<div class="icons-wrapper"><div class="sound-on"></div><div class="sound-off"></div></div>';
+
+document.querySelectorAll('.section-background.video-b')[0].insertAdjacentHTML('beforebegin', icon);
+
+player.on('play', function() {
+console.log('played the video!');
+});
+
+var soundButton = document.querySelectorAll('.icons-wrapper')[0];
+soundButton.addEventListener("click", function (e) {
+if(soundButton.classList.contains('sound-on')){
+player.setVolume(0);
+soundButton.classList.remove('sound-on')
+}else{
+player.setVolume(1);
+soundButton.classList.add('sound-on');
+}
+});
+}
+});
+</script> -->
+<script>
+  var ghostGlobalMobVideoScale = {
+    scaleVal: 1 // min value = 1. Ex of ussing: 1.5, 2, 3.3
+  }
+</script>
+<script>
+
+  window.Squarespace.onInitialize(Y, function() {
+    if(Y.all('#collection-6142203cdda0c678e250cc2d').size() > 0){
+      var timerId2 = setInterval(function() {
+        if(Y.all('.Parallax-host .Parallax-item [data-controller="VideoBackground"]').size() > 0){
+          console.log('call');
+          clearInterval(timerId2);
+        }else{
+          console.log('?');
+        }
+
+        ;(function(){
+          let placeToPaste = document.querySelectorAll('.Parallax-item [data-controller="VideoBackground"]')[0];
+    
+          
+          placeToPaste.closest('.Parallax-item').classList.add('parallax-item-with-video');
+          
+          
+          var videoIndexSection = document.querySelectorAll('.Index-page[data-collection-id="'+placeToPaste.closest('.Parallax-item').getAttribute('data-parallax-id')+'"]')[0];
+          videoIndexSection.classList.add('video-index-section');
+          function contentVideo(videoId){
+            var my_awesome_script = document.createElement('script');
+            my_awesome_script.setAttribute('src','https://player.vimeo.com/api/player.js');
+            document.head.appendChild(my_awesome_script);
+            return '<iframe src="//player.vimeo.com/video/'+videoId+'?&amp;background=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=1&amp;muted=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="" class="custom--video"></iframe>'
+          }
+
+          document.querySelectorAll('.Parallax-item .sqs-video-background')[0].classList.add('video-banner-section');
+          placeToPaste.classList.add('video-b');
+
+          let thisVideoId = placeToPaste.querySelector('.sqs-video-background').getAttribute('data-config-url').split('vimeo.com/')[1];
+
+          let newPlace = placeToPaste.querySelectorAll('#player')[0]
+          newPlace.insertAdjacentHTML('beforeend', contentVideo(thisVideoId));
+
+          let videoSection = document.querySelectorAll('.sqs-video-background.video-banner-section')[0];
+          if (typeof(videoSection) != 'undefined' && videoSection != null){   
+            document.querySelectorAll('.sqs-video-background.video-banner-section').forEach(function(videoWrapper){   
+              videoWrapper.closest('body').classList.add('page-with-video-banner');
+            });   
+          }
+
+          function scaleVideo() {
+            var defaultScale = 1.2;
+            var scale = defaultScale;
+
+            if (typeof ghostGlobalMobVideoScale.scaleVal === 'undefined'){}else{
+              if(ghostGlobalMobVideoScale.scaleVal < defaultScale){
+                if(ghostGlobalMobVideoScale.scaleVal >= 1){
+                  scale = defaultScale;
+                }else{
+                  scale = ghostGlobalMobVideoScale.scaleVal;
+                }
+              }else{
+                scale = ghostGlobalMobVideoScale.scaleVal;
+              }
+            }
+
+            var playerIframe = document.querySelectorAll('.custom--video')[0];
+            var videoDimensions = {
+              'width': playerIframe.clientWidth,
+              'height': playerIframe.clientHeight
+            };
+            var fallbackImg = null;
+            var containerWidth = playerIframe.parentNode.clientWidth;
+            var containerHeight = playerIframe.parentNode.clientHeight;
+
+            var containerRatio = containerWidth / containerHeight;
+            var videoRatio = videoDimensions.width / videoDimensions.height;
+            var pWidth = 0;
+            var pHeight = 0;
+
+            if (containerRatio > videoRatio) {
+              // at the same width, the video is taller than the window
+              pWidth = containerWidth * scale;
+              pHeight = containerWidth * scale / videoRatio;
+              playerIframe.style.width = pWidth + 'px';
+              playerIframe.style.height = pHeight + 'px';
+            } else if (videoRatio > containerRatio) {
+              // at the same width, the video is shorter than the window
+              pWidth = containerHeight * scale * videoRatio;
+              pHeight = containerHeight * scale;
+              playerIframe.style.width = pWidth + 'px';
+              playerIframe.style.height = pHeight + 'px';
+            } else {
+              // the window and video ratios match
+              pWidth = containerWidth * scale;
+              pHeight = containerHeight * scale;
+              playerIframe.style.width = pWidth + 'px';
+              playerIframe.style.height = pHeight + 'px';
+            }
+            playerIframe.style.left = 0 - (pWidth - containerWidth) / 2 + 'px';
+            playerIframe.style.top = 0 - (pHeight - containerHeight) / 2 + 'px';
+            playerIframe.style.opacity = 1;
+            playerIframe.classList.add('background-video');
+          }
+          scaleVideo();
+          window.addEventListener('resize', function(event) {
+            setTimeout(function(){
+              scaleVideo();
+            }, 500)
+          }, true);
+        }());
+
+        var iframe = document.querySelectorAll('.custom--video')[0];
+        var player = new Vimeo.Player(iframe);
+        var icon = '<div class="icons-wrapper"><div class="sound-on"></div><div class="sound-off"></div></div>';
+
+        document.querySelectorAll('.video-index-section')[0].insertAdjacentHTML('afterbegin', icon);
+
+        player.on('play', function() {
+          console.log('played the video!');
+        });
+
+        var soundButton = document.querySelectorAll('.icons-wrapper')[0];
+        soundButton.addEventListener("click", function (e) {
+          if(soundButton.classList.contains('sound-on')){
+            player.setVolume(0);
+            soundButton.classList.remove('sound-on')
+          }else{
+            player.setVolume(1);
+            soundButton.classList.add('sound-on');
+          }
+        });
+      }, 300);
+    }
+  });
+</script>

@@ -1,0 +1,57 @@
+// Ghost price table - start //
+
+
+//colors set up
+/*ODD CARDS*/
+//card background
+@price-ghost-odd-card-background:#f3f3f3;
+//card title color
+@price-ghost-odd-title-font-color: #000;
+//h2 color (price)
+@price-ghost-odd-card-h2-color: #6ED7A6;
+//description font color
+@price-ghost-odd-desc-font-color: #5f5f5f;
+//call to action button stle
+@price-ghost-odd-cta-font-color: #fff;
+@price-ghost-odd-cta-background-color: #6ED7A6;
+
+/* EVEN CARDS */
+//card background
+@price-ghost-card-background:#6ED7A6;
+//card title color
+@price-ghost-title-font-color: #fff;
+//h2 color (price)
+@price-ghost-card-h2-color: #fff;
+//description font color
+@price-ghost-desc-font-color: #fff;
+//call to action button stle
+@price-ghost-cta-font-color: #6ED7A6;
+@price-ghost-cta-background-color: #fff;
+
+
+
+
+/* FONT SIZE */
+//h2 (price) style
+@price-ghost-card-h2-size: 45px;
+//plan title (inherit h3 font style)
+@price-ghost-title-font-size: 20px;
+//description (inherit p font style)
+@price-ghost-desc-font-size: 18px;
+
+
+@price-ghost-mobile-card-h2-size: 45px;
+//plan title (inherit h3 font style)
+@price-ghost-mobile-title-font-size: 20px;
+//description (inherit p font style)
+@price-ghost-mobile-desc-font-size: 18px;
+
+
+
+/* Other */
+// call to action button border radius
+@price-ghost-card-cta--border-radius: 5px;
+
+
+body{.price-plugin{.price-slide{background-color: @price-ghost-card-background;h2{color: @price-ghost-card-h2-color;font-size: @price-ghost-card-h2-size;@media only screen and (max-width: 640px){font-size: @price-ghost-mobile-card-h2-size;}}h3{font-size: @price-ghost-title-font-size;color: @price-ghost-title-font-color;@media only screen and (max-width: 640px){font-size: @price-ghost-mobile-title-font-size;}}p{font-size: @price-ghost-desc-font-size;color: @price-ghost-desc-font-color;a{background-color: @price-ghost-cta-background-color;color:@price-ghost-cta-font-color;border-radius: @price-ghost-card-cta--border-radius;}@media only screen and (max-width: 640px){font-size: @price-ghost-desc-font-size;}}&:nth-child(odd){background-color: @price-ghost-odd-card-background;h2{color: @price-ghost-odd-card-h2-color;}h3{ color: @price-ghost-odd-title-font-color;}p{color: @price-ghost-odd-desc-font-color;a{background-color: @price-ghost-odd-cta-background-color;color:@price-ghost-odd-cta-font-color;}}}}}}
+// Ghost price table - end //

@@ -1,0 +1,129 @@
+
+<script>
+  var ghostDrawerOptions = {
+    canvasBackground: '#fff',
+    colorLine : '#000',
+    lineWidth: 10,
+    cursor: 'https://www.ghostplugins.dev/assets/drawer/a.png'
+    
+  }
+</script>
+<script>
+  let canvasArr = document.querySelectorAll('.canvas__container');
+  let draw = false;
+  canvasArr.forEach(canvas =>{
+    let canv = canvas.querySelector('.ghostCanvas');
+    let mouse = { x:0, y:0};
+    canvas.closest('.fluid-engine').classList.add('canvas-section');
+    canvas.closest('.fluid-engine').querySelectorAll('.button-block').forEach(sqsButton =>{
+      sqsButton.closest('.fe-block').classList.add('button-fluid');
+    })
+    canvas.closest('.fe-block').classList.add('canvas-block');
+    let ww = canvas.closest('.fe-block').offsetWidth;
+    let vh = canvas.closest('.fe-block').offsetHeight;
+    canv.style.backgroundColor = ghostDrawerOptions.canvasBackground;
+    canv.style.cursor = 'url('+ghostDrawerOptions.cursor+') 0 '+ghostDrawerOptions.cursorOffset+', auto';
+    window.addEventListener('resize', function(){
+      ww = canvas.offsetWidth;
+    });
+    let context = canv.getContext("2d");
+    canv.height = vh;
+    canv.width= ww;
+    canv.addEventListener("mousedown", function(e){
+      let pos =  $(this).offset();
+      mouse.x = e.pageX - pos.left;
+      mouse.y = e.pageY - pos.top;
+      draw = true;
+      context.beginPath();
+      context.moveTo(mouse.x, mouse.y);
+      context.strokeStyle = ghostDrawerOptions.colorLine;
+      context.lineWidth = ghostDrawerOptions.lineWidth;
+      context.lineJoin = "round";
+      context.lineCap = "round";
+    });
+    canv.addEventListener("mousemove", function(e){
+      let pos =  $(this).offset();
+      if(draw==true){
+        mouse.x = e.pageX - pos.left;
+        mouse.y = e.pageY - pos.top;
+        context.lineTo(mouse.x, mouse.y);
+        context.stroke();
+      }
+    });
+    canv.addEventListener("mouseup", function(e){
+      let pos =  $(this).offset();
+      mouse.x = e.pageX - pos.left;
+      mouse.y = e.pageY - pos.top;
+      context.lineTo(mouse.x, mouse.y);
+      context.stroke();
+      context.closePath();
+      draw = false;
+    });
+  });
+</script>
+
+
+
+<!-- new version -->
+<script>
+  var ghostDrawerOptions = {
+    canvasBackground: 'transparent', // canvas background color
+    colorLine: '#1d1d1b', // doodle line color
+    lineWidth: 5, // doodle line width
+    cursor: 'https://static1.squarespace.com/static/635a7beecac71a073739a8fe/t/6360e3e1e3ec1d7894b09d6d/1667294177576/a+%281%29.png', // for a custom cursor, upload your file to CSS files to generate link, file must be 48x48 in size
+    cursorOffset: 3 // adjust if changing the default cursor option
+  } </script>
+<script>
+  let canvasArr = document.querySelectorAll('.canvas__container');
+  let draw = false;
+  canvasArr.forEach(canvas =>{
+    let canv = canvas.querySelector('.ghostCanvas');
+    let mouse = { x:0, y:0};
+    canvas.closest('.fluid-engine').classList.add('canvas-section');
+    canvas.closest('.fluid-engine').querySelectorAll('.button-block').forEach(sqsButton =>{
+      sqsButton.closest('.fe-block').classList.add('button-fluid');
+    })
+    canvas.closest('.fe-block').classList.add('canvas-block');
+    let ww = canvas.closest('.fe-block').offsetWidth;
+    let vh = canvas.closest('.fe-block').offsetHeight;
+    canv.style.backgroundColor = ghostDrawerOptions.canvasBackground;
+    canv.style.cursor = 'url('+ghostDrawerOptions.cursor+') 1 '+ghostDrawerOptions.cursorOffset+', auto';
+    window.addEventListener('resize', function(){
+      ww = canvas.offsetWidth;
+    });
+    let context = canv.getContext("2d");
+    canv.height = vh;
+    canv.width= ww;
+    canv.addEventListener("mousedown", function(e){
+      let pos =  $(this).offset();
+      mouse.x = e.pageX - pos.left;
+      mouse.y = e.pageY - pos.top;
+      draw = true;
+      context.beginPath();
+      context.moveTo(mouse.x, mouse.y);
+      context.strokeStyle = ghostDrawerOptions.colorLine;
+      context.lineWidth = ghostDrawerOptions.lineWidth;
+      context.lineJoin = "round";
+      context.lineCap = "round";
+    });
+    canv.addEventListener("mousemove", function(e){
+      let pos =  $(this).offset();
+      if(draw==true){
+        mouse.x = e.pageX - pos.left;
+        mouse.y = e.pageY - pos.top;
+        context.lineTo(mouse.x, mouse.y);
+        context.stroke();
+      }
+    });
+    canv.addEventListener("mouseup", function(e){
+      let pos =  $(this).offset();
+      mouse.x = e.pageX - pos.left;
+      mouse.y = e.pageY - pos.top;
+      context.lineTo(mouse.x, mouse.y);
+      context.stroke();
+      context.closePath();
+      draw = false;
+    });
+  });
+</script>
+

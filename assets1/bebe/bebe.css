@@ -1,0 +1,283 @@
+.section-with-bebe-slider .content-wrapper {
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+}
+.sqs-gallery-design-carousel {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+.sqs-gallery-design-carousel.loaded-carousel {
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+.bebe-plugin {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  -webkit-transform: none !important;
+      -ms-transform: none !important;
+          transform: none !important;
+  text-align: center;
+}
+.bebe-plugin .bebe-pagination {
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+}
+@media only screen and (max-width: 1000px) {
+  .bebe-plugin .bebe-pagination {
+    bottom: 3px;
+  }
+}
+.bebe-plugin .summary-item-list-container.sqs-gallery-container {
+  display: none;
+}
+.bebe-plugin .summary-block-header {
+  display: none;
+}
+.bebe-plugin .summary-item-list {
+  margin: 0px !important;
+  -webkit-transform: none !important;
+      -ms-transform: none !important;
+          transform: none !important;
+}
+.bebe-plugin .summary-item {
+  display: block !important;
+  width: 100% !important;
+  padding: 0 !important;
+  white-space: normal;
+  font-size: inherit;
+}
+.bebe-plugin .bebe-wrapper {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.bebe-plugin .bebe-wrapper .left-part {
+  width: 100%;
+  margin-right: 0%;
+}
+@media only screen and (max-width: 1000px) {
+}
+@media only screen and (max-width: 640px) {
+  .bebe-plugin .bebe-wrapper .left-part {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+.bebe-plugin .bebe-wrapper .right-part {
+  width: 100%;
+}
+@media only screen and (max-width: 1000px) {
+}
+@media only screen and (max-width: 640px) {
+}
+.bebe-plugin .swiper-container {
+  overflow-y: visible;
+  padding: 10px;
+  padding-bottom: 0px;
+  z-index: 100;
+}
+.bebe-plugin .image-slide {
+  visibility: visible !important;
+  margin-bottom: 10px;
+  overflow: visible !important;
+  position: relative;
+  padding: 45px;
+  -webkit-border-radius: 15px;
+          border-radius: 15px;
+  padding-top: 0px !important;
+}
+@media only screen and (max-width: 1000px) {
+  .bebe-plugin .image-slide {
+    padding: 25px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .bebe-plugin .image-slide {
+    padding: 17px;
+  }
+}
+.bebe-plugin:after {
+  content: '';
+  top: 55px;
+  width: 100%;
+  bottom: 0;
+  left: 0%;
+  position: absolute;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  z-index: 10;
+  background-color: coral;
+  -webkit-border-radius: 15px;
+          border-radius: 15px;
+}
+.bebe-plugin:before {
+  content: '';
+  top: 55px;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+  -webkit-box-shadow: 0px 1px 5px 5px transparent;
+          box-shadow: 0px 1px 5px 5px transparent;
+  position: absolute;
+  opacity: 0.1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  -webkit-border-radius: 15px;
+          border-radius: 15px;
+}
+.bebe-plugin .desc-slide,
+.bebe-plugin .author-info {
+  position: relative;
+  z-index: 1000;
+}
+.bebe-plugin .image-slide-wrapper {
+  max-width: 165px;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 640px) {
+  .bebe-plugin .image-slide-wrapper {
+    max-width: 100px;
+  }
+}
+.bebe-plugin .image-slide-inner {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding-bottom: 100%;
+  z-index: 1000;
+}
+.bebe-plugin .image-slide-inner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  object-positon: center;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+.bebe-plugin h1,
+.bebe-plugin h2,
+.bebe-plugin h3,
+.bebe-plugin p {
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  -webkit-transform: none !important;
+      -ms-transform: none !important;
+          transform: none !important;
+}
+.bebe-plugin h3 {
+  font-size: 2em;
+  color: #fff;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+@media only screen and (max-width: 640px) {
+  .bebe-plugin h3 {
+    font-size: 0.9em;
+  }
+}
+.bebe-plugin p {
+  font-size: 1.2em;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0px;
+  margin-bottom: 0;
+}
+.bebe-plugin p a {
+  border-bottom: 1px solid;
+  color: #fff;
+}
+.bebe-plugin .desc-wrapper {
+  margin-bottom: 24px;
+  margin-top: 0px;
+}
+@media only screen and (max-width: 1000px) {
+  .bebe-plugin .desc-wrapper {
+    margin-bottom: 16px;
+    margin-top: 0;
+  }
+}
+.bebe-plugin .desc-wrapper p {
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  margin: 0px !important;
+}
+@media only screen and (max-width: 640px) {
+  .bebe-plugin .desc-wrapper p {
+    font-size: 1em;
+  }
+}
+.bebe-plugin .author-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.bebe-plugin .author-info .info {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.bebe-plugin .author-info a {
+  pointer-events: none;
+  border: none;
+}
+.bebe-plugin .author-info .image-slide-inner {
+  margin-right: 20px;
+}
+.bebe-plugin .author-info p {
+  line-height: 1.2;
+  font-size: 1em;
+  font-weight: 600;
+  color: #fff;
+}
+@media only screen and (max-width: 640px) {
+  .bebe-plugin .author-info p {
+    font-size: 0.8em;
+  }
+}
+.bebe-plugin .author-info .author-position p,
+.bebe-plugin .author-info p a {
+  color: #fff;
+}
+.bebe-pagination.swiper-pagination {
+  position: absolute;
+  margin-top: 20px;
+  z-index: 1000;
+}
+.bebe-pagination.swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  margin: 6px;
+  background-color: #fff;
+}
+.slider-control.bebe-control {
+  display: none;
+}

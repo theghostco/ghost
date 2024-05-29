@@ -1,0 +1,31 @@
+//
+@aira-ghost-card-bg-color: #fff;
+@aira-ghost-image-max-width: 60%;
+@aira-ghost-image-max-height: 80vh;
+
+//image on hover position. Set 50% for both to center the images. Negative value is allowed
+@aira-ghost-image-position-vertical: 50%;
+@aira-ghost-image-position-horizontal: 50%;
+
+//title
+@aira-ghost-titles-font-size: 10vw; //recomend using in vw.
+@aira-ghost-titles-font-color: #000;
+
+
+//subtitle
+@aira-ghost-desc-size: 2vw; //recomend using in vw.
+@aira-ghost-desc-color: #3c3c3c;
+
+
+//mobile
+@aira-ghost-titles-font-size-mobile: 32px;//recomend using in px.
+@aira-ghost-desc-font-size-mobile: 17px; //recomend using in px.
+
+
+//image overlaps closest sections.
+@aira-ghost-sections-overlaps: true; //true or false
+
+
+
+//do not edit the code below
+.image-overlaps-closest-sections() when (@aira-ghost-sections-overlaps = false){.page-section{z-index: 2;}footer{z-index: 100;position: relative;}}body{.section-with-aira-slider{.section-background{background-color: @aira-ghost-card-bg-color !important;}}&.page-with-aira-plugin{.image-overlaps-closest-sections();}.aira-plugin.summary-block-wrapper{.summary-title-link{padding-right: @aira-ghost-titles-font-size;@media only screen and (max-width: 640px){padding-right: @aira-ghost-titles-font-size-mobile;}&:before{font-size: @aira-ghost-titles-font-size;@media only screen and (max-width: 640px){font-size: @aira-ghost-titles-font-size-mobile;}}}.summary-item-list{.summary-item{border-bottom: 1px solid @aira-ghost-titles-font-color;}}.summary-title, .summary-title-link{font-size: @aira-ghost-titles-font-size;color: @aira-ghost-titles-font-color;@media only screen and (max-width: 640px){font-size: @aira-ghost-titles-font-size-mobile;}}.summary-excerpt{p{color: @aira-ghost-desc-color;font-size: @aira-ghost-desc-size;@media only screen and (max-width: 640px){font-size: @aira-ghost-desc-font-size-mobile;}}}.aira-images-wrapper{transform: translate(-@aira-ghost-image-position-horizontal, -@aira-ghost-image-position-vertical);-webkit-transform: translate(-@aira-ghost-image-position-horizontal, -@aira-ghost-image-position-vertical);max-width: @aira-ghost-image-max-width;.image-slide-inner{img{max-height: @aira-ghost-image-max-height;object-position: center;}}}}}

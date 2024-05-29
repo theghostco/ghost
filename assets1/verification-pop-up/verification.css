@@ -1,0 +1,184 @@
+body #siteWrapper {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+body.show-body #siteWrapper {
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+body .verification-main-overlay {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+body.opacity-verification .verification-main-overlay {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+body.hide-verification .verification-main-overlay {
+  display: none;
+}
+.verification-main-overlay {
+  position: fixed;
+  z-index: 100000000;
+  background: rgba(0, 0, 0, 0.95);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+.verification-main-overlay .verification-pop-up {
+  width: 100%;
+  padding: 17px;
+}
+.verification-main-overlay .verification-pop-up .verification-pop-up-inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #e3e3e3;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+}
+.verification-main-overlay .verification-pop-up .verification-left-part {
+  width: 50%;
+}
+@media only screen and (max-width: 640px) {
+  .verification-main-overlay .verification-pop-up .verification-left-part {
+    width: 100%;
+  }
+}
+.verification-main-overlay .verification-pop-up .verification-left-part .verification-left-part-inner {
+  padding: 50px 20px;
+}
+@media only screen and (max-width: 640px) {
+  .verification-main-overlay .verification-pop-up .verification-left-part .verification-left-part-inner {
+    padding: 35px 20px;
+  }
+}
+.verification-main-overlay .verification-pop-up .verification-left-part h2 {
+  margin: 0px;
+  font-size: 48px;
+  font-size: 3rem;
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  margin-bottom: 20px;
+  margin-top: 10px;
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+@media only screen and (max-width: 640px) {
+  .verification-main-overlay .verification-pop-up .verification-left-part h2 {
+    font-size: 3rem;
+  }
+}
+.verification-main-overlay .verification-pop-up .verification-left-part p {
+  font-size: 24px;
+  font-size: 1.5rem;
+  -webkit-transition: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 640px) {
+  .verification-main-overlay .verification-pop-up .verification-left-part p {
+    font-size: 1.5rem;
+  }
+}
+.verification-main-overlay .verification-pop-up .verification-left-part .verification-options button {
+  font-size: 16px;
+  font-size: 1rem;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  margin: 0px 12px 0px;
+}
+@media only screen and (max-width: 640px) {
+  .verification-main-overlay .verification-pop-up .verification-left-part .verification-options button {
+    font-size: 1rem;
+  }
+}
+.verification-main-overlay .verification-pop-up .verification-left-part .verification-options button.verify-confirm-button {
+  color: #fff;
+  background-color: #000;
+  margin-bottom: 15px;
+}
+.verification-main-overlay .verification-pop-up .verification-left-part .verification-options button.verify-reject-button {
+  color: #000;
+  background-color: transparent;
+}
+.verification-main-overlay .verification-pop-up .verification-left-part .verifyLogo {
+  max-width: 50px;
+  margin: 0 auto;
+}
+.verification-main-overlay .verification-pop-up .verification-left-part .verifyLogo img {
+  width: 100%;
+  display: block;
+}
+.verification-main-overlay .verification-pop-up .verification-right-part {
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+@media only screen and (max-width: 640px) {
+  .verification-main-overlay .verification-pop-up .verification-right-part {
+    display: none;
+  }
+}
+.verification-main-overlay .verification-pop-up .verification-right-part img {
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+.verification-main-overlay .fail-verification {
+  text-align: center;
+  background-color: #000;
+  color: #e3e3e3;
+  padding: 17px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 10px;
+  z-index: 100;
+  width: auto;
+  display: none;
+}
+.verification-main-overlay .fail-verification.active-fail {
+  display: block;
+}
+.verification-main-overlay .no-image .verification-left-part {
+  width: 100%;
+}
+.verification-main-overlay .no-image .verification-right-part {
+  display: none;
+}
+.verification-main-overlay .no-logo .verifyLogo {
+  display: none;
+}

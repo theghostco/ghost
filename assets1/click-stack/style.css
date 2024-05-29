@@ -1,0 +1,51 @@
+section[data-pic-animation] {
+	 position: relative;
+	 overflow: hidden;
+}
+ section[data-pic-animation] .animation-inner-box {
+	 position: absolute;
+	 height: 100% !important;
+}
+ section[data-pic-animation] .animation-inner-box:before {
+	 content: '.Click';
+	 font-size: 18px;
+	 color: #000;
+	 z-index: 1;
+	 position: absolute;
+	 left: 30px;
+	 top: 0;
+	 bottom: 0;
+	 margin: auto;
+}
+ @media only screen and (max-width: 640px) {
+	 section[data-pic-animation] .animation-inner-box:before {
+		 font-size: 16px;
+	}
+}
+ section[data-pic-animation] .pic-list {
+	 position: relative;
+}
+ section[data-pic-animation] .pic-item {
+	 width: 300px;
+	 height: 300px;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 list-style-type: none;
+}
+ @media only screen and (max-width: 640px) {
+	 section[data-pic-animation] .pic-item {
+		 width: 150px;
+		 height: 150px;
+	}
+}
+ section[data-pic-animation] .pic-item img {
+	 object-fit: cover;
+	 width: 100%;
+	 height: 100%;
+	 object-position: top;
+}
+ section[data-pic-animation] [data-hidden] {
+	 visibility: hidden;
+}
+ 

@@ -1,0 +1,85 @@
+.form-inner-wrapper .form-item.number {
+  opacity: 0;
+  transition: opacity .2s ease;
+  -webkit-transition: opacity .2s ease;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  overflow: hidden;
+  padding: 0px 10px;
+}
+.form-inner-wrapper .form-item.number .title {
+  width: 100%;
+  margin-bottom: 15px;
+}
+@media screen and (max-width: 640px) {
+  .form-inner-wrapper .form-item.number .title {
+    margin-bottom: 10px;
+  }
+}
+.form-inner-wrapper .form-item.number .rs-container {
+  max-width: 100%;
+  margin-right: 0%;
+  width: 100%;
+}
+@media screen and (max-width: 640px) {
+  .form-inner-wrapper .form-item.number .rs-container {
+    max-width: 100%;
+    margin-right: 0;
+  }
+}
+.form-inner-wrapper .form-item.number .range-control input {
+  display: block;
+  margin: 0 0 0 auto;
+}
+@media screen and (max-width: 640px) {
+  .form-inner-wrapper .form-item.number .range-control {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 5px;
+  }
+}
+.form-inner-wrapper .form-item.number .rs-scale {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+}
+.form-inner-wrapper .form-item.number .clear-range {
+  background-color: transparent;
+  border-color: transparent;
+  padding: 0px;
+  border-bottom: 1px solid;
+  border-radius: 0px;
+}
+.form-inner-wrapper .form-item.number .rs-pointer {
+  border-radius: 50%;
+  border: 1px solid #7ed6df;
+  width: 20px;
+  height: 20px;
+}
+.form-inner-wrapper .form-item.number .rs-pointer:before,
+.form-inner-wrapper .form-item.number .rs-pointer:after {
+  opacity: 0;
+}
+.form-inner-wrapper .form-item.number .rs-container .rs-bg,
+.form-inner-wrapper .form-item.number .rs-container .rs-selected {
+  border-radius: 15px;
+}
+.form-inner-wrapper .form-item.number .rs-container .rs-selected {
+  background-color: #7ed6df;
+  border: 1px solid #7ed6df;
+}
+.form-inner-wrapper .form-item.number.form-range-item {
+  opacity: 1;
+}

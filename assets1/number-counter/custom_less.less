@@ -1,0 +1,32 @@
+
+// Ghost number-counter - start //
+
+@number-counter-ghost-card-background: #fff;
+@number-counter-ghost-card-shadow-color: #000; // transparent option is available
+@number-counter-ghost-card-width: 33.333%; // 1 col = 100%; 2 cols = 50%; 3 cols = 33.333%; 4 cols = 25%; 5 cols = 20%;
+
+
+//title (inherit h3 font style)
+@number-counter-ghost-title-font-size: 1.5em;
+@number-counter-ghost-title-font-color: #000;
+
+//description
+@number-counter-ghost-desc-font-size: 1em;
+@number-counter-ghost-desc-font-color: #000;
+
+// numbers
+@number-counter-ghost-numbers-font-size: 1.5em;
+@number-counter-ghost-numbers-font-color: rgb(241, 166, 56);
+@number-counter-ghost-numbers-font-weight: bold;
+
+
+//mobile style
+@number-counter-ghost-title-mobile-font-size: 1.3em;
+@number-counter-ghost-desc-mobile-font-size: 1.2em;
+@number-counter-ghost-numbers-mobile-font-size: 1.2em;
+
+
+body{.number-counter-plugin{.number-counter-slide{background: @number-counter-ghost-card-background;width:~"calc(@{number-counter-ghost-card-width} - 20px )";@media only screen and (max-width: 640px){width:~"calc(100% - 20px )";}&:after{background-color: @number-counter-ghost-card-background;}&:before{box-shadow: 0px 1px 5px 5px @number-counter-ghost-card-shadow-color;  }}h3{font-size: @number-counter-ghost-title-font-size;color: @number-counter-ghost-title-font-color;@media only screen and (max-width: 640px){font-size: @number-counter-ghost-title-mobile-font-size;}}p{font-size: @number-counter-ghost-desc-font-size;color: @number-counter-ghost-desc-font-color;a{color: @number-counter-ghost-desc-font-color;}}.desc-wrapper{p{font-size: @number-counter-ghost-desc-font-size;@media only screen and (max-width: 640px){font-size: @number-counter-ghost-desc-mobile-font-size;}}}.conter-number{font-size: @number-counter-ghost-numbers-font-size;color: @number-counter-ghost-numbers-font-color;font-weight: @number-counter-ghost-numbers-font-weight;@media only screen and (max-width: 640px){font-size: @number-counter-ghost-numbers-mobile-font-size;}}}}
+
+
+// Ghost number-counter - end //

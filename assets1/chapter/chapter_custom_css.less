@@ -1,0 +1,37 @@
+/* GHOST SLIDER chapter SET UP start */
+
+//pagination
+@ghost-chapter-pagination-bullet-size: 10px;
+@ghost-chapter-pagination-bullet-margin: 0 4px; // First value (0) - vertical margin. Second value (4px) - horizontal margin.
+@ghost-chapter-pagination-bullet-background: #fff;
+
+
+//next/prev
+@ghost-chapter-next-prev-color: #fff;
+
+//subheading settings
+@ghost-chapter-sh-color: #fff; //subheading
+@ghost-chapter-sh-size: 14px;
+@ghost-chapter-sh-spacing: 2px;
+@ghost-chapter-sh-weight: 500;
+
+//line settings (avaailable in left alignment only)
+//subheading line
+@ghost-chapter-sh-line-color: #fff; 
+
+
+//heading settings
+@ghost-chapter-h-size: 30px; //heading
+@ghost-chapter-h-color: #fff;
+@ghost-chapter-h-weight: 500;
+
+//arrow color
+@ghost-chapter-arrow-down-color: #fff;
+
+
+//height setting
+@ghost-chapter-slider-min-height-desktop: 95; // set 0 for auto.
+@ghost-chapter-slider-min-height-mobile: 100; //set 0 for auto.
+
+
+html{body{.sqs-gallery-container, .swiper-container-vertical{.swiper-pagination.swiper-pagination-bullets{.swiper-pagination-bullet{width: @ghost-chapter-pagination-bullet-size;height: @ghost-chapter-pagination-bullet-size;margin: @ghost-chapter-pagination-bullet-margin;background: transparent;border: 1px solid @ghost-chapter-pagination-bullet-background;opacity: 1;}.swiper-pagination-bullet-active{background: @ghost-chapter-pagination-bullet-background;}}}}body{@media screen and (min-width: 641px){.summary-item-list-container .slider-control .swiper-button-next:after{color: @ghost-chapter-next-prev-color;}}.summary-item-list-container .ghost-slideshow-7-1 .summary-item{min-height:  ~"calc(@{ghost-chapter-slider-min-height-desktop}*1vh)";@media only screen and (max-width: 640px){min-height:  ~"calc(@{ghost-chapter-slider-min-height-mobile}*1vh)";}}}body{.ghost-slideshow-7-1{.subheading{font-size: @ghost-chapter-sh-size;letter-spacing: @ghost-chapter-sh-spacing;font-weight: @ghost-chapter-sh-weight;color: @ghost-chapter-sh-color;&:after{background: @ghost-chapter-sh-line-color;}}.summary-title .heading{font-size: @ghost-chapter-h-size;color: @ghost-chapter-h-color;font-weight: @ghost-chapter-h-weight;}.summary-excerpt{p, h3,h2,h1{color: @ghost-chapter-h-color;}}.arrow-down{path, polygon{fill: @ghost-chapter-arrow-down-color;}}}}}

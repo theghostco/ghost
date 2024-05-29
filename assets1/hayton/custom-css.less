@@ -1,0 +1,27 @@
+//general
+@hayton-ghost-card-bg-color: #000;
+@hayton-ghost-item-spacings: 50px;
+
+//title
+@hayton-ghost-titles-font-size: 62px;
+@hayton-ghost-titles-font-color: #D0D9CE;
+@hayton-ghost-title-width: 66.6667%; //recommend 66.6667%; 
+
+//subtitle
+@hayton-ghost-desc-size: 25px; 
+@hayton-ghost-desc-color: #D0D9CE;
+@hayton-ghost-sub-title-width: 33.3333%; //recommend 33.333%;
+
+/* Please note @hayton-ghost-sub-title-width + @hayton-ghost-title-width should be equal 100% */
+
+//hover animations
+@hayton-ghost-hover-image-opacity: .4;
+@hayton-ghost-hover-image-scale: 1.1;
+@hayton-ghost-hover-title-animation: 30px;
+
+//mobile
+@hayton-ghost-titles-font-size-mobile: 32px;
+@hayton-ghost-desc-font-size-mobile: 17px;
+
+
+body{.section-with-hayton-slider{.section-background{background-color: @hayton-ghost-card-bg-color !important;}}.hayton-plugin.summary-block-wrapper{.summary-item-list{.summary-item{border-bottom: 1px solid @hayton-ghost-titles-font-color;padding-top: @hayton-ghost-item-spacings;padding-bottom: @hayton-ghost-item-spacings;}}.summary-content{.summary-title{width: @hayton-ghost-title-width;}.summary-excerpt{width: @hayton-ghost-sub-title-width;}}.summary-item{.summary-thumbnail-outer-container{.summary-thumbnail-container{.summary-thumbnail.img-wrapper{img{transform: scale(@hayton-ghost-hover-image-scale); -webkit-transform: scale(@hayton-ghost-hover-image-scale);}}}}&:hover{.summary-title .summary-title-link{transform: translateX(@hayton-ghost-hover-title-animation);-webkit-transform: translateX(@hayton-ghost-hover-title-animation);}.summary-thumbnail.img-wrapper img{opacity: @hayton-ghost-hover-image-opacity !important;}}}.summary-title, .summary-title-link{font-size: @hayton-ghost-titles-font-size;color: @hayton-ghost-titles-font-color;@media only screen and (max-width: 640px){font-size: @hayton-ghost-titles-font-size-mobile;}}.summary-excerpt{p{color: @hayton-ghost-desc-color;font-size: @hayton-ghost-desc-size;@media only screen and (max-width: 800px){font-size: @hayton-ghost-desc-font-size-mobile;}}}}}

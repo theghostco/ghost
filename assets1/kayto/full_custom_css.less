@@ -1,0 +1,280 @@
+// Ghost kayto  Slider Code - start //
+
+@kayto-ghost-max-width: 1200px;
+@kayto-ghost-image-height: 130%;
+
+
+//title (inherit h3 font style)
+@kayto-ghost-title-font-size: 2em;
+@kayto-ghost-title-font-color: #000;
+
+//description (inherit p font style)
+@kayto-ghost-desc-font-size: 1.2em;
+@kayto-ghost-desc-font-color: #000;
+
+
+//author position, tag (inherit body font style)
+@kayto-ghost-position-size: 1em;
+@kayto-ghost-position-color: #000;
+
+
+
+//mobile style
+@kayto-ghost-title-mobile-font-size: 1.2em;
+@kayto-ghost-desc-mobile-font-size: 1em;
+
+
+
+
+
+@keyframes hoverAnimation {
+  0% {
+    transform: perspective(1600px) rotateX(0) rotateY(0) translateZ(100px);
+  }
+  50% {
+    transform: perspective(1600px) rotateX(-5deg) rotateY(-5deg) translateZ(50px);
+  }
+  100% {
+    transform: perspective(1600px) rotateX(0) rotateY(0) translateZ(0);
+  }
+}
+@keyframes hoverAnimation{
+  0%{
+    transform:perspective(1600px) rotateX(0) rotateY(0) translateZ(0);
+  }
+  50%{transform:perspective(1600px) rotateX(5deg) rotateY(5deg) translateZ(50px)
+  }
+  100%{
+    transform:perspective(1600px) rotateX(0) rotateY(0) translateZ(100px);
+  }
+}
+@keyframes hoverAnimationReverse{
+  0%{
+    transform:perspective(1600px) rotateX(0) rotateY(0) translateZ(100px)}50%{
+      transform:perspective(1600px) rotateX(-5deg) rotateY(-5deg) translateZ(50px)
+  }
+  100%{
+    transform:perspective(1600px) rotateX(0) rotateY(0) translateZ(0)}
+}
+.section-with-kayto-slider{
+  .content-wrapper{
+    box-sizing: border-box !important;
+  }
+}
+
+.sqs-gallery-design-carousel{
+  opacity: 0;
+  transition: opacity .3s ease;
+  &.loaded-carousel{
+    opacity: 1 !important;
+  }
+}
+.kayto-plugin{
+  max-width: @kayto-ghost-max-width;
+  margin: 0 auto;
+  position: relative;
+  opacity: 1 !important;
+  transform: none !important;
+  text-align: center;
+  &[data-per-row="1"]{
+    .image-slide{
+      width: ~"calc(100% - 40px)";
+      margin: 70px 20px 100px;
+    }
+  }
+  &[data-per-row="2"]{
+    .image-slide{
+      width: ~"calc(50% - 40px)";
+    }
+  }
+  &[data-per-row="3"]{
+    .image-slide{
+      width: ~"calc(33.333% - 40px)";
+    }
+  }
+  &[data-per-row="4"]{
+    .image-slide{
+      width: ~"calc(25% - 40px)";
+    }
+  }
+  &[data-per-row="5"]{
+    .image-slide{
+      width: ~"calc(20% - 40px)";
+    }
+  }
+  .summary-item-list-container.sqs-gallery-container{
+    display: none;
+  }
+  .summary-block-header{
+    display: none;
+  }
+  .summary-item-list{
+    margin: 0px !important;
+    transform: none !important;
+  }
+  .summary-item{
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    white-space: normal;
+    font-size: inherit;
+  }
+
+  .kayto-wrapper{
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    .kayto-inner-wrapper{
+      width: 100%;
+      margin: 0 auto;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      flex-wrap: wrap;
+      .image-slide{
+        visibility: visible !important;
+        margin: 0px 20px 70px;
+        position: relative;
+        padding-top: 0px !important;
+        //  width: ~"calc(33.333% - 40px)";
+        @media only screen and (max-width: 640px){
+          width: ~"calc(100% - 40px)" !important;
+          margin-bottom: 40px;
+        }
+      }
+    }
+    .left-part{
+      width: 100%;
+      margin-right: 0%;
+    }
+    .right-part{
+      width: 100%;
+      transition: transform .6s ease;
+      transform: transalteY(0);
+    }
+  }
+  .desc-slide, .author-info{
+    position: relative;
+    z-index: 1000;
+  }
+  .image-slide-wrapper{
+    margin: 0 auto;
+  }
+  .image-slide-inner{
+    position: relative;
+    overflow: hidden;
+    display: block;
+    padding-bottom: @kayto-ghost-image-height;
+    z-index: 1000;
+    @media only screen and (max-width: 1000px){
+    }
+    img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-positon: center;
+    }
+  }
+
+  h1,h2,h3,p{
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  h3{
+    font-size: @kayto-ghost-title-font-size;
+    color: @kayto-ghost-title-font-color;
+    margin: 0px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    @media only screen and (max-width: 640px){
+      //margin-bottom: 10px;
+      font-size: @kayto-ghost-title-mobile-font-size;
+      margin-top: 10px;
+    }
+  }
+  p{
+    font-size: @kayto-ghost-desc-font-size;
+    line-height: 1.2;
+    color: @kayto-ghost-desc-font-color;
+    margin: 0px;
+    margin-bottom: 0;
+    a{
+      border-bottom: 1px solid;
+      color: @kayto-ghost-desc-font-color;
+    }
+  }
+  .desc-wrapper{
+    p{
+      opacity: 1 !important;
+      margin: 0px !important;
+      @media only screen and (max-width: 640px){
+        font-size: @kayto-ghost-desc-mobile-font-size;
+      }
+    }
+
+  }
+
+  .author-info{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    .info{
+      text-align: center;
+      width: 100%;
+      // margin-top: 20px;
+      //margin-bottom: 20px;
+    }
+    a{
+      pointer-events: none;
+      border: none;
+    }
+    .image-slide-inner{
+      //margin-right: 20px;
+    }
+  
+ 
+  }
+}
+
+html.no-touch{
+  .kayto-inner-wrapper{
+    &:hover{
+      .kayto-slide{
+        opacity: .3;
+      }
+    }
+  }
+  .kayto-slide{
+    transition: transform 1.5s ease, opacity .5s ease;
+    &.loaded{
+      transform: translateY(0);
+    }
+    a{
+      animation: hoverAnimationReverse .625s ease-out forwards running;
+    }
+    &:hover{
+      opacity: 1 !important;
+      .right-part{
+        transform: translateY(5px);
+      }
+      a{
+        animation: hoverAnimation .625s ease-out forwards running; 
+      }
+    }
+  }
+}
+// Ghost kayto Product Slider Code - end //

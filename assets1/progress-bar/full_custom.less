@@ -1,0 +1,57 @@
+:root {--timing: cubic-bezier(0.705, 0.785, 0.555, 1.3);}
+
+@ghost-scroll-bar-height: 7px;
+@ghost-scroll-bar-color: #000;
+@ghost-scroll-bar-position: top; //available options top. bottom
+
+@ghost-scroll-bar-show-text: true; //available options true and false. Set "false" to hide the text.
+@ghost-scroll-bar-text-color: #000;
+@ghost-scroll-bar-text-size: 15px;
+@ghost-scroll-bar-text-offset: 5px;
+@ghost-scroll-bar-units: "%";
+
+.hide-text-for-bar() when (@ghost-scroll-bar-show-text = false){
+  span{
+    display: none !important;
+  }
+}
+.bottom-bar() when (@ghost-scroll-bar-position = bottom){
+ top: auto;
+  bottom: 0;
+  span{
+    top: -(@ghost-scroll-bar-text-size+@ghost-scroll-bar-height + @ghost-scroll-bar-text-offset);
+    margin-top: 0px !important;
+  }
+}
+
+
+.ghost-scrollBar{
+  position: fixed;
+  top: 0;
+  height: @ghost-scroll-bar-height;
+  width: 0%;
+  background: @ghost-scroll-bar-color;
+  transition: width 200ms var(--timing);
+  text-align: right;
+  color: #fff;
+  z-index: 10000;
+  .bottom-bar();
+  .hide-text-for-bar();
+  span {
+    position: absolute;
+    font-size: @ghost-scroll-bar-text-size;
+    right: 0;
+    font-weight: 500;
+    display: block;
+    text-align: center;
+    margin-top: @ghost-scroll-bar-text-offset;
+    color: @ghost-scroll-bar-text-color;
+    &::after {
+      content: @ghost-scroll-bar-units;
+      font-size: @ghost-scroll-bar-text-size;
+      bottom: 0px;
+      opacity: 1;
+      color: @ghost-scroll-bar-text-color;
+    }
+  }
+}

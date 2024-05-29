@@ -1,0 +1,8 @@
+<script>
+  let ghostSnapOptions = {
+    turnOffonSmallerScreens: true,
+    smallerScreensFrom: 800 
+  }
+
+  function checkSnap(){if(ghostSnapOptions.turnOffonSmallerScreens){if (window.innerWidth < ghostSnapOptions.smallerScreensFrom) {document.querySelector('html').classList.add('snap-off');}else{document.querySelector('html').classList.remove('snap-off');}}}checkSnap();window.addEventListener('resize', function(event) {checkSnap();}, true);
+</script>

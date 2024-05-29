@@ -1,0 +1,15 @@
+a[href*="80%5Bimg%5D"]{
+  display: none;
+}
+.text-img{
+  vertical-align: middle;
+  position: relative;
+  object-fit: cover;
+  object-position: center;
+}
+.sqs-edit-mode-active a[href^="#img#"]{
+  display: inline;
+  opacity: 0.6;
+  position: relative;
+  border: 1px solid;
+}

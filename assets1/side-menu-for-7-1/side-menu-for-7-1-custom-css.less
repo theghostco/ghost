@@ -1,0 +1,19 @@
+
+@ghost-side-nav-width: 50%;
+@ghost-side-nav-width-mobile: 76%;
+@ghost-side-nav-overlay-bg: rgba(0,0,0, .5);
+
+
+#header{
+  .header-menu{
+    width: @ghost-side-nav-width;
+  }
+  .header-menu-close-trigger{
+    background: @ghost-side-nav-overlay-bg;
+  }
+}
+@media only screen and (max-width: 1000px){
+  #header .header-menu{
+    width: @ghost-side-nav-width-mobile;
+  }
+}

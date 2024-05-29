@@ -1,0 +1,311 @@
+/* ⚠️ ---- GHOST PLUGINS - SUMMARY BLOCK RESTYLE CODE START - COPYRIGHT 2020 ---- ⚠️ */
+
+//editable
+/* ORIGINAL 
+@gallery-items-gaps: 10px;
+
+@gallery-items-bg-color: rgb(245,245,245);
+@gallery-item-percent-width: 25%; // 100% = 1 column; 50% = 2 columns; 33.333% = 3 columns; 25% = 4 columns; 20% = 5 colums;
+@gallery-items-height: 133.3333%;
+@gallery-items-text-offset: 30px;
+@gallery-items-border-radius: 8px;
+
+@gallery-items-img-width: 33.333%;
+
+@gallery-items-title-font-size: 27px;
+@gallery-items-title-font-color: #000;
+@gallery-items-title-font-family: inherit;
+//use one which you've alredy used on the website or inhrit for default.
+
+
+@gallery-items-text-font-size: 16px;
+@gallery-items-text-font-color: #333;
+
+
+@gallery-items-read-dur-bg-color: #fff;
+@gallery-items-read-dur-font-color: #000;
+*/
+@gallery-items-gaps: 10px;
+@gallery-items-bg-color: #121212;
+
+@gallery-item-percent-width: 25%;
+@gallery-items-height: 135%;
+@gallery-items-text-offset: 20px;
+@gallery-items-border-radius: 0px;
+
+@gallery-items-img-width: 100%;
+
+@gallery-items-title-font-size: 27px;
+@gallery-items-title-font-color: #fff;
+@gallery-items-title-font-family: inherit;
+
+@gallery-items-text-font-size: 15.5px;
+@gallery-items-text-font-color: #fff;
+
+@gallery-items-read-dur-bg-color: #000;
+@gallery-items-read-dur-font-color: #fff;
+
+
+
+/* 🚫 ---- DON'T EDIT BELOW THIS LINE. SUPPORT NOT PROVIDIED IF EDITING BELOW THIS LINE ---- 🚫 */
+
+//mixins
+
+.flex-wrap{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.transition(@dur){
+  -o-transition: all @dur ease;
+  -moz-transition: all @dur ease;
+  transition: all @dur ease;
+  -webkit-transition: all @dur ease;
+}
+.align-items-center{
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+}
+.justify-content-space-between{
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.align-items-center{
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+}
+
+@query-media-1: 1441px;
+@query-media-2: 1080px;
+@query-media-mobile: 640;
+
+.sqs-block-summary-v2{
+.sqs-gallery-design-autogrid{
+    .summary-item-list{
+
+      .summary-item .summary-metadata-container{
+        /* USE THIS LINE ONLY IF @gallery-items-bg-color is default (rgb(245,245,245);)*/
+        //box-shadow: 0px -12px 16px 12px rgba(245,245,245, .6); 
+      }
+      .flex-wrap;
+      margin: 0px -@gallery-items-gaps !important;
+      .summary-item{
+        width: ~"calc(@{gallery-item-percent-width} - @{gallery-items-gaps}*2)" !important;
+
+        @media only screen and (max-width: @query-media-2){
+          width: ~"calc(50% - @{gallery-items-gaps}*2)" !important;
+        } 
+        @media only screen and (max-width: 640px){
+          width: ~"calc(100% - @{gallery-items-gaps}*2)" !important;
+        }
+        margin: 0px @gallery-items-gaps @gallery-items-gaps*4 !important;
+        float: none !important;
+        position: relative;
+        background-color: @gallery-items-bg-color;
+        transition: all .3s cubic-bezier(.38,.41,.27,1);
+        -webkit-transition: all .3s cubic-bezier(.38,.41,.27,1);
+        z-index: 1;
+        border-radius: @gallery-items-border-radius;
+        will-change: transform;
+        overflow: visible;
+        .slide-custom-link{
+          display: block;
+          position: relative;
+          padding-bottom: @gallery-items-height;
+          display: block;
+          z-index: 100;
+        }
+        .summary-thumbnail-outer-container{
+          opacity: 1;
+          transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+          -webkit-transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: @gallery-items-img-width;
+          border-top-right-radius: @gallery-items-border-radius;
+          border-top-left-radius: @gallery-items-border-radius;
+          overflow: hidden;
+          .summary-thumbnail-container.sqs-gallery-image-container{
+            position: static;
+            margin: 0px;
+            height: 100%;
+            .summary-thumbnail.img-wrapper{
+              padding-bottom: 0px !important;
+              overflow: visible !important;
+              height: 100%;
+              img{
+                opacity: 1;
+                height: 100% !important;
+                width: 100% !important;
+                left: 0px !important;
+                object-fit: cover;
+                top: 0px !important;
+                text-indent:-9999px;
+              }
+
+            }
+          }
+        }
+        .summary-content.sqs-gallery-meta-container{
+          position: absolute;
+          top: @gallery-items-img-width;
+          height: 100% - @gallery-items-img-width;
+          transition: height .3s cubic-bezier(.38,.41,.27,1),top .3s cubic-bezier(.38,.41,.27,1);
+          -webkit-transition: height .3s cubic-bezier(.38,.41,.27,1),top .3s cubic-bezier(.38,.41,.27,1);
+          background-color: @gallery-items-bg-color;
+          border-radius: @gallery-items-border-radius;
+          overflow: hidden;
+            width: 100%;
+        }
+
+        .summary-title{
+          padding: @gallery-items-text-offset;
+          @media only screen and (max-width: @query-media-1){
+            padding: 20px;
+          }
+          padding-bottom: 0px !important;
+          font-family: @gallery-items-title-font-family;
+          font-size: @gallery-items-title-font-size;
+          color: @gallery-items-title-font-color;
+          line-height: 1.2;
+        }
+        .summary-excerpt{
+          padding: @gallery-items-text-offset;
+          padding-top: 5px;
+          @media only screen and (max-width: @query-media-1){
+            padding: 20px;
+            padding-top: 0px;
+          }
+          opacity: 0;
+          transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+          transition-delay: .15s;
+          margin-bottom: 0px;
+
+          p{
+            color: @gallery-items-text-font-color;
+            font-size: @gallery-items-text-font-size;
+          }
+          a[href="#read-duration"]{
+            display: none;
+          }
+        }
+        .summary-metadata-container{
+          position: absolute;
+          bottom: 0;
+          z-index: 1;
+          background-color: @gallery-items-bg-color;
+          width: 100%;
+          .align-items-center;
+          .flex-wrap;
+          .justify-content-space-between;
+          padding: @gallery-items-text-offset;
+          @media only screen and (max-width: @query-media-1){
+            padding: 20px;
+          }
+
+
+          .summary-metadata{
+            max-width: 50%;
+            .summary-metadata-item.summary-metadata-item--author{
+              opacity: 1;          
+            }
+          }
+          a{
+            font-size: @gallery-items-text-font-size;
+            color: @gallery-items-text-font-color;
+            font-weight: 400;
+          }
+        }
+        .read-duration{
+          display: block;
+          transition: all .3s cubic-bezier(.38,.41,.27,1);
+          -webkit-transition: all .3s cubic-bezier(.38,.41,.27,1);
+          background-color: @gallery-items-read-dur-bg-color;
+          color: @gallery-items-read-dur-font-color;
+          border-radius: 25px;
+          font-size: @gallery-items-text-font-size;
+          padding: 10px 16px;
+          @media only screen and (max-width: @query-media-1){
+            padding: 10px 17px;
+            letter-spacing: 0px;
+          }
+          line-height: 1;
+          min-width: 100px;
+          max-width: 50%;
+          text-align: center;
+
+        }
+
+        &:after{
+          position: absolute;
+          content: "";
+          width: 85%;
+          height: 100%;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          -webkit-transform: translateX(-50%);
+          background-color: rgba(0, 0, 0, 0);
+          box-shadow: 0 2rem 5rem 0 rgba(0,0,0,.3);
+          opacity: 0;
+          transition: opacity .3s cubic-bezier(.38,.41,.27,1);
+          z-index: -1;
+
+        }
+        &:hover{
+          transform: scale(1.02);
+          -webkit-transform: scale(1.02);
+
+          &:after{
+            opacity: 1;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+html:not(.touch){
+  .sqs-block-summary-v2{
+   .sqs-gallery-design-autogrid{
+      .summary-item-list{
+        .summary-item{
+          &:hover{
+            .summary-thumbnail-outer-container{
+              opacity: 0;
+            }
+            .summary-content.sqs-gallery-meta-container{
+              height: 100%;
+              top: 0;
+            }
+
+            .summary-excerpt{
+              opacity: 1;
+            }
+            .read-duration{
+              color: @gallery-items-read-dur-bg-color;
+              background-color: @gallery-items-read-dur-font-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/* ⚠️ ---- GHOST PLUGINS - SUMMARY BLOCK RESTYLE CODE END - COPYRIGHT 2020 ---- ⚠️ */

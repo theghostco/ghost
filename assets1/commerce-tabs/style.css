@@ -1,0 +1,68 @@
+/* PRODUCT ITEM */
+body.collection-type-products.view-item .tab {
+  display: none;
+}
+body.collection-type-products.view-item .tab.active-body {
+  display: block;
+}
+body.collection-type-products.view-item .accordion-item__description {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  min-width: 100% !important;
+  max-width: none !important;
+}
+body.collection-type-products.view-item .tab-container {
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid #b2b2b2;
+}
+body.collection-type-products.view-item .tab-container .tab-buttons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -16px;
+}
+body.collection-type-products.view-item .tab-container .tab-buttons .tab-button {
+  background-color: transparent;
+  margin-right: 16px;
+  font-size: 14px;
+  color: #353740;
+  padding: 0px;
+  border: none;
+  border-bottom: 1px solid #b2b2b2;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+body.collection-type-products.view-item .tab-container .tab-buttons .tab-button:not(.active) {
+  opacity: 0.4;
+}
+body.collection-type-products.view-item .tab-container .tab-buttons .tab-button:hover {
+  opacity: 1;
+}
+body.collection-type-products.view-item .tab-container .tab-content {
+  position: relative;
+  padding-top: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+body.collection-type-products.view-item .tab-container .tab-content .accordion-item__description p {
+  color: #353740;
+}
+body.collection-type-products.view-item .tab-container .tab-content .accordion-item__description p:last-child {
+  margin-bottom: 0px;
+}
+body.collection-type-products.view-item .tab-container .tab-content p:first-of-type {
+  margin-top: 0;
+}
+.accordion-block.hide{display: none;}
+
+

@@ -1,0 +1,157 @@
+<div class="preloaded"><div class="logo-animation"><h2 class='header-title-text'></h2><div class="loading_line-main-wrapper"><div class="loading_line_wrapper"><div class="loading_line"><div class="loading_line_inner loading_line_inner--1"></div><div class="loading_line_inner loading_line_inner--2"></div></div>
+</div></div></div></div> 
+
+
+<script>
+  var ghostLoaderOptions = {
+    loaderType: 'image', //available options: "title" or "image"
+    loaderTitle: 'GhostPlugin',
+    loaderImage: '//images.squarespace-cdn.com/content/v1/5ba5e044b10f25cb908c506f/a396768f-90ad-4c66-93bc-2127b3e764c8/Ghost_Single_Dark.png?format=1500w',
+    loaderAdditionalDelay: 1000,
+    loaderFadeTime: 500,
+    showLoaderOnlyOnce: false,
+    removeLoadingLine: false
+
+  }
+</script>
+<script src="https://www.ghostplugins.dev/assets/loader_line/index.js"></script>
+
+
+//loader
+@ghost-load-title-color: #fff;
+@ghost-load-branding-size: 38px;
+
+@ghost-load-loader-color: #000;
+@ghost-load-loader-color2: grey;
+@ghost-load-loader-width: 120px;
+@ghost-load-loader-height: 10px;
+@ghost-load-loader-border-radius: 5px;
+
+@ghost-load-background-color: rgba(255,255,255, 0); // use hex code for solid colors or rgba(255,255,255, 0) for blur.
+@ghost-load-background-blur: 30px; //blur set-up
+
+
+
+.loaded .preloaded{
+  display: none;
+}
+.preloaded {
+  opacity: 1;
+  background-color: @ghost-load-background-color;
+  -webkit-backdrop-filter: blur(@ghost-load-background-blur);
+  backdrop-filter: blur(@ghost-load-background-blur);
+  position:fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  &.hide-animation{
+    opacity: 0;
+  }
+  .logo-animation{
+
+    h2{
+      color: @ghost-load-title-color;
+      font-size: @ghost-load-branding-size;
+      display: flex;
+          justify-content: center;
+      img{
+        max-height: @ghost-load-branding-size;
+        display: block;
+      }
+    }
+
+  }
+}
+
+.loading_line-main-wrapper {
+  width: 100%;
+  margin-top: 10px;
+}
+.loading_line_wrapper {
+  height: @ghost-load-loader-height;
+  background: @ghost-load-loader-color;
+  width: @ghost-load-loader-width;
+  border-radius: @ghost-load-loader-border-radius;
+  overflow: hidden;
+}
+.loading_line {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  bottom: auto;
+  right: auto;
+  width: 100%;
+  height: 100%;
+  transform-origin: 100% 0%;
+  animation: kf_loading_line 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s infinite;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.loading_line .loading_line_inner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: auto;
+  right: auto;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0% 0%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.loading_line_inner--1 {
+  opacity: 1;
+  background-color: @ghost-load-loader-color;
+  animation: kf_loading_line_inner--1 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s infinite;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.loading_line_inner--2 {
+  opacity: 1;
+  background: @ghost-load-loader-color2;
+  animation: kf_loading_line_inner--2 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s infinite;
+  border-radius: 5px;
+  overflow: hidden;
+}
+@keyframes kf_loading_line {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+@keyframes kf_loading_line_inner--1 {
+  0% {
+    transform: scaleX(0);
+  }
+  25% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes kf_loading_line_inner--2 {
+  0% {
+    transform: scaleX(0);
+  }
+  25% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+

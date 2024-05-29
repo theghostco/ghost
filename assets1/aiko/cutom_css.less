@@ -1,0 +1,48 @@
+
+// Ghost aiko Product Slider Code - start //
+
+@aiko-ghost-card-background: #fff;
+@aiko-ghost-card-border-radius: 0px;
+@aiko-ghost-card-shadow-color: #000; // can be "transparent"
+
+
+//title, person name (inherit h3 font style)
+@aiko-ghost-title-font-size: 2em;
+@aiko-ghost-title-font-color: #000;
+
+//description, testimonials body (inherit p font style)
+@aiko-ghost-desc-font-size: 2em;
+@aiko-ghost-desc-font-color: #4e4e4e;
+
+
+//author position, tag (inherit body font style)
+@aiko-ghost-position-size: 1.3em;
+@aiko-ghost-position-color: #4e4e4e;
+
+//controls (arrows)
+@aiko-ghost-arrow-size: 2.5em;
+@aiko-ghost-arrow-bg-color: #000;
+@aiko-ghost-arrow-color: #fff;
+
+//quote symbol color
+@aiko-ghost-quote-symbol-size: 60px;
+@aiko-ghost-quote-symbol-color: #e9e9e9;
+
+
+//controls (bullets)
+@aiko-ghost-bullet-size: 12px;
+@aiko-ghost-bullet-color: #000;
+
+//mobile style
+@aiko-ghost-desc-mobile-font-size: 1em;
+@aiko-ghost-title-mobile-font-size: .9em;
+@aiko-ghost-position-mobile-font-size: .8em;
+
+
+
+body{
+.aiko-plugin{.image-slide{background: @aiko-ghost-card-background;border-radius: @aiko-ghost-card-border-radius;&:after{background-color: @aiko-ghost-card-background;border-radius: @aiko-ghost-card-border-radius;}&:before{box-shadow: 0px 1px 5px 5px @aiko-ghost-card-shadow-color;border-radius: @aiko-ghost-card-border-radius;}}h3{font-size: @aiko-ghost-title-font-size;color: @aiko-ghost-title-font-color;@media only screen and (max-width: 640px){font-size: @aiko-ghost-title-mobile-font-size;}}p{font-size: @aiko-ghost-desc-font-size;color: @aiko-ghost-desc-font-color;a{color: @aiko-ghost-desc-font-color;}}svg{width: @aiko-ghost-quote-symbol-size;height: @aiko-ghost-quote-symbol-size;stroke: @aiko-ghost-quote-symbol-color;path{fill: @aiko-ghost-quote-symbol-color;}}.desc-slide{.wrap-content{width:  ~"calc(100% - @{aiko-ghost-quote-symbol-size}*2)";@media only screen and (max-width: 1000px){width: 100%;}}.svg-quote{width: @aiko-ghost-quote-symbol-size;}.desc-wrapper{p{ @media only screen and (max-width: 640px){font-size: @aiko-ghost-desc-mobile-font-size;}}}.author-info{p{line-height: 1.2;font-size: @aiko-ghost-position-size;color: @aiko-ghost-position-color;@media only screen and (max-width: 640px){font-size: @aiko-ghost-position-mobile-font-size;}}.author-position p, p a{color: @aiko-ghost-position-color;}}}.aiko-pagination.swiper-pagination{.swiper-pagination-bullet{width: @aiko-ghost-bullet-size;height: @aiko-ghost-bullet-size;margin: @aiko-ghost-bullet-size/2;background-color: @aiko-ghost-bullet-color;}}.aiko-control-wrapper{height: @aiko-ghost-arrow-size;.aiko-control{.swiper-button-next, .swiper-button-prev{color: @aiko-ghost-arrow-color;left: ~"calc(-@{aiko-ghost-arrow-size}/2 - 5px)";right: auto;background-color: @aiko-ghost-arrow-bg-color;&:after{font-size: @aiko-ghost-arrow-size;}}.swiper-button-next{  left: auto;right: ~"calc(-@{aiko-ghost-arrow-size}/2 - 5px)";}}}
+}
+// Ghost aiko Product Slider Code - end //
+
+

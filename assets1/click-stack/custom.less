@@ -1,0 +1,10 @@
+@cs-stack-ghost-word: '.Click';
+@cs-stack-ghost-word-color: #000;
+@cs-stack-ghost-word-size: 18px;
+@cs-stack-ghost-word-size-mobile: 16px;
+
+
+@cs-stack-ghost-image-size-mobile: 150px;
+@cs-stack-ghost-image-size: 300px;
+
+body{section[data-pic-animation] .animation-inner-box:before {content: @cs-stack-ghost-word;font-size: @cs-stack-ghost-word-size;@media only screen and (max-width: 640px){font-size: @cs-stack-ghost-word-size-mobile;}}section[data-pic-animation] .pic-item {width: @cs-stack-ghost-image-size;height: @cs-stack-ghost-image-size;@media only screen and (max-width: 640px){width: @cs-stack-ghost-image-size-mobile;height: @cs-stack-ghost-image-size-mobile;}}}

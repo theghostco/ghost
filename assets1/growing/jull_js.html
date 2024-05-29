@@ -1,0 +1,37 @@
+<script>
+  /* scroll plugin */
+  let isSection = document.querySelectorAll('.scroll-section');
+  //  setTimeout(function(){
+  if (typeof(isSection) != 'undefined' && isSection != null){
+    document.querySelectorAll('.scroll-section').forEach(function(thisElement){
+      thisElement.closest('.page-section').setAttribute('data-section-name', 'scroll-section');
+      thisElement.closest('.code-block').setAttribute('style', 'display: none;')
+    })
+    document.querySelectorAll('body .page-section[data-section-name="scroll-section"]').forEach(function(thisElementSecond){  
+      let elTopSelect = thisElementSecond;
+      let topElement =  elTopSelect.offsetTop - elTopSelect.offsetHeight + 300; // coords of top element
+      let bottomElement =  topElement + elTopSelect.offsetHeight;// coords bottom
+      let offset = 0;
+      let getBeginningRadius = getComputedStyle(elTopSelect).borderRadius
+      function scrollFunction(){
+        let $window = this;     
+        offset =  window.pageYOffset;
+        if(offset >= topElement ){
+          progress();        
+        }  
+      }
+      scrollFunction();
+      window.addEventListener('scroll', function(e) {
+        scrollFunction();
+      });
+      function progress(){
+        var o = ((offset - topElement ) / elTopSelect.offsetHeight);    
+        elTopSelect.style.width = 'calc(80% + 20% * '+  o +')';
+        elTopSelect.style.borderRadius = 'calc('+getBeginningRadius+' - '+getBeginningRadius+' * '+  o +')';
+      }   
+    })
+  }
+  //}, 200)
+  /* end scroll plugin */
+
+</script>

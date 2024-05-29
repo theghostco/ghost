@@ -1,0 +1,275 @@
+//
+@aira-ghost-card-bg-color: #fff;
+@aira-ghost-image-max-width: 60%;
+@aira-ghost-image-max-height: 80vh;
+
+//image on hover position. Set 50% for both to center the images. Negative value is allowed
+@aira-ghost-image-position-vertical: 50%;
+@aira-ghost-image-position-horizontal: 50%;
+
+//title
+@aira-ghost-titles-font-size: 10vw; //recomend using in vw.
+@aira-ghost-titles-font-color: #000;
+
+
+//subtitle
+@aira-ghost-desc-size: 2vw; //recomend using in vw.
+@aira-ghost-desc-color: #3c3c3c;
+
+
+//mobile
+@aira-ghost-titles-font-size-mobile: 32px;//recomend using in px.
+@aira-ghost-desc-font-size-mobile: 17px; //recomend using in px.
+
+
+//image overlaps closest sections.
+@aira-ghost-sections-overlaps: true; //true or false
+
+
+.image-overlaps-closest-sections() when (@aira-ghost-sections-overlaps = false){
+  .page-section{
+    z-index: 2;
+  }
+  footer{
+    z-index: 100;
+    position: relative;
+  }
+}
+
+
+.sqs-gallery-design-carousel.summary-block-wrapper{
+  opacity: 0;
+  transition: opacity .3s ease;
+  -webkit-transition: opacity .3s ease;
+}
+
+.loaded-carousel{
+  .summary-item-list{
+    opacity: 1 !important;
+  }
+}
+.section-with-aira-slider{
+  .section-background{
+    background-color: @aira-ghost-card-bg-color !important;
+  }
+  @media only screen and (max-width: 640px){
+    .sqs-block.summary-v2-block.sqs-block-summary-v2{
+      padding-bottom: 10px !important;
+    }
+  }
+  .content-wrapper{
+    box-sizing: border-box !important;
+  }
+}
+.page-with-aira-plugin{
+  .image-overlaps-closest-sections();
+}
+
+
+.section-with-aira-slider{
+  position: relative;
+  z-index: 1 !important;
+  min-height: auto !important;
+  position: relative;
+  overflow: hidden;
+  .content-wrapper{
+    max-width: none;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .sqs-block{
+    //padding: 0px !important;
+  }
+  .sqs-block-html{
+    display: none;
+  }
+}
+.aira-plugin.summary-block-wrapper{
+  opacity: 1 !important;
+  margin: 0px auto !important;
+  transform: none !important;
+  .summary-block-header{
+    display: none;
+  }
+  .summary-title-link{
+    position: relative;
+    padding-right: @aira-ghost-titles-font-size;
+    @media only screen and (max-width: 640px){
+      padding-right: @aira-ghost-titles-font-size-mobile;
+    }
+    width: 100%;
+    display: block;
+    line-height: 1;
+    &:before{
+      content: '→';
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateY(-50%) rotate(0deg);
+      font-size: @aira-ghost-titles-font-size;
+      top: 50%;
+      font-style: normal !important;
+      @media only screen and (max-width: 640px){
+        font-size: @aira-ghost-titles-font-size-mobile;
+      }
+    }
+    &:hover{
+      font-style: italic;
+      &:before{
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+  }
+  .summary-item-list{
+    margin: 0px !important;
+    transform: none !important;
+    display: flex;
+    flex-wrap: wrap;
+    .summary-item{
+      width: 100% !important;
+      margin-bottom: 34px;
+      border-bottom: 1px solid @aira-ghost-titles-font-color;
+      padding: 0px 34px !important;
+      padding-bottom: 17px !important;
+      &:last-child{
+        border: none;
+      }
+      @media only screen and (max-width: 640px){
+        margin-bottom: 17px;
+        padding: 0px 17px !important;
+        padding-bottom: 8px !important;
+      }
+      .summary-excerpt{
+        margin: 0px;
+      }
+      &:last-child{
+        margin-bottom: 0px !important;
+      }
+    }
+  }
+
+  .summary-thumbnail-outer-container{
+    display: none;
+  }
+  .summary-metadata-container{
+    display: none;
+  }
+
+  .summary-title, .summary-title-link{
+    font-size: @aira-ghost-titles-font-size;
+    color: @aira-ghost-titles-font-color;
+    line-height: 1;
+    @media only screen and (max-width: 640px){
+      font-size: @aira-ghost-titles-font-size-mobile;
+    }
+  }
+  .summary-excerpt{
+    p{
+      &:empty{
+        display: none; 
+      }
+      color: @aira-ghost-desc-color;
+      font-size: @aira-ghost-desc-size;
+      @media only screen and (max-width: 640px){
+        font-size: @aira-ghost-desc-font-size-mobile;
+      }
+    }
+  }
+
+  .summary-item-list-container{
+    width: 100%;
+    @media only screen and (max-width: 800px){
+      width: 100%;
+    }
+  }
+  .aira-images-wrapper{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-@aira-ghost-image-position-horizontal, -@aira-ghost-image-position-vertical);
+    -webkit-transform: translate(-@aira-ghost-image-position-horizontal, -@aira-ghost-image-position-vertical);
+    z-index: 5;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 0px;
+    cursor: none;
+    max-width: @aira-ghost-image-max-width;
+    margin: 0 auto;
+    display: none;
+    pointer-events: none;
+    &.show-gallery{
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+    > div, > div > div, > div > div > div {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+    }
+    @media only screen and (max-width: 800px){
+        // width: 100%;
+        //margin-left: 0px;
+        //padding-bottom: @aira-ghost-image-mobile-height;
+        //margin-top: 25px;
+      }
+      .aira-slide{
+        .info-slide{
+          padding: 20px 20px;
+          h3{
+            margin-top: 0px;
+          }
+        }
+        > a{
+          display: block;
+        }     
+      }
+      .image-slide{
+        transition: all .3s ease-in;
+        -webkit-transition: all .3s ease-in;
+        display: none;
+        &.active-slide{
+          opacity: 1;
+          display: block;
+        }
+      }
+      .image-slide-inner{    
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        img{
+          display: block;
+          position: relative;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          max-height: @aira-ghost-image-max-height;
+          object-position: center;
+        }
+      }
+      img{
+        display: block;
+        width: 100%;
+      }
+    }
+  }

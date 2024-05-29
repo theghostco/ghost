@@ -1,0 +1,36 @@
+@ghost-faq-accordion-title-color: #000;
+@ghost-faq-accordion-title-size: 24px;
+
+@ghost-faq-accordion-body-color: #000;
+@ghost-faq-accordion-body-size: 16px;
+
+@ghost-faq-accordion-background-size: #fff;
+
+.ghost-section-contains-faq{
+  .faq-wrapper-item {
+    .faq-item {
+      border: 1px solid @ghost-faq-accordion-title-color;
+      background-color: @ghost-faq-accordion-background-size;
+      h3 {
+        color: @ghost-faq-accordion-title-color;
+        font-size: @ghost-faq-accordion-title-size;
+      }
+      p {
+        color: @ghost-faq-accordion-body-color;
+        font-size: @ghost-faq-accordion-body-size;
+        margin-top: @ghost-faq-accordion-body-size/2;
+      }
+      .plusminus-wrapper {
+        width: @ghost-faq-accordion-title-size/1.4;
+        height: @ghost-faq-accordion-title-size/1.4;
+        background-color: @ghost-faq-accordion-title-color;
+        padding: @ghost-faq-accordion-title-size/2;
+      }
+      .plusminus {
+        &:before , &:after {
+          background-color:@ghost-faq-accordion-background-size;
+        }
+      }
+    }
+  }
+}

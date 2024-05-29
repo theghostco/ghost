@@ -1,0 +1,19 @@
+@parallax-ghost-titles-font-size: 5rem;
+@parallax-ghost-titles-font-color: #fff;
+@parallax-ghost-titles-font-weight: 800;
+
+@parallax-ghost-desc-size: 25px;
+@parallax-ghost-desc-color: #fff;
+@parallax-ghost-desc-max-width: 570px;
+
+@parallax-ghost-overlay-rgba: rgba(0, 0, 0, .1); //rgba format. ex: rgba(0, 0, 0, .4);
+
+
+//mobile
+@parallax-ghost-titles-font-size-mobile: 50px;
+@parallax-ghost-desc-font-size-mobile: 25px;
+
+
+/* Ghost */
+body{.parallax-plugin.summary-block-wrapper{.summary-item{.summary-thumbnail-container{&:before{background-color: @parallax-ghost-overlay-rgba;}}.summary-title{margin-top: -@parallax-ghost-titles-font-size;font-size: @parallax-ghost-titles-font-size;font-weight: @parallax-ghost-titles-font-weight;color: @parallax-ghost-titles-font-color;@media only screen and (max-width: 640px){font-size: @parallax-ghost-titles-font-size-mobile;}}.summary-excerpt{max-width: @parallax-ghost-desc-max-width;*{font-size: @parallax-ghost-desc-size;color: @parallax-ghost-desc-color;@media only screen and (max-width: 640px){font-size: @parallax-ghost-desc-font-size-mobile;}}}}}}
+/* Ghost */

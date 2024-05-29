@@ -1,0 +1,57 @@
+<script src="https://www.ghostplugins.dev/assets/helpers/conf/confetti.js"></script>
+
+<script>
+    var ghostFooterConfettiOptions = {
+    colors: ['#a864fd', "#29cdff", "#78ff44", "#ff718d", "#fdff6a"], // confetti colors - up to 5 hex colors
+    spread: 150, // confetti distance after submission
+    particleCount: 200, // number of confetti - 200 or less recommended
+    loop: false, // keep confetti pop going after submission - true or false
+    loopDelay: 2000, // delay in confetti pop if loop is set to true
+    duration: 10, // duration of confetti
+    redirectDelay: 0, // in miliseconds
+    targetElement: '.sqs-block-button-element--small.sqs-button-element--tertiary' //target element. small buttons by default
+}
+</script>
+<!--<script src="https://www.ghostplugins.dev/assets/confetti/btn/index.js"></script>-->
+<script>
+ 
+  
+function triggerConfetti() {
+    const duration = ghostFooterConfettiOptions.duration; // Duration of the confetti animation in milliseconds (5 seconds)
+    const animationEnd = Date.now() + duration;
+    function createConfettiParticle() {
+        return {
+            colors: ghostFooterConfettiOptions.colors,
+            spread: ghostFooterConfettiOptions.spread,
+            particleCount: ghostFooterConfettiOptions.particleCount,
+        };
+    }
+    function animateConfetti() {
+        const now = Date.now();
+        if (now < animationEnd) {
+            requestAnimationFrame(animateConfetti);
+        }
+        const delta = animationEnd - now;
+        const pctComplete = 1 - delta / duration;
+        if (pctComplete > 0) {
+            confetti(createConfettiParticle());
+        }
+    }
+    animateConfetti();
+}
+function createConfetti(confettiContaner) {
+  	confettiContaner.style.position = 'absolute';
+    confettiContaner.style.inset = '0';
+  	confettiContaner.style.pointerEvents = "none"; 
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            triggerConfetti();
+        }
+    });
+    observer.observe(confettiContaner);
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const confettiContaner = document.querySelector('#confetti-contaner');
+    createConfetti(confettiContaner);
+})
+</script>

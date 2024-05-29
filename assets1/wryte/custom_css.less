@@ -1,0 +1,39 @@
+
+
+@wryte-ghost-form-max-width: 850px;
+@wryte-ghost-form-alignment: right; //available options = left, center, right
+
+@wryte-ghost-background-color: transparent;
+@wryte-ghost-font-size: 30px;
+@wryte-ghost-font-color: #fff;
+
+@wryte-ghost-input-width: 320px;
+@wryte-ghost-input-font-size: 20px;
+@wryte-ghost-input-color: #fff;
+@wryte-ghost-input-focus-color: #333;
+
+@wryte-ghost-post-text-color: #fff;
+@wryte-ghost-post-text-size: 27px;
+
+
+/*Mobile size*/
+@wryte-ghost-font-size-mobile: 20px;
+@wryte-ghost-input-font-size-mobile: 18px;
+@wryte-ghost-post-text-size-mobile: 20px;
+@wryte-ghost-input-width-mobile: 150px;
+
+
+.form-1-ghost-button-style{
+  font-size: 20px;
+  padding: 15px 55px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 0px;
+  font-family: inherit;
+}
+
+
+
+
+//code
+.form-alignment() when (@wryte-ghost-form-alignment = right){margin: 0 0 0 auto;}.form-alignment2() when (@wryte-ghost-form-alignment = center){margin: 0 auto;}body{.form-wrapper{&.wryte-ghost-plugin{max-width: @wryte-ghost-form-max-width;.form-alignment();.form-alignment2();.wrap-custom-form{input{background-color: @wryte-ghost-background-color;min-width: @wryte-ghost-input-width;width: @wryte-ghost-input-width;font-size: @wryte-ghost-input-font-size;color:@wryte-ghost-input-color;@media only screen and (max-width: 640px) {min-width: @wryte-ghost-input-width-mobile;width: @wryte-ghost-input-width-mobile;font-size:@wryte-ghost-input-font-size-mobile;}&:focus{background-color: @wryte-ghost-input-focus-color;}&::placeholder {color:@wryte-ghost-input-color;font-size: @wryte-ghost-input-font-size;@media only screen and (max-width: 640px) {font-size:@wryte-ghost-input-font-size-mobile;}}&:-ms-input-placeholder { color: @wryte-ghost-input-color;font-size: @wryte-ghost-input-font-size;@media only screen and (max-width: 640px) {font-size:@wryte-ghost-input-font-size-mobile;}}&::-ms-input-placeholder { color: @wryte-ghost-input-color;font-size: @wryte-ghost-input-font-size;@media only screen and (max-width: 640px) {font-size:@wryte-ghost-input-font-size-mobile;}}}label{font-size: @wryte-ghost-font-size !important;color: @wryte-ghost-font-color;@media only screen and (max-width: 640px) {font-size: @wryte-ghost-font-size-mobile !important;}}}.form-submission-text{font-size: @wryte-ghost-post-text-size;color: @wryte-ghost-post-text-color;@media only screen and (max-width: 640px) {font-size: @wryte-ghost-post-text-size-mobile;}}form{.button.sqs-button-element--primary{.form-1-ghost-button-style;}}}}}

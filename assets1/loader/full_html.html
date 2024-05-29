@@ -1,0 +1,97 @@
+<div class="preloaded"><div class="logo-animation"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" stroke="#fff"><g fill="none" fill-rule="evenodd"><g transform="translate(1 1)" stroke-width="2"><circle stroke-opacity=".5" cx="18" cy="18" r="18"/><path d="M36 18c0-9.94-8.06-18-18-18"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></g></svg><h2 class='header-title-text'></h2></div></div> 
+
+<script>
+  var ghostLoaderOptions = {
+    loaderType: 'image', //available options: "title" or "image"
+    loaderTitle: 'GhostPlugin',
+    loaderImage: '//images.squarespace-cdn.com/content/v1/5ba5e044b10f25cb908c506f/a396768f-90ad-4c66-93bc-2127b3e764c8/Ghost_Single_Dark.png?format=1500w',
+    loaderAdditionalDelay: 1000,
+    loaderFadeTime: 500,
+    showLoaderOnlyOnce: false
+  }
+</script>
+
+<script>
+  
+  //hide showLoaderOnlyOnce: true
+  if(ghostLoaderOptions.showLoaderOnlyOnce && localStorage.getItem('loaderLoaded') == 'yes'){
+    document.querySelector('.preloaded').style.display = 'none';
+  }
+  localStorage.setItem('loaderLoaded', 'yes');
+
+  let preloaderElem = document.querySelector('.preloaded'),
+      preloadBranding = preloaderElem.querySelector('.header-title-text');
+  
+ //title or image
+  if(ghostLoaderOptions.loaderType == 'image'){
+  preloadBranding.innerHTML = '<img src="'+ghostLoaderOptions.loaderImage+'">';
+  }else{
+     preloadBranding.textContent = ghostLoaderOptions.loaderTitle;
+  }
+     
+     
+  preloaderElem.style.transition = 'all '+ghostLoaderOptions.loaderFadeTime+'ms ease'; 
+  window.addEventListener('load',function(){
+    setTimeout(function(){
+     preloaderElem.classList.add('hide-animation');
+      setTimeout(function(){
+       document.querySelector('body').classList.add("loaded");  
+      }, ghostLoaderOptions.loaderFadeTime);
+    }, ghostLoaderOptions.loaderAdditionalDelay);
+  });
+</script>
+
+
+//loader
+@ghost-load-title-color: #fff;
+@ghost-load-branding-size: 38px;
+
+@ghost-load-loader-color: #000;
+@ghost-load-loader-size: 38px;
+
+@ghost-load-background-color: rgba(255,255,255, 0); // use hex code for solid colors or rgba(255,255,255, 0) for blur.
+@ghost-load-background-blur: 30px; //blur set-up
+
+
+
+.loaded .preloaded{
+  display: none;
+}
+.preloaded {
+  opacity: 1;
+  background-color: @ghost-load-background-color;
+  -webkit-backdrop-filter: blur(@ghost-load-background-blur);
+  backdrop-filter: blur(@ghost-load-background-blur);
+  position:fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  &.hide-animation{
+    opacity: 0;
+  }
+  .logo-animation{
+    display: flex;
+    align-items: center;
+    h2{
+      color: @ghost-load-title-color;
+      font-size: @ghost-load-branding-size;
+      img{
+        max-height: @ghost-load-branding-size;
+        display: block;
+      }
+    }
+    svg{
+      stroke: @ghost-load-loader-color;
+      margin-right: 10px;
+      width: @ghost-load-loader-size;
+      height: @ghost-load-loader-size;
+    }
+  }
+}
+
+

@@ -1,0 +1,112 @@
+@preHoverColor: #fff;
+@hoverColor: #000;
+
+
+.section-with-switcher-images-slider{
+	.Index-page-content{
+		z-index: 10;
+	}
+	.summary-block-header{
+		display: none;
+	}
+	.summary-item .summary-title *, .summary-metadata-item.summary-metadata-item--tags a{
+		color: @preHoverColor;
+	}
+	.summary-item .summary-excerpt *, .summary-item > p.sqsrte-small, .summary-metadata-item.summary-metadata-item--tags a{
+		color: @preHoverColor;
+	}
+	.summary-item.active{
+		.summary-excerpt *, .summary-title *, & > p.sqsrte-small, .summary-metadata-item.summary-metadata-item--tags a{
+			color: @hoverColor;
+		}
+	}
+	.summary-title a{
+		pointer-events: none;
+	}
+	.summary-item-list{
+		margin: 0 !important;
+		-webkit-transform: none !important;
+		-ms-transform: none !important;
+		transform: none !important;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		.summary-item{
+			width: 100% !important;
+			max-width: 700px !important;
+			margin: 0 0 0 auto !important;
+			-webkit-transition: all .3s ease-out !important;
+			-moz-transition: all .3s ease-out !important;
+			-o-transition: all .3s ease-out !important;
+			transition: all .3s ease-out !important;
+			padding: 17px !important;
+			display: -webkit-box !important;
+			display: -ms-flexbox !important;
+			display: flex !important;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			visibility: visible !important;
+			& >  .summary-metadata-item.summary-metadata-item--tags{
+				width: 30%;
+				float: left; 
+				margin: 0;
+				display: inline-block;
+			}
+			.summary-content{
+				width: 70%;
+				float: left;
+			}
+			& > .summary-thumbnail-outer-container{
+				display: none;
+			}
+			&:not(:last-child){
+				border-bottom: 1px solid #fafafa;
+			}
+			&.active{
+				background: #fff;
+				.summary-excerpt{
+					display: block;
+					opacity: 1;
+				}
+			}
+		}
+		.summary-excerpt{
+			opacity: 0;
+			margin-bottom: 0 !important;
+			-webkit-transition: all .3s ease-out !important;
+			-moz-transition: all .3s ease-out !important;
+			-o-transition: all .3s ease-out !important;
+			transition: all .3s ease-out !important;
+		}
+	}
+	.bg-images, .bg-images > div, .bg-images > div > img{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+		top: 0;
+		left: 0;  
+		object-fit: cover;
+		-webkit-transition: all .5s ease-out !important;
+		-moz-transition: all .5s ease-out !important;
+		-o-transition: all .5s ease-out !important;
+		transition: all .5s ease-out !important;
+	}
+	.content-wrapper{
+		z-index: 12;
+		position: relative;
+	}
+	.img-wrapper{
+		opacity: 0;
+		-webkit-transition: all .5s ease-out !important;
+		-moz-transition: all .5s ease-out !important;
+		-o-transition: all .5s ease-out !important;
+		transition: all .5s ease-out !important;
+		&.active{
+			opacity: 1;
+			z-index: 10;
+		}
+	}
+}

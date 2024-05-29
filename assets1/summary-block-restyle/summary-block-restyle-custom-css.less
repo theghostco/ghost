@@ -1,0 +1,137 @@
+/* ⚠️ ---- GHOST PLUGINS - SUMMARY BLOCK RESTYLE CODE START - COPYRIGHT 2020 ---- ⚠️ */
+
+//editable
+@gallery-items-gaps: 10px;
+
+@gallery-items-bg-color: rgb(245,245,245);
+@gallery-item-percent-width: 25%; // 100% = 1 column; 50% = 2 columns; 33.333% = 3 columns; 25% = 4 columns; 20% = 5 colums;
+@gallery-items-height: 133.3333%;
+@gallery-items-text-offset: 30px;
+@gallery-items-border-radius: 8px;
+
+@gallery-items-img-width: 33.333%;
+
+@gallery-items-title-font-size: 27px;
+@gallery-items-title-font-color: #000;
+@gallery-items-title-font-family: inherit;
+//use one which you've alredy used on the website or inhrit for default.
+
+
+@gallery-items-text-font-size: 16px;
+@gallery-items-text-font-color: #333;
+
+
+@gallery-items-read-dur-bg-color: #fff;
+@gallery-items-read-dur-font-color: #000;
+
+
+/* 🚫 ---- DON'T EDIT BELOW THIS LINE. SUPPORT NOT PROVIDIED IF EDITING BELOW THIS LINE ---- 🚫 */
+
+
+
+
+body{.sqs-block-summary-v2{
+.sqs-gallery-design-autogrid{
+    .summary-item-list{
+      
+      margin: 0px -@gallery-items-gaps !important;
+      .summary-item{
+        width: ~"calc(@{gallery-item-percent-width} - @{gallery-items-gaps}*2)" !important;
+
+        @media only screen and (max-width: 1080px){
+          width: ~"calc(50% - @{gallery-items-gaps}*2)" !important;
+        } 
+        @media only screen and (max-width: 640px){
+          width: ~"calc(100% - @{gallery-items-gaps}*2)" !important;
+        }
+        margin: 0px @gallery-items-gaps @gallery-items-gaps*4 !important;
+
+
+        background-color: @gallery-items-bg-color;
+
+
+        border-radius: @gallery-items-border-radius;
+        
+        .slide-custom-link{
+
+          padding-bottom: @gallery-items-height;
+
+        }
+        .summary-thumbnail-outer-container{
+        
+          height: @gallery-items-img-width;
+          border-top-right-radius: @gallery-items-border-radius;
+          border-top-left-radius: @gallery-items-border-radius;
+
+          .summary-thumbnail-container.sqs-gallery-image-container{
+            
+          }
+        }
+        .summary-content.sqs-gallery-meta-container{
+
+          top: @gallery-items-img-width;
+          height: 100% - @gallery-items-img-width;
+          background-color: @gallery-items-bg-color;
+          border-radius: @gallery-items-border-radius;
+        }
+
+        .summary-title{
+          padding: @gallery-items-text-offset;
+         
+
+          font-family: @gallery-items-title-font-family;
+          font-size: @gallery-items-title-font-size;
+          color: @gallery-items-title-font-color;
+
+        }
+        .summary-excerpt{
+          padding-left: @gallery-items-text-offset;
+          padding-right: @gallery-items-text-offset;
+         
+          
+
+          p{
+            color: @gallery-items-text-font-color;
+            font-size: @gallery-items-text-font-size;
+          }
+     
+        }
+        .summary-metadata-container{
+          background-color: @gallery-items-bg-color;
+       
+          padding: @gallery-items-text-offset;
+     
+          a{
+            font-size: @gallery-items-text-font-size;
+            color: @gallery-items-text-font-color;
+
+          }
+        }
+        .read-duration{
+
+          background-color: @gallery-items-read-dur-bg-color;
+          color: @gallery-items-read-dur-font-color;
+
+          font-size: @gallery-items-text-font-size;
+
+
+        }
+        &:hover{
+          transform: scale(1.02);
+          -webkit-transform: scale(1.02);
+
+          &:after{
+            opacity: 1;
+          }
+
+        }
+      }
+    }
+  }
+}
+}
+html:not(.touch){
+  body{
+.sqs-block-summary-v2{.sqs-gallery-design-autogrid{.summary-item-list{.summary-item{&:hover{.read-duration{  color: @gallery-items-read-dur-bg-color;  background-color: @gallery-items-read-dur-font-color;}}}}}}}}
+
+/* ⚠️ ---- GHOST PLUGINS - SUMMARY BLOCK RESTYLE CODE END - COPYRIGHT 2020 ---- ⚠️ */

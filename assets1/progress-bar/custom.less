@@ -1,0 +1,11 @@
+@ghost-scroll-bar-height: 7px;
+@ghost-scroll-bar-color: #000;
+@ghost-scroll-bar-position: bottom; //available options top. bottom
+
+@ghost-scroll-bar-show-text: false; //available options true and false. Set "false" to hide the text.
+@ghost-scroll-bar-text-color: #000;
+@ghost-scroll-bar-text-size: 15px;
+@ghost-scroll-bar-text-offset: 5px;
+@ghost-scroll-bar-units: "%";
+
+.hide-text-for-bar() when (@ghost-scroll-bar-show-text = false){span{display: none !important;}}.bottom-bar() when (@ghost-scroll-bar-position = bottom){top: auto;bottom: 0;span{top: -(@ghost-scroll-bar-text-size+@ghost-scroll-bar-height + @ghost-scroll-bar-text-offset);margin-top: 0px !important;}}body{.ghost-scrollBar{height: @ghost-scroll-bar-height;background: @ghost-scroll-bar-color;.bottom-bar();.hide-text-for-bar();span {font-size: @ghost-scroll-bar-text-size;margin-top: @ghost-scroll-bar-text-offset;color: @ghost-scroll-bar-text-color;&::after {content: @ghost-scroll-bar-units;font-size: @ghost-scroll-bar-text-size;color: @ghost-scroll-bar-text-color;}}}}

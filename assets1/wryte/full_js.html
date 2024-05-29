@@ -1,0 +1,63 @@
+<script>wrytePostSubmitGhost();</script>
+
+<script type="module">
+  import confetti from "https://cdn.skypack.dev/canvas-confetti";
+  window.wrytePostSubmitGhost = function(){
+    confetti();
+  }
+  
+  
+window.Squarespace.onInitialize(Y, function() { 
+    document.querySelectorAll('.form-wrapper').forEach(function(checkForm){
+      if(document.body.contains(checkForm.querySelector('.form-submission-html[data-submission-html*="wrytePostSubmitGhost"]'))){
+
+
+        let $form = document.querySelector('.form-inner-wrapper .field-list'),
+            newMarkUp = '<div class="wrap-custom-form"></div>',
+            fieldList = '';
+
+        checkForm.classList.add('wryte-ghost-plugin');
+        $form.insertAdjacentHTML('afterend', newMarkUp);
+
+        let $newFormWrap = document.querySelector('.wrap-custom-form');
+
+
+        $form.querySelectorAll('.form-item').forEach(function($formItem){
+
+          let itemId = $formItem.getAttribute('id'),
+              placeholderText = ($formItem.querySelector('input').getAttribute('placeholder'))? $formItem.querySelector('input').getAttribute('placeholder'): '',
+
+              inputElement = '<input type="text" placeholder="'+placeholderText+'" data-id="'+itemId+'">',
+
+              labelText = ($formItem.contains($formItem.querySelector('label'))) ? $formItem.querySelector('label').outerHTML : '',
+              labelElement = '<label class="from-label" data-id="'+itemId+'">'+labelText+'</label>',
+
+              descriptionText = ($formItem.contains($formItem.querySelector('.description'))) ? $formItem.querySelector('.description').innerText : '',
+              descriptionElement = '<label class="from-desc" data-id="'+itemId+'">'+descriptionText+'</label>';
+          console.log(placeholderText);
+          fieldList += labelElement + inputElement + descriptionElement;
+        });
+
+
+        $newFormWrap.insertAdjacentHTML('afterbegin', fieldList);
+
+        $newFormWrap.querySelectorAll('input').forEach(function(inputEl){
+          inputEl.onchange = check;
+        });
+
+
+
+        function check(event) {
+          document.querySelector('input#'+event.target.getAttribute('data-id')+'-field').value = event.target.value;
+
+        }
+      }else{
+
+        checkForm.classList.add('loaded');
+        return;
+      }
+    });
+  });
+</script>
+
+

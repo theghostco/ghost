@@ -1,0 +1,105 @@
+<script>
+  var isGallery = document.querySelectorAll('.sqs-gallery-design-carousel')[0];
+  var pluginName = 'paper';
+
+  if (typeof(isGallery) != 'undefined' && isGallery != null){
+
+
+    document.querySelectorAll('.sqs-gallery-design-carousel').forEach(function(thisSummary){
+      var thisHeadingElement = thisSummary.querySelector('.summary-header-text');
+      var thisHeadText = thisHeadingElement.innerText || thisHeadingElement.textContent;
+
+      if(thisHeadText == pluginName){
+        thisSummary.classList.add(pluginName+'-plugin');
+        var thisSummaryParent = thisSummary.closest('.sqs-block');
+        var thisSummaryId = thisSummaryParent.getAttribute('id');
+        thisSummary.closest('section').classList.add('section-with-'+pluginName+'-slider');
+
+
+        thisSummary.insertAdjacentHTML('afterbegin', '<div class="'+pluginName+'-images-wrapper swiper-container"><div class="'+pluginName+'-inner-wrapper swiper-wrapper"></div></div>');
+        var imagesPlace = thisSummary.querySelector('.'+pluginName+'-inner-wrapper');
+
+        thisSummary.querySelector('.summary-item').classList.add('current-active'); //set default
+        //
+        var countItems = 0;
+        thisSummary.querySelectorAll('.summary-item').forEach(function(thisSlide, i){  
+          countItems++;
+          var newId = thisSummaryId+'-slide-'+i;
+
+          thisSlide.setAttribute('data-slide-id', newId);
+
+
+          //content vars
+          let summaryTitle = thisSlide.querySelector('.summary-title-link');
+          let summaryTitleText =  summaryTitle.innerText || summaryTitle.textContent
+          let summaryDescription = thisSlide.querySelector('.summary-excerpt p').outerHTML || thisSlide.querySelector('.summary-excerpt p').textContent;
+          let summaryLink = thisSlide.querySelector('.summary-thumbnail-outer-container > a').getAttribute('href');
+
+          let tagElement = thisSlide.querySelector('.summary-metadata-item--tags');
+          let summaryTag = '';
+          if (typeof(tagElement) != 'undefined' && tagElement != null){
+            tagElement.querySelectorAll('a').forEach(function(tagContent){
+              summaryTag += '<div class="paper-card" style="background: '+tagContent.textContent+';"></div>';
+            });
+          }
+
+          console.log(summaryTag + ' = summaryTag');
+
+
+          //markup
+          let slideImage = '<div class="image-slide-inner"><img src="'+thisSlide.querySelector('.summary-thumbnail img').getAttribute('data-src')+'?format=2500'+'"><div class="hovers">'+summaryTag+'</div></div>';
+          let slideTitle = '<div class="title-wrapper"><h3>'+summaryTitleText+'</h3></div>';
+          let description = '<div class="desc-wrapper"><p>'+summaryDescription+'</p></div>';
+
+          let mainMarkup = '<div class="'+pluginName+'-slide image-slide swiper-slide swiper-slide" data-slide-img-id="'+newId+'"><a href="'+summaryLink+'">' + slideImage + '<div class="info-slide">'+ slideTitle + description + '</div></a></div>';
+
+          imagesPlace.insertAdjacentHTML('beforeend', mainMarkup);
+
+        });
+        
+        
+        //initialize swiper when document ready
+        var mySwiper = new Swiper ('.paper-plugin .swiper-container',{
+          loop: true,
+          slidesPerView: 1.15,
+          spaceBetween: 0,
+          speed: 600,
+          on: {
+            init: function () {
+              setTimeout(function(){
+                thisSummary.querySelector('.swiper-container').classList.add('show');
+              },300)
+            },
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2.5,
+              spaceBetween: 10
+            },
+            1000: {
+              slidesPerView: 3.5,
+              spaceBetween: 10
+            },
+            1721: {
+              slidesPerView: 4.5,
+              spaceBetween: 20
+            },
+            1921: {
+              slidesPerView: 4.5,
+              spaceBetween: 20
+            }
+          }
+
+        });
+
+
+        thisSummary.addEventListener("mousedown", function(){thisSummary.classList.add('drug-start');}, false);
+        thisSummary.addEventListener("mouseup", function(){thisSummary.classList.remove('drug-start');}, false);
+
+      }
+
+    });
+  }
+</script>
+
+

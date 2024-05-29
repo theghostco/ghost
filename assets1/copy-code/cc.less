@@ -1,0 +1,34 @@
+@button-background: black;
+@button-text-color: white;
+@button-border-radius:5px;
+@button-inside-padding-top-bot:5px;
+@button-inside-padding-left-right:15px;
+@button-outer-top:10px;
+@button-outer-right:10px;
+
+@icon-right-margin:10px;
+
+.copied-button{
+  background: @button-background;
+  color: @button-text-color;
+  border-radius: @button-border-radius;
+  position:absolute;
+  z-index:9999;
+  top:@button-outer-top;
+  right:@button-outer-right;
+  display: flex;
+  align-items: center;
+  padding: @button-inside-padding-top-bot @button-inside-padding-left-right;
+}
+
+.copied-button:hover{
+  opacity:0.8;
+}
+
+.copied-button::before{
+  content:url(https://www.ghostplugins.dev/assets/imgs/gs.png);
+  display: inline-block;
+  width:25px;
+  height:25px;
+  margin-right:@icon-right-margin;
+}

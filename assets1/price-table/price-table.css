@@ -1,0 +1,159 @@
+.summary-item-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0px auto !important;
+  justify-content: center;
+}
+.summary-item-list .summary-item {
+  margin: 0px 20px 40px !important;
+  width: calc(33.333% - 42px);
+  background-color: #ffffff;
+  border-top: 1px solid #000;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  transition: all .3s ease;
+  will-change: transform;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  position: relative;
+}
+@media only screen and (max-width: 1150px) {
+  .summary-item-list .summary-item {
+    width: calc(50% - 42px);
+  }
+}
+@media only screen and (max-width: 640px) {
+  body .summary-item-list-container .summary-item-list .summary-item {
+    width: 100%;
+    margin: 0 0 50px !important;
+  }
+}
+.summary-item-list .summary-item .slide-price-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  z-index: 10000;
+}
+.summary-item-list .summary-item .summary-thumbnail-outer-container {
+  display: none;
+  width: 100% !important;
+}
+.summary-item-list .summary-item .sqs-gallery-meta-container {
+  width: 100% !important;
+}
+.summary-item-list .summary-item p,
+.summary-item-list .summary-item h1,
+.summary-item-list .summary-item h2,
+.summary-item-list .summary-item h3,
+.summary-item-list .summary-item .summary-title-link {
+  color: #000000;
+}
+.summary-item-list .summary-item p {
+  font-size: 1.4rem;
+}
+.summary-item-list .summary-item p:before {
+  content: '';
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.4rem;
+  vertical-align: middle;
+  background-image: url('https://www.ghostplugins.dev/assets/imgs/check.png');
+  background-size: cover;
+  margin-bottom: 4px;
+}
+.summary-item-list .summary-item p.x-icon em {
+  font-style: normal;
+}
+.summary-item-list .summary-item p.x-icon:before {
+  background-image: url('https://www.ghostplugins.dev/assets/imgs/x-red.png');
+}
+.summary-item-list .summary-item p.plus-icon strong {
+  font-weight: 400;
+}
+.summary-item-list .summary-item p.plus-icon:before {
+  background-image: url('https://www.ghostplugins.dev/assets/imgs/plus.png');
+}
+.summary-item-list .summary-item h1 {
+  font-size: 2.4rem;
+}
+.summary-item-list .summary-item .summary-title-link {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 8px 15px;
+  color: #ffffff;
+  display: inline-block;
+  border-radius: 8px;
+}
+.summary-item-list .summary-item .summary-content {
+  z-index: 100;
+  position: relative;
+  padding: 25px;
+  padding-bottom: 7rem;
+}
+@media only screen and (max-width: 640px) {
+  .summary-item-list .summary-item .summary-content {
+    padding: 17px;
+    padding-bottom: 7rem;
+  }
+}
+.summary-item-list .summary-item .svg-bg-item {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.summary-item-list .summary-item .svg-bg-item svg {
+  width: 140% !important;
+  height: 100% !important;
+  min-height: 7rem;
+  display: block;
+  transition: transform .3s ease;
+}
+.summary-item-list .summary-item .cta-button-price {
+  font-size: 1.1666666666666667rem;
+  background-color: #ffffff;
+  color: #000000;
+  position: absolute;
+  bottom: 0;
+  bottom: 15px;
+  left: 50%;
+  line-height: 1;
+  padding: 10px 30px;
+  border-radius: 22px;
+  text-transform: uppercase;
+  max-width: 100%;
+  text-align: center;
+  max-width: 60%;
+  width: 100%;
+  transition: all .3s ease;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  will-change: transform;
+}
+.summary-item-list .summary-item .cta-button-price svg {
+  will-change: transform;
+}
+.summary-item-list .summary-item .cta-button-price:before {
+  content: "CHOOSE";
+}
+.summary-item-list .summary-item:hover {
+  transform: scale(1.03);
+  -webkit-transform: scale(1.03);
+  box-shadow: 0px 12px 13px 1px rgba(0, 0, 0, 0.15);
+}
+.summary-item-list .summary-item:hover svg {
+  transform: translateX(-8%);
+  -webkit-transform: translateX(-8%);
+}
+.summary-item-list .summary-item:hover .cta-button-price {
+  transform: translate(-50%, -5px);
+  -webkit-transform: translate(-50%, -5px);
+}
+.summary-item-list .summary-metadata-item--tags {
+  display: none !important;
+}

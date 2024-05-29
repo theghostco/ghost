@@ -1,0 +1,99 @@
+/*General setting*/
+@taydio-ghost-max-width: 100%;
+@taydio-ghost-text-max-width: 100%;
+@taydio-ghost-image-height: 120%;
+@taydio-ghost-image-position: right; //availabe left or right
+
+
+/* Plugin title font */
+@taydio-ghost-main-title-font-size: 32px;
+@taydio-ghost-main-title-font-color: #000;
+@taydio-ghost-main-title-font-letter-spacing: 0px;
+
+/*Tabs font*/
+@taydio-ghost-titles-font-size: 16px;
+@taydio-ghost-titles-font-color: rgb(0, 0, 255);
+
+/*Description Font*/
+@taydio-ghost-desc-size: 18px;
+@taydio-ghost-desc-color: #000;
+
+/*MOBILE*/
+@taydio-ghost-main-title-mobile-font-size: 25px;
+@taydio-ghost-titles-mobile-font-size: 15px;
+@taydio-ghost-desc-mobile-size: 14px;
+@taydio-ghost-image-mobile-height: 125%;
+
+
+.reverse-image() when (@taydio-ghost-image-position = left){-webkit-box-orient: horizontal;-webkit-box-direction: reverse;-ms-flex-direction: row-reverse;flex-direction: row-reverse;&.summary-block-wrapper{.ghost-summary-headinng,.tabs-list, .summary-item-list{margin-right: 0px !important;margin-left: 100px !important;@media only screen and (max-width: 800px){margin-left: 0px !important;}}}}
+
+
+
+body{
+  .taydio-plugin.summary-block-wrapper{
+    max-width: @taydio-ghost-max-width;
+    @media only screen and (max-width: 640px){
+      max-width: 100%;
+    }
+    .ghost-summary-headinng{
+      font-size: @taydio-ghost-main-title-font-size;
+      color: @taydio-ghost-main-title-font-color;
+      letter-spacing: @taydio-ghost-main-title-font-letter-spacing;
+      margin-bottom: @taydio-ghost-main-title-font-size;
+      @media only screen and (max-width: 640px){
+        font-size: @taydio-ghost-main-title-mobile-font-size;
+        margin-bottom: @taydio-ghost-main-title-mobile-font-size/1.2;
+      }
+    }
+
+    .tabs-list{
+      &:after{
+        background-color:@taydio-ghost-titles-font-color;
+      }
+    }
+    .title-wrapper{
+      h4{
+        font-size: @taydio-ghost-titles-font-size;
+        color: @taydio-ghost-titles-font-color;
+        @media only screen and (max-width: 640px){
+          font-size: @taydio-ghost-titles-mobile-font-size;
+        }
+      }
+      &.active-title{
+        h4{
+          border-bottom: 1px solid @taydio-ghost-titles-font-color;
+        }
+      }
+    }
+    .summary-item{
+      .summary-excerpt{
+        p{
+          color: @taydio-ghost-desc-color;
+          font-size: @taydio-ghost-desc-size;
+          @media only screen and (max-width: 640px){
+            font-size:  @taydio-ghost-desc-mobile-size;
+          }
+        }
+      }
+    }
+    .summary-item-list-container{
+      .ghost-summary-headinng,
+      .tabs-list,
+      .summary-item-list{
+        max-width: @taydio-ghost-text-max-width;
+      }
+    }
+    .taydio-images-wrapper{
+      .image-slide-inner{
+        position: relative;
+        padding-bottom: @taydio-ghost-image-height;
+        @media only screen and (max-width: 800px){
+          padding-bottom: @taydio-ghost-image-mobile-height;
+        }
+      }
+    }
+    .reverse-image();
+  }
+}
+
+

@@ -1,0 +1,17 @@
+@shape-ghost-titles-font-size: 22px;
+@shape-ghost-titles-font-size-mobile: 15px;
+@shape-ghost-titles-font-color: #000;
+
+@shape-ghost-desc-size: 15px;
+@shape-ghost-desc-size-mobile: 13px;
+@shape-ghost-desc-color: #000;
+
+@shape-ghost-image-height: 100%;
+@shape-ghost-image-fit: contain; // options: cover and contain;
+
+@shape-ghost-controls-color: #000;
+
+
+
+body .shape-plugin{.slide-title{ font-size: @shape-ghost-titles-font-size; color: @shape-ghost-titles-font-color; @media only screen and (max-width: 640px) { font-size: @shape-ghost-titles-font-size-mobile;} }.desc-wrapper{p{font-size: @shape-ghost-desc-size;color: @shape-ghost-desc-color;@media only screen and (max-width: 640px) {font-size: @shape-ghost-desc-size-mobile;}}}.image-slide-inner{padding-bottom: @shape-ghost-image-height;.image-slide-inner img{object-fit: @shape-ghost-image-fit;}
+.btn svg{fill:@shape-ghost-controls-color;}.index__current span{color:@shape-ghost-controls-color;}}}

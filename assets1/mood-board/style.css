@@ -1,0 +1,94 @@
+.mood-board {
+  width: 100%;
+  background: #ffeecc;
+  position: relative;
+}
+.mood-board .title {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 40vh;
+}
+.mood-board .images {
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+
+  //  max-height: 100%;
+  overflow: hidden;
+
+}
+.mood-board .element {
+  position: absolute;
+  z-index: 0;
+}
+.mood-board .element:hover .description {
+  display: block;
+}
+.mood-board .element{
+
+  .grab-cursor;
+  &:active{
+    .grabbing-cursor;
+  }
+}
+
+
+.mood-board .element img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.description-wrapper{
+  display: none;
+}
+
+.grab-cursor {
+  cursor: url('https://www.google.com/intl/en_ALL/mapfiles/openhand.cur'), all-scroll;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+
+.grabbing-cursor {
+  cursor: url('https://www.google.com/intl/en_ALL/mapfiles/closedhand.cur'), all-scroll;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: -o-grabbing;
+  cursor: -ms-grabbing;
+  cursor: grabbing;
+}
+
+.sqs-edit-mode-active [data-ghost-plugin-name="mood-board"]:before{
+ content: 'Mood Board - Canvas Area(edit mode)';
+ color: #fff;
+ background-color: rgba(0,0,0, .2);
+ position: absolute;
+ font-size: 13px;
+ font-weight: bold;
+ font-family: monospace;
+ letter-spacing: 0px;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ padding: 10px;
+}
+.sqs-edit-mode-active .sqs-block-code .sqs-block-content{
+  position: static;
+
+}

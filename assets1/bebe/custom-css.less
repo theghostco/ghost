@@ -1,0 +1,38 @@
+// Ghost bebe  Slider Code - start //
+
+@bebe-ghost-max-width: 900px;
+@bebe-ghost-card-background: coral;
+@bebe-ghost-card-border-radius: 15px;
+@bebe-ghost-card-image-size: 165px;
+@bebe-ghost-card-image-border-radius: 50%;
+@bebe-ghost-card-shadow-color: transparent; // can be "transparent"
+
+
+//title, person name (inherit h3 font style)
+@bebe-ghost-title-font-size: 2em;
+@bebe-ghost-title-font-color: #fff;
+
+//description, testimonials body (inherit p font style)
+@bebe-ghost-desc-font-size: 1.2em;
+@bebe-ghost-desc-font-color: #fff;
+
+
+//author position, tag (inherit body font style)
+@bebe-ghost-position-size: 1em;
+@bebe-ghost-position-color: #fff;
+
+
+//controls (bullets)
+@bebe-ghost-bullet-size: 12px;
+@bebe-ghost-bullet-color: #fff;
+
+//mobile style
+@bebe-ghost-card-mobile-image-size: 100px;
+@bebe-ghost-desc-mobile-font-size: 1em;
+@bebe-ghost-title-mobile-font-size: .9em;
+@bebe-ghost-position-mobile-font-size: .8em;
+
+
+
+body{.bebe-plugin{max-width: @bebe-ghost-max-width;.image-slide{border-radius: @bebe-ghost-card-border-radius;}&:after{top: @bebe-ghost-card-image-size/3;background-color: @bebe-ghost-card-background;border-radius: @bebe-ghost-card-border-radius;}&:before{top: @bebe-ghost-card-image-size/3;box-shadow: 0px 1px 5px 5px @bebe-ghost-card-shadow-color;border-radius: @bebe-ghost-card-border-radius;}.image-slide-wrapper{max-width: @bebe-ghost-card-image-size;@media only screen and (max-width: 640px){max-width: @bebe-ghost-card-mobile-image-size}}.image-slide-inner{img{border-radius: @bebe-ghost-card-image-border-radius;}}h3{font-size: @bebe-ghost-title-font-size;color: @bebe-ghost-title-font-color;@media only screen and (max-width: 640px){font-size: @bebe-ghost-title-mobile-font-size;}}p{font-size: @bebe-ghost-desc-font-size;color: @bebe-ghost-desc-font-color;a{color: @bebe-ghost-desc-font-color;}}.desc-wrapper{p{@media only screen and (max-width: 640px){font-size: @bebe-ghost-desc-mobile-font-size;}}}.author-info{p{font-size: @bebe-ghost-position-size;color: @bebe-ghost-position-color;@media only screen and (max-width: 640px){font-size: @bebe-ghost-position-mobile-font-size;}}.author-position p, p a{color: @bebe-ghost-position-color;}}}.bebe-pagination.swiper-pagination{.swiper-pagination-bullet{width: @bebe-ghost-bullet-size;height: @bebe-ghost-bullet-size;margin: @bebe-ghost-bullet-size/2;background-color: @bebe-ghost-bullet-color;}}}
+// Ghost bebe Slider Code - end //

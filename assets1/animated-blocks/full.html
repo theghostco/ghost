@@ -1,0 +1,319 @@
+/*
+===================================
+Animated Headings
+===================================
+*/
+
+@tablet: ~"(min-width: 768px)";
+@heading-color: #000;
+@img-text-color: #000;
+@img-width: 200px;
+@heading-font-size: 100px;
+
+body[data-animated-headings] {
+ 
+  section[data-animated-headings] {
+  .heading-block-wrap {
+    position: relative;
+    display: block;
+  }
+
+  li:marker {
+    display: none;
+  }
+
+  // Text
+  .heading {
+    position: relative;
+    display: inline-block;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    h1 {
+      color: @heading-color;
+       //margin: 0;
+      font-size: @heading-font-size !important;
+
+    }
+  }
+
+  //Text on the picture
+  .img-title {
+    width: auto;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    color: @img-text-color;
+    
+    @media @tablet {
+      padding: 15px;
+    }
+
+    p{
+      margin: 0 !important;
+    }
+  }
+
+  .img-container{
+    position: absolute;
+    transform: rotate(-10deg);
+    transform-origin: 50% 50% 0px;
+    display: none;
+    pointer-events: none;
+    max-width: @img-width;
+    width: 100%;
+        border-radius: 24px;
+    overflow: hidden;
+    p{
+      line-height: 1.4em;
+    }
+
+    figure {
+      border-radius: 10%;
+      overflow: hidden;
+      width: 100% !important;
+      height: 100% !important;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+      }
+    }
+  }
+}  
+}
+
+/*
+===================================
+END Animated Headings
+===================================
+*/
+
+
+
+
+
+
+
+<script>
+  !function(){window.self===window.top||window.top.document.getElementById("lazy-summaries-admin")||function(e,t,s,i,a){if(s.querySelector("#"+t))i&&i(this);else{var n=document.createElement("script");n.src=e+"?cache="+((new Date).getTime()+"").substr(0,8),n.id=t,n.onload=function(){a&&this.remove(),i&&i(this)},s.appendChild(n)}}("https://assets.squarewebsites.org/lazy-summaries/lazy-summaries-admin.js","lazy-summaries-admin",window.top.document.getElementsByTagName("head")[0])}();
+</script>
+
+<script>
+//*************  ANIMATED HEADINGS 
+  
+ const headingsAttr = {
+   dataAttr: 'data-animated-headings',
+   clickable: true
+ }; 
+ 
+
+(function (values){
+  
+    const {dataAttr, clickable} = values;
+  
+    const utils = (function () {
+        function getParentEl(el, tagName) {
+            let searchEl = el;
+
+            while (searchEl.parentElement) {
+                if (searchEl.parentElement.tagName.toLowerCase() === tagName.toLowerCase()) {
+                    return searchEl.parentElement;
+                }
+
+                searchEl = searchEl.parentElement;
+            }
+
+            return null;
+        }
+
+        function setAttrParents(attr, tag) {
+            let list = document.querySelectorAll(`[${attr}]`);
+            list.forEach((el) => {
+                const tagEl = getParentEl(el, tag);
+
+                if (!tagEl) {
+                    return;
+                }
+                tagEl.setAttribute(attr, '');
+               const body = getParentEl(tagEl, 'body');
+             body.setAttribute(attr, '');
+            })
+        }
+
+        function fetchData(path) {
+            const url = document.location.origin + path + '?format=json-pretty';
+
+            return fetch(url)
+                .then((response) => response.json())
+        }
+
+        return {
+            setAttrParents, fetchData
+        };
+    })();
+
+    utils.setAttrParents(dataAttr, 'section');
+    const plugin = document.querySelector('div[data-animated-headings]');
+
+    const injectHtmlCode = (html) => {
+        const ul = document.createElement('ul');
+        ul.innerHTML = html;
+        plugin.appendChild(ul);
+    }
+
+    const buildHtml = (items) => {
+        const result = [];
+        let createItem;
+
+        for (let i = 0; i < items.length; i++) {
+          
+            const itemTitle = items[i].title;
+            const href = items[i].sourceUrl;
+            const itemExcerpt = items[i].excerpt;
+            const iItemImage = items[i].assetUrl;
+            const body = items[i].body;
+        
+          if(items[i].passthrough && items[i].sourceUrl && clickable) {
+             createItem = `
+    <li class="heading-block-wrap">
+        <a href=${href} class="heading">
+  <h1>${itemTitle}</h1>
+  </a>
+    <div class="img-container">
+            <div class="img-title">${itemExcerpt}</div>
+              <figure>
+                  <img src="${iItemImage}" alt="">
+              </figure>
+      </div>
+    </a>
+    </li>`;
+            
+          } else {
+              createItem = `
+    <li class="heading-block-wrap">
+        <div class="heading">
+  <h1>${itemTitle}</h1>
+  </a>
+    <div class="img-container">
+            <div class="img-title">${itemExcerpt}</div>
+              <figure>
+                  <img src="${iItemImage}" alt="">
+              </figure>
+      </div>
+    </div>
+    </li>`;
+          }
+   
+            result.push(createItem);
+        }
+
+        injectHtmlCode(result.join(''));
+    }
+
+    const createContent = () => {
+    if(plugin) {
+           const contentListUrl = plugin.getAttribute('data-blog-href');
+              utils.fetchData(contentListUrl)
+            .then((dataList) => {
+                buildHtml(dataList.items);
+                setImgPosition();
+            });
+        }
+    }
+
+    const setImgPosition = () => {
+        const contentList = document.querySelectorAll('section[data-animated-headings] li');
+
+        contentList.forEach((li) => {
+            const heading = li.querySelector('.heading');
+            const img = li.querySelector('.img-container');
+            const h1 = heading.querySelector('h1');
+          
+          const pic = img.querySelector('figure');
+          
+          const widthOfPic = h1.offsetWidth;
+           const heightOfPic = h1.offsetHeight + 40;
+          
+        
+            img.style.height = `${heightOfPic}px`;
+
+            img.style.display = "block";
+          
+            img.style.top = `${heading.offsetTop - (img.offsetHeight - heading.offsetHeight) / 2}px`;
+            img.style.left = `${heading.offsetLeft + h1.offsetWidth - img.offsetWidth / 1.2}px`;
+            img.style.display = "none";
+
+            heading.addEventListener('pointerenter', () => {
+
+                const img = li.querySelector('.img-container');
+       
+                img.style.display = "block";
+
+                requestAnimationFrame(() => {
+                    img.animate([
+                        {opacity: "0"},
+                        {opacity: "1"}
+                    ], {
+                        duration: 600,
+                        easing: "ease-out"
+                    })
+                })
+
+                heading.addEventListener('pointerleave', () => {
+                    const img = li.querySelector('.img-container');
+                
+                    const animation = img.animate([
+                        {opacity: "1"},
+                        {opacity: "0"}
+                    ], {
+                        duration: 200,
+                    })
+                    animation.onfinish = () => {
+                        img.style.display = "none";
+                    }
+                })
+            })
+        })   
+    };
+  
+            const homepage= document.querySelector('body[data-animated-headings]');
+
+            if(homepage) {
+                createContent();
+        }
+
+}(headingsAttr));
+  
+</script>
+
+<!--
+Code Block 
+
+<div
+        data-animated-headings
+        data-blog-href="/animated-headings-content"
+>
+
+</div>
+********** END Animated Headings
+-->
+
+
+
+
+<div
+    data-animated-headings
+    data-blog-href="/animated-headings-content"
+>
+
+</div>

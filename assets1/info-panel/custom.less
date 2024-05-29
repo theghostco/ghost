@@ -1,0 +1,80 @@
+// OVERLAY MENU COLORS VARIABLES
+
+// OVERLAY MENU BACKGROUND COLOR
+@overlay-menu-bg-color: #FFFFFF;
+
+// OVERLAY MENU ITEMS TEXT COLOR
+@overlay-menu-text-color: #FFFFFF;
+// OVERLAY MENU ITEMS LINKS TEXT COLOR
+@overlay-menu-link-color: #FFFFFF;
+// OVERLAY MENU ITEMS LINKS TEXT COLOR ON HOVER
+@overlay-menu-hover-link-color: #8c8c8c;
+// OVERLAY MENU BOTTOM LINKS TEXT COLOR
+@overlay-bottom-block-color: #E690C0;
+// OVERLAY MENU COLORS VARIABLES
+
+// OVERLAY MENU BACKGROUND COLOR
+@overlay-menu-bg-color: #fafafa;
+
+// OVERLAY MENU TITLE TEXT COLOR
+@overlay-menu-title-text-color: #000;
+// OVERLAY MENU SUBTITLE TEXT COLOR
+@overlay-menu-subtitle-text-color: #000;
+
+
+// OVERLAY MENU TITLE TEXT COLOR
+@overlay-menu-link-color: #000;
+// OVERLAY MENU ITEMS TEXT COLOR
+@overlay-menu-text-color: rgba(0,0,0, .8);
+
+
+// OVERLAY MENU ITEMS LINKS TEXT COLOR ON HOVER
+@overlay-menu-hover-link-color: rgba(0,0,0, .7);
+
+@overlay-menu-border-color: #000;
+body{
+  .overlay-menu-section {
+    background-color: @overlay-menu-bg-color;
+    .overlay-menu-wrapper {
+      .overlay_menu-title-wrapper {
+        .overlay_menu-title * {color: @overlay-menu-title-text-color;}
+        .overlay_menu-subtitle {
+          & * {color: @overlay-menu-subtitle-text-color;}
+          span {
+            border-bottom: 1px solid @overlay-menu-border-color;
+          }
+        }
+      }
+      .overlay-menu-list {
+        h1, h2, h3, p {
+          color: @overlay-menu-text-color;
+          a {color: @overlay-menu-link-color;}
+          a:hover {color: @overlay-menu-hover-link-color;}
+        }
+        .summary-title a {
+          color: @overlay-menu-link-color; text-decoration: none;
+          &:hover {color: @overlay-menu-hover-link-color;}
+        }
+        .summary-excerpt * {
+          color: @overlay-menu-text-color;
+        }
+      }
+    }
+  }
+  /* POPUP MENU */
+  .overlay-menu-section {
+    background-color: @overlay-menu-bg-color;
+    .overlay-menu-wrapper {
+      .overlay_menu-title-wrapper {
+        .overlay_menu-title {
+          border-bottom: 1px solid @overlay-menu-border-color;
+        }
+      }
+    }
+    h1, h2, h3, p {
+      color: @overlay-menu-text-color;
+      a {color: @overlay-menu-link-color;}
+      a:hover {color: @overlay-menu-hover-link-color;}
+    }
+  }
+}

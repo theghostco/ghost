@@ -1,0 +1,12 @@
+
+let svgArrow = '<div class="wrap-svg"><div class="wrap-svg-inner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none"><path d="M497.777 0H184.889C177.028 0 170.666 6.36133 170.666 14.2227V42.6667C170.666 50.528 177.028 56.8893 184.889 56.8893H414.889L4.16509 467.611C1.44242 470.335 0.0557541 473.887 0.0024208 477.455C-0.0535792 481.165 1.33575 484.893 4.16509 487.725L24.2744 507.833C26.9531 510.513 30.4358 511.901 33.9478 511.995C37.7131 512.096 41.5131 510.708 44.3864 507.833L455.11 97.1107V327.111C455.11 334.972 461.472 341.333 469.333 341.333H497.777C505.638 341.333 512 334.972 512 327.111V14.2227C512 6.36133 505.638 0 497.777 0Z" fill="transparent"/></svg></div></div>';
+
+document.querySelectorAll('.sqs-block-button-container .sqs-button-element--primary').forEach(function(thisButton){
+	thisButton.insertAdjacentHTML("afterbegin", svgArrow);
+	let thisParent = thisButton.parentElement;
+	if(thisParent.classList.contains('sqs-block-button-container')){
+		thisParent.parentElement.classList.add('custom-button-wrapper')
+	}
+});
+
+

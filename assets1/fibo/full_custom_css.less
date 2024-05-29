@@ -1,0 +1,241 @@
+
+// Ghost fibo Product Slider Code - start //
+
+@fibo-ghost-card-background: #fff;
+@fibo-ghost-card-shadow-color: #000;
+
+
+//title (inherit h3 font style)
+@fibo-ghost-title-font-size: 1em;
+@fibo-ghost-title-font-color: #000;
+
+//description
+@fibo-ghost-desc-font-size: .8em;
+@fibo-ghost-desc-font-color: #000;
+
+//avatar
+@fibo-ghost-avatar-size: 70px;
+
+//author position
+@fibo-ghost-position-size: .8em;
+@fibo-ghost-position-color: #333;
+
+//controls
+@fibo-ghost-arrow-size: 2em;
+@fibo-ghost-arrow-color: #333;
+
+//mobile style
+@fibo-ghost-desc-mobile-font-size: .7em;
+@fibo-ghost-title-mobile-font-size: .9em;
+@fibo-ghost-position-mobile-font-size: .8em;
+
+
+
+
+.section-with-fibo-slider{
+  .content-wrapper{
+    box-sizing: border-box !important;
+  }
+}
+
+
+.fibo-plugin{
+  //background-color: @fibo-ghost-loading-background;
+  opacity: 1 !important;
+  margin: 0px !important;
+  transform: none !important;
+  .summary-item-list-container.sqs-gallery-container{
+    display: none;
+  }
+  .summary-block-header{
+    display: none;
+  }
+  .summary-item-list{
+    margin: 0px !important;
+    transform: none !important;
+  }
+  .summary-item{
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    white-space: normal;
+    font-size: inherit;
+  }
+  .swiper-container{
+    overflow-y: visible;
+    padding: 10px;
+    padding-bottom: 0px;
+  }
+  .image-slide{
+    visibility: visible !important;
+    margin-bottom: 10px;
+    overflow: visible !important;
+    position: relative;
+    background: @fibo-ghost-card-background;
+    padding: 50px;
+    @media only screen and (max-width: 640px){
+      padding: 25px;
+    }
+    border-radius: 5px; 
+    &:after{
+      content: '';
+      top: 0;
+      width: 100%;
+      bottom: 0;
+      left: 0%;
+      position: absolute;
+      opacity: 1;
+      z-index: 10;
+      background-color: @fibo-ghost-card-background;
+      border-radius: 5px;
+    }
+    &:before{
+      content: '';
+      top: 0;
+      width: 100%;
+      bottom: 0;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      box-shadow: 0px 1px 5px 5px @fibo-ghost-card-shadow-color;
+      position: absolute;
+      opacity: .1;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+      border-radius: 5px;
+    }
+  }
+  .desc-slide, .author-info{
+    position: relative;
+    z-index: 1000;
+  }
+
+  .image-slide-inner{
+    position: relative;
+    width: @fibo-ghost-avatar-size;
+    min-width: @fibo-ghost-avatar-size;
+    height: @fibo-ghost-avatar-size;
+    overflow: hidden;
+    display: block;
+    border-radius: 50%;
+    img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  h1,h2,h3,p{
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  h3{
+    font-size: @fibo-ghost-title-font-size;
+    color: @fibo-ghost-title-font-color;
+    margin: 0px;
+    margin-bottom: 5px;
+    @media only screen and (max-width: 640px){
+      //margin-bottom: 10px;
+      font-size: @fibo-ghost-title-mobile-font-size;
+    }
+  }
+  p{
+    font-size: @fibo-ghost-desc-font-size;
+    color: @fibo-ghost-desc-font-color;
+    margin: 0px;
+    margin-bottom: 0;
+    a{
+      border-bottom: 1px solid;
+      color: @fibo-ghost-desc-font-color;
+    }
+  }
+
+  .desc-wrapper{
+    margin-bottom: 20px;
+    p{
+      opacity: 1 !important;
+      margin: 0px !important;
+      @media only screen and (max-width: 640px){
+        font-size: @fibo-ghost-desc-mobile-font-size;
+      }
+    }
+
+  }
+
+  .author-info{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    .image-slide-inner{
+      margin-right: 20px;
+    }
+    p{
+      line-height: 1.2;
+      font-size: @fibo-ghost-position-size;
+      color: @fibo-ghost-position-color;
+      @media only screen and (max-width: 640px){
+        font-size: @fibo-ghost-position-mobile-font-size;
+      }
+      
+    }
+  }
+}
+
+
+
+
+.fibo-control-wrapper{
+  height: @fibo-ghost-arrow-size;
+  padding-right:10px;
+  padding-left:10px;
+
+
+  .fibo-control{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    height: @fibo-ghost-arrow-size;
+    .swiper-button-next, .swiper-button-prev{
+      position: relative;
+      color: @fibo-ghost-arrow-color;
+      right: auto;
+      left: auto;
+      width: auto;
+      height: auto;
+
+      &:after{
+        font-family: 'squarespace-ui-font';  
+        font-style: normal;  
+        font-weight: normal;  
+        -webkit-font-smoothing: antialiased;  
+        display: inline-block;  
+        vertical-align: middle;  
+        speak: none;  
+        content: "\e002";
+        line-height: 1;
+        font-size: 20px;
+        width: auto;
+        height: auto;
+        font-size: @fibo-ghost-arrow-size;
+      }
+    }
+    .swiper-button-next{
+      margin-left: 7px;
+      &:after{
+        content: "\e005";
+      }
+    }
+  }
+}
+
+// Ghost fibo Product Slider Code - end //

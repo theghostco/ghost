@@ -1,0 +1,82 @@
+/*@variants-buttons-color:#fff;
+@variants-buttons-background-color: #000;
+
+.fakeSelector{
+  margin-bottom: 40px;
+  p{
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+  .fakers-inner-wrapper{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    .fakeValues{
+      border: 1px solid @variants-buttons-color;
+      color: @variants-buttons-color;
+      margin-right: 20px;
+      padding: 5px 10px;
+      cursor: pointer;
+      background-color: @variants-buttons-background-color;
+      &:empty{
+        display: none;
+      }
+      &.active-color{
+        background-color:@variants-buttons-color;
+        color: @variants-buttons-background-color;
+      }
+    }
+  }
+  + .variant-option{
+    display: none;
+  }
+}
+
+
+@variants-buttons-color:#fff;
+@variants-buttons-background-color: #000;
+
+
+body{.fakeSelector{.fakers-inner-wrapper{.fakeValues{border: 1px solid @variants-buttons-color;color: @variants-buttons-color;background-color: @variants-buttons-background-color; &.active-color{background-color:@variants-buttons-color;color: @variants-buttons-background-color;}}}}}
+*/
+
+
+.fakeSelector {
+  margin-bottom: 40px;
+}
+.fakeSelector p {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+.fakeSelector .fakers-inner-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;-ms-flex-wrap: wrap;flex-wrap: wrap;
+}
+.fakeSelector .fakers-inner-wrapper .fakeValues {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  margin-right: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #000000;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+.fakeSelector .fakers-inner-wrapper .fakeValues:empty {
+  display: none;
+}
+.fakeSelector .fakers-inner-wrapper .fakeValues.active-color {
+  background-color: #ffffff;
+  color: #000000;
+}
+.fakeSelector + .variant-option {
+  display: none;
+}
+
+body .sqs-add-to-cart-button.cart-added{
+  display: inline-block !important;
+ }

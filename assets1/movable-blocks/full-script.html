@@ -1,0 +1,115 @@
+<script>
+  const utils = (function (){
+    function getParentEl(el, tagName) {
+      let searchEl = el;
+
+      while (searchEl.parentElement) {
+        if (searchEl.parentElement.tagName.toLowerCase() === tagName.toLowerCase()) {
+          return searchEl.parentElement;
+        }
+        searchEl = searchEl.parentElement;
+      }
+
+      return null;
+    }
+
+    function getParentOfImg(img, className) {
+      let searchEl = img;
+
+      while (searchEl.parentElement) {
+        if (searchEl.parentElement.classList.contains(className)) {
+          return searchEl.parentElement;
+        }
+        searchEl = searchEl.parentElement;
+      }
+
+      return null;
+    }
+
+    function setAttrParents(attr, tag) {
+      let list = document.querySelectorAll(`[${attr}]`);
+      list.forEach((el) => {
+        const tagEl = getParentEl(el, tag);
+
+        if (!tagEl) {
+          return;
+        }
+        tagEl.setAttribute(attr, '');
+      })
+    }
+
+    return  {
+      getParentOfImg, setAttrParents
+    }
+  }());
+
+  (function (dataAttr) {
+
+    function setSection() {
+      utils.setAttrParents(dataAttr, 'section');
+    }
+
+    setSection();
+
+    const container = document.querySelector(`section[${dataAttr}]`);
+    const section = container.querySelector('[data-fluid-engine]');
+    const innerContainer = section.querySelector('.fluid-engine');
+    const listOfPictures = section.querySelectorAll('img');
+    const sizesOfSection = section.getBoundingClientRect();
+    container.style.overflow = 'hidden';
+    section.style.height = `${sizesOfSection.height}px`;
+    innerContainer.style.position = "static";
+    const containerOffset = parseFloat(container.style.paddingTop);
+
+    const elements = Array.from(listOfPictures).map((img) => {
+      const parent = utils.getParentOfImg(img, 'fe-block');
+      const rect = parent.getBoundingClientRect();
+
+      parent.style.height = `${rect.height}px`;
+      parent.style.width = `${rect.width}px`;
+      parent.style.top = `${rect.top - containerOffset}px`;
+      parent.style.left = `${rect.left}px`;
+
+      return parent;
+    });
+
+    function addEventListeners() {
+      let activeImgWrap = null;
+      let activeImgWrapTop;
+      let activeImgWrapLeft;
+      let zIndex = 1;
+      elements.forEach((parent) => {
+        parent.style.position = "absolute";
+
+        parent.addEventListener('pointerdown', (e) => {
+          e.preventDefault();
+          e.target.style.cursor = 'move';
+          activeImgWrap = parent;
+          activeImgWrapTop = parseFloat(parent.style.top) - e.clientY;
+          activeImgWrapLeft = parseFloat(parent.style.left) - e.clientX;
+        })
+      })
+
+      section.addEventListener('pointerup', (e) => {
+        activeImgWrap = null;
+      })
+
+      section.addEventListener('pointermove', (event) => {
+
+        if (!activeImgWrap) {
+          return;
+        }
+
+
+        activeImgWrap.style.zIndex = zIndex++;
+        activeImgWrap.style.left = `${event.clientX + activeImgWrapLeft}px`;
+        activeImgWrap.style.top = `${event.clientY + activeImgWrapTop}px`;
+      })
+    }
+
+    addEventListeners();
+
+  }('data-section-drag-pic')); // Set attribute of Section
+
+
+</script>

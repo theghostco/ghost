@@ -1,0 +1,7 @@
+body:not(.sqs-edit-mode-active) .anchor-link-to-section,
+body:not(.sqs-edit-mode-active) .anchor-link-to-link{
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+	display: block;
+}

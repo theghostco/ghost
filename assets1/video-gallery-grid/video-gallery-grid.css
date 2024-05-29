@@ -1,0 +1,174 @@
+.sqs-gallery-container.sqs-gallery-block-grid .slide {
+  position: relative;
+}
+.sqs-gallery-container.sqs-gallery-block-grid .video-lightbox-wrapper {
+  pointer-events: none;
+}
+.sqs-gallery-container.sqs-gallery-block-grid .sqs-video-icon {
+  opacity: 0;
+}
+.sqs-gallery-container.sqs-gallery-block-grid .image-slide-title {
+  display: none !important;
+}
+.sqs-gallery-container.sqs-gallery-block-grid img {
+  transition: all .2s ease;
+  -webkit-transition: all .2s ease;
+}
+.sqs-gallery-container.sqs-gallery-block-grid .custom-gallery-desc {
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+  opacity: 1;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.sqs-gallery-container.sqs-gallery-block-grid .custom-gallery-desc:hover {
+  background-color: rgba(17, 96, 60, 0.5);
+}
+.sqs-gallery-container.sqs-gallery-block-grid .custom-gallery-desc:hover + .content-wrapper img {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+}
+.sqs-gallery-container.sqs-gallery-block-grid .custom-gallery-desc .inner-cust-wrapper {
+  padding: 27px;
+  margin: 0 0 0 auto;
+  text-align: right;
+}
+@media screen and (max-width: 640px) {
+  .sqs-gallery-container.sqs-gallery-block-grid .custom-gallery-desc .inner-cust-wrapper {
+    padding: 20px;
+  }
+}
+.sqs-gallery-container.sqs-gallery-block-grid .custom-gallery-desc h3 {
+  font-size: 1em;
+  color: #ffffff;
+  margin: 0px;
+  line-height: 1.5em;
+}
+.sqs-gallery-container.sqs-gallery-block-grid .custom-gallery-desc p {
+  margin: 0px !important;
+  font-size: 1em;
+  color: #dddddd;
+}
+.sqs-gallery-container.sqs-gallery-block-grid .gallery-alignment-center .custom-gallery-desc .inner-cust-wrapper {
+  margin: 0  auto;
+  text-align: center;
+}
+.sqs-gallery-container.sqs-gallery-block-grid .gallery-alignment-left .custom-gallery-desc .inner-cust-wrapper {
+  margin: 0;
+  text-align: left;
+}
+.sqs-gallery-container.sqs-gallery-block-grid .active-gallery-item .custom-gallery-desc {
+  background-color: rgba(17, 96, 60, 0.5);
+}
+#iframe-vimeo-place {
+  background-color: #000;
+  position: relative;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  padding-bottom: 0%;
+  height: 0;
+}
+#iframe-vimeo-place.opened-video {
+  padding-bottom: 56.25%;
+  /* 16:9 */
+
+  margin-bottom: 50px;
+}
+@media screen and (max-width: 640px) {
+  #iframe-vimeo-place.opened-video {
+    margin-bottom: 10px;
+  }
+}
+#iframe-vimeo-place iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.link-with-director em {
+  font-style: normal;
+  opacity: .5;
+}
+a[href="#director-name"] {
+  color: #000;
+  pointer-events: none;
+  border: none;
+  text-decoration: none;
+  background: none;
+}
+.page-with-custom-gallery .sqs-block.gallery-block.sqs-block-gallery {
+  padding-top: 0px !important;
+}
+@media screen and (max-width: 640px) {
+  .page-with-custom-gallery #page {
+    /*margin-right: 20px !important;
+  margin-left: 20px !important;*/
+  }
+}
+@media screen and (max-width: 640px) {
+  .page-with-custom-gallery .sqs-gallery-container.sqs-gallery-block-grid .slide {
+    width: 100% !important;
+  }
+}
+.touch .custom-gallery-desc {
+  opacity: 1 !important;
+}
+
+
+#close-iframe{
+  width: 30px;
+  height: 30px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  opacity: 0;
+  background: rgba(0, 0, 0, .4);
+  margin: 0 0 20px auto;
+  cursor: pointer;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  -webkit-transition: opacity .3s ease;
+    display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  
+
+}
+#close-iframe svg{
+  width: 50%;
+  height: 50%;
+  fill: #000;
+  stroke: #000;
+
+}
+@media screen and (max-width: 640px) {
+  #close-iframe{
+    width: 20px;
+    height: 20px;
+
+  }
+}
+#close-iframe.opened{
+  opacity: 1;
+  pointer-events: auto;
+}

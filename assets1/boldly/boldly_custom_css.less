@@ -1,0 +1,47 @@
+// Ghost boldly Testimonials Slider Code - start //
+
+@boldly-ghost-card-background: #7b64f6;
+@boldly-ghost-card-border-radius: 20px;
+@boldly-ghost-card-shadow-color: #000; // can be "transparent"
+
+
+//title, person name (inherit h3 font style)
+@boldly-ghost-title-font-size: 1.2em;
+@boldly-ghost-title-font-color: #fff;
+
+//description, testimonials body (inherit p font style)
+@boldly-ghost-desc-font-size: 2em;
+@boldly-ghost-desc-font-color: #fff;
+
+
+//author position, tag (inherit body font style)
+@boldly-ghost-position-size: .8em;
+@boldly-ghost-position-color: #fff;
+
+//controls (arrows)
+@boldly-ghost-arrow-size: 3em;
+@boldly-ghost-arrow-bg-color: #fff;
+@boldly-ghost-arrow-color: #7b64f6;
+
+//quote symbol color
+@boldly-ghost-quote-symbol-size: 80px;
+@boldly-ghost-quote-symbol-color: #fff;
+
+
+//controls (bullets)
+@boldly-ghost-bullet-size: 12px;
+@boldly-ghost-bullet-color: #7b64f6;
+
+//mobile style
+@boldly-ghost-desc-mobile-font-size: 1em;
+@boldly-ghost-title-mobile-font-size: .9em;
+@boldly-ghost-position-mobile-font-size: .8em;
+
+
+
+
+
+
+body{.boldly-plugin{.image-slide{background: @boldly-ghost-card-background;border-radius: @boldly-ghost-card-border-radius;&:after{background-color: @boldly-ghost-card-background;border-radius: @boldly-ghost-card-border-radius;}&:before{box-shadow: 0px 1px 5px 5px @boldly-ghost-card-shadow-color;border-radius: @boldly-ghost-card-border-radius;}}h3{font-size: @boldly-ghost-title-font-size;color: @boldly-ghost-title-font-color;@media only screen and (max-width: 640px){font-size: @boldly-ghost-title-mobile-font-size;}}p{font-size: @boldly-ghost-desc-font-size;color: @boldly-ghost-desc-font-color;a{color: @boldly-ghost-desc-font-color;}}svg{width: @boldly-ghost-quote-symbol-size;height: @boldly-ghost-quote-symbol-size;stroke: @boldly-ghost-quote-symbol-color;path{fill: @boldly-ghost-quote-symbol-color;}}.desc-wrapper{p{@media only screen and (max-width: 640px){font-size: @boldly-ghost-desc-mobile-font-size;}}}.author-info{p{line-height: 1.2;font-size: @boldly-ghost-position-size;color: @boldly-ghost-position-color;@media only screen and (max-width: 640px){font-size: @boldly-ghost-position-mobile-font-size;}}.author-position p, p a{color: @boldly-ghost-position-color;}}}.boldly-pagination.swiper-pagination{.swiper-pagination-bullet{width: @boldly-ghost-bullet-size;height: @boldly-ghost-bullet-size;margin: @boldly-ghost-bullet-size/2;background-color: @boldly-ghost-bullet-color;}}.boldly-control-wrapper{height: @boldly-ghost-arrow-size;.boldly-control{.swiper-button-next, .swiper-button-prev{color: @boldly-ghost-arrow-color;left: -@boldly-ghost-arrow-size/2;background-color: @boldly-ghost-arrow-bg-color;&:after{font-size: @boldly-ghost-arrow-size;}}.swiper-button-next{right: -@boldly-ghost-arrow-size/2; left: auto;}}}}
+
+// Ghost boldly Testimonials Slider Code - end //

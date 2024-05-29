@@ -1,0 +1,208 @@
+
+//GHOST verification pop-up plugin code start//
+//pop-up colors
+@verification-pop-up-ghost-pop-up-overlay: rgba(0,0,0, .95);
+@verification-pop-up-ghost-color: #e3e3e3;
+
+//pop-up options
+@verification-pop-up-ghost-pop-up-max-width: 1200px;
+@verification-pop-up-ghost-vertical-spacers: 50px;
+
+//pop-up title
+@verification-pop-up-ghost-title-size: 3rem;
+@verification-pop-up-ghost-title-color: #000;
+
+
+//pop-up description
+@verification-pop-up-ghost-desc-size: 1.5rem;
+@verification-pop-up-ghost-desc-color: #333;
+
+//pop-up buttons
+@verification-pop-up-ghost-button-size: 1rem;
+@verification-pop-up-ghost-button-border-radius: 4px;
+
+@verification-pop-up-ghost-confirm-button-font-color: #fff;
+@verification-pop-up-ghost-confirm-button-background-color: #000;
+
+@verification-pop-up-ghost-reject-button-font-color: #000;
+@verification-pop-up-ghost-reject-button-background-color: transparent;
+
+//logo options
+@verification-pop-up-ghost-logo-max-size: 50px;
+
+
+//pop-up mobile fonts
+@verification-pop-up-ghost-title-mobile-size: 3rem;
+@verification-pop-up-ghost-desc-mobile-size: 1.5rem;
+@verification-pop-up-ghost-button-mobile-size: 1rem;
+
+@verification-pop-up-ghost-vertical-mobile-spacers: 35px;
+
+
+//verification
+body{
+  #siteWrapper{
+    opacity: 0;
+    transition: all .3s ease;
+  }
+  &.show-body{
+    #siteWrapper{
+      opacity: 1;
+    }
+  }
+  .verification-main-overlay{
+     transition: all .3s ease;
+  }
+  //pop up
+  &.opacity-verification{
+    .verification-main-overlay{
+      opacity: 0;
+    }
+  }
+  &.hide-verification{
+    .verification-main-overlay{
+      display: none;
+    }
+  }
+}
+.verification-main-overlay{
+  position: fixed;
+  z-index: 100000000;
+  background: @verification-pop-up-ghost-pop-up-overlay;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+
+  .verification-pop-up{
+    width: 100%;
+    padding: 17px;
+    .verification-pop-up-inner{
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      max-width: @verification-pop-up-ghost-pop-up-max-width;
+      margin: 0 auto;
+      background: @verification-pop-up-ghost-color;
+      border-radius: 5px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: auto;
+    }
+    .verification-left-part{
+      width: 50%;
+      @media only screen and (max-width: 640px){
+        width: 100%;
+      }
+
+      .verification-left-part-inner{
+        padding: @verification-pop-up-ghost-vertical-spacers 20px;
+
+        @media only screen and (max-width: 640px){
+          padding: @verification-pop-up-ghost-vertical-mobile-spacers 20px;
+        }
+      }
+      h2{
+        margin: 0px;
+        font-size: @verification-pop-up-ghost-title-size;
+        opacity: 1 !important;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        transition: none !important;
+        @media only screen and (max-width: 640px){
+          font-size: @verification-pop-up-ghost-title-mobile-size;
+        }
+      }
+      p{
+        font-size: @verification-pop-up-ghost-desc-size;
+        transition: none !important;
+        opacity: 1 !important;
+        margin-bottom: 20px;
+        @media only screen and (max-width: 640px){
+          font-size: @verification-pop-up-ghost-desc-mobile-size;
+        }
+      }
+      .verification-options{ 
+        button{
+          font-size: @verification-pop-up-ghost-button-size;
+          @media only screen and (max-width: 640px){
+            font-size: @verification-pop-up-ghost-button-mobile-size;
+          }
+          border-radius: @verification-pop-up-ghost-button-border-radius;
+          margin: 0px 12px 0px;
+          &.verify-confirm-button{
+            color: @verification-pop-up-ghost-confirm-button-font-color;
+            background-color:@verification-pop-up-ghost-confirm-button-background-color;
+            margin-bottom: 15px;
+
+          }
+          &.verify-reject-button{
+            color: @verification-pop-up-ghost-reject-button-font-color;
+            background-color: @verification-pop-up-ghost-reject-button-background-color;
+          }
+        }
+      }
+      .verifyLogo{
+        max-width: @verification-pop-up-ghost-logo-max-size;
+        margin: 0 auto;
+        img{
+          width: 100%;
+          display: block;
+        }
+      }
+    }
+    .verification-right-part{
+      width: 50%;
+      @media only screen and (max-width: 640px){
+        display: none;
+      }
+      position: relative;
+      overflow: hidden;
+      img{
+        max-width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+  }
+  .fail-verification{
+    text-align: center;
+    background-color: @verification-pop-up-ghost-title-color;
+    color: @verification-pop-up-ghost-color;
+    padding: 17px;
+    width: auto;
+    justify-content: center;
+    width: auto;
+    margin-bottom: 10px;
+    //position: absolute;
+    z-index: 100;
+    width: auto;
+    display: none;
+    &.active-fail{
+      display: block;
+    }
+  }
+  text-align:center;
+  .no-image{
+    .verification-left-part{
+      width: 100%;
+    }
+    .verification-right-part{
+      display: none;
+    }
+  }
+  .no-logo{
+    .verifyLogo{
+      display: none;
+    }
+  }
+}

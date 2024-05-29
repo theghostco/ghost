@@ -1,0 +1,81 @@
+.sqs-block-button-container .sqs-button-element--primary{
+	opacity: 0;
+	transition: .3s opacity ease;
+}
+.custom-button-wrapper .sqs-block-button-container .sqs-button-element--primary {
+	opacity: 1;
+}
+.custom-button-wrapper {
+	justify-content: center;
+	display: flex;
+}
+.custom-button-wrapper .sqs-block-button-container {
+	display: flex;
+	justify-content: center;
+}
+.custom-button-wrapper .sqs-block-button-container .sqs-button-element--primary {
+	height: 50px;
+	padding: 0px !important;
+	padding-right: 70px !important;
+	padding-left: 70px !important;
+	width: auto;
+	margin: 0;
+	border: none !important;
+	background-color: transparent !important;
+	position: relative;
+	color: #000;
+	width: fit-content;
+	justify-content: flex-start;
+	white-space: nowrap;
+}
+.custom-button-wrapper .sqs-block-button-container .sqs-button-element--primary .wrap-svg {
+	width: 100%;
+	height: 50px;
+	left: 0px;
+	position: absolute;
+	z-index: -1;
+}
+.custom-button-wrapper .sqs-block-button-container .sqs-button-element--primary .wrap-svg .wrap-svg-inner {
+	left: 0;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	will-change: width;
+	transition: .3s width ease;
+	background-color: #dec2b5;
+	z-index: -1;
+}
+.custom-button-wrapper .sqs-block-button-container .sqs-button-element--primary .wrap-svg .wrap-svg-inner:before {
+	content: '';
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	position: absolute;
+	left: 0;
+	background-color: #dec2b5;
+	transition: .3s width ease;
+	z-index: -1;
+}
+.custom-button-wrapper .sqs-block-button-container .sqs-button-element--primary svg {
+	width: 1em;
+	height: auto;
+	transition: .3s transform ease;
+	max-width: 55%;
+}
+.custom-button-wrapper .sqs-block-button-container .sqs-button-element--primary svg path {
+	fill: #000;
+}
+.custom-button-wrapper .sqs-block-button-container .sqs-button-element--primary:hover .wrap-svg .wrap-svg-inner:before {
+	width: 100%;
+}
+.custom-button-wrapper .sqs-block-button-container .sqs-button-element--primary:hover svg {
+	transform: rotate(45deg);
+}
+@media only screen and (max-width: 920px) {
+	.sqs-block-content .sqs-block-button-container .sqs-button-element--primary .wrap-svg .wrap-svg-inner:before {
+		width: 100%;
+	}
+}

@@ -1,0 +1,95 @@
+//blog item
+@ghost-blog-item-banner-height: 20%;
+@ghost-blog-item-banner-mobile-height: 40%;
+
+
+@ghost-blog-item-banner-text-space: 4vw;
+@ghost-blog-item-banner-text-color: #fff;
+@ghost-blog-item-banner-text-size: 5rem;
+@ghost-blog-item-banner-text-mobile-size: 35px;
+@ghost-blog-item-banner-text-max-width: 1200px;
+
+@ghost-blog-item-banner-overlay: rgba(0,0,0, .2);
+
+@ghost-blog-item-banner-image-cover-position: bottom; // available options: top,center,left, bottom
+@ghost-blog-item-banner-text-alignment: left; // available options: left, center, right
+@ghost-blog-item-banner-image-zoom-animation-duration: 2s; //set 0 to remove zoom animation
+
+
+//
+.blog-item-wrapper{
+  .blog-item-hero-banner{
+    position: relative;
+    overflow: hidden;
+    text-align: @ghost-blog-item-banner-text-alignment;
+    &:before{
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: @ghost-blog-item-banner-overlay;
+      position: absolute;
+      z-index: 1;
+    }
+    .blog-item-title{
+      padding: @ghost-blog-item-banner-height @ghost-blog-item-banner-text-space;
+      @media only screen and (max-width: 640px){
+        padding: @ghost-blog-item-banner-mobile-height @ghost-blog-item-banner-text-space;
+
+      }
+      position: relative;
+      z-index: 10;
+      text-align: @ghost-blog-item-banner-text-alignment;
+      display: inline-block;
+      max-width: @ghost-blog-item-banner-text-max-width;
+      h1{
+        color:@ghost-blog-item-banner-text-color;
+        font-size: @ghost-blog-item-banner-text-size;
+        @media only screen and (max-width: 640px){
+          font-size: @ghost-blog-item-banner-text-mobile-size;
+        }
+      }
+    }
+    img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      right: 0;
+      bottom: 0;
+      object-fit: cover;
+      object-position: @ghost-blog-item-banner-image-cover-position;
+      transition: transform @ghost-blog-item-banner-image-zoom-animation-duration ease;
+
+    }
+    &.zoom-animation-true{
+      img{
+        transform: scale(1.5);
+      }
+    }
+    &.loaded{
+      img{
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+
+.blog-item-inner-wrapper{
+  .blog-item-title{
+    display: none;
+  }
+  .blog-item-meta-wrapper{
+    margin-bottom: 0px !important;
+  }
+}
+.squarespace-damask{
+  .blog-item-title{
+    display: block !important;
+  }
+}

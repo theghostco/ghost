@@ -1,0 +1,252 @@
+// Ghost Tiller Product Slider Code - start //
+@tiller-product-slider-ghost-loading-background: #EBE4DC;
+@tiller-product-slider-ghost-slider-height: 100; // num only
+@tiller-product-slider-ghost-slider-height-mobile: 70;
+
+
+//title
+@tiller-product-slider-ghost-title-font-size: 35px;
+@tiller-product-slider-ghost-title-font-color: #000;
+
+//description
+@tiller-product-slider-ghost-desc-font-size: 20px;
+@tiller-product-slider-ghost-desc-font-color: #000;
+
+//price
+@tiller-product-slider-ghost-price-font-size: 16px;
+@tiller-product-slider-ghost-price-font-color: #000;
+
+
+//controls
+@tiller-product-slider-ghost-counter-size: 20px;
+@tiller-product-slider-ghost-arrow-size: 40px;
+@tiller-product-slider-ghost-arrow-background: #000;
+@tiller-product-slider-ghost-arrow-color: #fff;
+
+//mobile style
+@tiller-product-slider-ghost-slider-mobile-height: 90; //nums only
+@tiller-product-slider-ghost-title-mobile-font-size: 20px;
+@tiller-product-slider-ghost-price-mobile-font-size:16px;
+@tiller-product-slider-ghost-counter-mobile-size: 15px;
+
+
+
+
+
+.section-with-full-width-slider{
+  background-color: @tiller-product-slider-ghost-loading-background;
+  .section-background{ 
+    background-color: @tiller-product-slider-ghost-loading-background;}
+  //padding-top: 0px !important;
+  min-height: auto !important;
+  &.transparent-header-above-slider{
+    padding-top: 0px !important;
+  }
+  .content{
+    width: 100% !important;
+  }
+  .content-wrapper{
+    padding: 0px !important;
+    margin: 0px !important;
+    max-width: none;
+    .sqs-layout.sqs-grid-12{
+      > .row{
+        margin: 0px !important;
+        .sqs-block{
+          padding: 0px !important;
+        }
+      }
+    }
+  }
+}
+
+
+
+.tiller-product-slider-plugin{
+  background-color: @tiller-product-slider-ghost-loading-background;
+  opacity: 1 !important;
+  margin: 0px !important;
+  transform: none !important;
+  .summary-item-list-container.sqs-gallery-container{
+    display: none;
+  }
+  .summary-block-header{
+    display: none;
+  }
+  .summary-item-list{
+    margin: 0px !important;
+    transform: none !important;
+  }
+  .summary-item{
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    white-space: normal;
+    font-size: inherit;
+  }
+  .image-slide-inner{
+    position: relative;
+    padding-bottom: @tiller-product-slider-ghost-slider-height*1vh;
+    @media only screen and (max-width: 640px){
+      padding-bottom: @tiller-product-slider-ghost-slider-mobile-height*1vh;
+    }
+    overflow: hidden;
+    display: block;
+    img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .info-slide{
+    position: absolute;
+    bottom: 20px;
+    max-width: 50%;
+    @media only screen and (max-width: 640px){
+      max-width: 65%;
+    }
+    left: 20px;
+    bottom: 20px;
+    h1,h2,h3,p{
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    h3{
+      font-size: @tiller-product-slider-ghost-title-font-size;
+
+      color: @tiller-product-slider-ghost-title-font-color;
+      margin: 0px;
+      margin-bottom: @tiller-product-slider-ghost-title-font-size/3;
+      @media only screen and (max-width: 640px){
+        margin-bottom: 10px;
+      }
+    }
+    p{
+      font-size: @tiller-product-slider-ghost-desc-font-size;
+      color: @tiller-product-slider-ghost-desc-font-color;
+      margin: 0px;
+      margin-bottom: @tiller-product-slider-ghost-title-font-size/3;
+      @media only screen and (max-width: 640px){
+        font-size: @tiller-product-slider-ghost-price-mobile-font-size;
+      }
+    }
+    .sqs-money-native{
+      font-size: @tiller-product-slider-ghost-price-font-size;
+      color: @tiller-product-slider-ghost-price-font-color;
+      @media only screen and (max-width: 640px){
+        margin-bottom: 15px;
+      }
+    }
+    .title-wrapper{
+      opacity: 0;
+      transition: all .7s ease;
+      transform: translateX(-30px);
+    }
+    .desc-wrapper{
+      opacity: 0;
+      transition: all 1s ease;
+      transform: translateX(-30px);
+
+      @media only screen and (max-width: 640px){
+        display: none;
+      }
+
+    }
+    .buy-button{
+      opacity: 0;
+      transition: all .9s ease;
+      transform: translateX(-30px);
+      &:hover{
+        opacity: .7 !important;
+      }
+    }
+    .sqs-money-native{
+      opacity: 0;
+      transition: all 1.3s ease;
+      transform: translateX(-30px);
+      display: block;
+      @media only screen and (min-width: 640px){
+        margin-bottom: 15px;
+      }
+    }
+    &.animation{
+      .title-wrapper, .desc-wrapper, .sqs-money-native, .buy-button{
+        opacity: 1;
+        transform: translateX(0px);
+      }
+    }
+  }  
+}
+
+
+
+
+.tiller-product-slider-control-wrapper{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  .nums-slider{
+    position: relative;
+    z-index: 1;
+    text-align: right;
+    font-size: @tiller-product-slider-ghost-counter-size;
+    @media only screen and (max-width: 640px){
+      font-size: @tiller-product-slider-ghost-counter-mobile-size;
+    }
+    margin-bottom: 20px;
+    .active-slide{
+      opacity: 0;
+      transition: opacity .2s ease, tranisiton .6s ease;
+      transform: translateX(-30px);
+      &.animation{
+        opacity: 1;
+        transform: translateX(0px);
+      }
+    }
+  }
+  .tiller-product-slider-control{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: @tiller-product-slider-ghost-arrow-size;
+    .swiper-button-next, .swiper-button-prev{
+      position: relative;
+      background-color: @tiller-product-slider-ghost-arrow-background;
+      color: @tiller-product-slider-ghost-arrow-color;
+      right: auto;
+      left: auto;
+      width:@tiller-product-slider-ghost-arrow-size;
+      height: @tiller-product-slider-ghost-arrow-size;
+
+      border-radius: 50%;
+      border: 1px solid #000;
+      &:after{
+        font-family: 'squarespace-ui-font';  
+        font-style: normal;  
+        font-weight: normal;  
+        -webkit-font-smoothing: antialiased;  
+        display: inline-block;  
+        vertical-align: middle;  
+        speak: none;  
+        content: "\e02c";
+        line-height: 1;
+        font-size: 20px;
+        width: auto;
+        height: auto;
+      }
+    }
+    .swiper-button-next{
+      margin-left: 7px;
+      &:after{
+        content: "\e02D";
+      }
+    }
+  }
+}
+
+// Ghost Tiller Product Slider Code - end //

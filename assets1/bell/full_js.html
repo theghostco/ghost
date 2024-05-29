@@ -1,0 +1,96 @@
+
+<!-- SCALE PAGE PLUGIN -->
+<script>
+  ;(function(){
+
+
+    var siteHeader = document.querySelectorAll('header .header-inner')[0];
+
+    if (typeof(siteHeader) != 'undefined' && siteHeader != null){
+      document.querySelectorAll('.header-display-desktop').forEach(function(headerWrapper){
+        headerWrapper.insertAdjacentHTML('beforeend', '<button id="scale-page-button" class="scale-menu-button"><span class="scale-button-wrapper"></span></button>');
+      });
+      document.querySelectorAll('.header-display-mobile .header-burger').forEach(function(headerWrapper){
+        headerWrapper.insertAdjacentHTML('beforebegin', '<button id="scale-mobile-button" class="scale-menu-button"><span class="scale-button-wrapper"></span></button>');
+      });
+
+      document.body.insertAdjacentHTML('beforeend', '<div id="scale-closeBtn" class="scale-closeButton"><button class="close-wrapper"><span class="close-line close-line1"></span><span class="close-line close-line2"></span></button></div>');
+
+      document.getElementById('header').addEventListener('mouseover', function(){
+        document.body.classList.add('scale-menu-hovered');
+      });
+
+      document.getElementById('header').addEventListener('mouseout', function(){
+        document.body.classList.remove('scale-menu-hovered');
+      });
+
+      document.getElementById('scale-page-button').addEventListener('click', function(){
+        document.body.classList.toggle('scale-active-box');
+        document.getElementById('siteWrapper').classList.toggle('transition-parameters');
+        document.getElementById('siteWrapper').classList.toggle('siteWrapper-box-size');
+        document.getElementById('scale-closeBtn').classList.toggle('scale-close_active');
+      });
+
+      document.getElementById('scale-mobile-button').addEventListener('click', function(){
+        document.body.classList.toggle('scale-active-box');
+        document.getElementById('siteWrapper').classList.toggle('transition-parameters');
+        document.getElementById('siteWrapper').classList.toggle('siteWrapper-box-size');
+        document.getElementById('scale-closeBtn').classList.toggle('scale-close_active');
+      });
+
+      document.getElementById('scale-closeBtn').addEventListener('click', function(){
+        document.body.classList.remove('scale-active-box');
+        document.getElementById('siteWrapper').classList.remove('transition-parameters', 'siteWrapper-box-size');
+        document.getElementById('scale-closeBtn').classList.remove('scale-close_active');
+      });
+
+    }
+
+    document.body.classList.add('scale-box-plugin');  
+
+    let checkMenu = document.querySelectorAll('body.scale-box-plugin');
+    if (typeof(checkMenu) != 'undefined' && checkMenu != null){
+
+      checkMenu.forEach(function(el){
+        // main markup
+        el.insertAdjacentHTML("beforeend", '<div id="scale-box-section" class="scale-box-content"><div class="scale-box-container"><div class="scale-box-wrapper"></div></div></div>');
+
+        // vanilla js JSON request
+        var request = new XMLHttpRequest();
+        request.open('GET', ''+document.location.origin+'/scale-plugin-content?format=json-pretty', true);
+
+        request.onload = function() {
+          if (this.status >= 200 && this.status < 400) {
+            /* Success!*/
+            var data = JSON.parse(this.response);
+
+            for (var i = 0; i < data.items.length; i++) {
+
+              var getItemTitle = data.items[i].title;
+              var getItemExcerpt = data.items[i].excerpt;
+
+              // item markup
+              var createItem = '<div class="scale-box-item"><div class="description-wrapper"><h3 class="title">'+getItemTitle+'</h3><div class="excerpt">'+getItemExcerpt+'</div></div></div>';
+              var getParent = el.querySelector('.scale-box-wrapper');
+              getParent.innerHTML =  getParent.innerHTML + createItem;
+
+              // items counter
+              var counter = data.items.length.toString();
+              console.log(counter);
+
+              var counterParent = document.querySelector('#scale-page-button');
+              var mobileParent = document.querySelector('#scale-mobile-button');
+
+              counterParent.insertAdjacentHTML("beforeend", '<div class="scale-items-counter">'+counter+'</div>');
+              mobileParent.insertAdjacentHTML("beforeend", '<div class="scale-items-counter">'+counter+'</div>');    
+            }
+          } else {}
+        };
+        request.onerror = function() {};
+        request.send(); 
+
+      });
+    }
+  }());
+</script>
+<!-- scale -->

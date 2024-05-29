@@ -1,0 +1,34 @@
+.sqs-announcement-bar-text {
+  padding-left: 0px;
+  pading-right: 0px;
+}
+#announcement-bar-text-inner-id {
+  position: relative;
+}
+#announcement-bar-text-inner-id p {
+  padding: 10px 5vw;
+}
+#announcement-bar-text-inner-id .slick-list.draggable {
+  padding: 0px !important;
+}
+.flickity-button {
+  display: none !important;
+}
+#announcement-bar-text-inner-id p {
+  width: 50vw;
+}
+.marquee {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.sqs-announcement-bar-dropzone {
+  -webkit-transition: all 0.5s ease-out !important;
+  transition: all 0.5s ease-out !important;
+  height: 0px;
+  overflow: hidden;
+}
+.sqs-announcement-bar-dropzone.show-announcement {
+  height: auto;
+  overflow: visible;
+}

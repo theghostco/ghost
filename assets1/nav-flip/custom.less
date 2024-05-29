@@ -1,0 +1,22 @@
+
+/* NAVIGATION HOVER */
+@menu-item-height: 1.6em;
+@menu-link-line-height: 1.4em;
+
+
+@menu-item-orientation: top; // available options: top or bottom;
+
+// top links orientation
+.menu-item-direction() when (@menu-item-orientation = top) {-webkit-transform: unset; transform: unset;}
+.hovered-menu-item-direction() when (@menu-item-orientation = top) {-webkit-transform: translate(0, -100%); transform: translate(0, -100%);}
+.created-menu-item-direction() when (@menu-item-orientation = top) {-webkit-transform: unset; transform: unset;}
+.hovered-created-menu-item-direction() when (@menu-item-orientation = top) {-webkit-transform: translate(0, -100%); transform: translate(0, -100%);}
+
+// bottom links orientation
+.menu-item-direction() when (@menu-item-orientation = bottom) {-webkit-transform: unset; transform: unset;}
+.hovered-menu-item-direction() when (@menu-item-orientation = bottom) {-webkit-transform: translate(0, 100%); transform: translate(0, 100%);}
+.created-menu-item-direction() when (@menu-item-orientation = bottom) {-webkit-transform: translate(0, -200%); transform: translate(0, -200%);}
+.hovered-created-menu-item-direction() when (@menu-item-orientation = bottom) {-webkit-transform: translate(0, -100%); transform: translate(0, -100%);}
+
+body header .header-nav-list {.header-nav-item {height: @menu-item-height;line-height: @menu-item-height;a{line-height: @menu-link-line-height;.menu-item-direction;}a.menu-item-text {.created-menu-item-direction;}&:hover {a {.hovered-menu-item-direction;}a.menu-item-text {.hovered-created-menu-item-direction;}}}}
+/* NAVIGATION HOVER */

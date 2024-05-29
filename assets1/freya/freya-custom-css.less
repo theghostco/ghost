@@ -1,0 +1,19 @@
+
+@freya-ghost-card-bg-color: #fff;
+@freya-ghost-card-active-bg-color: #FAF1E7;
+
+@freya-ghost-image-height: 50%;
+@freya-ghost-image-mobile-height: 125%;
+@freya-ghost-image-position: right; //availabe left or right
+
+
+@freya-ghost-titles-font-size: 25px;
+@freya-ghost-titles-font-color: #C58E78;
+
+@freya-ghost-desc-size: 13px;
+@freya-ghost-desc-color: #000;
+
+
+
+.reverse-image() when (@freya-ghost-image-position = left){-webkit-box-orient: horizontal;  -webkit-box-direction: reverse;  -ms-flex-direction: row-reverse;  flex-direction: row-reverse;.phase-image-changer-images-wrapper  {margin-right: 35px;margin-left: 0px;}}
+body{.freya-plugin.summary-block-wrapper{.reverse-image();.summary-item{.summary-title{font-size: @freya-ghost-titles-font-size;color: @freya-ghost-titles-font-color;@media only screen and (max-width: 640px){font-size: @freya-ghost-titles-font-size/1.1;}}p{color: @freya-ghost-desc-color;font-size: @freya-ghost-desc-size;@media only screen and (max-width: 640px){font-size: @freya-ghost-desc-size/1.1;}}&.current-active{background-color: @freya-ghost-card-active-bg-color;}}.freya-images-wrapper{padding-bottom: @freya-ghost-image-height;@media only screen and (max-width: 800px){padding-bottom: @freya-ghost-image-mobile-height;}}}}

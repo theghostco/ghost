@@ -1,0 +1,15 @@
+//loader
+@ghost-load-title-color: #fff;
+@ghost-load-branding-size: 38px;
+
+@ghost-load-loader-color: #000;
+@ghost-load-loader-color2: grey;
+@ghost-load-loader-width: 120px;
+@ghost-load-loader-height: 10px;
+@ghost-load-loader-border-radius: 5px;
+
+@ghost-load-background-color: rgba(255,255,255, 0); // use hex code for solid colors or rgba(255,255,255, 0) for blur.
+@ghost-load-background-blur: 30px; //blur set-up
+
+
+body{.preloaded {background-color: @ghost-load-background-color;-webkit-backdrop-filter: blur(@ghost-load-background-blur);backdrop-filter: blur(@ghost-load-background-blur);.logo-animation{h2{color: @ghost-load-title-color;font-size: @ghost-load-branding-size;img{max-height: @ghost-load-branding-size;}}}}.loading_line_wrapper {height: @ghost-load-loader-height;background: @ghost-load-loader-color;width: @ghost-load-loader-width;border-radius: @ghost-load-loader-border-radius;}.loading_line {border-radius: @ghost-load-loader-border-radius;}.loading_line .loading_line_inner {border-radius:@ghost-load-loader-border-radius;}.loading_line_inner--1 {background-color: @ghost-load-loader-color;border-radius: @ghost-load-loader-border-radius;}.loading_line_inner--2 {background: @ghost-load-loader-color2;border-radius: @ghost-load-loader-border-radius;}}

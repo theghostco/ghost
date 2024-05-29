@@ -1,0 +1,360 @@
+.section-with-aiko-slider .content-wrapper {
+  box-sizing: border-box !important;
+}
+.sqs-gallery-design-carousel {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+.sqs-gallery-design-carousel.loaded-carousel {
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+.aiko-plugin {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  -webkit-transform: none !important;
+          transform: none !important;
+}
+.aiko-plugin .summary-item-list-container.sqs-gallery-container {
+  display: none;
+}
+.aiko-plugin .summary-block-header {
+  display: none;
+}
+.aiko-plugin .summary-item-list {
+  margin: 0px !important;
+  -webkit-transform: none !important;
+          transform: none !important;
+}
+.aiko-plugin .summary-item {
+  display: block !important;
+  width: 100% !important;
+  padding: 0 !important;
+  white-space: normal;
+  font-size: inherit;
+}
+.aiko-plugin .aiko-wrapper {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@media only screen and (max-width: 1000px) {
+  .aiko-plugin .aiko-wrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+.aiko-plugin .aiko-wrapper .left-part {
+  width: 40%;
+  margin-right: 5%;
+}
+@media only screen and (max-width: 1000px) {
+}
+@media only screen and (max-width: 640px) {
+  .aiko-plugin .aiko-wrapper .left-part {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+.aiko-plugin .aiko-wrapper .right-part {
+  width: 70%;
+}
+@media only screen and (max-width: 1000px) {
+  .aiko-plugin .aiko-wrapper .right-part {
+    width: 55%;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .aiko-plugin .aiko-wrapper .right-part {
+    width: 100%;
+  }
+}
+.aiko-plugin .swiper-container {
+  overflow-y: visible;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+.aiko-plugin .image-slide {
+  visibility: visible !important;
+  margin-bottom: 10px;
+  overflow: visible !important;
+  position: relative;
+  background: #fff;
+  padding: 50px;
+  border-radius: 0px;
+}
+@media only screen and (max-width: 1000px) {
+  .aiko-plugin .image-slide {
+    padding: 25px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .aiko-plugin .image-slide {
+    padding: 25px;
+  }
+}
+.aiko-plugin .image-slide:after {
+  content: '';
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  left: 0%;
+  position: absolute;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  z-index: 10;
+  background-color: #fff;
+  border-radius: 0px;
+}
+.aiko-plugin .image-slide:before {
+  content: '';
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  box-shadow: 0px 1px 5px 5px #000;
+  position: absolute;
+  opacity: 0.1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  border-radius: 0px;
+}
+.aiko-plugin .desc-slide,
+.aiko-plugin .author-info {
+  position: relative;
+  z-index: 1000;
+}
+.aiko-plugin .image-slide-inner {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding-bottom: 150%;
+  z-index: 1000;
+}
+.aiko-plugin .image-slide-inner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.aiko-plugin h1,
+.aiko-plugin h2,
+.aiko-plugin h3,
+.aiko-plugin p {
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  -webkit-transform: none !important;
+          transform: none !important;
+}
+.aiko-plugin h3 {
+  font-size: 2em;
+  color: #000;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+@media only screen and (max-width: 640px) {
+  .aiko-plugin h3 {
+    font-size: 0.9em;
+  }
+}
+.aiko-plugin p {
+  font-size: 2em;
+  line-height: 1.2;
+  color: #4e4e4e;
+  margin: 0px;
+  margin-bottom: 0;
+}
+.aiko-plugin p a {
+  border-bottom: 1px solid;
+  color: #4e4e4e;
+}
+.aiko-plugin svg {
+  width: 60px;
+  height: 60px;
+  stroke: #e9e9e9;
+}
+.aiko-plugin svg path {
+  fill: #e9e9e9;
+}
+@media only screen and (max-width: 1000px) {
+  .aiko-plugin svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+.aiko-plugin .desc-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.aiko-plugin .desc-slide .wrap-content {
+  width: calc(100% - 60px*2);
+  padding: 25px;
+}
+@media only screen and (max-width: 1000px) {
+  .aiko-plugin .desc-slide .wrap-content {
+    padding: 0px;
+    width: 100%;
+    padding-top: 20px;
+  }
+}
+.aiko-plugin .svg-quote {
+  width: 60px;
+}
+@media only screen and (max-width: 1000px) {
+  .aiko-plugin .svg-quote {
+    display: none;
+  }
+}
+.aiko-plugin .svg-quote.quote-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+@media only screen and (max-width: 1000px) {
+  .aiko-plugin .svg-quote.quote-bottom {
+    display: none;
+  }
+}
+.aiko-plugin .svg-quote.quote-bottom svg {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+}
+.aiko-plugin .desc-wrapper {
+  margin-bottom: 24px;
+  margin-top: 20px;
+}
+@media only screen and (max-width: 1000px) {
+  .aiko-plugin .desc-wrapper {
+    margin-bottom: 16px;
+    margin-top: 0;
+  }
+}
+.aiko-plugin .desc-wrapper p {
+  opacity: 1 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  margin: 0px !important;
+}
+@media only screen and (max-width: 640px) {
+  .aiko-plugin .desc-wrapper p {
+    font-size: 1em;
+  }
+}
+.aiko-plugin .author-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.aiko-plugin .author-info a {
+  pointer-events: none;
+  border: none;
+}
+.aiko-plugin .author-info .image-slide-inner {
+  margin-right: 20px;
+}
+.aiko-plugin .author-info p {
+  line-height: 1.2;
+  font-size: 1.3em;
+  color: #4e4e4e;
+}
+@media only screen and (max-width: 640px) {
+  .aiko-plugin .author-info p {
+    font-size: 0.8em;
+  }
+}
+.aiko-plugin .author-info .author-position p,
+.aiko-plugin .author-info p a {
+  color: #4e4e4e;
+}
+.aiko-pagination.swiper-pagination {
+  position: relative;
+  margin-top: 20px;
+}
+.aiko-pagination.swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  margin: 6px;
+  background-color: #000;
+}
+.aiko-control-wrapper {
+  height: 2.5em;
+  padding-right: 10px;
+  padding-left: 10px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 10;
+}
+@media only screen and (max-width: 1000px) {
+  .aiko-control-wrapper {
+    display: none;
+  }
+}
+.aiko-control-wrapper .aiko-control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+.aiko-control-wrapper .aiko-control .swiper-button-next,
+.aiko-control-wrapper .aiko-control .swiper-button-prev {
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  color: #fff;
+  right: auto;
+  left: auto;
+  width: auto;
+  height: auto;
+  left: calc(-2.5em/2 - 5px);
+  background-color: #000;
+  padding: 15px;
+}
+.aiko-control-wrapper .aiko-control .swiper-button-next:after,
+.aiko-control-wrapper .aiko-control .swiper-button-prev:after {
+  font-family: 'squarespace-ui-font';
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  vertical-align: middle;
+  speak: none;
+  content: "\E02C";
+  line-height: 1;
+  font-size: 2.5em;
+}
+.aiko-control-wrapper .aiko-control .swiper-button-next {
+  margin-left: 7px;
+  left: auto;
+  right: calc(-2.5em/2 - 5px);
+}
+.aiko-control-wrapper .aiko-control .swiper-button-next:after {
+  content: "\E02D";
+}

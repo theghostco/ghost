@@ -1,0 +1,16 @@
+.element-with-typed-text div {
+	display: inline;
+}
+.sqs-block-content strong em {
+	transition: opacity 0.1s ease;
+	-webkit-transition: opacity 0.1s ease;
+	opacity: 0;
+}
+
+.sqs-block-content strong em.loaded {
+	opacity: 1;
+}
+.squarespace-damask .sqs-block-content strong em{
+	opacity: 1;
+}
+
