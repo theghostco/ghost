@@ -1,9 +1,10 @@
+
 @font-family: "Martian Mono", monospace;
 @font-color:rgb(0, 0, 0);
 @font-size: 12px;
 @font-weight: 300;
 
-@font-color_description-item: white;
+@font-color_description-item: #fff;
 
 @gallery-item-height: ~"clamp(230px, 30.2vw, 588px)";
 
@@ -81,6 +82,11 @@
 .gallery-container {
   .gallery-item {
     height: @gallery-item-height;
+    
+    p {
+      color: @font-color_description-item;
+      transition: @transition-all !important;
+    }
   }
   .item-image{
     img{
