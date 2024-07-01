@@ -1,10 +1,6 @@
   ;(function () {
 
-  const values = {
-  	href: '/picture-list',
-    attribute: 'data-pic-animation'
-  };
-    
+   
 const utils = (function () {
     function getParentEl(el, tagName) {
         let searchEl = el;
