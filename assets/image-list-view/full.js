@@ -1,6 +1,6 @@
  ;(function () {
 function switcherGallery(){
-	const urlForGallery = document.location.origin + '/gallery-content' + '?format=json-pretty';
+	var urlForGallery = document.location.origin + ghostGlobalImageListView.url + '?format=json-pretty';
 	const galleryWrapper = document.querySelector('.switcher-gallery-wrapper')
     
     if(galleryWrapper){
@@ -157,6 +157,4 @@ switcherGallery()
       });
    }
 });
-
-
      })();
