@@ -1,1 +1,131 @@
 
+:root {
+	//image pagination size
+  --image-width: 130px;
+  --image-height: 90px;
+  
+  //text properties
+  --font-weight: 600; 
+  --font-size: 16px;
+  --line-height: 1;
+  --font-family: "Inter", sans-serif;
+  --text-color: #000;
+  --text-offset: -20px;
+}
+
+
+.blog-img-pagination {
+  .item-pagination-link--next {
+    display: flex;
+  
+   &:before {
+    order: 2;
+  }
+  
+  .item-pagination-icon {
+        order: 3;
+  }
+  
+  .pagination-title-wrapper {
+    order: 1;
+    margin-right: var(--text-offset);
+    z-index: 1;
+  }
+}
+
+.item-pagination-link--prev {
+  display: flex;
+  
+  &:before {
+    order: 2;
+  }
+  
+  .item-pagination-icon {
+        order: 1;
+  }
+  
+  .pagination-title-wrapper {
+    order: 3;
+    margin-left: var(--text-offset);
+    z-index: 1;
+  }
+}
+
+.item-pagination-title {
+	font-weight: var(--font-weight) !important;
+  	font-size: var(--font-size) !important;
+  	line-height: var(--line-height) !important;
+  	font-family: var( --font-family) !important;
+  color: var(--text-color) !important;
+  transition: transform 300ms ease-in-out;
+}
+
+
+.item-pagination-link--prev{
+	position: relative;
+    display: flex;
+    align-items: center;
+   
+  &:before {
+    content: '';
+    background: var(--blog-pagination-prev) no-repeat;
+      width: var(--image-width);
+      height: var(--image-height);
+      background-size: cover;
+      background-position: center;
+      background-size: cover;
+      background-position: center;
+      display: block;
+      position: relative;
+  }
+  
+    &:hover {
+    .item-pagination-title {
+      transform: translateX(15%);
+  }
+}
+}
+
+.item-pagination-link--next {
+  	position: relative;
+    display: flex-reverse;
+    align-items: center;
+  
+  &:before {
+    content: '';
+    background: var(--blog-pagination-next) no-repeat;
+      width: var(--image-width);
+      height: var(--image-height);
+      background-size: cover;
+      background-position: center;
+      background-size: cover;
+      background-position: center;
+      display: block;
+      position: relative;
+  }
+  
+  &:hover {
+    .item-pagination-title {
+      transform: translateX(-15%);
+  }
+}
+  
+ 
+  }
+
+  .blog-item-wrapper {
+    position: relative;
+  
+    &:before {
+      content: '';
+      background: var(--project-bg) no-repeat;
+      height: 50vh;
+      background-size: cover;
+      background-position: center;
+      background-size: cover;
+      background-position: center;
+      display: block;
+      position: relative;
+    }
+  }
+}
