@@ -1,1 +1,68 @@
+<script src="https://www.ghosthub.boo/assets/helpers/conf/confetti.js"></script>
 
+<script>
+  // List of relative paths where the script should be activated
+  var enabledPages = [
+    //'/clay-summary-block',
+    '/confetti-pop-buttons'
+  ];
+
+  // Get the current URL path
+  var currentPath = window.location.pathname;
+
+  // Check if the current path is in the list of enabled pages
+  if (enabledPages.includes(currentPath)) {
+    var ghostPageConfettiOptions = {
+      colors: ['#a864fd', "#29cdff", "#78ff44", "#ff718d", "#fdff6a"], // confetti colors - up to 5 hex colors
+      spread: 150, // confetti spread distance
+      particleCount: 200, // number of confetti particles - 200 or less recommended
+      loop: false, // keep confetti pop going after submission - true or false
+      loopDelay: 2000, // delay in confetti pop if loop is set to true
+      duration: 10, // duration of confetti
+      redirectDelay: 0 // delay before redirecting, in milliseconds
+    };
+  }
+</script>
+<!--<script src="https://www.ghostplugins.dev/assets/confetti/page/index.js"></script>-->
+<script>    
+  function triggerConfetti() {
+    let t = ghostPageConfettiOptions.duration,
+        e = Date.now() + t;
+    !(function n() {
+      let o = Date.now();
+      o < e && requestAnimationFrame(n);
+      if (1 - (e - o) / t > 0) {
+        confetti({
+          colors: ghostPageConfettiOptions.colors,
+          spread: ghostPageConfettiOptions.spread,
+          particleCount: ghostPageConfettiOptions.particleCount
+        });
+      }
+    })();
+  }
+
+  function createConfetti(t) {
+    t.style.position = "absolute";
+    t.style.inset = "0";
+    t.style.pointerEvents = "none";
+    let e = new IntersectionObserver((t) => {
+      t[0].isIntersecting && triggerConfetti();
+    });
+    e.observe(t);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let t = document.querySelector("#confetti-contaner");
+    createConfetti(t);
+  });
+
+  window.addEventListener('load', function() {
+    triggerConfetti();
+    var e = ghostPageConfettiOptions.redirectDelay;
+    if (e > 0) {
+      setTimeout(function () {
+        window.location.href = ghostPageConfettiOptions.redirectURL;
+      }, e);
+    }
+  });
+</script>
