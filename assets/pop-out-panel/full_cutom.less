@@ -1,21 +1,51 @@
 /* Popup Slider Menu */
+@side-menu-slider-desktop-width: 40vw;
+@side-menu-slider-tablet-width: 70vw;
+@side-menu-slider-mobile-width: 100vw;
+@side-menu-slider-vertical-paddings: 20px;
+@side-menu-slider-horizontal-paddings: 20px;
+@side-menu-slider-animation-time: .4s;
+
+@side-menu-blur-background-color: rgba(0, 0, 0, .1);
+@side-menu-blur-saturation: blur(15px);
+@side-menu-blur-animation-time: all .5s ease-out;
+
+@side-menu-close-color: #000000;
+@side-menu-close-vertical-paddings: 7px;
+@side-menu-close-horizontal-paddings: 12px;
+@side-menu-close-border-radius: 999px;
+
+@side-menu-button-font-family: inherit;
+@side-menu-button-font-size: inherit;
+@side-menu-button-line-height: inherit;
+@side-menu-button-letter-spacing: inherit;
+@side-menu-button-font-color: inherit;
+@side-menu-button-mobile-alignment: right;
+
+@side-menu-close-content-font-family: inherit;
+@side-menu-close-content-font-size: inherit;
+@side-menu-close-content-line-height: inherit;
+@side-menu-close-content-letter-spacing: inherit;
+@side-menu-close-content-font-color: #000000;
+@side-menu-close-content-hover-font-color: #FFFFFF;
+
 body.sqs-edit-mode .side-menu-slider {display: none;}
 
 .side-menu-slider {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100vw;
+  width: @side-menu-slider-mobile-width;
   height: 100vh;
   padding-left: 20vw;
   transform: translateX(150%) rotate(15deg);
   z-index: 20;
-  transition: all .4s ease-out;
+  transition: all @side-menu-slider-animation-time ease-out;
   overflow-y: scroll;
   overflow-x: visible;
   .side-menu-slider-container {
-    //border: 1px solid #000000;
-    //-webkit-box-shadow: inset 2px 2px 0px -1px rgba(0,0,0,0.75);
+    // border: 1px solid #000000;
+    // -webkit-box-shadow: inset 2px 2px 0px -1px rgba(0,0,0,0.75);
   }
   .side-menu-close-wrapper {
     position: absolute;
@@ -23,10 +53,10 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
     align-items: center;
     top: 20px;
     right: 20px;
-    padding: 7px 12px;
+    padding: @side-menu-close-vertical-paddings @side-menu-close-horizontal-paddings;
     box-sizing: border-box;
-    border-radius: 999px;
-    border: 1px solid #000000;
+    border-radius: @side-menu-close-border-radius;
+    border: 1px solid @side-menu-close-color;
     -moz-column-gap: .625rem;
     column-gap: .625rem;
     transition: all .2s ease-out;
@@ -34,16 +64,26 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
     cursor: pointer;
     &:before {
       content: 'Close';
+      font-family: @side-menu-close-content-font-family;
+      font-size: @side-menu-close-content-font-size;
+      line-height: @side-menu-close-content-line-height;
+      letter-spacing: @side-menu-close-content-letter-spacing;
+      color: @side-menu-close-content-font-color;
       transition: all .2s ease-out;
     }
     &:after {
       content: 'X';
+      font-family: @side-menu-close-content-font-family;
+      font-size: @side-menu-close-content-font-size;
+      line-height: @side-menu-close-content-line-height;
+      letter-spacing: @side-menu-close-content-letter-spacing;
+      color: @side-menu-close-content-font-color;
       transition: all .2s ease-out;
     }
     &:hover {
-      background-color: #000000;
+      background-color: @side-menu-close-color;
       transition: all .2s ease-out;
-      &:before, &:after {color: #FFFFFF !important;}
+      &:before, &:after {color: @side-menu-close-content-hover-font-color !important;}
     }
     @media only screen and (min-width: 768px) {right: ~"calc(70vw + 20px)";}
     @media only screen and (min-width: 1280px) {right: ~"calc(40vw + 20px)";}
@@ -57,9 +97,63 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
   }
   .sqs-row {margin: 0 !important;}
   .sqs-block:not(.horizontalerule-block) {
-    padding: 20px !important;
+    padding: @side-menu-slider-vertical-paddings @side-menu-slider-horizontal-paddings !important;
     box-sizing: border-box;
   }
+
+  /*
+  The plugin uses standard CSS styles for fonts inherited from the Squarespace page.
+  But you can change them below if you need
+  */
+  /*
+  .sqs-block h1, h1 {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+  .sqs-block h2, h2 {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+  .sqs-block h3, h3 {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+  .sqs-block h4, h4 {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+  .sqs-block p.sqsrte-large, p.sqsrte-large {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+  .sqs-block p:not(sqsrte-large):not(sqsrte-small), p:not(sqsrte-large):not(sqsrte-small) {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+  .sqs-block p.sqsrte-small, p.sqsrte-small {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+  */
+  /*
+  The plugin uses standard CSS styles for fonts inherited from the Squarespace page.
+  But you can change them above if you need
+  */
+
   &:before, &:after {
     width: auto;
     hieght: 1px;
@@ -67,16 +161,16 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
     border-top: 1px solid #000000;
   }
   @media only screen and (min-width: 768px) {
-    width: 70vw;
+    width: @side-menu-slider-tablet-width;
     height: ~"calc(100vh - 40px)";
     top: 20px;
     right: 20px;
   }
-  @media only screen and (min-width: 1280px) {width: 40vw;}
+  @media only screen and (min-width: 1280px) {width: @side-menu-slider-desktop-width;}
 }
 
 .side-menu-blur {
-  background-color: rgba(0, 0, 0, .1);
+  background-color: @side-menu-blur-background-color;
   position: fixed;
   top: 0;
   left: 0;
@@ -85,8 +179,8 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
   opacity: 0;
   z-index: 1;
   cursor: pointer;
-  backdrop-filter: blur(15px);
-  transition: all .5s ease-out;
+  backdrop-filter: @side-menu-blur-saturation;
+  transition: all @side-menu-blur-animation-time ease-out;
 }
 
 body.side-menu-opened {
@@ -117,10 +211,20 @@ body.side-menu-opened {
   margin-right: 20px;
 }
 
+.side-menu-button {
+  font-family: @side-menu-button-font-family;
+  font-size: @side-menu-button-font-size;
+  line-height: @side-menu-button-line-height;
+  letter-spacing: @side-menu-button-letter-spacing;
+  color: @side-menu-button-font-color;
+}
+
 .header-display-mobile {
   flex-wrap: wrap;
   .side-menu-button {
+    width: 100%;
     margin: 20px 0 0;
+    text-align: @side-menu-button-mobile-alignment;
   }
 }
 /* Popup Slider Menu */
