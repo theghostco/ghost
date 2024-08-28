@@ -1,0 +1,208 @@
+body.sqs-edit-mode .side-menu-slider {display: none;}
+.side-menu-slider {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  padding-left: 20vw;
+  transform: translateX(150%) rotate(15deg);
+  z-index: 20;
+  transition: all .4s ease-out;
+  overflow-y: scroll;
+  overflow-x: visible;
+}
+.side-menu-slider .side-menu-slider-container {
+  /* border: 1px solid #000000; */
+  /* -webkit-box-shadow: inset 2px 2px 0px -1px rgba(0,0,0,0.75); */
+}
+
+.side-menu-slider .side-menu-close-wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 20px;
+  right: 20px;
+  padding: 7px 12px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  border: 1px solid #000000;
+  -moz-column-gap: .625rem;
+  column-gap: .625rem;
+  transition: all .2s ease-out;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.side-menu-slider .side-menu-close-wrapper:before {
+  content: 'Close';
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  transition: all .2s ease-out;
+}
+
+.side-menu-slider .side-menu-close-wrapper:after {
+  content: 'X';
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  transition: all .2s ease-out;
+}
+
+.side-menu-slider .side-menu-close-wrapper:hover {
+  background-color: #000000;
+  transition: all .2s ease-out;
+}
+
+.side-menu-slider .side-menu-close-wrapper:hover:before,
+.side-menu-slider .side-menu-close-wrapper:hover:after {color: #FFFFFF !important;}
+
+.side-menu-slider .page-section {
+  min-height: 100% !important;
+}
+
+.side-menu-slider .page-section .content-wrapper {
+  padding: 50px 0 0 !important;
+}
+
+.side-menu-slider .page-section .content-wrapper .sqs-row {margin: 0 !important;}
+
+.side-menu-slider .page-section .content-wrapper .sqs-block:not(.horizontalerule-block) {
+  padding: 20px 20px !important;
+  box-sizing: border-box;
+}
+
+/*
+  The plugin uses standard CSS styles for fonts inherited from the Squarespace page.
+  But you can change them below if you need
+*/
+
+/*
+.side-menu-slider .page-section .sqs-block h1, h1 {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.side-menu-slider .page-section .sqs-block h2, h2 {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.side-menu-slider .page-section .sqs-block h3, h3 {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.side-menu-slider .page-section .sqs-block h4, h4 {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.side-menu-slider .page-section .sqs-block p.sqsrte-large, p.sqsrte-large {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.side-menu-slider .page-section .sqs-block p:not(sqsrte-large):not(sqsrte-small), p:not(sqsrte-large):not(sqsrte-small) {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.side-menu-slider .page-section .sqs-block p.sqsrte-small, p.sqsrte-small {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+*/
+
+/*
+  The plugin uses standard CSS styles for fonts inherited from the Squarespace page.
+  But you can change them above if you need
+*/
+
+@media only screen and (min-width: 768px) {
+  .side-menu-slider  {
+    width: 70vw;
+    height: calc(100vh - 40px);
+    top: 20px;
+    right: 20px;
+  }
+  .side-menu-slider .side-menu-close-wrapper {right: calc(70vw + 20px);}
+  .side-menu-slider .page-section .content-wrapper {padding: 0 !important;}
+}
+
+@media only screen and (min-width: 1280px) {
+  .side-menu-slider  {width: 40vw;}
+  .side-menu-slider .side-menu-close-wrapper {right: calc(40vw + 20px);}
+}
+
+.side-menu-blur {
+  background-color: rgba(0, 0, 0, .1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+  backdrop-filter: blur(15px);
+  transition: all .5s ease-out;
+}
+
+body.side-menu-opened {overflow: hidden;}
+
+body.side-menu-opened .side-menu-slider {
+  transform: translateX(0%) rotate(0deg); 
+  transition: all .4s ease-out;
+}
+
+body.side-menu-opened .side-menu-close-wrapper {
+  opacity: 1;
+  transition-delay: .5s;
+  transition: opacity .4s ease-out;
+}
+
+body.side-menu-opened .side-menu-blur {
+  opacity: 1;
+  z-index: 15;
+  transition: all .5s ease-out;
+}
+
+.header-display-desktop .side-menu-button ,
+.header-display-mobile .side-menu-button  {color: var(--navigationLinkColor);}
+
+.header-display-desktop .header-nav-list {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.side-menu-button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+.header-display-mobile {
+  flex-wrap: wrap;
+}
+
+.header-display-mobile .side-menu-button {
+  width: 100%;
+  margin: 20px 0 0;
+  text-align: right;
+}
