@@ -13,13 +13,13 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
 }
 @media only screen and (min-width: 768px) {
   .menu-from-left .side-menu-slider .side-menu-close-wrapper {
-    left: calc(70vw + 20px)";
+    left: calc(70vw + 20px);
     right: auto;
   }
 }
 @media only screen and (min-width: 1280px) {
   .menu-from-left .side-menu-slider .side-menu-close-wrapper {
-    left: calc(40vw + 20px)";
+    left: calc(40vw + 20px);
     right: auto;
   }
 }
@@ -37,13 +37,13 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
 @media only screen and (min-width: 768px) {
   .menu-from-right .side-menu-slider .side-menu-close-wrapper {
     left: auto;
-    right: calc(70vw + 20px)";
+    right: calc(70vw + 20px);
   }
 }
 @media only screen and (min-width: 1280px) {
   .menu-from-right .side-menu-slider .side-menu-close-wrapper {
     left: auto;
-    right: calc(40vw + 20px)";
+    right: calc(40vw + 20px);
   }
 }
 
