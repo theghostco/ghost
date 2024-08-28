@@ -29,17 +29,68 @@
 @side-menu-close-content-font-color: #000000;
 @side-menu-close-content-hover-font-color: #FFFFFF;
 
+.menu-from-left {
+  .side-menu-slider {  
+    left: 0;
+    right: auto;
+    padding-left: 0;
+    padding-right: 20vw;
+    transform: translateX(-150%) rotate(-15deg);
+    .side-menu-close-wrapper {
+      left: auto;
+      right: 20px;
+      @media only screen and (min-width: 768px) {
+        left: ~"calc(@{side-menu-slider-tablet-width} + 20px)";
+        right: auto;
+      }
+      @media only screen and (min-width: 1280px) {
+        left: ~"calc(@{side-menu-slider-desktop-width} + 20px)";
+        right: auto;
+      }
+    }
+  }
+}
+
+.menu-from-right {
+  .side-menu-slider {
+    left: auto;
+    right: 0;
+    padding-left: 20vw;
+    padding-right: 0;
+    transform: translateX(150%) rotate(15deg);
+    .side-menu-close-wrapper {
+      left: auto;
+      right: 20px;
+      @media only screen and (min-width: 768px) {
+        left: auto;
+        right: ~"calc(@{side-menu-slider-tablet-width} + 20px)";
+      }
+      @media only screen and (min-width: 1280px) {
+        left: auto;
+        right: ~"calc(@{side-menu-slider-desktop-width} + 20px)";
+      }
+    }
+  }
+}
+
+/*Menu direction: change the code inside the body depending on the side from which the menu should appear:
+.menu-from-left or .menu-from-right */
+body {
+  .menu-from-left;
+  // .menu-from-right;
+}
+
 body.sqs-edit-mode .side-menu-slider {display: none;}
 
 .side-menu-slider {
   position: fixed;
   top: 0;
-  right: 0;
+  //right: 0;
   width: @side-menu-slider-mobile-width;
   height: 100vh;
-  padding-left: 20vw;
-  -webkit-transform: translateX(150%) rotate(15deg);
-          transform: translateX(150%) rotate(15deg);
+  // padding-left: 20vw;
+  // -webkit-transform: translateX(150%) rotate(15deg);
+  // transform: translateX(150%) rotate(15deg);
   z-index: 20;
   -webkit-transition: all @side-menu-slider-animation-time ease-out;
   transition: all @side-menu-slider-animation-time ease-out;
@@ -55,8 +106,8 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     top: 20px;
     right: 20px;
     padding: @side-menu-close-vertical-paddings @side-menu-close-horizontal-paddings;
@@ -65,7 +116,7 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
     border: 1px solid @side-menu-close-color;
     -moz-column-gap: .625rem;
     -webkit-column-gap: .625rem;
-            column-gap: .625rem;
+    column-gap: .625rem;
     -webkit-transition: all .2s ease-out;
     transition: all .2s ease-out;
     opacity: 0;
@@ -96,8 +147,8 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
       transition: all .2s ease-out;
       &:before, &:after {color: @side-menu-close-content-hover-font-color !important;}
     }
-    @media only screen and (min-width: 768px) {right: ~"calc(70vw + 20px)";}
-    @media only screen and (min-width: 1280px) {right: ~"calc(40vw + 20px)";}
+    // @media only screen and (min-width: 768px) {right: ~"calc(70vw + 20px)";}
+    // @media only screen and (min-width: 1280px) {right: ~"calc(40vw + 20px)";}
   }
   .page-section {
     min-height: 100% !important;
@@ -164,13 +215,6 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
   The plugin uses standard CSS styles for fonts inherited from the Squarespace page.
   But you can change them above if you need
   */
-
-  &:before, &:after {
-    width: auto;
-    hieght: 1px;
-    left: 20vw;
-    border-top: 1px solid #000000;
-  }
   @media only screen and (min-width: 768px) {
     width: @side-menu-slider-tablet-width;
     height: ~"calc(100vh - 40px)";
@@ -191,7 +235,7 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
   z-index: 1;
   cursor: pointer;
   -webkit-backdrop-filter: @side-menu-blur-saturation;
-          backdrop-filter: @side-menu-blur-saturation;
+  backdrop-filter: @side-menu-blur-saturation;
   -webkit-transition: all @side-menu-blur-animation-time ease-out;
   transition: all @side-menu-blur-animation-time ease-out;
 }
@@ -200,14 +244,14 @@ body.side-menu-opened {
   overflow: hidden;
   .side-menu-slider {
     -webkit-transform: translateX(0%) rotate(0deg);
-            transform: translateX(0%) rotate(0deg); 
+    transform: translateX(0%) rotate(0deg); 
     -webkit-transition: all .4s ease-out; 
     transition: all .4s ease-out;
   }
   .side-menu-close-wrapper {
     opacity: 1;
     -webkit-transition-delay: .5s;
-            transition-delay: .5s;
+    transition-delay: .5s;
     -webkit-transition: opacity .4s ease-out;
     transition: opacity .4s ease-out;
   }
@@ -239,7 +283,7 @@ body.side-menu-opened {
 
 .header-display-mobile {
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   .side-menu-button {
     width: 100%;
     margin: 20px 0 0;
