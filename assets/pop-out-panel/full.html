@@ -1,0 +1,107 @@
+<script>
+  //var sideMenuUrl = document.location.origin + '/page-for-slider-menu';
+
+  fetch(sideMenuUrl)
+    .then(function(response) {
+    return response.text();
+  })
+
+  .then(function(html) {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(html, 'text/html');
+    var newMenuContent = doc.querySelector('.page-section');
+    var newDivforMenu = document.createElement('div');
+    newDivforMenu.className = 'side-menu-slider';
+
+    var sliderContainer = document.createElement('div');
+    sliderContainer.className = 'side-menu-slider-container';
+
+    var newDivforClose = document.createElement('div');
+    newDivforClose.className = 'side-menu-close-wrapper';
+
+    if (newMenuContent) {
+      sliderContainer.appendChild(newMenuContent);
+    }
+
+    newDivforMenu.appendChild(sliderContainer);
+    newDivforMenu.appendChild(newDivforClose);
+    document.body.appendChild(newDivforMenu);
+  })
+    .catch(function(error) {
+    console.log('Failed to load content:', error);
+  });
+
+  function addSideMenuBlur() {
+    var blurDiv = document.createElement('div');
+    blurDiv.className = 'side-menu-blur';
+    document.body.insertBefore(blurDiv, document.body.firstChild);
+  }
+  addSideMenuBlur();
+
+  //var buttonText = "Info + Contact";
+
+  function createButton(text) {
+    var button = document.createElement('a');
+    button.className = 'side-menu-button';
+    button.textContent = text;
+    return button;
+  }
+
+  var desktopHeader = document.querySelector('header .header-display-desktop');
+  if (desktopHeader) {
+    desktopHeader.appendChild(createButton(buttonText));
+  }
+
+  var mobileHeader = document.querySelector('header .header-display-mobile');
+  if (mobileHeader) {
+    mobileHeader.appendChild(createButton(buttonText));
+  }
+
+  function isElementVisible(element) {
+    return element && window.getComputedStyle(element).display !== 'none';
+  }
+
+  var desktopButton = document.querySelector('.header-display-desktop .side-menu-button');
+  var mobileButton = document.querySelector('.header-display-mobile .side-menu-button');
+
+  function toggleSideMenu(event) {
+    event.stopPropagation();
+    document.body.classList.toggle('side-menu-opened');
+  }
+
+  if (isElementVisible(desktopButton)) {
+    desktopButton.addEventListener('click', toggleSideMenu);
+  }
+
+  if (isElementVisible(mobileButton)) {
+    mobileButton.addEventListener('click', toggleSideMenu);
+  }
+
+  function removeSideMenuOnClick() {
+    document.addEventListener('click', function(event) {
+      var body = document.body;
+      var sideMenuOpened = body.classList.contains('side-menu-opened');
+      var isClickInsideMenu = event.target.closest('.side-menu-slider');
+      var isClickOnCloseWrapper = event.target.closest('.side-menu-close-wrapper');
+
+      if (sideMenuOpened && (!isClickInsideMenu || isClickOnCloseWrapper)) {
+        body.classList.remove('side-menu-opened');
+      }
+    });
+  }
+  removeSideMenuOnClick();
+
+  document.addEventListener("mousemove", function(event) {
+    if (window.innerWidth >= 768) {
+      var mouseY = event.clientY;
+      var closeWrapper = document.querySelector('.side-menu-close-wrapper');
+
+      if (closeWrapper) {
+        var wrapperHeight = closeWrapper.offsetHeight;
+        setTimeout(function() {
+          closeWrapper.style.top = (mouseY - 20 - wrapperHeight / 2) + 'px';
+        }, 50);
+      }
+    }
+  });
+</script>
