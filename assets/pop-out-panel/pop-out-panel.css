@@ -84,20 +84,16 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
 
 .side-menu-slider .side-menu-close-wrapper:before {
   content: 'Close';
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
   color: inherit;
   transition: all .2s ease-out;
 }
 
 .side-menu-slider .side-menu-close-wrapper:after {
   content: 'X';
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
   color: inherit;
   transition: all .2s ease-out;
 }
@@ -132,46 +128,32 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
 
 /*
 .side-menu-slider .page-section .sqs-block h1, h1 {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
 }
 .side-menu-slider .page-section .sqs-block h2, h2 {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
 }
 .side-menu-slider .page-section .sqs-block h3, h3 {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
 }
 .side-menu-slider .page-section .sqs-block h4, h4 {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
 }
 .side-menu-slider .page-section .sqs-block p.sqsrte-large, p.sqsrte-large {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
 }
 .side-menu-slider .page-section .sqs-block p:not(sqsrte-large):not(sqsrte-small), p:not(sqsrte-large):not(sqsrte-small) {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
 }
 .side-menu-slider .page-section .sqs-block p.sqsrte-small, p.sqsrte-small {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
 }
 */
 
@@ -230,7 +212,7 @@ body.side-menu-opened .side-menu-blur {
 }
 
 .header-display-desktop .side-menu-button ,
-.header-display-mobile .side-menu-button  {color: var(--navigationLinkColor);}
+.header-display-mobile .side-menu-button {color: var(--navigationLinkColor);}
 
 .header-display-desktop .header-nav-list {
   margin-left: 20px;
@@ -238,10 +220,8 @@ body.side-menu-opened .side-menu-blur {
 }
 
 .side-menu-button {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
   color: inherit;
 }
 
