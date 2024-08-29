@@ -25,6 +25,15 @@
 @side-menu-close-content-font-color: #000000;
 @side-menu-close-content-hover-font-color: #FFFFFF;
 
+@h1-font-size: larger;
+@h2-font-size: larger;
+@h3-font-size: larger;
+@h4-font-size: larger;
+
+@larger-p-font-size: medium;
+@p-font-size: medium;
+@smaller-p-font-size: medium;
+
 .menu-from-left {
   .side-menu-slider {  
     left: 0;
@@ -155,44 +164,14 @@ body.sqs-edit-mode .side-menu-slider {display: none;}
     box-sizing: border-box;
   }
 
-  /*
-  The plugin uses standard CSS styles for fonts inherited from the Squarespace page.
-  But you can change them below if you need
-  */
-  /*
-  .sqs-block h1, h1 {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  .sqs-block h2, h2 {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  .sqs-block h3, h3 {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  .sqs-block h4, h4 {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  .sqs-block p.sqsrte-large, p.sqsrte-large {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  .sqs-block p:not(sqsrte-large):not(sqsrte-small), p:not(sqsrte-large):not(sqsrte-small) {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  .sqs-block p.sqsrte-small, p.sqsrte-small {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  */
-  /*
-  The plugin uses standard CSS styles for fonts inherited from the Squarespace page.
-  But you can change them above if you need
-  */
+  .sqs-block h1, h1 {font-size: @h1-font-size;}
+  .sqs-block h2, h2 {font-size: @h2-font-size;}
+  .sqs-block h3, h3 {font-size: @h2-font-size;}
+  .sqs-block h4, h4 {font-size: @h4-font-size;}
+  .sqs-block p.sqsrte-large, p.sqsrte-large {font-size: @larger-p-font-size;}
+  .sqs-block p:not(sqsrte-large):not(sqsrte-small),p:not(sqsrte-large):not(sqsrte-small) {font-size: @p-font-size;}
+  .sqs-block p.sqsrte-small, p.sqsrte-small {font-size: @smaller-p-font-size;}
+  
   @media only screen and (min-width: 768px) {
     width: @side-menu-slider-tablet-width;
     height: ~"calc(100vh - 40px)";
