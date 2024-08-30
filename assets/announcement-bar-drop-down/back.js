@@ -1,11 +1,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
+const values = {
+  	 path: '/page-for-announcement-bar',
+  };
+</script>
+
+<script>
 
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() =>{
     if (!document.body.classList.contains('sqs-edit-mode')) {
-      fetch(document.location.origin + '/page-for-announcement-bar')
+      fetch(document.location.origin + values.path)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
