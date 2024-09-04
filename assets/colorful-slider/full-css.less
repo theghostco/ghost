@@ -3,20 +3,35 @@
 
 .colorful-slider-plugin {
   .sqs-gallery-block-grid {   
+    display: -webkit-box;   
+    display: -ms-flexbox;   
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     overflow: visible;
   }
   .sqs-gallery {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     height: @colorful-slider-height;
     margin: 0 !important;  
+    -webkit-perspective: @colorful-slider-perspective;  
     perspective: @colorful-slider-perspective;
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    -webkit-transform: rotateX(1deg) rotateY(0) rotate(0);
     transform: rotateX(1deg) rotateY(0) rotate(0);
     aspect-ratio: 1;
     z-index: 3;
@@ -24,7 +39,9 @@
       width: 100% !important;
       height: 100%;
       position: absolute;
+      -o-object-fit: cover;
       object-fit: cover;
+      -webkit-transform-style: preserve-3d;
       transform-style: preserve-3d;
       .margin-wrapper {margin: 0 !important;}
       img {
@@ -33,6 +50,7 @@
         position: absolute !important;
         top: 0 !important;
         left: 0 !important;
+        -o-object-fit: cover;
         object-fit: cover;
       }
     }
