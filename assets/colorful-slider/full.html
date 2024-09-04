@@ -1,0 +1,139 @@
+<!-- Code Injection > Header -->
+<link rel="stylesheet" href="https://www.ghosthub.boo/assets/pop-out-panel/pop-out-panel.css">
+<!-- Code Injection > Header -->
+
+<!-- Code Injection > Footer -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {  
+    const pageSections = document.querySelectorAll('.page-section');
+
+    pageSections.forEach(function(section) {
+      const codeBlock = section.querySelector('.code-block');
+      if (codeBlock) {
+        const colorfulSliderBlock = codeBlock.querySelector('.colorful-slider-block');
+        if (colorfulSliderBlock) {
+          section.classList.add('colorful-slider-plugin');
+        }
+      }
+    });
+  
+    const slides = document.querySelectorAll('.colorful-slider-plugin .sqs-gallery .slide'); 
+    const totalSlides = slides.length;
+    /* const middleIndex = Math.floor(totalSlides / 2) - 1; // Adjusted for 0-based index */
+	let middleIndex;
+  
+    if (totalSlides % 2 === 0) {
+      middleIndex = Math.floor(totalSlides / 2) - 1;
+    } else {
+      middleIndex = Math.floor(totalSlides / 2);
+    }
+
+    const perspective = parseFloat(getComputedStyle(document.querySelector('.sqs-gallery')).perspective);
+    const maxTranslateZ = (2 / 3) * perspective;
+
+    slides.forEach((slide, index) => {
+        let translateY, translateZ;
+
+        if (index < middleIndex) {
+            let halfSlides = (totalSlides / 2);
+            let factor = (middleIndex - index);
+            let verticalPosition = 100 / halfSlides;
+            let tempValue = verticalPosition * factor;
+            translateY = -tempValue;
+            translateZ = -(factor * maxTranslateZ / middleIndex);
+          
+        } else if (index > middleIndex) {
+            let halfSlides = (totalSlides / 2);
+            let factor = (index - middleIndex);
+            let verticalPosition = 100 / halfSlides;     
+            translateY = (factor * verticalPosition);
+            translateZ = -((index - middleIndex) / (totalSlides - middleIndex - 1) * maxTranslateZ);
+        } else {
+            translateY = 0;
+            translateZ = 0;
+        }
+
+        console.log(`Index ${index}: translate3d(0, ${translateY}%, ${translateZ}px)`);
+        slide.style.transform = `translate3d(0, ${translateY}%, ${translateZ}px)`;
+    });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const slides = document.querySelectorAll('.colorful-slider-plugin .sqs-gallery .slide');
+    const pageSection = document.querySelector('.colorful-slider-plugin');
+    const sectionBorder = pageSection.querySelector('.section-border');
+    const sectionBackground = pageSection.querySelector('.section-background');
+    const intervalTime = 1000;
+
+    let intervalID;
+
+    slides.forEach(slide => {
+        slide.style.transition = 'transform 500ms ease';
+    });
+
+    function shiftTransforms() {
+        let transforms = [];
+        slides.forEach((slide, index) => {
+            let computedStyle = window.getComputedStyle(slide);
+            let transformValue = computedStyle.transform || "none";
+            transforms.push(transformValue);
+            console.log(`Transform value for slide ${index + 1}: ${transformValue}`);
+        });
+
+        for (let i = slides.length - 1; i > 0; i--) {
+            slides[i].style.transform = transforms[i - 1];
+
+            if (transforms[i - 1] === "matrix(1, 0, 0, 1, 0, 0)") {
+                slides[i].classList.add('active-slide');
+                const altText = slides[i].querySelector('img').alt;
+                sectionBorder.style.backgroundColor = altText;
+                sectionBackground.style.backgroundColor = altText;
+            } else {
+                slides[i].classList.remove('active-slide');
+            }
+        }
+
+        slides[0].style.transform = transforms[slides.length - 1];
+
+        if (transforms[slides.length - 1] === "matrix(1, 0, 0, 1, 0, 0)") {
+            slides[0].classList.add('active-slide');
+            const altText = slides[0].querySelector('img').alt;
+            sectionBorder.style.backgroundColor = altText;
+            sectionBackground.style.backgroundColor = altText;
+        } else {
+            slides[0].classList.remove('active-slide');
+        }
+    }
+
+    function startInterval() {
+        intervalID = setInterval(shiftTransforms, intervalTime);
+    }
+
+    function stopInterval() {
+        clearInterval(intervalID);
+    }
+
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            stopInterval();
+        } else {
+            startInterval();
+        }
+    });
+
+    startInterval();
+});
+</script>
+
+<!-- <script src="https://www.ghosthub.boo/assets/colorful-slider/index.js"></script> -->
+
+<!--
+<script>
+  const intervalTime = 1000;
+  const transitionStyle = 'transform 500ms ease';
+  colorfulSliderPlugin(intervalTime, transitionStyle);
+</script>
+-->
+<!-- Code Injection > Footer -->
