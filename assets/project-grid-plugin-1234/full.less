@@ -27,6 +27,7 @@
 @blur-intensity:42.5px;
 @blur-opacity:0.5;
 @blur-transition-delay:0.22s;
+@blur-transition-duration:0.2s;
 
 .blur-summary-wrapper{
   display: grid;
@@ -82,7 +83,7 @@
   .blur{
     filter: blur(@blur-intensity);
     opacity: @blur-opacity;
-    transition: all .2s ease-in-out;
+    transition: all @blur-transition-duration ease-in-out;
     transition-delay: @blur-transition-delay;
   }
 }
