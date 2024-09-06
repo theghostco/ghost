@@ -1,4 +1,4 @@
-  function bgFade(){
+/*  function bgFade(){
 
   // One liner function:
 const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css;
@@ -39,4 +39,55 @@ addCSS(".section-border *{transition: background-color .3s ease;}")
       });
     });
   }
- bgFade();
+ bgFade();*/
+
+  function bgFade() {
+    const addCSS = (css) => {
+      const style = document.createElement("style");
+      style.innerHTML = css;
+      document.head.appendChild(style);
+    };
+
+    addCSS(".section-border *{transition: background-color .3s ease;}");
+    const sections = gsap.utils.toArray(".sections section");
+    const initialThemes = sections.map(section => section.getAttribute("data-section-theme"));
+
+    sections.forEach((section, index) => {
+      let theme = section.getAttribute("data-section-theme");
+      if (!theme) {
+        theme = "holder";
+      }
+      section.setAttribute("data-default-theme", theme);
+    });
+
+    sections.forEach((section, index) => {
+      gsap.to(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          onEnter: () => {
+            if (index > 0) {
+              const prevTheme = initialThemes[index - 1];
+              section.setAttribute("data-section-theme", prevTheme);
+            }
+          },
+          onLeave: () => {
+            section.setAttribute("data-section-theme", section.getAttribute("data-default-theme"));
+          },
+          onEnterBack: () => {
+            if (index > 0) {
+              const prevTheme = initialThemes[index - 1];
+              section.setAttribute("data-section-theme", prevTheme);
+            }
+          },
+          onLeaveBack: () => {
+            section.setAttribute("data-section-theme", section.getAttribute("data-default-theme"));
+          }
+        }
+      });
+    });
+  }
+
+  bgFade();
