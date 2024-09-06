@@ -1,4 +1,4 @@
-/*  function bgFade(){
+ function bgFade(){
 
   // One liner function:
 const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css;
@@ -39,9 +39,9 @@ addCSS(".section-border *{transition: background-color .3s ease;}")
       });
     });
   }
- bgFade();*/
+ bgFade();
 
-  function bgFade() {
+/*  function bgFade() {
     const addCSS = (css) => {
       const style = document.createElement("style");
       style.innerHTML = css;
@@ -90,4 +90,4 @@ addCSS(".section-border *{transition: background-color .3s ease;}")
     });
   }
 
-  bgFade();
+  bgFade();*/
