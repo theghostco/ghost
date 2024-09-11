@@ -1,1 +1,1 @@
-
+.cursor-images-container{width:100%;height:100%;overflow:hidden;position:absolute;top:0;left:0;display:block}.cursor-images-container img{object-fit:cover}@media screen and (max-width:767px){.cursor-images-container{display:none}}.section-images-cursor{overflow:hidden}body.sqs-edit-mode .cursor-images-container{display:none}
