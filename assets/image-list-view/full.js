@@ -1,4 +1,16 @@
- ;(function () {
+<script>
+  var ghostGlobalImageListView = {
+    url: '/gallery-content',
+    listViewOptions:{
+    	counterTitle: 'Project №',
+    	projectNameTitle: 'Name',
+    	projectLocationTitle: 'Location'
+    }
+  }
+</script>
+<!--<script src="https://ghosthub.boo/assets/image-list-view/index.js"></script>-->
+<script>
+  
 function switcherGallery(){
 	var urlForGallery = document.location.origin + ghostGlobalImageListView.url + '?format=json-pretty';
 	const galleryWrapper = document.querySelector('.switcher-gallery-wrapper')
@@ -37,9 +49,9 @@ function switcherGallery(){
               listItems.innerHTML = `
 <div class = "list-item first-row">
   <a class="list-link">
-    <p>Project №</p>
-    <p>Name</p>
-    <p>Location</p>
+    <p>${ghostGlobalImageListView.listViewOptions.counterTitle}</p>
+    <p>${ghostGlobalImageListView.listViewOptions.projectNameTitle}</p>
+    <p>${ghostGlobalImageListView.listViewOptions.projectLocationTitle}</p>
   </a>
 </div>`
               listContainer.append(listItems)
@@ -125,8 +137,6 @@ function switcherGallery(){
               galleryItems.append(galleryItem)
               listItems.append(listItem)
             }
-       
-            //console.log(data);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -157,4 +167,6 @@ switcherGallery()
       });
    }
 });
-     })();
+
+  
+</script>
