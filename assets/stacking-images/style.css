@@ -71,6 +71,7 @@ html {
    padding: 0 30px;
    position: relative;
    width: 100%;
+   box-sizing: border-box;
    z-index: 8;
 }
  .scale-plugin-wrapper .scale-plugin-body .scale-plugin-section {
@@ -144,6 +145,7 @@ html {
  @media only screen and (max-width: 819px) {
    .scale-plugin-wrapper .scale-plugin-body {
      gap: 120px;
+     padding: 0 10px;
   }
    .scale-plugin-wrapper .scale-plugin-body .scale-plugin-section {
      min-height: 70vh !important;
