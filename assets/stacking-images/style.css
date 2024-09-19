@@ -82,9 +82,12 @@ html {
    will-change: transform;
    z-index: 1;
 }
- .scale-plugin-wrapper .scale-plugin-body .scale-plugin-section .section-border, .scale-plugin-wrapper .scale-plugin-body .scale-plugin-section .section-border * {
+/*
+.scale-plugin-wrapper .scale-plugin-body .scale-plugin-section .section-border,
+.scale-plugin-wrapper .scale-plugin-body .scale-plugin-section .section-border * {
    background-color: transparent;
 }
+*/
  .scale-plugin-wrapper .scale-plugin-body .scale-plugin-section .section-border {
    max-width: 1420px;
    width: 100%;
