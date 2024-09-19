@@ -142,19 +142,26 @@ html {
      top: 100px;
   }
 }
- @media only screen and (max-width: 819px) {
-   .scale-plugin-wrapper .scale-plugin-body {
+@media only screen and (max-width: 819px) {
+  .scale-plugin-wrapper .scale-plugin-body {
      gap: 120px;
      padding: 0 10px;
   }
-   .scale-plugin-wrapper .scale-plugin-body .scale-plugin-section {
+  .scale-plugin-wrapper .scale-plugin-body .scale-plugin-section {
      min-height: 70vh !important;
      height: 70vh !important;
   }
-   .scale-plugin-wrapper .scale-plugin-body .scale-plugin-section .section-border {
+  .scale-plugin-wrapper .scale-plugin-body .scale-plugin-section .section-border {
      height: 60vh;
   }
 }
+
+@media only screen and (max-width: 640px) {
+  .scale-plugin-wrapper .scale-plugin-body {
+     padding: 0;
+  }
+}
+
  .draw-to-reveal-section canvas {
    position: absolute;
    top: 0;
