@@ -1,1 +1,91 @@
-const initializePluginBackground=e=>{let{pageId:t,animationDuration:a,textItems:i}=e,l=document.getElementById(`${t}`),d=document.createElement("div");d.classList.add("background-container"),document.querySelector(".header-title");let n=document.createElement("div");n.classList.add("background-container-inner"),n.appendChild(document.querySelector(".header-title").cloneNode(!0));let s=document.createElement("div");s.classList.add("text-list"),i.forEach(e=>{let t=document.createElement("p");t.classList.add("text-item","sqsrte-large"),t.textContent=e,s.appendChild(t)}),n.appendChild(s),d.appendChild(n),document.addEventListener("DOMContentLoaded",()=>{if(l){l.appendChild(d);let e=document.querySelectorAll(".text-item"),t=1/e.length;function i({timing:e,draw:t,duration:a}){let i=performance.now();requestAnimationFrame(function l(d){let n=(d-i)/a;n>1&&(n=1);t(e(n)),n<1&&requestAnimationFrame(l)})}i({duration:a,timing:e=>Math.pow(e,2),draw(e){d.style.background=`linear-gradient(150deg, #ffffff ${100-100*e}%, rgb(250, 255, 184))`,1===e&&d.classList.add("invisible"),s(e)}});let n=0;function s(a){!(a<=t)&&(a>=1?(e.forEach(e=>e.classList.remove("active")),e[e.length-1].classList.add("active")):(e.forEach(e=>e.classList.remove("active")),n++,t+=1/e.length,e[n].classList.add("active")))}e[n].classList.add("active")}})};
+document.addEventListener('DOMContentLoaded', function () {
+    const pluginBgValues = window.pluginBgValues;
+
+    if (pluginBgValues) {
+        initializePluginBackground(pluginBgValues);
+    } else {
+        console.error('pluginBgValues is not defined.');
+    }
+});
+
+function initializePluginBackground(pluginBgValues) {
+    const { pageId, animationDuration, textItems } = pluginBgValues;
+    const page = document.getElementById(`${pageId}`);
+
+    if (!page) {
+        console.error(`Page with ID ${pageId} not found.`);
+        return;
+    }
+
+    const bgContainer = document.createElement('div');
+    bgContainer.classList.add('background-container');
+    
+    const inner = document.createElement('div');
+    inner.classList.add('background-container-inner');
+    inner.appendChild((document.querySelector('.header-title')).cloneNode(true));
+
+    const innerContent = document.createElement('div');
+    innerContent.classList.add('text-list');
+
+    // Додаємо текстові елементи з масиву textItems
+    textItems.forEach((text) => {
+        const p = document.createElement('p');
+        p.classList.add('text-item', 'sqsrte-large');
+        p.textContent = text;
+        innerContent.appendChild(p);
+    });
+
+    inner.appendChild(innerContent);
+    bgContainer.appendChild(inner);
+
+    page.appendChild(bgContainer);
+
+    const textList = document.querySelectorAll('.text-item');
+    let step = 1 / textList.length;
+
+    function animate({ timing, draw, duration }) {
+        let start = performance.now();
+        requestAnimationFrame(function animate2(time) {
+            let timeFraction = (time - start) / duration;
+            if (timeFraction > 1) timeFraction = 1;
+            let progress = timing(timeFraction);
+
+            draw(progress);
+
+            if (timeFraction < 1) {
+                requestAnimationFrame(animate2);
+            }
+        });
+    }
+
+    animate({
+        duration: animationDuration,
+        timing: (timeFraction) => Math.pow(timeFraction, 2),
+        draw: (progress) => {
+            bgContainer.style.background = `linear-gradient(150deg, #ffffff ${100 - progress * 100}%, rgb(250, 255, 184))`;
+
+            if (progress === 1) {
+                bgContainer.classList.add('invisible');
+            }
+
+            setActiveElement(progress);
+        }
+    });
+
+    let i = 0;
+    textList[i].classList.add('active');
+
+    function setActiveElement(progress) {
+        if (progress <= step) {
+            return;
+        } else if (progress >= 1) {
+            textList.forEach((el) => el.classList.remove('active'));
+            textList[textList.length - 1].classList.add('active');
+        } else {
+            textList.forEach((el) => el.classList.remove('active'));
+            i++;
+            step += 1 / textList.length;
+            textList[i].classList.add('active');
+        }
+    }
+}
