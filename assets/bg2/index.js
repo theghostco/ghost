@@ -19,7 +19,7 @@
   l.appendChild(d);
 
   document.addEventListener("DOMContentLoaded", () => {
-    if (e === 'collection-66741875486be13c7dbab6de') {
+    if (e) {
       document.body.classList.add('page-with-bg');
     }
     
