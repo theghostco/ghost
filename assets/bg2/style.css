@@ -1,0 +1,45 @@
+var(--pageWithBg) .background-container {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  inset: 0;
+  background: linear-gradient(150deg, var(--color1) var(--gradient), var(--color2)) no-repeat;
+  transition: opacity 500ms ease-in-out;
+}
+
+var(--pageWithBg) .background-container.invisible {
+  opacity: 0;
+}
+
+var(--pageWithBg) .background-container-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+var(--pageWithBg) .text-list, var(--pageWithBg) .background-container-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+var(--pageWithBg) .text-list {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  min-height: 50px;
+}
+
+var(--pageWithBg) .text-item {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+var(--pageWithBg) .text-item.active {
+  opacity: 1;
+}
