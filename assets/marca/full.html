@@ -1,0 +1,75 @@
+<script defer>
+  document.addEventListener("DOMContentLoaded", function () {
+    const body = document.body;
+
+    if (body.classList.contains("view-item")) {
+
+      const blogClassPrefix = "collection-type-blog";
+      const blogClass = Array.from(body.classList).find(className =>
+        className.startsWith(blogClassPrefix)
+      );
+
+      if (blogClass) {
+        body.classList.add("marca-blog");
+        
+        const style = document.createElement("style");
+        style.textContent = `.marca-blog #itemPagination {display: none;}`;
+        document.head.appendChild(style);
+
+        class Article {
+          isLoading = false;
+
+          constructor() {
+            this.prevUrl = document.querySelector('.item-pagination-link--prev')?.href;
+            this.nextUrl = document.querySelector('.item-pagination-link--next')?.href;
+            this.currentArticle = document.querySelector('article');
+
+            window.addEventListener('scroll', this.onScrollHandle.bind(this));
+          }
+
+          onScrollHandle() {
+            let articleBotton = this.currentArticle.getBoundingClientRect().bottom - window.innerHeight;
+
+            if(this.currentArticle.getBoundingClientRect().top < 100) {
+              window.history.replaceState({}, '', this.nextUrl);
+            }
+
+            if(articleBotton < 10 && !this.isLoading) {
+              if(this.nextUrl) {
+                this.isLoading = true;
+                this.loadNextArticle();
+              } else {
+                this.isLoading = true;
+                let blogName = window.location.pathname.split('/')[1];
+                fetch(window.location.origin + '/' + blogName + '?format=json-pretty')
+                .then(res => res.json())
+                .then(data => {
+                  this.nextUrl = data.items[0].fullUrl;
+                  this.loadNextArticle();
+                })
+              }
+            }
+          }
+
+          loadNextArticle() {
+            fetch(this.nextUrl)
+            .then(res => res.text())
+            .then(data => {
+              let html = new DOMParser().parseFromString(data, 'text/html');
+              this.nextUrl = html.querySelector('.item-pagination-link--next')?.href;
+              this.prevUrl = html.querySelector('.item-pagination-link--prev')?.href;
+
+              let newArticle = html.querySelector('article');
+              document.querySelector('main').appendChild(newArticle);
+              this.currentArticle = newArticle;
+            })
+            .finally(() => this.isLoading = false)
+          }
+        }
+
+        new Article();
+      }
+
+    }
+  });
+</script>
