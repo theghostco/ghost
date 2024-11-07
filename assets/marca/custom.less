@@ -1,0 +1,26 @@
+/* Marca Plugin */
+@marca-loading-animation-image: https://static1.squarespace.com/static/666ac8d0f9ad2a6a516ba915/t/672cc09c149c391a8bf993a4/1730986140963/Spinner%401x-1.0s-200px-200px.gif;
+@marca-loading-animation-bottom-position: 0;
+@marca-loading-animation-width: 140px;
+@marca-loading-animation-height: 140px;
+
+@marca-blog-item-border-width: 10px;
+@marca-blog-item-border-type: solid;
+@marca-blog-item-border-color: #CCCCCC;
+
+.marca-blog .loading-animation {
+  background: url(@marca-loading-animation-image) no-repeat center;
+  background-size: contain;
+  position: fixed;
+  left: 50%;
+  bottom: @marca-loading-animation-bottom-position;
+  width: @marca-loading-animation-width;
+  height: @marca-loading-animation-height;
+  z-index: 100;
+  transform: translateX(-50%);
+}
+
+.marca-blog #page #sections {
+  border-bottom: @marca-blog-item-border-width @marca-blog-item-border-type @marca-blog-item-border-color;
+}
+/* Marca Plugin */
