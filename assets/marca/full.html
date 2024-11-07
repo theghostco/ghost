@@ -1,5 +1,88 @@
 <script defer>
   document.addEventListener("DOMContentLoaded", function () {
+    let body = document.body;
+
+    if (body.classList.contains("view-item")) {
+      let blogClass = Array.from(body.classList).find(c => c.startsWith("collection-type-blog"));
+      
+      if (blogClass) {
+        body.classList.add("marca-blog");
+        let style = document.createElement("style");
+        style.textContent = `.marca-blog #itemPagination { display: none; }`;
+        
+        document.head.appendChild(style);
+        
+        class ArticleLoader {
+          isLoading = false;
+
+          constructor() {
+            this.prevUrl = document.querySelector(".item-pagination-link--prev")?.href;
+            this.nextUrl = document.querySelector(".item-pagination-link--next")?.href;
+            this.currentArticle = document.querySelector("article");
+            window.addEventListener("scroll", this.onScrollHandle.bind(this));
+          }
+
+          onScrollHandle() {
+            let distanceToBottom = this.currentArticle.getBoundingClientRect().bottom - window.innerHeight;
+
+            if (distanceToBottom < 10 && !this.isLoading) {
+              if (this.nextUrl) {
+                this.showLoadingAnimation();
+                this.isLoading = true;
+                this.loadNextArticle();
+              } else {
+                this.isLoading = true;
+                let collectionPath = window.location.pathname.split("/")[1];
+                fetch(`${window.location.origin}/${collectionPath}?format=json-pretty`)
+                .then(response => response.json())
+                .then(data => {
+                  this.nextUrl = data.items[0].fullUrl;
+                  this.showLoadingAnimation();
+                  this.loadNextArticle();
+                });
+              }
+            }
+          }
+
+          showLoadingAnimation() {
+            if (!document.querySelector(".loading-animation")) {
+              let loadingAnimation = document.createElement("div");
+              loadingAnimation.className = "loading-animation";
+              body.appendChild(loadingAnimation);
+            }
+          }
+
+          hideLoadingAnimation() {
+            let loadingAnimation = document.querySelector(".loading-animation");
+            if (loadingAnimation) loadingAnimation.remove();
+          }
+
+          loadNextArticle() {
+            fetch(this.nextUrl)
+            .then(response => response.text())
+            .then(html => {
+              let parser = new DOMParser();
+              let doc = parser.parseFromString(html, "text/html");
+              this.nextUrl = doc.querySelector(".item-pagination-link--next")?.href;
+              this.prevUrl = doc.querySelector(".item-pagination-link--prev")?.href;
+
+              let newArticle = doc.querySelector("article");
+              document.querySelector("main").appendChild(newArticle);
+              this.currentArticle = newArticle;
+              this.hideLoadingAnimation();
+            })
+            .finally(() => this.isLoading = false);
+          }
+        }
+
+        new ArticleLoader();
+      }
+    }
+  });
+</script>
+
+<!-- <script defer>
+  document.addEventListener("DOMContentLoaded", function () {
     const body = document.body;
 
     if (body.classList.contains("view-item")) {
@@ -72,4 +155,4 @@
 
     }
   });
-</script>
+</script> -->
