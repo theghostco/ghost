@@ -24,7 +24,6 @@
         if (e && document.body.classList.add("page-with-bg"), i) {
             i.appendChild(n);
             
-            // Отримуємо значення CSS-змінних
             let rootStyles = getComputedStyle(document.documentElement);
             let color1 = rootStyles.getPropertyValue("--color1").trim() || "#ffffff"; 
             let color2 = rootStyles.getPropertyValue("--color2").trim() || "rgb(250, 255, 184)";
