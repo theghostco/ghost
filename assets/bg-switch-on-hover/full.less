@@ -1,1 +1,54 @@
 
+.bg-trigger-img-box {
+  position: relative;
+  border-radius: .25rem;
+  overflow: hidden;
+}
+
+.bg-trigger-img {
+  overflow: hidden;
+}
+
+.bg-trigger-media {
+    position: absolute;
+    inset: 0;
+  	margin: auto;
+    width: 45%;
+    height: 45%;
+     border-radius: .25rem;
+  overflow: hidden;
+  
+  img, video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.section-background{
+    transition: background-color .7s ease;
+}
+
+body.hover-active{
+  .section-background{
+      background-color: var(--hover-color); 
+  }
+  
+}
+
+.bg-trigger-item {
+  img{
+    transition: transform .7s ease-in-out;
+  }
+  
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.code-block:has([data-body-bg-trigger]){
+  width: 70%;
+  margin: auto;
+}
