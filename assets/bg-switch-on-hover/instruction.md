@@ -20,8 +20,8 @@
 
 ## 4. Blog
 Create a blog page with content for a summary. 
-** Blog url - ```/body-bg-hover```
-** Blog item TAG - color of body on hover
+**Blog url - ```/body-bg-hover```
+**Blog item TAG - color of body on hover
 
 ## 6. Code Block
 Add code block on the page
