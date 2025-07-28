@@ -1,6 +1,8 @@
-## 1. Code injection (header).
-``` <link href="https://ghosthub.boo/assets/bg-switch-on-hover/style.css" rel="stylesheet"> 
+## 1. Code injection (header)
 ```
+<link href="https://ghosthub.boo/assets/bg-switch-on-hover/style.css" rel="stylesheet">
+```
+
 
 ## 2. Code injection (footer).
 ``` <script>
@@ -18,8 +20,8 @@
 
 ## 4. Blog
 Create a blog page with content for a summary. 
-Blog url - ```"/body-bg-hover"```
-Blog item TAG - color of body on hover
+** Blog url - ```/body-bg-hover```
+** Blog item TAG - color of body on hover
 
 ## 6. Code Block
 Add code block on the page
