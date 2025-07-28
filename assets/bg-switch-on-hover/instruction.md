@@ -1,3 +1,5 @@
+[Example](https://paddlefish-guppy-xr2a.squarespace.com/)
+
 ## 1. Code injection (header)
 ```
 <link href="https://ghosthub.boo/assets/bg-switch-on-hover/style.css" rel="stylesheet">
