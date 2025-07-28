@@ -8,9 +8,9 @@
 ```
 <script>
    const values = {
-  	                page: '#collection-687b1088b61d2531582003b7',  //page ID
-                   attribute: 'data-body-bg-trigger'     // code block's attribute
-                 };
+  	      page: '#collection-687b1088b61d2531582003b7',  //page ID
+         attribute: 'data-body-bg-trigger'     // code block's attribute
+   };
 </script>
 
   <script src="https://ghosthub.boo/assets/bg-switch-on-hover/index.js"></script>
