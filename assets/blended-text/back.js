@@ -9,7 +9,7 @@ const CONFIG = {
   strokePx: 0.8, // max stroke width
   smooth: 0.05, // mouse follow smoothing
   expandSmooth: 0.04, // expand smoothing
-  selector: 'h1 a' // target text selector
+  selector: '#blended-text h1 a' // target text selector
 };
 
 (function (CONFIG) {
