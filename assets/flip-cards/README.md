@@ -21,8 +21,10 @@ const CONFIG = {
 ```
 
 ## 1.Paste the code into Code Injection (Header or Footer).
+```html
 <link href="https://ghosthub.boo/assets/flip-cards/style.css" rel="stylesheet"> - header
 <script src="https://ghosthub.boo/assets/flip-cards/index.js"></script> - footer
+```
 
 (or on a specific page Page Settings > Advanced)
 
