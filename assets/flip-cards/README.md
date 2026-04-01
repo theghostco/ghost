@@ -13,7 +13,7 @@
 
 <img width="1484" height="773" alt="image" src="https://github.com/user-attachments/assets/5be33d5a-fe03-4c3d-bbb9-7ec75c1816bc" />
 
-## 3. Editable properties (Paste into Code Injection Footer:
+## 3. Editable properties (paste into Code Injection Footer):
 
 ```html
 <script>
