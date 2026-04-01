@@ -1,14 +1,7 @@
-## 1.Paste the code into Code Injection (Header or Footer).
-<link href="https://ghosthub.boo/assets/flip-cards/style.css" rel="stylesheet"> - header
-<script src="https://ghosthub.boo/assets/flip-cards/index.js"></script> - footer
-
-(or on a specific page Page Settings > Advanced)
-
-## 2.Create a new page with ID #card-stack. Add gallery. 
-
 
 ## Editable properties:
 
+```js
 const CONFIG = {
   SECTION_CARDS: '#card-stack',
 
@@ -25,6 +18,16 @@ const CONFIG = {
 
   ANIMATION_SPEED: 0.5
 };
+```
+
+## 1.Paste the code into Code Injection (Header or Footer).
+<link href="https://ghosthub.boo/assets/flip-cards/style.css" rel="stylesheet"> - header
+<script src="https://ghosthub.boo/assets/flip-cards/index.js"></script> - footer
+
+(or on a specific page Page Settings > Advanced)
+
+## 2.Create a new page with ID #card-stack. Add gallery. 
+
 
 ## Preview
 
