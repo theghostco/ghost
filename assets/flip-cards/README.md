@@ -31,7 +31,7 @@ const CONFIG = {
 
 ## Preview
 
-<img width="1627" height="664" alt="image" src="https://github.com/user-attachments/assets/bebe135a-5b51-4efb-9dce-3a7f2b7583b2" />
+<img width="1484" height="773" alt="image" src="https://github.com/user-attachments/assets/5be33d5a-fe03-4c3d-bbb9-7ec75c1816bc" />
 
 
 
