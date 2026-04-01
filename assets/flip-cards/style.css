@@ -1,1 +1,2 @@
 
+#card-stack{overflow:hidden}#card-stack .gallery-block-custom{display:flex;align-items:center;justify-content:center;position:relative}#card-stack .gallery-block-custom__figure{position:absolute;height:100%;overflow:hidden;cursor:grab;z-index:1;opacity:1;transform:none;will-change:transform;user-select:none;touch-action:none}#card-stack img{position:absolute;width:100%;height:100%;user-select:none;pointer-events:none;object-fit:cover}
