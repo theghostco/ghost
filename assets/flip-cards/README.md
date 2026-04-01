@@ -1,7 +1,8 @@
 
 ## Editable properties:
 
-```js
+```html
+<script>
 const CONFIG = {
   SECTION_CARDS: '#card-stack',
 
@@ -18,6 +19,7 @@ const CONFIG = {
 
   ANIMATION_SPEED: 0.5
 };
+</script>
 ```
 
 ## 1.Paste the code into Code Injection (Header or Footer).
