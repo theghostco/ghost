@@ -35,6 +35,8 @@ const CONFIG = {
 };
 </script>
 ```
+## Google Docs guide:
+👉 [Open guide](https://docs.google.com/document/d/1uxLyiZxSk3w8GwcYTuxtc_QMp5nlQswSr_yqE54c04Y/edit?tab=t.0#heading=h.emymto6cc8tq)
 
 
 
