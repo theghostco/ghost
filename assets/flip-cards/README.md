@@ -1,19 +1,22 @@
 
-## 1.Paste the code into Code Injection (Header or Footer).
+## Paste the code into Code Injection Header:
 ```html
-<link href="https://ghosthub.boo/assets/flip-cards/style.css" rel="stylesheet"> - header
-<script src="https://ghosthub.boo/assets/flip-cards/index.js"></script> - footer
+<link href="https://ghosthub.boo/assets/flip-cards/style.css" rel="stylesheet"> 
+```
+## Paste the code into Code Injection Footer:
+```html
+<script src="https://ghosthub.boo/assets/flip-cards/index.js"></script> 
 ```
 
 (or on a specific page Page Settings > Advanced)
 
-## 2.Create a new page with ID #card-stack. Add gallery. 
+## Create a new page with ID #card-stack. Add gallery. 
 
 ## Preview
 
 <img width="1484" height="773" alt="image" src="https://github.com/user-attachments/assets/5be33d5a-fe03-4c3d-bbb9-7ec75c1816bc" />
 
-## 3. Editable properties (paste into Code Injection Footer):
+## Editable properties (paste into Code Injection Footer):
 
 ```html
 <script>
