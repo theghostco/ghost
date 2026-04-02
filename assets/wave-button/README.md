@@ -12,7 +12,7 @@
 
 (or on a specific page Page Settings > Advanced)
 
-## 2.Create a primary button with ID #wave-btn
+## Create a primary button with ID #wave-btn
 ```html
 #wave-btn
 ```
@@ -21,7 +21,7 @@
 
 <img width="767" height="397" alt="image" src="https://github.com/user-attachments/assets/e3adef32-f17b-422b-883f-fb1c8a34484b" />
 
-## 3. Editable properties (paste into Code Injection Footer):
+## Editable properties (paste into Code Injection Footer):
 
 ```html
 <script>
