@@ -1,14 +1,21 @@
 
 
-## 1.Paste the code into Code Injection (Header or Footer).
+## Paste the code into Code Injection Header:
 ```html
-<link href="https://ghosthub.boo/assets/blended-text/style.css" rel="stylesheet"> - header
-<script src="https://ghosthub.boo/assets/blended-text/index.js"></script> - footer
+<link href="https://ghosthub.boo/assets/blended-text/style.css" rel="stylesheet"> 
+```
+
+## Paste the code into Code Injection Footer:
+```html
+<script src="https://ghosthub.boo/assets/blended-text/index.js"></script> 
 ```
 
 (or on a specific page Page Settings > Advanced)
 
-## 2.Create section with ID #blended-text. Add Heading1 text
+## Create section with ID #blended-text. Add Heading1 text
+```html
+#blended-text
+```
 
 ## Preview
 
