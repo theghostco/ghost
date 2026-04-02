@@ -11,6 +11,9 @@
 (or on a specific page Page Settings > Advanced)
 
 ## Create a new page with ID #card-stack. Add gallery. 
+```html
+#card-stack
+```
 
 ## Preview
 
