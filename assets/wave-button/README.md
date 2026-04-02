@@ -26,7 +26,8 @@ const CONFIG = {
 </script>
 ```
 
-
+## Google Docs guide:
+👉 [Open guide](https://docs.google.com/document/d/1je1OLvBO38lvaxOmvnlU5HvNPql-WJifR-Cz9FNLnjs/edit?tab=t.0#heading=h.66n5vav5jfvi)
 
 
 
