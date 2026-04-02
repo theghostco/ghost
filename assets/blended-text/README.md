@@ -35,12 +35,8 @@ selector: 'h1 a' // target text selector
 ```
 ## Instructions
 
-You can find the full guide here:
-👉 [Google Docs Instructions](https://docs.google.com/document/d/1A8FqjKwCVPxEG4ZgqJBBMDRqwl7UVF4kYfg8I3imU1I/edit?tab=t.0#heading=h.250tyrhwz0fy)
-
-
-
-
+## Google Docs guide:
+👉 [Open guide](https://docs.google.com/document/d/1A8FqjKwCVPxEG4ZgqJBBMDRqwl7UVF4kYfg8I3imU1I/edit?tab=t.0#heading=h.250tyrhwz0fy)
 
 
 
