@@ -1,14 +1,21 @@
 
 
-## 1.Paste the code into Code Injection (Header or Footer).
+## Paste the code into Code Injection Header:
 ```html
-<link href="https://ghosthub.boo/assets/wave-button/style.css" rel="stylesheet"> - header
-<script src="https://ghosthub.boo/assets/wave-button/index.js"></script> - footer
+<link href="https://ghosthub.boo/assets/wave-button/style.css" rel="stylesheet"> 
+```
+
+## Paste the code into Code Injection Footer:
+```html
+<script src="https://ghosthub.boo/assets/wave-button/index.js"></script> 
 ```
 
 (or on a specific page Page Settings > Advanced)
 
 ## 2.Create a primary button with ID #wave-btn
+```html
+#wave-btn
+```
 
 ## Preview
 
