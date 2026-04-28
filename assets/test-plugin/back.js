@@ -7,15 +7,6 @@ const CONFIG = {
 };
 </script>
 
-
-<script>
-const CONFIG = {
-  RIPPLE_COLOR_1: "rgb(171,209,198)",
-  RIPPLE_COLOR_2: "rgb(249,188,96)",
-  RIPPLE_COLOR_3: "rgb(225,97,98)"
-};
-</script>
-
 <script>
 (function(CONFIG){
   const {
