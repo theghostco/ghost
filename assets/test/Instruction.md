@@ -5,7 +5,7 @@
   - `back.js` — code from Code Injection Footer + Header
   - `full.less` — all LESS from Custom CSS
   - `full.js` — leave empty
-  - `index.js` — minified[https://www.toptal.com/developers/javascript-minifier] JS (minify all js code inside (function(path, collection){})();)
+  - `index.js` — [minified](https://www.toptal.com/developers/javascript-minifier] JS (minify all js code inside (function(path, collection){})();)
   - `style.css` — LESS converted to CSS, then minified
 - Update the site:
   - Paste into Code Injection Header
