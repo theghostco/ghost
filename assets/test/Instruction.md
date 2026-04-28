@@ -1,4 +1,4 @@
-# Plugin Checklist
+# hosting-plugin-guide
 
 ### Create folder with the name of project `/test-plugin`
 - Add files to the folder:
