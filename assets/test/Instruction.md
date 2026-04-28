@@ -8,14 +8,14 @@
   - `index.js` — [minified](https://www.toptal.com/developers/javascript-minifier)
   - `style.css` — LESS [converted](https://jsonformatter.org/less-to-css) to CSS, then [minified](https://www.toptal.com/developers/cssminifier)
 
-## Update the site:
+## GO the site:
   
-## Paste into Code Injection Header 
-  - ```html
+### Paste into Code Injection Header 
+ ```html
 <link href="https://ghosthub.boo/assets/TEST-PLUGIN/style.css" rel="stylesheet"> 
 ```
 
-## Paste the code into Code Injection Footer:
+### Paste the code into Code Injection Footer:
 ```html
 <script src="https://ghosthub.boo/assets/TEST-PLUGIN/index.js"></script> 
 ```
