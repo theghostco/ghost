@@ -20,5 +20,5 @@
 <script src="https://ghosthub.boo/assets/TEST-PLUGIN/index.js"></script> 
 ```
 
-## Paste into Custom CSS — only `:root{}` and styles using those variables (format + minify first)
+### Paste into Custom CSS — only `:root{}` and styles using those variables (format + minify first)
 
