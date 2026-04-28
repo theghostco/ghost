@@ -6,7 +6,8 @@
   - `full.less` — all LESS from Custom CSS
   - `full.js` — leave empty
   - `index.js` — [minified](https://www.toptal.com/developers/javascript-minifier) code inside (function(path, collection){})();
-  - `style.css` — full LESS without variables
+  - `style.css` — full LESS without variables.
+    
     Example:
     :root {
   --variable: #ff0000;
