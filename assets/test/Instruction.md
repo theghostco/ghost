@@ -1,6 +1,6 @@
 # Plugin Checklist
 
-## Create folder with the name of project `/test-plugin`
+### Create folder with the name of project `/test-plugin`
 - Add files to the folder:
   - `back.js` — code from Code Injection Footer + Header
   - `full.less` — all LESS from Custom CSS
@@ -8,7 +8,7 @@
   - `index.js` — [minified](https://www.toptal.com/developers/javascript-minifier)
   - `style.css` — LESS [converted](https://jsonformatter.org/less-to-css) to CSS, then [minified](https://www.toptal.com/developers/cssminifier)
 
-## GO the site:
+### GO the site:
   
 ### Paste into Code Injection Header 
  ```html
