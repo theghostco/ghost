@@ -22,3 +22,4 @@
 
 ### Paste into Custom CSS — only `:root{}` and styles using those variables (format + minify first)
 
+### Create a usage guide (how to connect the plugin to a site) [Example](https://github.com/theghostco/ghost/blob/main/assets/wave-button/README.md)
