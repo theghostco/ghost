@@ -8,7 +8,7 @@
   - `index.js` — [minified](https://www.toptal.com/developers/javascript-minifier)
   - `style.css` — LESS [converted](https://jsonformatter.org/less-to-css) to CSS, then [minified](https://www.toptal.com/developers/cssminifier)
 
-### GO the site:
+### GO the Website:
   
 ### Paste into Code Injection Header 
  ```html
