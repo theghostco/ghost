@@ -162,8 +162,10 @@
   transform: scale(1.1);
 }
 
+/* Only hide the raw markup once the script has taken over, so the testimonials
+   still render as plain text if the script is blocked or fails to load. */
 .aiko-slider[hidden],
-.aiko-slider__source { display: none !important; }
+.aiko-slider[data-aiko-ready="true"] .aiko-slider__source { display: none !important; }
 
 /* Tablet */
 @media (max-width: 900px) {
