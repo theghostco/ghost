@@ -1,5 +1,5 @@
 /*!
- * Aiko Testimonial Slider — Ghost Plugins  v1.1.0
+ * Aiko Testimonial Slider — Ghost Plugins  v1.1.1
  * Standalone browser plugin. Works on any site (Squarespace, Webflow, WordPress, plain HTML).
  * Configure with window.AikoSliderConfig or per-slider data-attributes.
  */
@@ -48,8 +48,16 @@
   }
 
   function readItems(root) {
+    // Preferred hook, then a class fallback, then "any direct child of the
+    // source wrapper" so slightly-edited markup on the host site still works.
     var nodes = root.querySelectorAll("[data-aiko-item]");
+    if (!nodes.length) nodes = root.querySelectorAll(".aiko-item");
+    if (!nodes.length) {
+      var source = root.querySelector(".aiko-slider__source");
+      if (source) nodes = source.children;
+    }
     var items = [];
+
     for (var i = 0; i < nodes.length; i++) {
       var node = nodes[i];
       items.push({
@@ -96,7 +104,20 @@
     if (root.getAttribute("data-aiko-ready") === "true") return;
 
     var items = readItems(root);
-    if (!items.length) return;
+    if (!items.length) {
+      if (!root.__aikoWarned) {
+        root.__aikoWarned = true;
+        if (window.console && console.warn) {
+          console.warn(
+            "[Aiko] Found a slider wrapper but no testimonials inside it. " +
+              "Each testimonial needs a data-aiko-item element inside .aiko-slider__source.",
+            root
+          );
+        }
+      }
+      return;
+    }
+
 
     var settings = readSettings(root);
     root.setAttribute("data-aiko-ready", "true");
@@ -263,5 +284,28 @@
   }
 
 
-  window.AikoTestimonialSlider = { init: init, initAll: initAll };
+  window.AikoTestimonialSlider = {
+    version: "1.1.1",
+    init: init,
+    initAll: initAll,
+    // Paste AikoTestimonialSlider.debug() in the browser console to see what
+    // the script can find on the page.
+    debug: function () {
+      var roots = document.querySelectorAll("[data-aiko], .aiko-slider");
+      var report = {
+        version: "1.1.1",
+        stylesheetLoaded: !!document.querySelector('link[href*="aiko-testimonial-slider"]'),
+        wrappersFound: roots.length,
+        wrappers: []
+      };
+      for (var i = 0; i < roots.length; i++) {
+        report.wrappers.push({
+          ready: roots[i].getAttribute("data-aiko-ready") === "true",
+          items: readItems(roots[i]).length
+        });
+      }
+      if (window.console && console.log) console.log("[Aiko]", report);
+      return report;
+    }
+  };
 })();
