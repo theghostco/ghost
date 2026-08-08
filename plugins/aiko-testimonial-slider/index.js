@@ -1,6 +1,7 @@
 /*!
- * Aiko Testimonial Slider — Ghost Plugins
- * Master script. Configure with window.AikoSliderConfig or per-slider data-attributes.
+ * Aiko Testimonial Slider — Ghost Plugins  v1.1.0
+ * Standalone browser plugin. Works on any site (Squarespace, Webflow, WordPress, plain HTML).
+ * Configure with window.AikoSliderConfig or per-slider data-attributes.
  */
 (function () {
   "use strict";
@@ -225,7 +226,9 @@
   }
 
   function initAll() {
-    var roots = document.querySelectorAll("[data-aiko]");
+    // Accept either the data-attribute hook or the plain class, so a copied
+    // markup snippet still works if one of them is dropped by the host editor.
+    var roots = document.querySelectorAll("[data-aiko], .aiko-slider");
     for (var i = 0; i < roots.length; i++) init(roots[i]);
   }
 
@@ -236,7 +239,29 @@
   }
 
   window.addEventListener("load", initAll);
+  // Squarespace / Ajax page loads
   document.addEventListener("mercury:load", initAll);
+  window.addEventListener("pageshow", initAll);
+
+  // Some hosts render blocks a moment after load — poll briefly, then stop.
+  var tries = 0;
+  var poll = setInterval(function () {
+    initAll();
+    if (++tries > 20) clearInterval(poll);
+  }, 250);
+
+  // Host sites can also inject blocks much later (lazy sections, editor) — re-scan safely.
+  if (typeof MutationObserver === "function") {
+    var pending = null;
+    new MutationObserver(function () {
+      if (pending) return;
+      pending = setTimeout(function () {
+        pending = null;
+        initAll();
+      }, 120);
+    }).observe(document.documentElement, { childList: true, subtree: true });
+  }
+
 
   window.AikoTestimonialSlider = { init: init, initAll: initAll };
 })();
