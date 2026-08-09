@@ -116,6 +116,8 @@
 
 .aiko-slide__body {
   position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
   padding: 26px 34px;
 }
 
@@ -293,40 +295,42 @@
   .aiko-slider__dots { margin-top: 18px; }
 }
 
-/* Tablet (viewport fallback) */
-@media (max-width: 860px) {
-  .aiko-slide {
-    flex-direction: column;
-    gap: 28px;
-    padding: 30px;
+@supports not (container-type: inline-size) {
+  /* Tablet (viewport fallback) */
+  @media (max-width: 860px) {
+    .aiko-slide {
+      flex-direction: column;
+      gap: 28px;
+      padding: 30px;
+    }
+    .aiko-slide__media {
+      order: 0;
+      flex: 0 0 auto;
+      max-width: 100%;
+      aspect-ratio: 4 / 3;
+    }
+    .aiko-slide__body { padding: 18px 22px; }
   }
-  .aiko-slide__media {
-    order: 0;
-    flex: 0 0 auto;
-    max-width: 100%;
-    aspect-ratio: 4 / 3;
-  }
-  .aiko-slide__body { padding: 18px 22px; }
-}
 
-/* Mobile (viewport fallback) */
-@media (max-width: 640px) {
-  .aiko-slider {
-    --aiko-arrow-size: 38px;
-    padding: 16px 0 4px;
+  /* Mobile (viewport fallback) */
+  @media (max-width: 640px) {
+    .aiko-slider {
+      --aiko-arrow-size: 38px;
+      padding: 16px 0 4px;
+    }
+    .aiko-slide { padding: 22px; }
+    .aiko-slide__quote-mark { font-size: calc(var(--aiko-quote-size) * 0.76); }
+    .aiko-slide__quote-mark--open { left: -10px; }
+    .aiko-slider__arrow--prev { left: 8px; }
+    .aiko-slider__arrow--next { right: 8px; }
+    .aiko-slider__arrow {
+      top: auto;
+      bottom: -2px;
+      transform: none;
+      display: var(--aiko-arrow-mobile-display, inline-flex);
+    }
+    .aiko-slider__dots { margin-top: 18px; }
   }
-  .aiko-slide { padding: 22px; }
-  .aiko-slide__quote-mark { font-size: calc(var(--aiko-quote-size) * 0.76); }
-  .aiko-slide__quote-mark--open { left: -10px; }
-  .aiko-slider__arrow--prev { left: 8px; }
-  .aiko-slider__arrow--next { right: 8px; }
-  .aiko-slider__arrow {
-    top: auto;
-    bottom: -2px;
-    transform: none;
-    display: var(--aiko-arrow-mobile-display, inline-flex);
-  }
-  .aiko-slider__dots { margin-top: 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
