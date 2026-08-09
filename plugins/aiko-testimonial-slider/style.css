@@ -50,6 +50,8 @@
   --aiko-speed: 500ms;
 
   position: relative;
+  container-type: inline-size;
+  container-name: aiko;
   background: var(--aiko-page-bg);
   padding: 24px calc(var(--aiko-arrow-size) + 22px) 8px;
   box-sizing: border-box;
@@ -244,8 +246,13 @@
 .aiko-slider[hidden],
 .aiko-slider[data-aiko-ready="true"] .aiko-slider__source { display: none !important; }
 
+/* Responsive.
+   Container queries let the slider adapt to its own width, so it looks right
+   inside narrow columns and in the Plugin Editor's device preview. The media
+   queries below repeat the same rules as a fallback for older browsers. */
+
 /* Tablet */
-@media (max-width: 900px) {
+@container aiko (max-width: 900px) {
   .aiko-slide {
     flex-direction: column;
     gap: 28px;
@@ -261,6 +268,40 @@
 }
 
 /* Mobile */
+@container aiko (max-width: 640px) {
+  .aiko-slide { padding: 22px; }
+  .aiko-slide__quote-mark { font-size: calc(var(--aiko-quote-size) * 0.76); }
+  .aiko-slide__quote-mark--open { left: -10px; }
+  .aiko-slider__arrow {
+    width: 38px;
+    height: 38px;
+    top: auto;
+    bottom: -2px;
+    transform: none;
+    display: var(--aiko-arrow-mobile-display, inline-flex);
+  }
+  .aiko-slider__arrow--prev { left: 8px; }
+  .aiko-slider__arrow--next { right: 8px; }
+  .aiko-slider__dots { margin-top: 18px; }
+}
+
+/* Tablet (viewport fallback) */
+@media (max-width: 900px) {
+  .aiko-slide {
+    flex-direction: column;
+    gap: 28px;
+    padding: 30px;
+  }
+  .aiko-slide__media {
+    order: 0;
+    flex: 0 0 auto;
+    max-width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+  .aiko-slide__body { padding: 18px 22px; }
+}
+
+/* Mobile (viewport fallback) */
 @media (max-width: 640px) {
   .aiko-slider {
     --aiko-arrow-size: 38px;
