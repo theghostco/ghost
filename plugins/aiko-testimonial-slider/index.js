@@ -1,10 +1,17 @@
 /*!
- * Aiko Testimonial Slider — Ghost Plugins  v1.1.1
+ * Aiko Testimonial Slider — Ghost Plugins  v1.2.0
  * Standalone browser plugin. Works on any site (Squarespace, Webflow, WordPress, plain HTML).
  * Configure with window.AikoSliderConfig or per-slider data-attributes.
  */
 (function () {
   "use strict";
+
+  // The loader can be present twice (site-wide code injection + a code block).
+  // Re-run the existing instance instead of defining a second one.
+  if (window.AikoTestimonialSlider) {
+    try { window.AikoTestimonialSlider.initAll(); } catch (e) {}
+    return;
+  }
 
   var DEFAULTS = {
     autoplay: true,
@@ -71,22 +78,23 @@
     return items;
   }
 
-  function buildSlide(item) {
-    var slide = document.createElement("article");
+  function buildSlide(item, doc) {
+    doc = doc || document;
+    var slide = doc.createElement("article");
     slide.className = "aiko-slide";
     slide.setAttribute("role", "group");
 
-    var media = document.createElement("div");
+    var media = doc.createElement("div");
     media.className = "aiko-slide__media";
     if (item.image) {
-      var img = document.createElement("img");
+      var img = doc.createElement("img");
       img.src = item.image;
       img.alt = item.alt;
       img.loading = "lazy";
       media.appendChild(img);
     }
 
-    var body = document.createElement("div");
+    var body = doc.createElement("div");
     body.className = "aiko-slide__body";
     body.innerHTML =
       '<span class="aiko-slide__quote-mark aiko-slide__quote-mark--open" aria-hidden="true">\u201C</span>' +
@@ -101,10 +109,29 @@
   }
 
   function init(root) {
-    if (root.getAttribute("data-aiko-ready") === "true") return;
+    // Already rendered and still intact — nothing to do.
+    if (
+      root.getAttribute("data-aiko-ready") === "true" &&
+      root.querySelector(".aiko-slider__viewport")
+    ) {
+      return;
+    }
+
+    // Stale state (page editors such as Squarespace restore saved HTML and can
+    // drop our generated nodes) — clear everything we own and rebuild.
+    var stale = root.querySelectorAll(
+      ".aiko-slider__viewport, .aiko-slider__arrow, .aiko-slider__dots"
+    );
+    for (var s = 0; s < stale.length; s++) {
+      if (stale[s].parentNode) stale[s].parentNode.removeChild(stale[s]);
+    }
+    root.removeAttribute("data-aiko-ready");
 
     var items = readItems(root);
     if (!items.length) {
+      // Make sure the raw markup stays visible so the block is never blank.
+      var rawSource = root.querySelector(".aiko-slider__source");
+      if (rawSource) rawSource.removeAttribute("hidden");
       if (!root.__aikoWarned) {
         root.__aikoWarned = true;
         if (window.console && console.warn) {
@@ -118,7 +145,7 @@
       return;
     }
 
-
+    var doc = root.ownerDocument || document;
     var settings = readSettings(root);
     root.setAttribute("data-aiko-ready", "true");
     root.style.setProperty("--aiko-speed", settings.transitionSpeed + "ms");
@@ -126,14 +153,15 @@
     var source = root.querySelector(".aiko-slider__source");
     if (source) source.setAttribute("hidden", "hidden");
 
-    var viewport = document.createElement("div");
+
+    var viewport = doc.createElement("div");
     viewport.className = "aiko-slider__viewport";
-    var track = document.createElement("div");
+    var track = doc.createElement("div");
     track.className = "aiko-slider__track";
     viewport.appendChild(track);
 
     items.forEach(function (item) {
-      track.appendChild(buildSlide(item));
+      track.appendChild(buildSlide(item, doc));
     });
     root.appendChild(viewport);
 
@@ -160,7 +188,7 @@
 
     if (settings.showArrows && items.length > 1) {
       ["prev", "next"].forEach(function (dir) {
-        var btn = document.createElement("button");
+        var btn = doc.createElement("button");
         btn.type = "button";
         btn.className = "aiko-slider__arrow aiko-slider__arrow--" + dir;
         btn.setAttribute("aria-label", dir === "prev" ? "Previous testimonial" : "Next testimonial");
@@ -173,10 +201,10 @@
     }
 
     if (settings.showDots && items.length > 1) {
-      var dotWrap = document.createElement("div");
+      var dotWrap = doc.createElement("div");
       dotWrap.className = "aiko-slider__dots";
       items.forEach(function (_, i) {
-        var dot = document.createElement("button");
+        var dot = doc.createElement("button");
         dot.type = "button";
         dot.className = "aiko-slider__dot";
         dot.setAttribute("aria-label", "Go to testimonial " + (i + 1));
@@ -214,8 +242,8 @@
       root.addEventListener("mouseleave", start);
     }
 
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) stop();
+    doc.addEventListener("visibilitychange", function () {
+      if (doc.hidden) stop();
       else start();
     });
 
@@ -246,11 +274,62 @@
     start();
   }
 
+  // Squarespace (and other builders) render the site inside an editor iframe
+  // and re-write the DOM every time you save. Collect every same-origin
+  // document we are allowed to touch so the slider renders in edit mode too.
+  function scanDocs() {
+    var docs = [document];
+    var frames = document.querySelectorAll("iframe");
+    for (var i = 0; i < frames.length; i++) {
+      try {
+        var d = frames[i].contentDocument;
+        if (d && d.body && docs.indexOf(d) === -1) docs.push(d);
+      } catch (e) {
+        /* cross-origin frame — ignore */
+      }
+    }
+    return docs;
+  }
+
+  var STYLE_HREF = "https://ghosthub.boo/plugins/aiko-testimonial-slider/style.css";
+
+  function ensureStyles(doc) {
+    try {
+      if (doc.querySelector('link[href*="aiko-testimonial-slider"]')) return;
+      var link = doc.createElement("link");
+      link.rel = "stylesheet";
+      link.href = STYLE_HREF;
+      (doc.head || doc.documentElement).appendChild(link);
+    } catch (e) {
+      /* noop */
+    }
+  }
+
+  function isEditor() {
+    try {
+      return (
+        /(^|\/)config(\/|$)/.test(location.pathname) ||
+        !!document.querySelector(
+          ".sqs-edit-mode, .sqs-edit-mode-active, body[data-edit-mode], #sqs-cms"
+        ) ||
+        window.top !== window.self
+      );
+    } catch (e) {
+      return true;
+    }
+  }
+
   function initAll() {
     // Accept either the data-attribute hook or the plain class, so a copied
     // markup snippet still works if one of them is dropped by the host editor.
-    var roots = document.querySelectorAll("[data-aiko], .aiko-slider");
-    for (var i = 0; i < roots.length; i++) init(roots[i]);
+    var docs = scanDocs();
+    for (var d = 0; d < docs.length; d++) {
+      var doc = docs[d];
+      var roots = doc.querySelectorAll("[data-aiko], .aiko-slider");
+      if (!roots.length) continue;
+      ensureStyles(doc);
+      for (var i = 0; i < roots.length; i++) init(roots[i]);
+    }
   }
 
   if (document.readyState === "loading") {
@@ -265,11 +344,17 @@
   window.addEventListener("pageshow", initAll);
 
   // Some hosts render blocks a moment after load — poll briefly, then stop.
+  // In a page editor the DOM is rebuilt on every save, so keep watching there.
   var tries = 0;
-  var poll = setInterval(function () {
-    initAll();
-    if (++tries > 20) clearInterval(poll);
-  }, 250);
+  var editing = isEditor();
+  var poll = setInterval(
+    function () {
+      initAll();
+      if (!editing && ++tries > 20) clearInterval(poll);
+    },
+    editing ? 700 : 250
+  );
+
 
   // Host sites can also inject blocks much later (lazy sections, editor) — re-scan safely.
   if (typeof MutationObserver === "function") {
@@ -285,7 +370,7 @@
 
 
   window.AikoTestimonialSlider = {
-    version: "1.1.1",
+    version: "1.2.0",
     init: init,
     initAll: initAll,
     // Paste AikoTestimonialSlider.debug() in the browser console to see what
@@ -293,7 +378,7 @@
     debug: function () {
       var roots = document.querySelectorAll("[data-aiko], .aiko-slider");
       var report = {
-        version: "1.1.1",
+        version: "1.2.0",
         stylesheetLoaded: !!document.querySelector('link[href*="aiko-testimonial-slider"]'),
         wrappersFound: roots.length,
         wrappers: []
