@@ -1,3 +1,40 @@
+/* Ghost Plugins — installation config loader.
+ * Embedded in the standalone master because ghosthub.boo serves static files
+ * directly; it cannot inject the app's universal loader at request time. */
+(function () {
+  try {
+    var script = document.currentScript;
+    var installId = script && script.getAttribute("data-ghost-key");
+    if (!installId) return;
+    var base = "https://project--fa2ec63b-c01c-48e9-8664-a2eaaf9a6e38.lovable.app/api/public/install/" + encodeURIComponent(installId);
+    var ghost = (window.GhostPlugins = window.GhostPlugins || { config: {}, installs: {} });
+    ghost.config = ghost.config || {};
+    ghost.installs = ghost.installs || {};
+    if (ghost.installs[installId]) return;
+    ghost.installs[installId] = { loading: true };
+
+    if (!document.querySelector('link[data-ghost-key="' + installId + '"]')) {
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = base + ".css";
+      link.setAttribute("data-ghost-key", installId);
+      (document.head || document.documentElement).appendChild(link);
+    }
+
+    fetch(base + ".json", { credentials: "omit", cache: "no-store" })
+      .then(function (response) { return response.ok ? response.json() : null; })
+      .then(function (saved) {
+        if (!saved) return;
+        var merged = Object.assign({}, saved.presetSettings || {}, saved.settings || {}, saved.config || {});
+        saved.merged = merged;
+        ghost.installs[installId] = saved;
+        if (saved.pluginId) ghost.config[saved.pluginId] = merged;
+        document.dispatchEvent(new CustomEvent("ghost:config", { detail: saved }));
+      })
+      .catch(function () { /* Keep pasted defaults if live settings are unavailable. */ });
+  } catch (error) { /* Never break the host site. */ }
+})();
+
 /*!
  * Aiko Testimonial Slider — Ghost Plugins  v1.4.0
  * Standalone browser plugin. Works on any site (Squarespace, Webflow, WordPress, plain HTML).
