@@ -336,3 +336,264 @@
 @media (prefers-reduced-motion: reduce) {
   .aiko-slider__track { transition: none; }
 }
+
+/* == GHOST MASTER DEFAULTS — edited in Plugin Hub == */
+/* // -- AIKO TESTIMONIAL SLIDER – GHOST PLUGINS -- // */
+
+/* Content — Testimonial 1 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Content — Testimonial 2 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Content — Testimonial 3 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Content — Testimonial 4 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Content — Testimonial 5 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Content — Testimonial 6 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Content — Testimonial 7 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Content — Testimonial 8 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Content — Testimonial 9 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Content — Testimonial 10 */
+.aiko-slider {
+  /* Name — typography */
+  font-family: var(--body-font-font-family, inherit);
+  font-weight: var(--body-font-font-weight, inherit);
+  font-style: var(--body-font-font-style, inherit);
+  text-transform: var(--body-font-text-transform, none);
+  letter-spacing: var(--body-font-letter-spacing, normal);
+  /* Role / company — typography */
+  /* Quote — typography */
+}
+
+/* Images — Image */
+.aiko-slider {
+  --aiko-image-radius: 8px; /* Image corner radius */
+  --aiko-image-ratio: 3 / 4; /* Image shape */
+  --aiko-media-display: block; /* Show image */
+}
+
+.aiko-slide__media img {
+  object-fit: cover; /* Image fit */
+  filter: none; /* Image effect */
+}
+
+/* Style — Card */
+.aiko-slider {
+  --aiko-radius: 10px; /* Card corner radius */
+}
+
+/* Style — Border & shadow */
+.aiko-slider {
+  --aiko-card-border-width: 1px; /* Card border width */
+  --aiko-card-border-style: solid; /* Card border style */
+  --aiko-card-shadow: none; /* Card shadow */
+}
+
+/* Colors — Card */
+.aiko-slider {
+  --aiko-card-bg: #ffffff; /* Card background */
+}
+
+/* Colors — Quote text */
+.aiko-slider {
+  --aiko-text-color: #111111; /* Quote text colour */
+}
+
+/* Colors — Titles */
+.aiko-slider {
+  --aiko-title-color: #111111; /* Title colour */
+}
+
+/* Colors — Subtitles */
+.aiko-slider {
+  --aiko-subtitle-color: #8a8a8a; /* Subtitle colour */
+}
+
+/* Colors — Quote icons */
+.aiko-slider {
+  --aiko-quote-color: #e8e8e8; /* Quote icon colour */
+}
+
+/* Colors — Arrows */
+.aiko-slider {
+  --aiko-arrow-bg: #111111; /* Arrow background */
+  --aiko-arrow-color: #ffffff; /* Arrow icon colour */
+}
+
+/* Colors — Dots */
+.aiko-slider {
+  --aiko-dot-color: #d4d4d4; /* Dot colour */
+  --aiko-dot-active: #111111; /* Active dot colour */
+}
+
+/* Colors — Border & shadow */
+.aiko-slider {
+  --aiko-card-border-color: #ddd; /* Card border colour */
+}
+
+/* Layout — Card */
+.aiko-slider {
+  --aiko-card-padding: 40px; /* Card padding */
+  --aiko-gap: 44px; /* Space between image and text */
+  max-width: 900px; /* Card max width */
+  --aiko-media-order: 0; /* Image position */
+}
+
+.aiko-slide__body {
+  text-align: left; /* Content alignment */
+}
+
+/* Fonts — Quote text */
+.aiko-slider {
+  --aiko-body-size: 15px; /* Quote text size */
+  --aiko-body-font: inherit; /* Font family */
+  --aiko-body-weight: 400; /* Font weight */
+  --aiko-body-style: normal; /* Font style */
+  --aiko-body-transform: none; /* Text case */
+}
+
+.aiko-slide__text {
+  line-height: 1.55; /* Quote line height */
+}
+
+/* Fonts — Titles */
+.aiko-slider {
+  --aiko-title-size: 20px; /* Title size */
+  --aiko-title-font: inherit; /* Font family */
+  --aiko-title-weight: 700; /* Font weight */
+  --aiko-title-style: normal; /* Font style */
+  --aiko-title-transform: none; /* Text case */
+}
+
+.aiko-slide__title {
+  letter-spacing: 0px; /* Name letter spacing */
+}
+
+/* Fonts — Subtitles */
+.aiko-slider {
+  --aiko-subtitle-size: 12px; /* Subtitle size */
+  --aiko-subtitle-font: inherit; /* Font family */
+  --aiko-subtitle-weight: 400; /* Font weight */
+  --aiko-subtitle-style: normal; /* Font style */
+  --aiko-subtitle-transform: none; /* Text case */
+}
+
+/* Icons — Arrows */
+.aiko-slider {
+  --aiko-arrow-size: 46px; /* Arrow size */
+  --aiko-arrow-radius: 10px; /* Arrow corner radius */
+}
+
+/* Icons — Dots */
+.aiko-slider {
+  --aiko-dot-size: 8px; /* Dot size */
+}
+
+/* Icons — Icons */
+.aiko-slider {
+  --aiko-quote-size: 68px; /* Quote mark size */
+  --aiko-quote-font: Georgia, "Times New Roman", serif; /* Quote mark font style */
+}
+
+/* Settings — Arrows */
+.aiko-slider {
+  --aiko-arrow-mobile-display: inline-flex; /* Arrows on mobile */
+}
+
+/* // -- AIKO TESTIMONIAL SLIDER – GHOST PLUGINS -- // */
+/* == END GHOST MASTER DEFAULTS == */
