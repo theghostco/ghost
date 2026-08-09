@@ -24,9 +24,6 @@
   --aiko-gap: 44px;
   --aiko-card-padding: 40px;
   --aiko-image-ratio: 3 / 4;
-  --aiko-media-order: 0;
-  --aiko-media-display: block;
-  --aiko-media-width: 42%;
   --aiko-card-border-width: 0px;
   --aiko-card-border-style: solid;
   --aiko-card-border-color: #e8e8e8;
@@ -50,12 +47,24 @@
   --aiko-speed: 500ms;
 
   position: relative;
-  container-type: inline-size;
-  container-name: aiko;
   background: var(--aiko-page-bg);
   padding: 24px calc(var(--aiko-arrow-size) + 22px) 8px;
   box-sizing: border-box;
+
+  /* Always fill the host block (Squarespace code blocks, columns, etc.)
+     and stay centered no matter what the parent's layout is. */
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  clear: both;
+  text-align: initial;
 }
+
+.aiko-slider__viewport,
+.aiko-slider__track { width: 100%; max-width: 100%; }
 
 .aiko-slider *,
 .aiko-slider *::before,
@@ -79,8 +88,8 @@
 .aiko-slide {
   flex: 0 0 100%;
   min-width: 100%;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   gap: var(--aiko-gap);
   align-items: center;
   padding: var(--aiko-card-padding);
@@ -88,11 +97,7 @@
 
 .aiko-slide__media {
   position: relative;
-  display: var(--aiko-media-display);
-  order: var(--aiko-media-order);
-  flex: 0 0 var(--aiko-media-width);
   width: 100%;
-  max-width: var(--aiko-media-width);
   aspect-ratio: var(--aiko-image-ratio);
   background: #111111;
   border-radius: var(--aiko-image-radius);
@@ -246,82 +251,35 @@
 .aiko-slider[hidden],
 .aiko-slider[data-aiko-ready="true"] .aiko-slider__source { display: none !important; }
 
-/* Responsive.
-   Container queries measure the slider's own CONTENT box (the viewport width
-   minus arrow gutters and page padding), so these breakpoints sit lower than
-   viewport breakpoints on purpose. The @media block below only runs in browsers
-   without container query support. */
-
 /* Tablet */
-@container aiko (max-width: 720px) {
+@media (max-width: 900px) {
   .aiko-slide {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 28px;
     padding: 30px;
   }
-  .aiko-slide__media {
-    order: 0;
-    flex: 0 0 auto;
-    max-width: 100%;
-    aspect-ratio: 4 / 3;
-  }
+  .aiko-slide__media { aspect-ratio: 4 / 3; }
   .aiko-slide__body { padding: 18px 22px; }
 }
 
 /* Mobile */
-@container aiko (max-width: 500px) {
+@media (max-width: 640px) {
+  .aiko-slider {
+    --aiko-arrow-size: 38px;
+    padding: 16px 0 4px;
+  }
   .aiko-slide { padding: 22px; }
   .aiko-slide__quote-mark { font-size: calc(var(--aiko-quote-size) * 0.76); }
   .aiko-slide__quote-mark--open { left: -10px; }
+  .aiko-slider__arrow--prev { left: 8px; }
+  .aiko-slider__arrow--next { right: 8px; }
   .aiko-slider__arrow {
-    width: 38px;
-    height: 38px;
     top: auto;
     bottom: -2px;
     transform: none;
     display: var(--aiko-arrow-mobile-display, inline-flex);
   }
-  .aiko-slider__arrow--prev { left: 8px; }
-  .aiko-slider__arrow--next { right: 8px; }
   .aiko-slider__dots { margin-top: 18px; }
-}
-
-@supports not (container-type: inline-size) {
-  /* Tablet (viewport fallback) */
-  @media (max-width: 860px) {
-    .aiko-slide {
-      flex-direction: column;
-      gap: 28px;
-      padding: 30px;
-    }
-    .aiko-slide__media {
-      order: 0;
-      flex: 0 0 auto;
-      max-width: 100%;
-      aspect-ratio: 4 / 3;
-    }
-    .aiko-slide__body { padding: 18px 22px; }
-  }
-
-  /* Mobile (viewport fallback) */
-  @media (max-width: 640px) {
-    .aiko-slider {
-      --aiko-arrow-size: 38px;
-      padding: 16px 0 4px;
-    }
-    .aiko-slide { padding: 22px; }
-    .aiko-slide__quote-mark { font-size: calc(var(--aiko-quote-size) * 0.76); }
-    .aiko-slide__quote-mark--open { left: -10px; }
-    .aiko-slider__arrow--prev { left: 8px; }
-    .aiko-slider__arrow--next { right: 8px; }
-    .aiko-slider__arrow {
-      top: auto;
-      bottom: -2px;
-      transform: none;
-      display: var(--aiko-arrow-mobile-display, inline-flex);
-    }
-    .aiko-slider__dots { margin-top: 18px; }
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
