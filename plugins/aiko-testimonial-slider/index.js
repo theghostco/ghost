@@ -1,5 +1,5 @@
 /*!
- * Aiko Testimonial Slider — Ghost Plugins  v1.2.2
+ * Aiko Testimonial Slider — Ghost Plugins  v1.4.0
  * Standalone browser plugin. Works on any site (Squarespace, Webflow, WordPress, plain HTML).
  * Configure with window.AikoSliderConfig, window.GhostPluginConfig, or per-slider data-attributes.
  */
@@ -63,12 +63,31 @@
     return choices.indexOf(value) !== -1 ? value : fallback;
   }
 
+  /**
+   * Settings saved in the Ghost Plugin Editor for this installation.
+   * The bootstrap loader (data-ghost-key) fetches them and stores the merged
+   * object here, so edits go live without re-pasting any markup.
+   */
+  function liveConfig() {
+    try {
+      var G = window.GhostPlugins;
+      var live = G && G.config && G.config["aiko-testimonial-slider"];
+      return live && typeof live === "object" ? live : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
   function readSettings(root) {
+    var live = liveConfig();
     var global = window.AikoSliderConfig || {};
     var ghost = (window.GhostPluginConfig || {});
     var d = root.dataset;
     function cfg(key, fallback) {
-      var v = d[key];
+      // Saved editor settings win: they are the customer's current choices.
+      var v = live[key];
+      if (v !== undefined && v !== "") return v;
+      v = d[key];
       if (v !== undefined && v !== "") return v;
       v = global[key];
       if (v !== undefined && v !== "") return v;
@@ -90,7 +109,38 @@
     };
   }
 
+  /** Testimonials saved in the editor (t1..t10), when this install has any. */
+  function liveItems() {
+    var live = liveConfig();
+    var items = [];
+    for (var i = 1; i <= 10; i++) {
+      var p = "t" + i + "_";
+      var text = live[p + "text"];
+      var title = live[p + "title"];
+      var image = live[p + "image"];
+      var subtitle = live[p + "subtitle"];
+      text = text == null ? "" : String(text).trim();
+      title = title == null ? "" : String(title).trim();
+      image = image == null ? "" : String(image).trim();
+      subtitle = subtitle == null ? "" : String(subtitle).trim();
+      if (!text && !title && !image) continue;
+      items.push({
+        image: image,
+        alt: title || "Testimonial",
+        title: title,
+        subtitle: subtitle,
+        text: text
+      });
+    }
+    return items;
+  }
+
   function readItems(root) {
+    // Saved editor content is the source of truth once an installation key is
+    // present; the pasted markup is only the fallback / first render.
+    var live = liveItems();
+    if (live.length) return live;
+
     // Preferred hook, then a class fallback, then "any direct child of the
     // source wrapper" so slightly-edited markup on the host site still works.
     // Squarespace can concatenate adjacent boolean/data attributes when a Code
@@ -386,6 +436,16 @@
   }
 
   window.addEventListener("load", initAll);
+
+  // The installation config arrives asynchronously. Rebuild every slider once
+  // it lands so saved images and script settings replace the pasted markup.
+  document.addEventListener("ghost:config", function () {
+    try {
+      var stale = document.querySelectorAll('[data-aiko-ready="true"]');
+      for (var i = 0; i < stale.length; i++) stale[i].removeAttribute("data-aiko-ready");
+    } catch (e) {}
+    initAll();
+  });
   // Squarespace / Ajax page loads
   document.addEventListener("mercury:load", initAll);
   window.addEventListener("pageshow", initAll);
@@ -417,7 +477,7 @@
 
 
   window.AikoTestimonialSlider = {
-    version: "1.2.2",
+    version: "1.4.0",
     init: init,
     initAll: initAll,
     // Paste AikoTestimonialSlider.debug() in the browser console to see what
@@ -425,7 +485,7 @@
     debug: function () {
       var roots = document.querySelectorAll("[data-aiko], .aiko-slider");
       var report = {
-        version: "1.2.2",
+        version: "1.4.0",
         stylesheetLoaded: !!document.querySelector('link[href*="aiko-testimonial-slider"]'),
         wrappersFound: roots.length,
         wrappers: []
