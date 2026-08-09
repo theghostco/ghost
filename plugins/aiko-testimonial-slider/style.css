@@ -11,6 +11,7 @@
   --aiko-arrow-color: #ffffff;
   --aiko-arrow-size: 46px;
   --aiko-arrow-radius: 10px;
+  --aiko-arrow-mobile-display: inline-flex;
   --aiko-quote-color: #e8e8e8;
   --aiko-text-color: #111111;
   --aiko-subtitle-color: #8a8a8a;
@@ -50,7 +51,7 @@
 
   position: relative;
   background: var(--aiko-page-bg);
-  padding: 24px calc(var(--aiko-arrow-size) / 2) 8px;
+  padding: 24px calc(var(--aiko-arrow-size) + 22px) 8px;
   box-sizing: border-box;
 }
 
@@ -96,11 +97,6 @@
   overflow: hidden;
 }
 
-.aiko-slide__body {
-  flex: 1 1 0;
-  min-width: 0;
-}
-
 .aiko-slide__media img {
   width: 100%;
   height: 100%;
@@ -128,6 +124,39 @@
 .aiko-slide__quote-mark--open { top: -6px; left: -18px; }
 .aiko-slide__quote-mark--close { bottom: -26px; right: -6px; }
 
+/* Quote icon style variations — non-default styles overlay pseudo-elements */
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark,
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark,
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark {
+  color: transparent;
+}
+
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--open::before,
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--open::before,
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--open::before,
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--close::before,
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--close::before,
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--close::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--aiko-quote-color);
+  font-family: var(--aiko-quote-font);
+  font-size: var(--aiko-quote-size);
+  font-weight: var(--aiko-quote-weight);
+  font-style: var(--aiko-quote-style-css);
+  line-height: 1;
+}
+
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--open::before { content: "\0022"; }
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--close::before { content: "\0022"; }
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--open::before { content: "\00AB"; }
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--close::before { content: "\00BB"; }
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--open::before { content: "\2018"; }
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--close::before { content: "\2019"; }
+.aiko-slider[data-aiko-quote-style="none"] .aiko-slide__quote-mark { display: none; }
+
 .aiko-slide__text {
   margin: 0;
   font-family: var(--aiko-body-font);
@@ -147,7 +176,7 @@
   font-style: var(--aiko-title-style);
   text-transform: var(--aiko-title-transform);
   line-height: 1.2;
-  color: var(--aiko-title-color, var(--aiko-text-color));
+  color: var(--aiko-text-color);
 }
 
 .aiko-slide__subtitle {
@@ -183,8 +212,8 @@
 .aiko-slider__arrow:focus-visible { outline: 2px solid var(--aiko-arrow-bg); outline-offset: 3px; }
 .aiko-slider__arrow svg { width: 45%; height: 45%; }
 /* Half the arrow sits over the card, half outside it. */
-.aiko-slider__arrow--prev { left: 0; }
-.aiko-slider__arrow--next { right: 0; }
+.aiko-slider__arrow--prev { left: calc(var(--aiko-arrow-size) / 2 + 22px); }
+.aiko-slider__arrow--next { right: calc(var(--aiko-arrow-size) / 2 + 22px); }
 
 .aiko-slider__dots {
   display: flex;
@@ -210,8 +239,10 @@
   transform: scale(1.1);
 }
 
+/* Only hide the raw markup once the script has taken over, so the testimonials
+   still render as plain text if the script is blocked or fails to load. */
 .aiko-slider[hidden],
-.aiko-slider__source { display: none !important; }
+.aiko-slider[data-aiko-ready="true"] .aiko-slider__source { display: none !important; }
 
 /* Tablet */
 @media (max-width: 900px) {
@@ -238,8 +269,14 @@
   .aiko-slide { padding: 22px; }
   .aiko-slide__quote-mark { font-size: calc(var(--aiko-quote-size) * 0.76); }
   .aiko-slide__quote-mark--open { left: -10px; }
-  .aiko-slider__arrow--prev { left: 10px; }
-  .aiko-slider__arrow--next { right: 10px; }
+  .aiko-slider__arrow--prev { left: 8px; }
+  .aiko-slider__arrow--next { right: 8px; }
+  .aiko-slider__arrow {
+    top: auto;
+    bottom: -2px;
+    transform: none;
+    display: var(--aiko-arrow-mobile-display, inline-flex);
+  }
   .aiko-slider__dots { margin-top: 18px; }
 }
 
