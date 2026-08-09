@@ -11,6 +11,7 @@
   --aiko-arrow-color: #ffffff;
   --aiko-arrow-size: 46px;
   --aiko-arrow-radius: 10px;
+  --aiko-arrow-mobile-display: inline-flex;
   --aiko-quote-color: #e8e8e8;
   --aiko-text-color: #111111;
   --aiko-subtitle-color: #8a8a8a;
@@ -23,6 +24,26 @@
   --aiko-gap: 44px;
   --aiko-card-padding: 40px;
   --aiko-image-ratio: 3 / 4;
+  --aiko-card-border-width: 0px;
+  --aiko-card-border-style: solid;
+  --aiko-card-border-color: #e8e8e8;
+  --aiko-card-shadow: none;
+  --aiko-body-font: inherit;
+  --aiko-body-weight: 400;
+  --aiko-body-style: normal;
+  --aiko-body-transform: none;
+  --aiko-title-font: inherit;
+  --aiko-title-weight: 700;
+  --aiko-title-style: normal;
+  --aiko-title-transform: none;
+  --aiko-subtitle-font: inherit;
+  --aiko-subtitle-weight: 400;
+  --aiko-subtitle-style: normal;
+  --aiko-subtitle-transform: none;
+  --aiko-quote-font: Georgia, "Times New Roman", serif;
+  --aiko-quote-size: 68px;
+  --aiko-quote-weight: 400;
+  --aiko-quote-style-css: normal;
   --aiko-speed: 500ms;
 
   position: relative;
@@ -39,6 +60,8 @@
   overflow: hidden;
   background: var(--aiko-card-bg);
   border-radius: var(--aiko-radius);
+  border: var(--aiko-card-border-width) var(--aiko-card-border-style) var(--aiko-card-border-color);
+  box-shadow: var(--aiko-card-shadow);
 }
 
 .aiko-slider__track {
@@ -81,8 +104,10 @@
 
 .aiko-slide__quote-mark {
   position: absolute;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 68px;
+  font-family: var(--aiko-quote-font);
+  font-size: var(--aiko-quote-size);
+  font-weight: var(--aiko-quote-weight);
+  font-style: var(--aiko-quote-style-css);
   line-height: 1;
   color: var(--aiko-quote-color);
   user-select: none;
@@ -92,8 +117,45 @@
 .aiko-slide__quote-mark--open { top: -6px; left: -18px; }
 .aiko-slide__quote-mark--close { bottom: -26px; right: -6px; }
 
+/* Quote icon style variations — non-default styles overlay pseudo-elements */
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark,
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark,
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark {
+  color: transparent;
+}
+
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--open::before,
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--open::before,
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--open::before,
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--close::before,
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--close::before,
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--close::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--aiko-quote-color);
+  font-family: var(--aiko-quote-font);
+  font-size: var(--aiko-quote-size);
+  font-weight: var(--aiko-quote-weight);
+  font-style: var(--aiko-quote-style-css);
+  line-height: 1;
+}
+
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--open::before { content: "\0022"; }
+.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--close::before { content: "\0022"; }
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--open::before { content: "\00AB"; }
+.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--close::before { content: "\00BB"; }
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--open::before { content: "\2018"; }
+.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--close::before { content: "\2019"; }
+.aiko-slider[data-aiko-quote-style="none"] .aiko-slide__quote-mark { display: none; }
+
 .aiko-slide__text {
   margin: 0;
+  font-family: var(--aiko-body-font);
+  font-weight: var(--aiko-body-weight);
+  font-style: var(--aiko-body-style);
+  text-transform: var(--aiko-body-transform);
   font-size: var(--aiko-body-size);
   line-height: 1.55;
   color: var(--aiko-text-color);
@@ -102,7 +164,10 @@
 .aiko-slide__title {
   margin: 20px 0 4px;
   font-size: var(--aiko-title-size);
-  font-weight: 700;
+  font-family: var(--aiko-title-font);
+  font-weight: var(--aiko-title-weight);
+  font-style: var(--aiko-title-style);
+  text-transform: var(--aiko-title-transform);
   line-height: 1.2;
   color: var(--aiko-text-color);
 }
@@ -110,6 +175,10 @@
 .aiko-slide__subtitle {
   margin: 0;
   font-size: var(--aiko-subtitle-size);
+  font-family: var(--aiko-subtitle-font);
+  font-weight: var(--aiko-subtitle-weight);
+  font-style: var(--aiko-subtitle-style);
+  text-transform: var(--aiko-subtitle-transform);
   color: var(--aiko-subtitle-color);
 }
 
@@ -185,7 +254,7 @@
     padding: 16px 0 4px;
   }
   .aiko-slide { padding: 22px; }
-  .aiko-slide__quote-mark { font-size: 52px; }
+  .aiko-slide__quote-mark { font-size: calc(var(--aiko-quote-size) * 0.76); }
   .aiko-slide__quote-mark--open { left: -10px; }
   .aiko-slider__arrow--prev { left: 8px; }
   .aiko-slider__arrow--next { right: 8px; }
@@ -193,6 +262,7 @@
     top: auto;
     bottom: -2px;
     transform: none;
+    display: var(--aiko-arrow-mobile-display, inline-flex);
   }
   .aiko-slider__dots { margin-top: 18px; }
 }
