@@ -21,7 +21,7 @@
     showCaption: true,
     followSpeed: 0.16,            // cursor easing (0 = no follow, 1 = instant)
     mobileMode: "stacked",        // stacked | hidden | tap
-    activateFirst: false          // show the first image before any hover
+    activateFirst: false
   };
 
   var PLACEMENTS = ["cursor", "right", "left", "center", "overlap"];
