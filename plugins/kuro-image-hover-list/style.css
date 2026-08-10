@@ -358,3 +358,294 @@
     display: none;
   }
 }
+
+/* == GHOST MASTER DEFAULTS — edited in Plugin Hub == */
+/* // -- KURO IMAGE HOVER LIST – GHOST PLUGINS -- // */
+
+/* Content — Row 1 */
+.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Row 1 — title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Row 1 — link URL — typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, none)))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
+  /* Row 1 — image title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content — Row 2 */
+.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Row 2 — title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Row 2 — link URL — typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, none)))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
+  /* Row 2 — image title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content — Row 3 */
+.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Row 3 — title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Row 3 — link URL — typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, none)))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
+  /* Row 3 — image title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content — Row 4 */
+.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Row 4 — title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Row 4 — link URL — typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, none)))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
+  /* Row 4 — image title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content — Row 5 */
+.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Row 5 — title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Row 5 — link URL — typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, none)))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
+  /* Row 5 — image title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content — Row 6 */
+.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Row 6 — title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Row 6 — link URL — typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, none)))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
+  /* Row 6 — image title — typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images — Image */
+.kuro-list {
+  --kuro-image-width: 380px; /* Image width */
+  --kuro-image-ratio: 4 / 3; /* Image ratio */
+  --kuro-image-radius: 14px; /* Image corner radius */
+  --kuro-image-fit: cover; /* Image fit */
+  --kuro-image-border-width: 0px; /* Image border thickness */
+  --kuro-image-border-style: solid; /* Image border style */
+  --kuro-image-tilt: -6deg; /* Image tilt */
+}
+
+/* Style — Dividers */
+.kuro-list {
+  --kuro-divider-width: 0px; /* Divider thickness */
+  --kuro-divider-style: solid; /* Divider style */
+}
+
+/* Style — Image */
+.kuro-list {
+  --kuro-image-shadow: 0 12px 30px rgba(0,0,0,0.12); /* Image shadow */
+  --kuro-image-speed: 380ms; /* Reveal speed */
+}
+
+/* Style — Image title */
+.kuro-list {
+  --kuro-caption-radius: 500px; /* Image title corner radius */
+}
+
+/* Colors — Titles */
+.kuro-list {
+  --kuro-title-color: #111111; /* Title colour */
+  --kuro-title-hover-color: #111111; /* Title colour on hover */
+  --kuro-title-dim-opacity: 0.25; /* Dimmed title opacity */
+}
+
+/* Colors — Dividers */
+.kuro-list {
+  --kuro-divider-color: #e6e6e6; /* Divider colour */
+}
+
+/* Colors — Image title */
+.kuro-list {
+  --kuro-caption-color: #ffffff; /* Image title colour */
+  --kuro-caption-bg: #000000; /* Image title background */
+}
+
+/* Colors — Image */
+.kuro-list {
+  --kuro-image-border-color: #111111; /* Image border colour */
+}
+
+/* Layout — Container */
+.kuro-list {
+  --kuro-max-width: 1100px; /* Maximum width */
+  --kuro-padding: 40px; /* Container padding */
+}
+
+/* Layout — Rows */
+.kuro-list {
+  --kuro-row-gap: 4px; /* Space between titles */
+  --kuro-row-padding: 6px; /* Row padding */
+  --kuro-text-align: left; /* Text alignment */
+  --kuro-list-width: 100%; /* List width */
+}
+
+/* Layout — Image */
+.kuro-list {
+  --kuro-image-offset-x: 0px; /* Image nudge — horizontal */
+  --kuro-image-offset-y: 0px; /* Image nudge — vertical */
+}
+
+/* Layout — Image title */
+.kuro-list {
+  --kuro-caption-inset: 14px; /* Image title inset */
+}
+
+/* Fonts — Titles */
+.kuro-list {
+  --kuro-title-font: inherit; /* Title font family */
+  --kuro-title-size: 100px; /* Title size */
+  --kuro-title-weight: 700; /* Title weight */
+  --kuro-title-transform: none; /* Title capitalisation */
+  --kuro-title-tracking: -0.03em; /* Title letter spacing */
+  --kuro-title-line-height: 1.05; /* Title line height */
+}
+
+/* Fonts — Mobile */
+.kuro-list {
+  --kuro-mobile-title-size: 32px; /* Mobile title size */
+}
+
+/* Fonts — Image title */
+.kuro-list {
+  --kuro-caption-font: inherit; /* Image title font */
+  --kuro-caption-size: 12px; /* Image title size */
+  --kuro-caption-weight: 700; /* Image title weight */
+  --kuro-caption-transform: uppercase; /* Image title capitalisation */
+}
+
+/* // -- KURO IMAGE HOVER LIST – GHOST PLUGINS -- // */
+/* == END GHOST MASTER DEFAULTS == */
