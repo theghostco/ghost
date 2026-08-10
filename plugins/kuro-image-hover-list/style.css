@@ -567,7 +567,7 @@
 
 /* Style — Image */
 .kuro-list {
-  --kuro-image-shadow: 0 12px 30px rgba(0,0,0,0.12); /* Image shadow */
+  --kuro-image-shadow: 0 24px 60px rgba(0,0,0,0.18); /* Image shadow */
   --kuro-image-speed: 380ms; /* Reveal speed */
 }
 
