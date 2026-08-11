@@ -1,464 +1,318 @@
-/* Aiko Testimonial Slider — Ghost Plugins
-   Master stylesheet. Do not edit on the customer site;
-   use the Visual Editor overrides in your Custom CSS instead. */
+/*!
+ * Aiko Testimonial Slider — Ghost Plugins  v1.5.0
+ * Standalone, responsive CSS. Designed to inherit Squarespace typography
+ * when the customer enables "Inherit Site Styles" in the editor.
+ */
 
+/* --- Container --- */
 .aiko-slider {
-  --aiko-card-bg: #ffffff;
-  --aiko-page-bg: transparent;
-  --aiko-radius: 0px;
-  --aiko-image-radius: 8px;
-  --aiko-arrow-bg: #111111;
-  --aiko-arrow-color: #ffffff;
-  --aiko-arrow-size: 46px;
-  --aiko-arrow-radius: 10px;
-  --aiko-arrow-mobile-display: inline-flex;
-  --aiko-quote-color: #e8e8e8;
-  --aiko-text-color: #111111;
-  --aiko-subtitle-color: #8a8a8a;
-  --aiko-body-size: 15px;
-  --aiko-title-size: 20px;
-  --aiko-subtitle-size: 12px;
-  --aiko-dot-color: #d4d4d4;
-  --aiko-dot-active: #111111;
-  --aiko-dot-size: 8px;
-  --aiko-gap: 44px;
-  --aiko-card-padding: 40px;
-  --aiko-image-ratio: 3 / 4;
-  --aiko-media-order: 0;
-  --aiko-media-display: block;
-  --aiko-media-width: 42%;
-  --aiko-card-border-width: 0px;
-  --aiko-card-border-style: solid;
-  --aiko-card-border-color: #e8e8e8;
-  --aiko-card-shadow: none;
-  --aiko-body-font: inherit;
-  --aiko-body-weight: 400;
-  --aiko-body-style: normal;
-  --aiko-body-transform: none;
+  --aiko-gap: var(--aiko-gap-desktop, 24px);
+  --aiko-radius: var(--aiko-radius-desktop, 12px);
+  --aiko-padding: var(--aiko-padding-desktop, 32px);
+  --aiko-image-width: var(--aiko-image-width-desktop, 40%);
+  --aiko-image-ratio: var(--aiko-image-ratio-desktop, 1 / 1);
+  --aiko-title-size: var(--aiko-title-size-desktop, 1.25rem);
+  --aiko-text-size: var(--aiko-text-size-desktop, 1rem);
+  --aiko-subtitle-size: var(--aiko-subtitle-size-desktop, 0.875rem);
+  --aiko-align: var(--aiko-align-desktop, center);
+  --aiko-text-align: var(--aiko-text-align-desktop, center);
+  --aiko-title-color: var(--aiko-title-color-desktop, #111);
+  --aiko-text-color: var(--aiko-text-color-desktop, #444);
+  --aiko-subtitle-color: var(--aiko-subtitle-color-desktop, #777);
+  --aiko-bg: var(--aiko-bg-desktop, #f7f7f7);
+  --aiko-arrow-color: var(--aiko-arrow-color-desktop, #111);
+  --aiko-arrow-bg: var(--aiko-arrow-bg-desktop, #fff);
+  --aiko-dot-color: var(--aiko-dot-color-desktop, rgba(0,0,0,0.25));
+  --aiko-dot-active: var(--aiko-dot-active-desktop, #111);
+  --aiko-quote-color: var(--aiko-quote-color-desktop, rgba(0,0,0,0.12));
+  --aiko-quote-size: var(--aiko-quote-size-desktop, 48px);
   --aiko-title-font: inherit;
-  --aiko-title-weight: 700;
-  --aiko-title-style: normal;
-  --aiko-title-transform: none;
-  --aiko-subtitle-font: inherit;
-  --aiko-subtitle-weight: 400;
-  --aiko-subtitle-style: normal;
-  --aiko-subtitle-transform: none;
-  --aiko-quote-font: Georgia, "Times New Roman", serif;
-  --aiko-quote-size: 68px;
-  --aiko-quote-weight: 400;
-  --aiko-quote-style-css: normal;
-  --aiko-speed: 500ms;
+  --aiko-title-weight: inherit;
+  --aiko-title-style: inherit;
+  --aiko-title-transform: inherit;
+  --aiko-title-spacing: inherit;
+  --aiko-title-height: inherit;
+  --aiko-body-font: inherit;
+  --aiko-body-weight: inherit;
+  --aiko-body-style: inherit;
+  --aiko-body-transform: inherit;
+  --aiko-body-spacing: inherit;
+  --aiko-body-height: inherit;
 
   position: relative;
-  container-type: inline-size;
-  container-name: aiko;
-  display: block;
   width: 100%;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  float: none;
-  clear: both;
-
-  background: var(--aiko-page-bg);
-  padding: 24px calc(var(--aiko-arrow-size) + 22px) 8px;
+  max-width: var(--aiko-max-width, 1200px);
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--aiko-radius);
+  background: var(--aiko-bg);
+  font-family: var(--aiko-body-font, inherit);
+  color: var(--aiko-text-color);
   box-sizing: border-box;
 }
 
 .aiko-slider *,
 .aiko-slider *::before,
-.aiko-slider *::after { box-sizing: border-box; }
-
-.aiko-slider__viewport {
-  overflow: hidden;
-  background: var(--aiko-card-bg);
-  border-radius: var(--aiko-radius);
-  border: var(--aiko-card-border-width) var(--aiko-card-border-style) var(--aiko-card-border-color);
-  box-shadow: var(--aiko-card-shadow);
+.aiko-slider *::after {
+  box-sizing: border-box;
 }
 
-.aiko-slider__track {
+/* --- Track --- */
+.aiko-track {
   display: flex;
-  width: 100%;
-  transition: transform var(--aiko-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 500ms ease;
   will-change: transform;
 }
 
 .aiko-slide {
-  flex: 0 0 100%;
-  min-width: 100%;
   display: flex;
-  flex-direction: row;
+  align-items: var(--aiko-align);
   gap: var(--aiko-gap);
-  align-items: center;
-  padding: var(--aiko-card-padding);
+  padding: var(--aiko-padding);
+  min-width: 100%;
+  flex: 0 0 100%;
 }
 
-.aiko-slide__media {
-  position: relative;
-  display: var(--aiko-media-display);
-  order: var(--aiko-media-order);
-  flex: 0 0 var(--aiko-media-width);
-  width: 100%;
-  max-width: var(--aiko-media-width);
+/* --- Image --- */
+.aiko-image-wrap {
+  flex: 0 0 var(--aiko-image-width);
+  max-width: var(--aiko-image-width);
   aspect-ratio: var(--aiko-image-ratio);
-  background: #111111;
-  border-radius: var(--aiko-image-radius);
   overflow: hidden;
+  border-radius: calc(var(--aiko-radius) * 0.6);
 }
 
-.aiko-slide__media img {
+.aiko-image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.aiko-slide__body {
-  position: relative;
+/* --- Content --- */
+.aiko-content {
   flex: 1 1 auto;
-  min-width: 0;
-  padding: 26px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: var(--aiko-text-align);
+  position: relative;
+  z-index: 1;
 }
 
-.aiko-slide__quote-mark {
-  position: absolute;
-  font-family: var(--aiko-quote-font);
-  font-size: var(--aiko-quote-size);
-  font-weight: var(--aiko-quote-weight);
-  font-style: var(--aiko-quote-style-css);
-  line-height: 1;
-  color: var(--aiko-quote-color);
-  user-select: none;
-  pointer-events: none;
-}
-
-.aiko-slide__quote-mark--open { top: -6px; left: -18px; }
-.aiko-slide__quote-mark--close { bottom: -26px; right: -6px; }
-
-/* Quote icon style variations — non-default styles overlay pseudo-elements */
-.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark,
-.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark,
-.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark {
-  color: transparent;
-}
-
-.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--open::before,
-.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--open::before,
-.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--open::before,
-.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--close::before,
-.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--close::before,
-.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--close::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: var(--aiko-quote-color);
-  font-family: var(--aiko-quote-font);
-  font-size: var(--aiko-quote-size);
-  font-weight: var(--aiko-quote-weight);
-  font-style: var(--aiko-quote-style-css);
-  line-height: 1;
-}
-
-.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--open::before { content: "\0022"; }
-.aiko-slider[data-aiko-quote-style="minimal"] .aiko-slide__quote-mark--close::before { content: "\0022"; }
-.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--open::before { content: "\00AB"; }
-.aiko-slider[data-aiko-quote-style="brackets"] .aiko-slide__quote-mark--close::before { content: "\00BB"; }
-.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--open::before { content: "\2018"; }
-.aiko-slider[data-aiko-quote-style="apostrophe"] .aiko-slide__quote-mark--close::before { content: "\2019"; }
-.aiko-slider[data-aiko-quote-style="none"] .aiko-slide__quote-mark { display: none; }
-
-.aiko-slide__text {
-  margin: 0;
-  font-family: var(--aiko-body-font);
-  font-weight: var(--aiko-body-weight);
-  font-style: var(--aiko-body-style);
-  text-transform: var(--aiko-body-transform);
-  font-size: var(--aiko-body-size);
-  line-height: 1.55;
+.aiko-text {
+  font-family: var(--aiko-body-font, inherit);
+  font-size: var(--aiko-text-size);
+  font-weight: var(--aiko-body-weight, inherit);
+  font-style: var(--aiko-body-style, inherit);
+  text-transform: var(--aiko-body-transform, inherit);
+  letter-spacing: var(--aiko-body-spacing, inherit);
+  line-height: var(--aiko-body-height, 1.6);
   color: var(--aiko-text-color);
+  margin: 0 0 1rem;
 }
 
-.aiko-slide__title {
-  margin: 20px 0 4px;
+.aiko-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.aiko-title {
+  font-family: var(--aiko-title-font, inherit);
   font-size: var(--aiko-title-size);
-  font-family: var(--aiko-title-font);
-  font-weight: var(--aiko-title-weight);
-  font-style: var(--aiko-title-style);
-  text-transform: var(--aiko-title-transform);
-  line-height: 1.2;
-  color: var(--aiko-text-color);
+  font-weight: var(--aiko-title-weight, inherit);
+  font-style: var(--aiko-title-style, inherit);
+  text-transform: var(--aiko-title-transform, inherit);
+  letter-spacing: var(--aiko-title-spacing, inherit);
+  line-height: var(--aiko-title-height, 1.2);
+  color: var(--aiko-title-color);
 }
 
-.aiko-slide__subtitle {
-  margin: 0;
+.aiko-subtitle {
+  font-family: var(--aiko-body-font, inherit);
   font-size: var(--aiko-subtitle-size);
-  font-family: var(--aiko-subtitle-font);
-  font-weight: var(--aiko-subtitle-weight);
-  font-style: var(--aiko-subtitle-style);
-  text-transform: var(--aiko-subtitle-transform);
+  font-weight: var(--aiko-body-weight, inherit);
+  font-style: var(--aiko-body-style, inherit);
+  text-transform: var(--aiko-body-transform, inherit);
+  letter-spacing: var(--aiko-body-spacing, inherit);
+  line-height: var(--aiko-body-height, 1.4);
   color: var(--aiko-subtitle-color);
 }
 
-.aiko-slider__arrow {
+/* --- Quote icons --- */
+.aiko-quote {
+  position: absolute;
+  width: var(--aiko-quote-size);
+  height: var(--aiko-quote-size);
+  color: var(--aiko-quote-color);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.aiko-quote--top {
+  top: 0;
+  left: 0;
+  transform: translate(-20%, -30%);
+}
+
+.aiko-quote--bottom {
+  bottom: 0;
+  right: 0;
+  transform: translate(20%, 30%) rotate(180deg);
+}
+
+.aiko-quote-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  stroke: currentColor;
+}
+
+/* Ensure stroke-based icons stay outlined, not filled */
+.aiko-quote-icon--thin,
+.aiko-quote-icon--brackets {
+  fill: none;
+}
+
+/* --- Arrows --- */
+.aiko-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: var(--aiko-arrow-size);
-  height: var(--aiko-arrow-size);
-  border: 0;
-  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
   background: var(--aiko-arrow-bg);
   color: var(--aiko-arrow-color);
-  border-radius: var(--aiko-arrow-radius);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  transition: opacity 150ms ease, transform 150ms ease;
+  cursor: pointer;
   z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: opacity 200ms, transform 200ms;
 }
 
-.aiko-slider__arrow:hover { opacity: 0.85; }
-.aiko-slider__arrow:focus-visible { outline: 2px solid var(--aiko-arrow-bg); outline-offset: 3px; }
-.aiko-slider__arrow svg { width: 45%; height: 45%; }
-/* Half the arrow sits over the card, half outside it. */
-.aiko-slider__arrow--prev { left: calc(var(--aiko-arrow-size) / 2 + 22px); }
-.aiko-slider__arrow--next { right: calc(var(--aiko-arrow-size) / 2 + 22px); }
+.aiko-arrow:hover {
+  opacity: 0.85;
+  transform: translateY(-50%) scale(1.05);
+}
 
-.aiko-slider__dots {
+.aiko-arrow svg {
+  width: 22px;
+  height: 22px;
+}
+
+.aiko-arrow--left { left: 12px; }
+.aiko-arrow--right { right: 12px; }
+
+/* --- Dots --- */
+.aiko-dots {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 9px;
-  margin-top: 26px;
+  gap: 8px;
+  padding: 16px 0;
 }
 
-.aiko-slider__dot {
-  width: var(--aiko-dot-size);
-  height: var(--aiko-dot-size);
+.aiko-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
   padding: 0;
-  border: 0;
-  border-radius: 999px;
   background: var(--aiko-dot-color);
   cursor: pointer;
-  transition: background 150ms ease, transform 150ms ease;
+  transition: background 200ms, transform 200ms;
 }
 
-.aiko-slider__dot[aria-current="true"] {
+.aiko-dot.active {
   background: var(--aiko-dot-active);
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
-/* Only hide the raw markup once the script has taken over, so the testimonials
-   still render as plain text if the script is blocked or fails to load. */
-.aiko-slider[hidden],
-.aiko-slider[data-aiko-ready="true"] .aiko-slider__source { display: none !important; }
+/* --- Layout variants --- */
+.aiko-slider[data-layout="image-right"] .aiko-slide {
+  flex-direction: row-reverse;
+}
 
-/* Responsive.
-   Container queries let the slider adapt to its own width, so it looks right
-   inside narrow columns and in the Plugin Editor's device preview. The media
-   queries below repeat the same rules as a fallback for older browsers. */
+.aiko-slider[data-layout="stacked"] .aiko-slide {
+  flex-direction: column;
+  align-items: var(--aiko-align);
+}
 
-/* Tablet */
-@container aiko (max-width: 560px) {
+.aiko-slider[data-layout="stacked"] .aiko-image-wrap {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 320px;
+}
+
+/* --- Mobile --- */
+@media (max-width: 767px) {
+  .aiko-slider {
+    --aiko-gap: var(--aiko-gap-mobile, 16px);
+    --aiko-radius: var(--aiko-radius-mobile, 10px);
+    --aiko-padding: var(--aiko-padding-mobile, 20px);
+    --aiko-image-width: 100%;
+    --aiko-image-ratio: var(--aiko-image-ratio-mobile, 1 / 1);
+    --aiko-title-size: var(--aiko-title-size-mobile, 1.1rem);
+    --aiko-text-size: var(--aiko-text-size-mobile, 0.95rem);
+    --aiko-subtitle-size: var(--aiko-subtitle-size-mobile, 0.8rem);
+    --aiko-align: var(--aiko-align-mobile, flex-start);
+    --aiko-text-align: var(--aiko-text-align-mobile, left);
+    --aiko-bg: var(--aiko-bg-mobile, #f7f7f7);
+    --aiko-quote-size: var(--aiko-quote-size-mobile, 36px);
+  }
+
   .aiko-slide {
-    flex-direction: column;
-    gap: 28px;
-    padding: 30px;
+    flex-direction: column !important;
+    align-items: var(--aiko-align);
   }
-  .aiko-slide__media {
-    order: 0;
+
+  .aiko-image-wrap {
     flex: 0 0 auto;
-    max-width: 100%;
-    aspect-ratio: 4 / 3;
+    width: 100%;
+    max-width: none;
   }
-  .aiko-slide__body { padding: 18px 22px; }
-}
 
-/* Mobile */
-@container aiko (max-width: 400px) {
-  .aiko-slide { padding: 22px; }
-  .aiko-slide__quote-mark { font-size: calc(var(--aiko-quote-size) * 0.76); }
-  .aiko-slide__quote-mark--open { left: -10px; }
-  .aiko-slider__arrow {
-    width: 38px;
-    height: 38px;
+  .aiko-content {
+    width: 100%;
+  }
+
+  .aiko-arrow {
+    position: relative;
     top: auto;
-    bottom: -2px;
     transform: none;
-    display: var(--aiko-arrow-mobile-display, inline-flex);
+    margin-top: 8px;
   }
-  .aiko-slider__arrow--prev { left: 8px; }
-  .aiko-slider__arrow--next { right: 8px; }
-  .aiko-slider__dots { margin-top: 18px; }
+
+  .aiko-arrow:hover {
+    transform: scale(1.05);
+  }
+
+  .aiko-arrow--left,
+  .aiko-arrow--right {
+    position: absolute;
+    bottom: 16px;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .aiko-arrow--left { left: 16px; }
+  .aiko-arrow--right { right: 16px; }
 }
 
-@supports not (container-type: inline-size) {
-  /* Tablet (viewport fallback) */
-  @media (max-width: 760px) {
-    .aiko-slide {
-      flex-direction: column;
-      gap: 28px;
-      padding: 30px;
-    }
-    .aiko-slide__media {
-      order: 0;
-      flex: 0 0 auto;
-      max-width: 100%;
-      aspect-ratio: 4 / 3;
-    }
-    .aiko-slide__body { padding: 18px 22px; }
-  }
-
-  /* Mobile (viewport fallback) */
-  @media (max-width: 560px) {
-    .aiko-slider {
-      --aiko-arrow-size: 38px;
-      padding: 16px 0 4px;
-    }
-    .aiko-slide { padding: 22px; }
-    .aiko-slide__quote-mark { font-size: calc(var(--aiko-quote-size) * 0.76); }
-    .aiko-slide__quote-mark--open { left: -10px; }
-    .aiko-slider__arrow--prev { left: 8px; }
-    .aiko-slider__arrow--next { right: 8px; }
-    .aiko-slider__arrow {
-      top: auto;
-      bottom: -2px;
-      transform: none;
-      display: var(--aiko-arrow-mobile-display, inline-flex);
-    }
-    .aiko-slider__dots { margin-top: 18px; }
-  }
-}
-
+/* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
-  .aiko-slider__track { transition: none; }
+  .aiko-track {
+    transition: none !important;
+  }
 }
 
 /* == GHOST MASTER DEFAULTS — edited in Plugin Hub == */
 /* // -- AIKO TESTIMONIAL SLIDER – GHOST PLUGINS -- // */
-
-/* Content — Testimonial 1 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
-
-/* Content — Testimonial 2 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
-
-/* Content — Testimonial 3 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
-
-/* Content — Testimonial 4 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
-
-/* Content — Testimonial 5 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
-
-/* Content — Testimonial 6 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
-
-/* Content — Testimonial 7 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
-
-/* Content — Testimonial 8 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
-
-/* Content — Testimonial 9 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
-
-/* Content — Testimonial 10 */
-.aiko-slider {
-  /* Name — typography */
-  font-family: var(--body-font-font-family, inherit);
-  font-weight: var(--body-font-font-weight, inherit);
-  font-style: var(--body-font-font-style, inherit);
-  text-transform: var(--body-font-text-transform, none);
-  letter-spacing: var(--body-font-letter-spacing, normal);
-  /* Role / company — typography */
-  /* Quote — typography */
-}
 
 /* Images — Image */
 .aiko-slider {
@@ -587,7 +441,6 @@
 /* Icons — Icons */
 .aiko-slider {
   --aiko-quote-size: 68px; /* Quote mark size */
-  --aiko-quote-font: Georgia, "Times New Roman", serif; /* Quote mark font style */
 }
 
 /* Settings — Arrows */
