@@ -21,7 +21,7 @@
     showCaption: true,
     followSpeed: 0.16,            // cursor easing (0 = no follow, 1 = instant)
     mobileMode: "stacked",        // stacked | hidden | tap
-    activateFirst: false
+    activateFirst: false          // show the first image before any hover
   };
 
   var PLACEMENTS = ["cursor", "right", "left", "center", "overlap"];
@@ -199,7 +199,10 @@
       var img = el(doc, "img");
       if (item.image) img.src = item.image;
       img.alt = item.caption || item.title || "";
-      img.loading = "lazy";
+      // Hover images live in a hidden layer: lazy loading delays them until
+      // the first hover, so they are fetched eagerly instead.
+      img.loading = "eager";
+      img.decoding = "async";
       inner.appendChild(img);
       return img;
     });
@@ -321,10 +324,41 @@
     render();
   }
 
+  /**
+   * True while an installation config (data-ghost-key) is still being fetched
+   * and no saved settings have arrived yet. Rendering the markup's demo rows in
+   * that window causes a visible "flash of demo content", so lists stay hidden
+   * until the real config lands (or the short fallback timeout expires).
+   */
+  var configPending = (function () {
+    try {
+      if (!document.querySelector("script[data-ghost-key]")) return false;
+      var G = window.GhostPlugins;
+      return !(G && G.config && G.config["kuro-image-hover-list"]);
+    } catch (e) {
+      return false;
+    }
+  })();
+
+  function setHidden(root, hidden) {
+    root.style.visibility = hidden ? "hidden" : "";
+    if (!hidden) root.removeAttribute("data-kuro-pending");
+    else root.setAttribute("data-kuro-pending", "1");
+  }
+
+  function revealAll() {
+    configPending = false;
+    var roots = document.querySelectorAll("[data-kuro], .kuro-list");
+    for (var i = 0; i < roots.length; i++) setHidden(roots[i], false);
+  }
+
   function initAll(scope) {
     var doc = scope || document;
     var roots = doc.querySelectorAll("[data-kuro], .kuro-list");
-    for (var i = 0; i < roots.length; i++) initOne(roots[i]);
+    for (var i = 0; i < roots.length; i++) {
+      if (configPending) setHidden(roots[i], true);
+      initOne(roots[i]);
+    }
   }
 
   window.KuroImageHoverList = { initAll: initAll, init: initOne, DEFAULTS: DEFAULTS };
@@ -337,10 +371,22 @@
 
   // Squarespace swaps page content without a reload — re-init on navigation.
   window.addEventListener("load", function () { initAll(); });
-  document.addEventListener("ghost:plugins-config", function () {
+
+  function refreshAll() {
     var roots = document.querySelectorAll("[data-kuro], .kuro-list");
     for (var i = 0; i < roots.length; i++) {
       if (roots[i].__kuroRefresh) roots[i].__kuroRefresh();
+      else initOne(roots[i]);
     }
-  });
+    revealAll();
+  }
+
+  // The install loader fires "ghost:config"; older builds fired
+  // "ghost:plugins-config". Accept both so saved settings always apply.
+  document.addEventListener("ghost:config", refreshAll);
+  document.addEventListener("ghost:plugins-config", refreshAll);
+
+  // Never leave a list invisible if the config request is slow or fails.
+  window.setTimeout(revealAll, 2500);
 })();
+
