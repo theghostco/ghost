@@ -1,0 +1,83 @@
+/* Doodle Pen, Ghost Plugins  v1.1.0
+   Master stylesheet. Do not edit on the customer site;
+   use the Plugin Studio overrides in your Custom CSS instead. */
+
+.gh-doodle {
+  --dp-bg: transparent;
+  --dp-cursor-size: 28px;
+
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  min-height: 320px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--dp-bg);
+  touch-action: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.gh-doodle.gh-ready { opacity: 1; }
+
+.gh-doodle *,
+.gh-doodle *::before,
+.gh-doodle *::after { box-sizing: border-box; }
+
+.gh-doodle__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: none;
+}
+
+.gh-doodle__cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--dp-cursor-size);
+  height: var(--dp-cursor-size);
+  margin: calc(var(--dp-cursor-size) * -0.92) 0 0 calc(var(--dp-cursor-size) * -0.08);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  line-height: 0;
+  z-index: 2;
+}
+
+.gh-doodle__cursor.is-visible { opacity: 1; }
+
+.gh-doodle__cursor svg,
+.gh-doodle__cursor img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Below the configured minimum width the pen switches off and the
+   canvas becomes a static panel. */
+@media (max-width: 767px) {
+  .gh-doodle__canvas { cursor: default; }
+  .gh-doodle__cursor { display: none; }
+}
+
+/* == GHOST MASTER DEFAULTS, edited in Plugin Hub == */
+/* // -- DOODLE PEN – GHOST PLUGINS -- // */
+
+/* Style for Cursor */
+.gh-doodle, .gh-doodle :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Custom cursor (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, none)))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* // -- DOODLE PEN – GHOST PLUGINS -- // */
+/* == END GHOST MASTER DEFAULTS == */
