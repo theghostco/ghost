@@ -8,9 +8,9 @@
 
   var DEFAULTS = {
     logos: "",
-    logoHeight: 71,
-    logoMaxWidth: 176,
-    logoSpacing: 32,
+    logoHeight: 90,
+    logoMaxWidth: 140,
+    logoSpacing: 26,
     speed: 80,
     direction: "left",
     pauseOnHover: true,
@@ -20,7 +20,7 @@
     hoverOpacity: 100,
     grayscale: false,
     background: "transparent",
-    padding: 34,
+    padding: 52,
     splitRows: false,
     rowDirection: "opposite",
     rowGap: 24,
