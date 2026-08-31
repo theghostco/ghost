@@ -1,0 +1,446 @@
+/* Scrolling Logo Marquee, Ghost Plugins  v1.0.0 */
+
+.gh-marquee {
+  --mq-logo-height: 34px;
+  --mq-logo-max-width: 200px;
+  --mq-spacing: 72px;
+  --mq-fade: 96px;
+  --mq-opacity: 1;
+  --mq-opacity-hover: 1;
+  --mq-bg: transparent;
+  --mq-padding: 28px;
+  --mq-row-gap: 24px;
+  --mq-wave-height: 10px;
+  --mq-wave-speed: 2.6s;
+  --mq-grayscale: 0;
+
+  display: block;
+  width: 100%;
+  background: var(--mq-bg);
+  padding: var(--mq-padding) 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.gh-marquee.gh-ready { opacity: 1; }
+
+.gh-marquee--split .gh-marquee__row + .gh-marquee__row { margin-top: var(--mq-row-gap); }
+
+.gh-marquee__row {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.gh-marquee--fade .gh-marquee__row {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--mq-fade), #000 calc(100% - var(--mq-fade)), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 var(--mq-fade), #000 calc(100% - var(--mq-fade)), transparent 100%);
+}
+
+.gh-marquee__track {
+  display: flex;
+  width: max-content;
+  animation-name: gh-marquee-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.gh-marquee--pause:hover .gh-marquee__track { animation-play-state: paused; }
+
+.gh-marquee__group {
+  display: flex;
+  align-items: center;
+  gap: var(--mq-spacing);
+  padding-right: var(--mq-spacing);
+}
+
+.gh-marquee__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  opacity: var(--mq-opacity);
+  filter: grayscale(var(--mq-grayscale));
+  transition: opacity 0.25s ease, filter 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gh-marquee__logo:hover {
+  opacity: var(--mq-opacity-hover);
+  filter: grayscale(0);
+}
+
+.gh-marquee__img,
+.gh-marquee__mark svg {
+  display: block;
+  height: var(--mq-logo-height);
+  width: auto;
+  max-width: var(--mq-logo-max-width);
+  object-fit: contain;
+}
+
+.gh-marquee__mark {
+  display: inline-flex;
+  align-items: center;
+  color: currentColor;
+}
+
+.gh-marquee__logo.is-wave {
+  animation-name: gh-marquee-wave;
+  animation-duration: var(--mq-wave-speed);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes gh-marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes gh-marquee-wave {
+  0%, 100% { transform: translate3d(0, calc(var(--mq-wave-height) * -1), 0); }
+  50% { transform: translate3d(0, var(--mq-wave-height), 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh-marquee__track,
+  .gh-marquee__logo.is-wave { animation: none !important; }
+}
+
+/* == GHOST MASTER DEFAULTS, edited in Plugin Hub == */
+/* // -- SCROLLING LOGO MARQUEE – GHOST PLUGINS -- // */
+
+/* Images for Logo 1 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 2 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 3 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 4 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 5 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 6 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 7 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 8 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 9 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 10 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 11 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 12 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 13 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 14 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 15 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 16 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 17 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 18 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 19 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 20 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 21 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 22 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 23 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 24 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 25 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 26 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 27 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 28 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 29 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Images for Logo 30 */
+.gh-marquee, .gh-marquee :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Logo name, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, none)))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* // -- SCROLLING LOGO MARQUEE – GHOST PLUGINS -- // */
+/* == END GHOST MASTER DEFAULTS == */
