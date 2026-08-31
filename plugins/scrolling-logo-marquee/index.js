@@ -1,4 +1,4 @@
-/* Scrolling Logo Marquee, Ghost Plugins  v1.0.0
+/* Scrolling Logo Marquee, Ghost Plugins  v1.1.0
    Standalone browser script. No dependencies.
    Config: window.LogoMarqueeConfig, live Plugin Studio settings, or per block data attributes. */
 (function () {
@@ -11,7 +11,7 @@
     logoHeight: 71,
     logoMaxWidth: 176,
     logoSpacing: 32,
-    speed: 32,
+    speed: 80,
     direction: "left",
     pauseOnHover: true,
     fadeEdges: true,
@@ -24,19 +24,16 @@
     splitRows: false,
     rowDirection: "opposite",
     rowGap: 24,
-    wave: false,
-    waveHeight: 10,
-    waveSpeed: 2.6,
     linkNewTab: true
   };
 
   var DEMO_LOGOS = [
-    { name: "Tootie", tm: true, weight: 500, spacing: -0.5 },
-    { name: "STONES", tm: true, weight: 800, spacing: 1 },
+    { name: "Tootie", tm: false, weight: 500, spacing: -0.5 },
+    { name: "STONES", tm: false, weight: 800, spacing: 1 },
     { name: "The Parent", tm: false, weight: 600, spacing: -0.5 },
     { name: "FUGZ", tm: false, weight: 900, spacing: 0.5 },
     { name: "Halo Goods", tm: false, weight: 500, spacing: 0 },
-    { name: "NORTHBAY", tm: true, weight: 700, spacing: 2 }
+    { name: "NORTHBAY", tm: false, weight: 700, spacing: 2 }
   ];
 
   function demoLogo(item) {
@@ -146,10 +143,6 @@
       wrap = document.createElement("span");
     }
     wrap.className = "gh-marquee__logo";
-    if (o.wave) {
-      wrap.classList.add("is-wave");
-      wrap.style.animationDelay = (index * 0.18).toFixed(2) + "s";
-    }
     wrap.appendChild(media);
     return wrap;
   }
@@ -163,11 +156,15 @@
     track.style.animationDuration = Math.max(4, Number(o.speed) || 32) + "s";
     track.style.animationDirection = direction === "right" ? "reverse" : "normal";
 
+    var filled = [];
+    var reps = Math.max(1, Math.ceil(12 / Math.max(1, items.length)));
+    for (var r = 0; r < reps; r += 1) filled = filled.concat(items);
+
     for (var copy = 0; copy < 2; copy += 1) {
       var group = document.createElement("div");
       group.className = "gh-marquee__group";
       group.setAttribute("aria-hidden", copy === 1 ? "true" : "false");
-      items.forEach(function (item, i) {
+      filled.forEach(function (item, i) {
         group.appendChild(makeLogo(item, o, i));
       });
       track.appendChild(group);
@@ -188,8 +185,6 @@
     s.setProperty("--mq-bg", String(o.background || "transparent"));
     s.setProperty("--mq-padding", Number(o.padding) + "px");
     s.setProperty("--mq-row-gap", Number(o.rowGap) + "px");
-    s.setProperty("--mq-wave-height", Number(o.waveHeight) + "px");
-    s.setProperty("--mq-wave-speed", Number(o.waveSpeed) + "s");
     s.setProperty("--mq-grayscale", o.grayscale ? "1" : "0");
     root.classList.toggle("gh-marquee--pause", !!o.pauseOnHover);
     root.classList.toggle("gh-marquee--fade", !!o.fadeEdges);
