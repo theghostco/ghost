@@ -1,0 +1,168 @@
+/* Animated Number Counter, Ghost Plugins  v1.0.0
+   Master stylesheet. Do not edit on the customer site;
+   use the Plugin Studio overrides in your Custom CSS instead. */
+
+.anc-stats {
+  --anc-columns: 3;
+  --anc-columns-tablet: 2;
+  --anc-columns-mobile: 1;
+  --anc-gap: 24px;
+  --anc-align: center;
+  --anc-text-gap: 8px;
+
+  --anc-card-bg: #ffffff;
+  --anc-card-padding: 32px;
+  --anc-radius: 12px;
+  --anc-border-width: 1px;
+  --anc-border-style: solid;
+  --anc-border-color: #ececec;
+  --anc-shadow-color: rgba(17, 17, 17, 0.06);
+  --anc-shadow-size: 24px;
+  --anc-shadow: 0 6px var(--anc-shadow-size) var(--anc-shadow-color);
+
+  --anc-icon-size: 28px;
+  --anc-icon-color: #111111;
+
+  --anc-title-size: 15px;
+  --anc-title-color: #111111;
+  --anc-title-weight: 700;
+  --anc-title-font: inherit;
+  --anc-title-transform: none;
+  --anc-title-spacing: 0;
+
+  --anc-number-size: 56px;
+  --anc-number-color: #111111;
+  --anc-number-weight: 800;
+  --anc-number-font: inherit;
+  --anc-number-spacing: -1px;
+  --anc-number-lh: 1.05;
+
+  --anc-desc-size: 14px;
+  --anc-desc-color: #8a8a8a;
+  --anc-desc-weight: 400;
+  --anc-desc-font: inherit;
+
+  --anc-speed: 700ms;
+
+  display: grid;
+  grid-template-columns: repeat(var(--anc-columns), minmax(0, 1fr));
+  gap: var(--anc-gap);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  container-type: inline-size;
+}
+
+.anc-stats *,
+.anc-stats *::before,
+.anc-stats *::after { box-sizing: border-box; }
+
+.anc-stats__source { display: none; }
+
+.anc-stats__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--anc-text-gap);
+  align-items: var(--anc-align);
+  text-align: var(--anc-align);
+  background: var(--anc-card-bg);
+  padding: var(--anc-card-padding);
+  border-radius: var(--anc-radius);
+  border: var(--anc-border-width) var(--anc-border-style) var(--anc-border-color);
+  box-shadow: var(--anc-shadow);
+}
+
+.anc-stats--flat .anc-stats__item { box-shadow: none; }
+
+.anc-stats__icon { display: block; line-height: 0; color: var(--anc-icon-color); }
+.anc-stats__icon svg,
+.anc-stats__icon img {
+  width: var(--anc-icon-size);
+  height: var(--anc-icon-size);
+  display: block;
+  fill: currentColor;
+}
+
+.anc-stats__title {
+  margin: 0;
+  font-family: var(--anc-title-font);
+  font-size: var(--anc-title-size);
+  color: var(--anc-title-color);
+  font-weight: var(--anc-title-weight);
+  text-transform: var(--anc-title-transform);
+  letter-spacing: var(--anc-title-spacing);
+}
+
+.anc-stats__number {
+  margin: 0;
+  font-family: var(--anc-number-font);
+  font-size: var(--anc-number-size);
+  color: var(--anc-number-color);
+  font-weight: var(--anc-number-weight);
+  letter-spacing: var(--anc-number-spacing);
+  line-height: var(--anc-number-lh);
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+
+.anc-stats__desc {
+  margin: 0;
+  font-family: var(--anc-desc-font);
+  font-size: var(--anc-desc-size);
+  color: var(--anc-desc-color);
+  font-weight: var(--anc-desc-weight);
+}
+
+/* ---- reveal animations (applied to the whole card) ---- */
+.anc-stats__item[data-anc-anim] { opacity: 0; }
+.anc-stats__item.is-visible { opacity: 1; }
+
+.anc-stats__item[data-anc-anim="fade"] { transition: opacity var(--anc-speed) ease; }
+
+.anc-stats__item[data-anc-anim="fade-up"] {
+  transform: translateY(18px);
+  transition: opacity var(--anc-speed) ease, transform var(--anc-speed) cubic-bezier(.22,.61,.36,1);
+}
+.anc-stats__item[data-anc-anim="fade-up"].is-visible { transform: translateY(0); }
+
+.anc-stats__item[data-anc-anim="scale"] {
+  transform: scale(.92);
+  transition: opacity var(--anc-speed) ease, transform var(--anc-speed) cubic-bezier(.22,.61,.36,1);
+}
+.anc-stats__item[data-anc-anim="scale"].is-visible { transform: scale(1); }
+
+.anc-stats__item[data-anc-anim="blur"] {
+  filter: blur(8px);
+  transition: opacity var(--anc-speed) ease, filter var(--anc-speed) ease;
+}
+.anc-stats__item[data-anc-anim="blur"].is-visible { filter: blur(0); }
+
+.anc-stats__item[data-anc-anim="flip"] {
+  transform: perspective(800px) rotateX(35deg);
+  transform-origin: 50% 100%;
+  transition: opacity var(--anc-speed) ease, transform var(--anc-speed) cubic-bezier(.22,.61,.36,1);
+}
+.anc-stats__item[data-anc-anim="flip"].is-visible { transform: perspective(800px) rotateX(0); }
+
+.anc-stats__item[data-anc-anim="none"] { opacity: 1; }
+
+/* ---- responsive (container queries so Plugin Studio mobile preview stacks) ---- */
+@container (max-width: 991px) {
+  .anc-stats { grid-template-columns: repeat(var(--anc-columns-tablet), minmax(0, 1fr)); }
+}
+@container (max-width: 640px) {
+  .anc-stats { grid-template-columns: repeat(var(--anc-columns-mobile), minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anc-stats__item { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+
+/* ---- responsive fallback for hosts without container support ---- */
+@media (max-width: 991px) {
+  .anc-stats { grid-template-columns: repeat(var(--anc-columns-tablet), minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .anc-stats { grid-template-columns: repeat(var(--anc-columns-mobile), minmax(0, 1fr)); }
+}
