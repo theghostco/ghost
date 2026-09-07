@@ -1,0 +1,79 @@
+/* Cursor Image Trail, Ghost Plugins  v1.4.0
+   Master stylesheet. Do not edit on the customer site;
+   use the Plugin Studio overrides in your Custom CSS instead. */
+
+.gh-trail {
+  --it-bg: transparent;
+  --it-img-w: 220px;
+  --it-img-h: 280px;
+  --it-radius: 12px;
+  --it-fit: cover;
+  --it-border-width: 0px;
+  --it-border-style: none;
+  --it-border-color: transparent;
+  --it-in-duration: 420ms;
+  --it-out-duration: 520ms;
+  --it-in-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --it-out-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--it-bg);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.gh-trail.gh-ready { opacity: 1; }
+
+.gh-trail *,
+.gh-trail *::before,
+.gh-trail *::after { box-sizing: border-box; }
+
+.gh-trail--fixed {
+  position: fixed;
+  inset: 0;
+  min-height: 0;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.gh-trail__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--it-img-w);
+  height: var(--it-img-h);
+  margin: calc(var(--it-img-h) / -2) 0 0 calc(var(--it-img-w) / -2);
+  border: var(--it-border-width) var(--it-border-style) var(--it-border-color);
+  border-radius: var(--it-radius);
+  object-fit: var(--it-fit);
+  display: block;
+  pointer-events: none;
+  will-change: transform, opacity;
+  opacity: 0;
+  transition:
+    opacity var(--it-in-duration) var(--it-in-ease),
+    transform var(--it-in-duration) var(--it-in-ease);
+}
+
+.gh-trail__img.is-in {
+  opacity: 1;
+}
+
+.gh-trail__img.is-out {
+  opacity: 0;
+  transition:
+    opacity var(--it-out-duration) var(--it-out-ease),
+    transform var(--it-out-duration) var(--it-out-ease);
+}
+
+/* The trail is a pointer effect, so it stays off on touch devices. */
+@media (hover: none) {
+  .gh-trail__img { display: none; }
+}
