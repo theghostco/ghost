@@ -166,3 +166,497 @@
 @media (max-width: 640px) {
   .anc-stats { grid-template-columns: repeat(var(--anc-columns-mobile), minmax(0, 1fr)); }
 }
+
+/* == GHOST MASTER DEFAULTS, edited in Plugin Hub == */
+/* // -- ANIMATED NUMBER COUNTER – GHOST PLUGINS -- // */
+
+/* Content for Item 1 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 1, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 1, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 1, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 2 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 2, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 2, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 2, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 3 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 3, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 3, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 3, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 4 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 4, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 4, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 4, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 5 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 5, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 5, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 5, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 6 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 6, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 6, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 6, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 7 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 7, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 7, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 7, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 8 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 8, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 8, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 8, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 9 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 9, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 9, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 9, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 10 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 10, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 10, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 10, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 11 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 11, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 11, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 11, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Item 12 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 12, number, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Item 12, description, typography */
+}
+
+.anc-stats, .anc-stats :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
+  /* Item 12, title, typography */
+  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
+  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
+  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
+  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, normal)))) !important;
+  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, normal)))) !important;
+}
+
+/* Content for Number format */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Text before numbers, typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+  /* Text after numbers, typography */
+}
+
+/* Layout for Card */
+.anc-stats {
+  --anc-gap: 24px; /* Spacing between items */
+  --anc-card-padding: 32px; /* Inner padding */
+  --anc-text-gap: 8px; /* Spacing between text */
+  --anc-align: center; /* Text alignment */
+}
+
+/* Colors for Card */
+.anc-stats {
+  --anc-card-bg: #ffffff; /* Background color */
+  --anc-shadow-color: #e8e8e8; /* Drop shadow color */
+}
+
+/* Colors for Border */
+.anc-stats {
+  --anc-border-color: #ececec; /* Border color */
+}
+
+/* Colors for Icon */
+.anc-stats {
+  --anc-icon-color: #111111; /* Icon color */
+}
+
+/* Colors for Title */
+.anc-stats {
+  --anc-title-color: #111111; /* Title color */
+}
+
+/* Colors for Number */
+.anc-stats {
+  --anc-number-color: #111111; /* Number color */
+}
+
+/* Colors for Description */
+.anc-stats {
+  --anc-desc-color: #8a8a8a; /* Description color */
+}
+
+/* Typography for Title */
+.anc-stats {
+  --anc-title-size: 15px; /* Title size */
+  --anc-title-weight: 700; /* Title weight */
+  --anc-title-transform: none; /* Title case */
+}
+
+/* Typography for Number */
+.anc-stats {
+  --anc-number-size: 56px; /* Number size */
+  --anc-number-weight: 800; /* Number weight */
+  --anc-number-spacing: -1px; /* Number letter spacing */
+}
+
+/* Typography for Description */
+.anc-stats {
+  --anc-desc-size: 14px; /* Description size */
+  --anc-desc-weight: 400; /* Description weight */
+}
+
+/* Borders & Shape for Card */
+.anc-stats {
+  --anc-radius: 12px; /* Corner radius */
+}
+
+/* Borders & Shape for Border */
+.anc-stats {
+  --anc-border-width: 1px; /* Border width */
+  --anc-border-style: solid; /* Border style */
+}
+
+/* Images / Media for Item 1 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 1, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 2 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 2, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 3 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 3, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 4 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 4, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 5 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 5, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 6 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 6, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 7 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 7, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 8 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 8, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 9 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 9, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 10 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 10, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 11 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 11, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Item 12 */
+.anc-stats, .anc-stats :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
+  /* Item 12, icon (SVG or image URL), typography */
+  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
+  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
+  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--anc-title-transform, none))))) !important;
+  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
+  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
+}
+
+/* Images / Media for Icon */
+.anc-stats {
+  --anc-icon-size: 28px; /* Icon size */
+}
+
+/* Effects for Card */
+.anc-stats {
+  --anc-shadow-size: 24px; /* Drop shadow blur */
+}
+
+/* // -- ANIMATED NUMBER COUNTER – GHOST PLUGINS -- // */
+/* == END GHOST MASTER DEFAULTS == */
