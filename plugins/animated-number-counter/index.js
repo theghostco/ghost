@@ -1,4 +1,4 @@
-/* Animated Number Counter, Ghost Plugins  v1.0.0
+/* Animated Number Counter, Ghost Plugins  v1.1.0
    Dependency-free number counters that animate when they scroll into view. */
 (function () {
   "use strict";
@@ -22,7 +22,7 @@
     showIcons: true,
     showTitles: true,
     showDescriptions: true,
-    cardShadow: true
+    cardShadow: false
   };
 
   function cfg(root) {
@@ -177,11 +177,23 @@
     var once = bool(o.animateOnce, true);
     var stagger = Math.max(0, num(o.stagger, 120));
 
+    var timers = [];
+    var io = null;
+
+    /* One teardown for every timer and observer this counter creates. */
+    root.ghCounterDestroy = function () {
+      for (var t = 0; t < timers.length; t += 1) window.clearTimeout(timers[t]);
+      timers.length = 0;
+      if (io) io.disconnect();
+      root.removeAttribute("data-anc-ready");
+      delete root.ghCounterDestroy;
+    };
+
     function run(entry, i) {
-      setTimeout(function () {
+      timers.push(window.setTimeout(function () {
         entry.card.classList.add("is-visible");
         count(entry, o);
-      }, i * stagger);
+      }, i * stagger));
     }
 
     if (!("IntersectionObserver" in window)) {
@@ -189,7 +201,7 @@
       return;
     }
 
-    var io = new IntersectionObserver(function (entries) {
+    io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         var i = cards.findIndex(function (c) { return c.card === e.target; });
         if (i < 0) return;
@@ -212,6 +224,16 @@
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
-  document.addEventListener("ghost:config", boot);
+  /* Saved settings arrive after first paint: rebuild every counter so the
+     saved configuration always wins over the built-in defaults. */
+  function reboot() {
+    document.querySelectorAll("[data-anc], .anc-stats").forEach(function (root) {
+      if (typeof root.ghCounterDestroy === "function") {
+        try { root.ghCounterDestroy(); } catch (e) {}
+      }
+      init(root);
+    });
+  }
+  document.addEventListener("ghost:config", reboot);
   window.AnimatedCounter = { init: boot };
 })();
