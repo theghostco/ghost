@@ -3,7 +3,6 @@
    use the Plugin Studio overrides in your Custom CSS instead. */
 
 .gh-doodle {
-  --dp-bg: transparent;
   --dp-cursor-size: 28px;
 
   position: relative;
@@ -14,7 +13,7 @@
   min-height: 320px;
   box-sizing: border-box;
   overflow: hidden;
-  background: var(--dp-bg);
+  background: transparent;
   touch-action: none;
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -58,9 +57,8 @@
   display: block;
 }
 
-/* Below the configured minimum width the pen switches off and the
-   canvas becomes a static panel. */
-@media (max-width: 767px) {
+/* Touch devices get a static panel without the custom pen cursor. */
+@media (pointer: coarse) {
   .gh-doodle__canvas { cursor: default; }
   .gh-doodle__cursor { display: none; }
 }
@@ -70,10 +68,9 @@
 
 /* Style for Cursor */
 .gh-doodle, .gh-doodle :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
-  /* Custom cursor (SVG or image URL), typography */
-  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
-  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
-  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
+  font-family: Arial, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
   text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, none)))) !important;
   letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
   line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
