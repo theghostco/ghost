@@ -1,18 +1,15 @@
-/* Doodle Pen, Ghost Plugins  v1.1.0
+/* Doodle Pen, Ghost Plugins  v1.2.0
    Lets visitors draw and doodle inside a Code Block on your Squarespace site. */
 (function () {
   "use strict";
 
   var DEFAULTS = {
-    background: "transparent", // canvas background colour
-    lineColor: "#111111",      // pen line colour
+    lineColor: "#111111",      // pen line color
     lineStyle: "solid",        // solid | hand-drawn | dashed | dotted
-    lineWidth: 4,              // pen line width in px
-    cursorPreset: "brush",       // pen | pencil | brush | marker
-    cursorSvg: "",             // custom cursor SVG markup or image URL (overrides preset)
-    cursorSize: 50,            // cursor size in px
-    cursorColor: "#111111",    // colour applied to the preset cursors
-    minWidth: 768
+    lineWidth: 6,              // pen line width in px
+    cursorPreset: "pen",       // pen | pencil | brush | marker
+    cursorSize: 64,            // cursor size in px
+    cursorColor: "#111111"     // color applied to the preset cursors
   };
 
   var CURSORS = {
@@ -74,7 +71,6 @@
     root.setAttribute("data-dp-ready", "1");
     var o = cfg(root);
 
-    root.style.setProperty("--dp-bg", String(o.background || "transparent"));
     root.style.setProperty("--dp-cursor-size", num(o.cursorSize, 28) + "px");
 
     var canvas = document.createElement("canvas");
@@ -86,19 +82,7 @@
     cursor.className = "gh-doodle__cursor";
     cursor.setAttribute("aria-hidden", "true");
     cursor.style.color = String(o.cursorColor || "#111111");
-    var customCursor = String(o.cursorSvg || "").trim();
-    if (customCursor) {
-      if (/^https?:|^\/\//.test(customCursor)) {
-        var img = document.createElement("img");
-        img.src = customCursor;
-        img.alt = "";
-        cursor.appendChild(img);
-      } else {
-        cursor.innerHTML = customCursor;
-      }
-    } else {
-      cursor.innerHTML = CURSORS[String(o.cursorPreset || "pen")] || CURSORS.pen;
-    }
+    cursor.innerHTML = CURSORS[String(o.cursorPreset || "pen")] || CURSORS.pen;
     root.appendChild(cursor);
 
     var dpr = Math.max(1, window.devicePixelRatio || 1);
@@ -107,8 +91,7 @@
     var strokeSeed = 0;
 
     function enabled() {
-      return window.innerWidth >= num(o.minWidth, 768) &&
-        window.matchMedia("(pointer: fine)").matches;
+      return window.matchMedia("(pointer: fine)").matches;
     }
 
     function resize() {
@@ -210,6 +193,23 @@
     }
     resize();
     root.classList.add("gh-ready");
+
+    /* Teardown, so a settings change rebuilds cleanly with no duplicate
+       listeners or observers left behind. */
+    root.ghDoodleDestroy = function () {
+      canvas.removeEventListener("pointerdown", onDown);
+      root.removeEventListener("pointermove", onMove);
+      root.removeEventListener("pointerup", onUp);
+      root.removeEventListener("pointercancel", onUp);
+      root.removeEventListener("pointerleave", onLeave);
+      if (ro) ro.disconnect();
+      else window.removeEventListener("resize", resize);
+      if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+      if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+      root.classList.remove("gh-ready");
+      root.removeAttribute("data-dp-ready");
+      delete root.ghDoodleDestroy;
+    };
   }
 
   function boot() {
@@ -218,6 +218,16 @@
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
-  document.addEventListener("ghost:config", boot);
+  /* Saved settings arrive after first paint: rebuild every canvas so the
+     saved configuration always wins over the built-in defaults. */
+  function reboot() {
+    document.querySelectorAll("[data-doodle], .gh-doodle").forEach(function (root) {
+      if (typeof root.ghDoodleDestroy === "function") {
+        try { root.ghDoodleDestroy(); } catch (e) {}
+      }
+      init(root);
+    });
+  }
+  document.addEventListener("ghost:config", reboot);
   window.DoodlePen = { init: boot, cursors: CURSORS };
 })();
