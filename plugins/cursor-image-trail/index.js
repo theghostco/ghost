@@ -1,4 +1,4 @@
-/* Cursor Image Trail, Ghost Plugins  v1.4.0
+/* Cursor Image Trail, Ghost Plugins  v1.4.1
    Standalone browser script. No dependencies.
    Config: window.CursorImageTrailConfig, or per block data attributes. */
 (function () {
@@ -124,9 +124,42 @@
     if (!el || el.dataset.ghTrailReady === "true") return;
     el.dataset.ghTrailReady = "true";
 
+    /* Connected installs: wait for saved settings instead of flashing the
+       demo photos. Falls back to demo photos only if nothing arrives. */
+    var liveReady = window.GhostPlugins && window.GhostPlugins.config &&
+      window.GhostPlugins.config["cursor-image-trail"];
+    var managed = el.hasAttribute("data-ghost-plugin") || !!window.GhostPlugins;
+    if (!liveReady && managed && !window.CursorImageTrailConfig &&
+        !el.hasAttribute("data-images") && !el.ghTrailWaited) {
+      el.dataset.ghTrailReady = "";
+      if (!el.ghTrailWaitTimer) {
+        el.ghTrailWaitTimer = window.setTimeout(function () {
+          el.ghTrailWaited = true; init(el);
+        }, 3000);
+      }
+      return;
+    }
+    if (el.ghTrailWaitTimer) { window.clearTimeout(el.ghTrailWaitTimer); el.ghTrailWaitTimer = null; }
+
     var cfg = readConfig(el);
+    /* Accessibility: honor the visitor's reduced-motion setting. */
+    var reduceMotion = typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      cfg.inDuration = 0;
+      cfg.outDuration = 0;
+      cfg.idleSpawnRate = 0;
+      cfg.scrollSpawnRate = 0;
+      cfg.animateIn = "fade";
+      cfg.animateOut = "fade";
+    }
     var images = parseImages(cfg);
+    var codeBlock = typeof el.closest === "function" ? el.closest(".sqs-block-code") : null;
+    /* A Code Block is always a bounded canvas. Older saved fullscreen values
+       must never promote its trail to a page-wide fixed layer. */
+    if (codeBlock) cfg.fullscreen = false;
     if (cfg.fullscreen) el.classList.add("gh-trail--fixed");
+    else el.classList.remove("gh-trail--fixed");
 
     var style = el.style;
     style.setProperty("--it-bg", cfg.background);
@@ -148,31 +181,35 @@
     function fitToParent() {
       if (cfg.fullscreen) return;
       style.width = "100%";
-      style.height = "100%";
       style.minHeight = "0";
-      var node = el.parentElement;
-      var hops = 0;
-      while (node && hops < 6 && node !== document.body) {
-        node.style.height = "100%";
-        node.style.width = "100%";
-        node.style.maxWidth = "100%";
-        node = node.parentElement;
-        hops += 1;
+      var block = typeof el.closest === "function" ? el.closest(".sqs-block-code") : null;
+      /* Fluid Engine: the grid cell (.fe-block) owns the size the customer
+         dragged. Stretch only the wrappers inside that cell so the canvas
+         fills the whole Code Block and never leaves it. */
+      var cell = typeof el.closest === "function" ? el.closest(".fe-block") : null;
+      if (cell) {
+        var node = el.parentElement;
+        while (node && node !== cell) {
+          node.style.height = "100%";
+          node.style.minHeight = "0";
+          node = node.parentElement;
+        }
+        var ch = Math.round(cell.getBoundingClientRect().height);
+        style.height = ch > 40 ? ch + "px" : "360px";
+        return;
       }
-      /* If no ancestor supplies a real height, fall back to a measured value
-         so the trail area is never collapsed to zero. */
-      if (el.getBoundingClientRect().height < 40) {
-        var host = el.parentElement;
-        var h = host ? host.getBoundingClientRect().height : 0;
-        style.height = (h > 40 ? Math.round(h) : 360) + "px";
-      }
+      var host = block || el.parentElement;
+      var rect = host ? host.getBoundingClientRect() : null;
+      var h = rect && rect.height > 40 ? Math.round(rect.height) : 360;
+      style.height = h + "px";
     }
     fitToParent();
     window.requestAnimationFrame(fitToParent);
     window.addEventListener("load", fitToParent);
     if (typeof ResizeObserver === "function") {
       resizeObserver = new ResizeObserver(fitToParent);
-      if (el.parentElement) resizeObserver.observe(el.parentElement);
+      var watch = (typeof el.closest === "function" && el.closest(".fe-block")) || el.parentElement;
+      if (watch) resizeObserver.observe(watch);
     } else {
       window.addEventListener("resize", fitToParent);
     }
@@ -187,6 +224,18 @@
     var lastSpawn = 0;
     var lastScrollSpawn = 0;
     var removalQueue = 0;
+    var timers = [];
+
+    /* Every deferred step is tracked so teardown leaves nothing pending. */
+    function defer(fn, ms) {
+      var id = window.setTimeout(function () {
+        var at = timers.indexOf(id);
+        if (at !== -1) timers.splice(at, 1);
+        fn();
+      }, ms);
+      timers.push(id);
+      return id;
+    }
     var threshold = Math.max(8, cfg.spawnDistance * (SENSITIVITY[cfg.sensitivity] || 1));
 
     function nextSrc() {
@@ -204,7 +253,7 @@
       node.classList.remove("is-in");
       node.classList.add("is-out");
       node.style.transform = node.dataset.base + " " + exitTransform(cfg.animateOut);
-      window.setTimeout(function () {
+      defer(function () {
         if (node.parentNode) node.parentNode.removeChild(node);
       }, cfg.outDuration + 60);
     }
@@ -212,7 +261,7 @@
     function scheduleRemoval(node) {
       var stagger = removalQueue * cfg.removalStagger;
       removalQueue += 1;
-      window.setTimeout(function () {
+      defer(function () {
         removalQueue = Math.max(0, removalQueue - 1);
         if (node.parentNode) remove(node);
       }, cfg.lifespan + stagger);
@@ -299,6 +348,8 @@
       window.removeEventListener("resize", fitToParent);
       if (resizeObserver) resizeObserver.disconnect();
       if (idleTimer) window.clearInterval(idleTimer);
+      for (var t = 0; t < timers.length; t += 1) window.clearTimeout(timers[t]);
+      timers.length = 0;
     };
   }
 
@@ -333,3 +384,5 @@
   document.addEventListener("sqs-announcement-bar-ready", boot);
   window.GhostCursorImageTrail = { init: init, boot: boot };
 })();
+
+
