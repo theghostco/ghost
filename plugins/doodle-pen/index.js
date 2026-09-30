@@ -1,4 +1,4 @@
-/* Doodle Pen, Ghost Plugins  v1.3.1
+/* Doodle Pen, Ghost Plugins  v1.3.2
    Lets visitors draw and doodle inside a Code Block on your Squarespace site. */
 (function () {
   "use strict";
@@ -73,6 +73,8 @@
 
     var cursor = document.createElement("div");
     cursor.className = "gh-doodle__cursor";
+    /* Inline safety styles so the pen never flashes in page flow before the stylesheet arrives. */
+    cursor.style.cssText = "position:absolute;top:0;left:0;opacity:0;pointer-events:none;";
     cursor.setAttribute("aria-hidden", "true");
     cursor.style.color = String(o.cursorColor || "#111111");
     if (o.cursorPreset === "custom" && (/^https:\/\//.test(String(o.cursorSvg || "")) || /^data:image\/svg\+xml;charset=utf-8,%3Csvg/i.test(String(o.cursorSvg || "")))) {
@@ -119,17 +121,23 @@
       return window.matchMedia("(pointer: fine)").matches;
     }
 
+    var host = (root.closest && (root.closest(".fe-block") || root.closest(".sqs-block"))) || null;
     function resize() {
+      /* Measure the natural height first, then fall back to the Squarespace
+         block height (Fluid Engine gives the block an explicit size even when
+         the inner wrappers are auto height). Recomputed on every resize so a
+         block that grows after load is never clipped. */
+      root.style.height = "";
+      root.style.minHeight = "";
       var rect = root.getBoundingClientRect();
       var w = Math.max(1, Math.round(rect.width));
       var h = Math.round(rect.height);
-      /* Some Squarespace layouts give the Code Block auto height, which
-         collapses a percentage-sized canvas to 0. Fall back to a usable
-         minimum so the drawing area is always visible and interactive. */
       if (h < 80) {
-        h = 320;
-        root.style.minHeight = h + "px";
+        var hostH = host ? Math.round(host.getBoundingClientRect().height) : 0;
+        h = hostH >= 80 ? hostH : 320;
+        root.style.height = h + "px";
       }
+      if (canvas.width === Math.round(w * dpr) && canvas.height === Math.round(h * dpr)) return;
       h = Math.max(1, h);
       var snapshot = null;
       if (canvas.width > 0 && canvas.height > 0) {
@@ -238,6 +246,7 @@
     if ("ResizeObserver" in window) {
       ro = new ResizeObserver(function () { resize(); });
       ro.observe(root);
+      if (host) ro.observe(host);
     } else {
       window.addEventListener("resize", resize);
     }
@@ -282,3 +291,4 @@
   document.addEventListener("ghost:config", reboot);
   window.DoodlePen = { init: boot, cursors: CURSORS };
 })();
+
