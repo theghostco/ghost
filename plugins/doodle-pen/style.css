@@ -1,9 +1,15 @@
-/* Doodle Pen, Ghost Plugins  v1.1.0
+/* Doodle Pen, Ghost Plugins  v1.3.1
    Master stylesheet. Do not edit on the customer site;
    use the Plugin Studio overrides in your Custom CSS instead. */
 
+/* Let the drawing surface follow the actual Code Block height, including taller Fluid Engine blocks. */
+.sqs-block-code:has(.gh-doodle) .sqs-block-content {
+  height: 100%;
+  box-sizing: border-box;
+}
+
 .gh-doodle {
-  --dp-cursor-size: 28px;
+  --dp-cursor-size: 64px;
 
   position: relative;
   display: block;
@@ -11,6 +17,7 @@
   max-width: 100%;
   height: 100%;
   min-height: 320px;
+  /* The block itself, not the inner canvas, determines the drawing area. */
   box-sizing: border-box;
   overflow: hidden;
   background: transparent;
@@ -18,6 +25,8 @@
   opacity: 0;
   transition: opacity 0.5s ease;
 }
+
+.sqs-block-code .gh-doodle { min-height: 0; }
 
 .gh-doodle.gh-ready { opacity: 1; }
 
