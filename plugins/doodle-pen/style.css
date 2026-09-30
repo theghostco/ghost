@@ -1,4 +1,4 @@
-/* Doodle Pen, Ghost Plugins  v1.3.1
+/* Doodle Pen, Ghost Plugins  v1.3.2
    Master stylesheet. Do not edit on the customer site;
    use the Plugin Studio overrides in your Custom CSS instead. */
 
@@ -22,13 +22,12 @@
   overflow: hidden;
   background: transparent;
   touch-action: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  visibility: hidden;
 }
 
 .sqs-block-code .gh-doodle { min-height: 0; }
 
-.gh-doodle.gh-ready { opacity: 1; }
+.gh-doodle.gh-ready { visibility: visible; }
 
 .gh-doodle *,
 .gh-doodle *::before,
@@ -87,3 +86,4 @@
 
 /* // -- DOODLE PEN – GHOST PLUGINS -- // */
 /* == END GHOST MASTER DEFAULTS == */
+
