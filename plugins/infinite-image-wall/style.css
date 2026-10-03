@@ -1,0 +1,109 @@
+/*!
+ * Infinite Image Wall, Ghost Plugins  v1.0.0
+ * All styles stay inside the plugin root.
+ */
+.gp-infinite-images {
+  --gp-bg: #f5f5f5; --gp-background-image: none; --gp-text-color: #252823; --gp-muted-color: #686e62;
+  --gp-font-family: inherit; --gp-font-size: 28px; --gp-font-weight: 500;
+  --gp-line-height: 1.2; --gp-letter-spacing: -0.5px; --gp-text-align: left;
+  --gp-hint-size: 13px; --gp-caption-size: 14px; --gp-caption-color: #ffffff;
+  --gp-caption-background: linear-gradient(transparent, #0000009c); --gp-caption-padding: 14px;
+  --gp-caption-align: left; --gp-caption-description-size: 12px; --gp-caption-description-color: #ffffffcc;
+  --gp-width: 100%; --gp-mobile-width: 100%; --gp-height: 600px; --gp-mobile-height: 420px;
+  --gp-padding: 0px; --gp-mobile-padding: 0px; --gp-wall-rotation: 0deg; --gp-gap: 90px; --gp-row-gap: var(--gp-gap); --gp-mobile-gap: 52px; --gp-mobile-row-gap: var(--gp-mobile-gap);
+  --gp-container-radius: 0px; --gp-shadow: none;
+  --gp-image-width: 200px; --gp-mobile-image-width: 140px; --gp-image-aspect: 3 / 4;
+  --gp-image-radius: 8px; --gp-image-border-width: 0px; --gp-image-border-color: #ffffff; --gp-image-border-style: solid;
+  --gp-image-fit: cover; --gp-image-position: center; --gp-image-bg: #dddcd4;
+  --gp-hover-lift: 0px; --gp-hover-grayscale: 0; --gp-hover-scale: 1.04; --gp-hover-brightness: 1.05; --gp-hover-shadow: 0 14px 35px #00000026;
+  --gp-transition-duration: 220ms; --gp-transition-timing: ease;
+  --gp-focus-color: #2c6bca;
+  box-sizing: border-box; position: relative; isolation: isolate;
+  display: block; width: var(--gp-width); max-width: 100%; min-width: 0;
+  height: var(--gp-height); margin: 0 auto; padding: var(--gp-padding); overflow: hidden;
+  background: var(--gp-bg); background-image: var(--gp-background-image); color: var(--gp-text-color);
+  border-radius: var(--gp-container-radius); box-shadow: var(--gp-shadow);
+  font-family: var(--gp-font-family); text-align: var(--gp-text-align);
+}
+.gp-infinite-images *, .gp-infinite-images *::before, .gp-infinite-images *::after { box-sizing: border-box; }
+.gp-infinite-images [hidden] { display: none !important; }
+.gp-infinite-images .gp-ii-viewport { position: relative; width: 100%; height: 100%; min-width: 0; overflow: hidden; border-radius: var(--gp-container-radius); column-gap: var(--gp-gap); row-gap: var(--gp-row-gap); }
+.gp-infinite-images[data-gp-ready="true"] .gp-ii-viewport { cursor: grab; touch-action: none; overscroll-behavior: contain; user-select: none; -webkit-user-select: none; }
+.gp-infinite-images[data-gp-dragging="true"] .gp-ii-viewport { cursor: grabbing; }
+.gp-infinite-images .gp-ii-plane { position: absolute; inset: 0; pointer-events: none; transform: rotate(var(--gp-wall-rotation)); transform-origin: center; }
+.gp-infinite-images .gp-ii-tile, .gp-infinite-images .gp-ii-measure { position: absolute; width: var(--gp-image-width); aspect-ratio: var(--gp-image-aspect); padding: 0; margin: 0; border: 0; }
+.gp-infinite-images .gp-ii-measure { visibility: hidden; pointer-events: none; }
+.gp-infinite-images .gp-ii-tile { top: 0; left: 0; pointer-events: auto; text-decoration: none; color: var(--gp-caption-color); background: transparent; font: inherit; text-align: left; cursor: inherit; }
+.gp-infinite-images .gp-ii-card { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; background: var(--gp-image-bg); border: var(--gp-image-border-width) var(--gp-image-border-style) var(--gp-image-border-color); border-radius: var(--gp-image-radius); transition: transform var(--gp-transition-duration) var(--gp-transition-timing), box-shadow var(--gp-transition-duration) var(--gp-transition-timing), filter var(--gp-transition-duration) var(--gp-transition-timing); }
+.gp-infinite-images .gp-ii-card img { display: block; width: 100%; height: 100%; max-width: none; margin: 0; object-fit: var(--gp-image-fit); object-position: var(--gp-image-position); pointer-events: none; }
+.gp-infinite-images .gp-ii-caption { position: absolute; inset: auto 0 0; padding: calc(var(--gp-caption-padding) * 2) var(--gp-caption-padding) var(--gp-caption-padding); background: var(--gp-caption-background); text-align: var(--gp-caption-align); color: var(--gp-caption-color); font-size: var(--gp-caption-size); line-height: var(--gp-caption-line-height, 1.4); pointer-events: none; }
+.gp-infinite-images .gp-ii-error { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; color: var(--gp-text-color); font-size: var(--gp-hint-size); text-align: center; }
+.gp-infinite-images .gp-ii-sources { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--gp-gap); padding: 0; margin: 0; list-style: none; }
+.gp-infinite-images .gp-ii-sources li { list-style: none; margin: 0; padding: 0; }
+.gp-infinite-images .gp-ii-sources a { display: block; text-decoration: none; color: var(--gp-text-color); }
+.gp-infinite-images .gp-ii-sources img { display: block; width: 100%; height: auto; aspect-ratio: var(--gp-image-aspect); object-fit: var(--gp-image-fit); border-radius: var(--gp-image-radius); }
+.gp-infinite-images .gp-ii-sources span { display: block; margin-top: 8px; }
+.gp-infinite-images:not([data-gp-ready="true"]) .gp-ii-viewport { height: auto; }
+.gp-infinite-images .gp-ii-viewport:focus-visible, .gp-infinite-images button:focus-visible, .gp-infinite-images a:focus-visible { outline: 3px solid var(--gp-focus-color); outline-offset: -3px; }
+@media (hover: hover) and (pointer: fine) {
+  .gp-infinite-images:not([data-gp-dragging="true"]) .gp-ii-tile:hover .gp-ii-card { transform: translateY(var(--gp-hover-lift)) scale(var(--gp-hover-scale)); filter: brightness(var(--gp-hover-brightness)) grayscale(var(--gp-hover-grayscale)); box-shadow: var(--gp-hover-shadow); }
+}
+/* Compact layout is set by the runtime from the real container width, so it
+   also applies inside narrow columns and the Plugin Studio phone preview. */
+.gp-infinite-images[data-gp-compact="true"] { width: var(--gp-mobile-width); height: var(--gp-mobile-height); padding: var(--gp-mobile-padding); }
+.gp-infinite-images[data-gp-compact="true"] .gp-ii-viewport { column-gap: var(--gp-mobile-gap); row-gap: var(--gp-mobile-row-gap); }
+.gp-infinite-images[data-gp-compact="true"] .gp-ii-tile, .gp-infinite-images[data-gp-compact="true"] .gp-ii-measure { width: var(--gp-mobile-image-width); }
+@media (max-width: 600px) {
+  .gp-infinite-images:not([data-gp-compact]) { width: var(--gp-mobile-width); height: var(--gp-mobile-height); padding: var(--gp-mobile-padding); }
+  .gp-infinite-images .gp-ii-viewport { height: 100%; column-gap: var(--gp-mobile-gap); row-gap: var(--gp-mobile-row-gap); }
+  .gp-infinite-images:not([data-gp-ready="true"]) .gp-ii-viewport { height: auto; }
+  .gp-infinite-images .gp-ii-tile, .gp-infinite-images .gp-ii-measure { width: var(--gp-mobile-image-width); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gp-infinite-images .gp-ii-tile:hover .gp-ii-card { transform: none; filter: none; }
+}
+
+.gp-infinite-images[data-gp-image-shape="square"] .gp-ii-tile, .gp-infinite-images[data-gp-image-shape="square"] .gp-ii-measure, .gp-infinite-images[data-gp-image-shape="circle"] .gp-ii-tile, .gp-infinite-images[data-gp-image-shape="circle"] .gp-ii-measure { aspect-ratio: 1; }
+.gp-infinite-images[data-gp-image-shape="circle"] .gp-ii-card { border-radius: 50%; }
+.gp-infinite-images[data-gp-image-shape="square"] .gp-ii-card { border-radius: 0; }
+.gp-infinite-images[data-gp-image-shape="pill"] .gp-ii-card { border-radius: 999px; }
+
+/* The canvas is the entire block. */
+.gp-infinite-images:not([data-gp-ready="true"]) { height: auto; }
+
+.gp-infinite-images .gp-ii-sources [data-gp-item] { display: block; }
+.gp-infinite-images .gp-ii-caption-title { display: block; font-weight: var(--gp-caption-weight, inherit); font-style: var(--gp-caption-style, normal); letter-spacing: var(--gp-caption-letter-spacing, normal); text-decoration: var(--gp-caption-decoration, none); text-transform: var(--gp-caption-transform, none); }
+.gp-infinite-images .gp-ii-caption-description { display: block; margin-top: 5px; font-family: var(--gp-description-font, inherit); font-size: var(--gp-caption-description-size); color: var(--gp-caption-description-color); font-weight: var(--gp-description-weight, inherit); font-style: var(--gp-description-style, normal); line-height: var(--gp-description-line-height, inherit); letter-spacing: var(--gp-description-letter-spacing, normal); text-align: var(--gp-description-align, inherit); text-decoration: var(--gp-description-decoration, none); text-transform: var(--gp-description-transform, none); }
+.gp-infinite-images:not([data-gp-caption-description="true"]) .gp-ii-caption-description { display: none; }
+.gp-infinite-images[data-gp-caption-position="top"] .gp-ii-caption { inset: 0 0 auto; }
+.gp-infinite-images[data-gp-caption-mode="hidden"] .gp-ii-caption { display: none; }
+.gp-infinite-images[data-gp-caption-mode="hover"] .gp-ii-caption { opacity: 0; transition: opacity var(--gp-transition-duration) var(--gp-transition-timing); }
+.gp-infinite-images[data-gp-caption-mode="hover"] .gp-ii-tile:hover .gp-ii-caption { opacity: 1; }
+.gp-infinite-images[data-gp-ready="true"] .gp-ii-sources { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.gp-infinite-images[data-gp-ready="true"] .gp-ii-sources:focus-within { inset: 16px; z-index: 4; width: auto; height: auto; padding: 16px; margin: 0; overflow: auto; clip-path: none; white-space: normal; background: var(--gp-bg); border-radius: var(--gp-image-radius); }
+.gp-infinite-images .gp-ii-viewport:focus-visible, .gp-infinite-images .gp-ii-sources a:focus-visible { outline: 3px solid var(--gp-focus-color); outline-offset: -3px; }
+.gp-infinite-images[data-gp-hover-style="none"] { --gp-hover-scale: 1; --gp-hover-brightness: 1; --gp-hover-lift: 0px; --gp-hover-grayscale: 0; --gp-hover-shadow: none; }
+.gp-infinite-images[data-gp-hover-style="lift"] { --gp-hover-scale: 1; --gp-hover-lift: -8px; }
+.gp-infinite-images[data-gp-hover-style="dim"] { --gp-hover-scale: 1; --gp-hover-brightness: 0.75; }
+.gp-infinite-images[data-gp-hover-style="grayscale"] { --gp-hover-scale: 1; --gp-hover-brightness: 1; --gp-hover-grayscale: 1; }
+@media (hover: none), (pointer: coarse) {
+  .gp-infinite-images[data-gp-caption-mode="hover"] .gp-ii-caption { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gp-infinite-images .gp-ii-caption, .gp-infinite-images .gp-ii-card { transition: none; }
+}
+
+/* Mixed ratios stay centered inside equally spaced portrait cells. */
+.gp-infinite-images[data-gp-aspect-mode="random"] .gp-ii-tile,
+.gp-infinite-images[data-gp-aspect-mode="random"] .gp-ii-measure { aspect-ratio: 3 / 4; }
+.gp-infinite-images[data-gp-aspect-mode="random"] .gp-ii-tile { display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.gp-infinite-images[data-gp-aspect-mode="random"] .gp-ii-card { pointer-events: auto; width: 100%; height: auto; aspect-ratio: 3 / 4; }
+.gp-infinite-images[data-gp-aspect-mode="random"] .gp-ii-tile[data-gp-ratio="square"] .gp-ii-card { aspect-ratio: 1 / 1; }
+.gp-infinite-images[data-gp-aspect-mode="random"] .gp-ii-tile[data-gp-ratio="landscape"] .gp-ii-card { aspect-ratio: 4 / 3; }
+.gp-infinite-images[data-gp-aspect-mode="random"][data-gp-image-shape="circle"] .gp-ii-card { aspect-ratio: 1 / 1; }
+
+/* Opt-in section coverage; only the plugin is positioned over its dedicated section. */
+.gp-infinite-images[data-gp-section-active="true"] {
+  position: absolute; inset: 0; z-index: 1; width: 100%; max-width: 100%; height: 100%;
+  margin: 0; padding: 0; border-radius: 0;
+}
