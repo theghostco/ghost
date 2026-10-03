@@ -1,5 +1,5 @@
 /*!
- * Infinite Image Wall, Ghost Plugins  v1.0.2
+ * Infinite Image Wall, Ghost Plugins  v1.0.1
  * Standalone browser plugin. Vanilla ES6+, no dependencies.
  * Drag, swipe, momentum, autoplay and endless tile recycling inside a bounded
  * Code Block (default) or, opt-in, the whole enclosing page section.
@@ -34,15 +34,15 @@
      variables on the root; behavior keys become data-gp-* attributes that the
      engine below already reads. */
   const DEFAULTS = {
-    sizeMode: 'block', height: 600, mobileHeight: 420, width: 100, mobileWidth: 100,
+    sizeMode: "block", height: 600, mobileHeight: 420, width: 100, mobileWidth: 100,
     spacing: 100, separateSpacing: false, horizontalSpacing: 90, verticalSpacing: 90, mobileSpacing: 52, rotation: 0,
-    background: '#f5f5f5', padding: 0, mobilePadding: 0, radius: 0,
-    aspectMode: 'uniform', aspectRatio: '3 / 4', ratioSeed: 7, imageWidth: 200, mobileImageWidth: 140,
-    imageShape: 'rounded', imageRadius: 8, borderWidth: 0, borderStyle: 'solid', borderColor: '#ffffff', imageFit: 'cover', imagePosition: 'center',
-    captionMode: 'hidden', showDescription: false, captionPosition: 'bottom', captionFont: 'inherit',
+    background: "#", padding: 0, mobilePadding: 0, radius: 0,
+    aspectMode: "uniform", aspectRatio: '3 / 4', ratioSeed: 7, imageWidth: 200, mobileImageWidth: 140,
+    imageShape: "rounded", imageRadius: 8, borderWidth: 0, borderStyle: 'solid', borderColor: '#ffffff', imageFit: 'cover', imagePosition: 'center',
+    captionMode: "hidden", showDescription: false, captionPosition: 'bottom', captionFont: 'inherit',
     captionSize: 14, captionColor: '#ffffff', captionAlign: 'left', captionBackground: 'rgba(0, 0, 0, 0.6)',
     captionGradient: true, captionPadding: 14, descriptionSize: 12, descriptionColor: 'rgba(255, 255, 255, 0.8)',
-    hoverStyle: 'none', hoverScale: 1.04, hoverLift: 8, hoverBrightness: 75, hoverGrayscale: 100, hoverShadow: true,
+    hoverStyle: "none", hoverScale: 1.04, hoverLift: 8, hoverBrightness: 75, hoverGrayscale: 100, hoverShadow: true,
     hoverDuration: 220, hoverEasing: 'ease',
     inertia: true, momentumStrength: 1.35, friction: 0.975, mouseFollow: false, followSpeed: 140, wheel: true, dragThreshold: 7,
     autoplay: true, autoplayDirection: 'random', autoplaySpeed: 18, directionInterval: 4000, autoplayX: 18, autoplayY: 0, pauseOnHover: true
@@ -51,9 +51,9 @@
     sizeMode: 'size-mode', aspectMode: 'aspect-mode', ratioSeed: 'ratio-seed', imageShape: 'image-shape',
     captionMode: 'caption-mode', showDescription: 'caption-description', captionPosition: 'caption-position',
     inertia: 'inertia', momentumStrength: 'momentum-strength', friction: 'friction', mouseFollow: 'mouse-follow',
-    followSpeed: 'follow-speed', wheel: 'wheel', dragThreshold: 'drag-threshold', autoplay: 'autoplay',
-    autoplayDirection: 'autoplay-direction', autoplaySpeed: 'autoplay-speed', directionInterval: 'direction-interval',
-    autoplayX: 'autoplay-x', autoplayY: 'autoplay-y', pauseOnHover: 'pause-hover', hoverStyle: 'hover-style'
+    followSpeed: 140, wheel: 'wheel', dragThreshold: 'drag-threshold', autoplay: 'autoplay',
+    autoplayDirection: "random", autoplaySpeed: 'autoplay-speed', directionInterval: 'direction-interval',
+    autoplayX: 18, autoplayY: 'autoplay-y', pauseOnHover: 'pause-hover', hoverStyle: 'hover-style'
   };
   const FONTS = {
     inherit: 'inherit', 'sans-serif': 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
@@ -195,7 +195,6 @@
         : /LetterSpacing/.test(key) ? px(value, 0)
         : String(value);
     });
-    if (raw.captionWeight !== undefined) vars['--gp-caption-weight'] = String(raw.captionWeight);
     const capBg = String(v('captionBackground'));
     vars['--gp-caption-background'] = isTrue(v('captionGradient')) ? 'linear-gradient(transparent, ' + capBg + ')' : capBg;
     const h = num(v('spacing'), 90);
@@ -288,8 +287,8 @@
         autoplay: bool('autoplay', false), direction: root.dataset.gpAutoplayDirection || 'right',
         speed: number('autoplay-speed', 18, 0, 300), randomInterval: number('direction-interval', 4000, 500, 30000), pauseHover: bool('pause-hover', true),
         speedX: number('autoplay-x', 18, -300, 300), speedY: number('autoplay-y', 0, -300, 300),
-        momentumStrength: number('momentum-strength', 1.35, 0, 3), followSpeed: number('follow-speed', 100, 0, 400), friction: number('friction', 0.975, 0.5, 0.995),
-        ratioSeed: number('ratio-seed', 7, 0, 100000), threshold: number('drag-threshold', 7, 3, 30)
+        momentumStrength: 1.35, 1.35, 0, 3), followSpeed: number('follow-speed', 100, 0, 400), friction: number('friction', 0.975, 0.5, 0.995),
+        ratioSeed: 7, 7, 0, 100000), threshold: number('drag-threshold', 7, 3, 30)
       };
       tiles.forEach((tile) => { tile.index = -1; });
       selectAutoplayDirection(); autoX = targetAutoX; autoY = targetAutoY; randomElapsed = 0;
@@ -593,7 +592,7 @@
     if (destroy) { destroy(); instances.delete(root); }
   }
   window[KEY] = { init };
-  window.AtlasInfiniteImages = { version: '1.0.2', init, preview, destroy: destroyRoot, defaults: DEFAULTS };
+  window.AtlasInfiniteImages = { version: '1.0.0', init, preview, destroy: destroyRoot, defaults: DEFAULTS };
   document.addEventListener('DOMContentLoaded', init);
   window.addEventListener('load', init);
   window.addEventListener('mercury:load', init);
