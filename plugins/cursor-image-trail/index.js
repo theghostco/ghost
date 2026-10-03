@@ -1,4 +1,4 @@
-/* Cursor Image Trail, Ghost Plugins  v1.4.1
+/* Cursor Image Trail, Ghost Plugins  v1.4.3
    Standalone browser script. No dependencies.
    Config: window.CursorImageTrailConfig, or per block data attributes. */
 (function () {
@@ -65,7 +65,7 @@
       var n = parseFloat(raw);
       return isFinite(n) ? n : fallback;
     }
-    if (typeof fallback === "boolean") return String(raw) !== "false";
+    if (typeof fallback === "boolean") return raw === true || String(raw) === "true";
     return String(raw);
   }
 
@@ -73,8 +73,8 @@
     var global = window.CursorImageTrailConfig || {};
     // Saved Plugin Studio settings for this installation, published by the
     // install loader. Without this the plugin always renders its demo images.
-    var live = (window.GhostPlugins && window.GhostPlugins.config &&
-      window.GhostPlugins.config["cursor-image-trail"]) || {};
+    var G0 = window.GhostPlugins;
+    var live = (G0 && (G0.configFor ? G0.configFor(el, "cursor-image-trail") : (G0.config && G0.config["cursor-image-trail"]))) || {};
     var cfg = {};
     for (var key in DEFAULTS) {
       if (!Object.prototype.hasOwnProperty.call(DEFAULTS, key)) continue;
@@ -126,8 +126,8 @@
 
     /* Connected installs: wait for saved settings instead of flashing the
        demo photos. Falls back to demo photos only if nothing arrives. */
-    var liveReady = window.GhostPlugins && window.GhostPlugins.config &&
-      window.GhostPlugins.config["cursor-image-trail"];
+    var G1 = window.GhostPlugins;
+    var liveReady = G1 && (G1.configFor ? G1.configFor(el, "cursor-image-trail") : (G1.config && G1.config["cursor-image-trail"]));
     var managed = el.hasAttribute("data-ghost-plugin") || !!window.GhostPlugins;
     if (!liveReady && managed && !window.CursorImageTrailConfig &&
         !el.hasAttribute("data-images") && !el.ghTrailWaited) {
@@ -154,10 +154,10 @@
       cfg.animateOut = "fade";
     }
     var images = parseImages(cfg);
-    var codeBlock = typeof el.closest === "function" ? el.closest(".sqs-block-code") : null;
-    /* A Code Block is always a bounded canvas. Older saved fullscreen values
-       must never promote its trail to a page-wide fixed layer. */
-    if (codeBlock) cfg.fullscreen = false;
+    /* Full Page Section uses the containing Squarespace section as its bounds.
+       Older placeholder values (a/b) remain bounded until explicitly changed. */
+    var section = typeof el.closest === "function" ? el.closest(".page-section, .sqs-section") : null;
+    cfg.fullscreen = cfg.fullscreen === true && !!section;
     if (cfg.fullscreen) el.classList.add("gh-trail--fixed");
     else el.classList.remove("gh-trail--fixed");
 
@@ -179,7 +179,15 @@
        every wrapper between it and the block are stretched to 100%. */
     var resizeObserver = null;
     function fitToParent() {
-      if (cfg.fullscreen) return;
+      if (cfg.fullscreen && section) {
+        var bounds = section.getBoundingClientRect();
+        style.left = bounds.left + "px";
+        style.top = bounds.top + "px";
+        style.width = bounds.width + "px";
+        style.height = bounds.height + "px";
+        style.minHeight = "0";
+        return;
+      }
       style.width = "100%";
       style.minHeight = "0";
       var block = typeof el.closest === "function" ? el.closest(".sqs-block-code") : null;
@@ -208,7 +216,7 @@
     window.addEventListener("load", fitToParent);
     if (typeof ResizeObserver === "function") {
       resizeObserver = new ResizeObserver(fitToParent);
-      var watch = (typeof el.closest === "function" && el.closest(".fe-block")) || el.parentElement;
+      var watch = (cfg.fullscreen && section) || (typeof el.closest === "function" && el.closest(".fe-block")) || el.parentElement;
       if (watch) resizeObserver.observe(watch);
     } else {
       window.addEventListener("resize", fitToParent);
@@ -304,9 +312,11 @@
     function onMove(e) {
       var p = point(e);
       lastPointer = p;
-      if (cfg.fullscreen === false) {
-        var rect = el.getBoundingClientRect();
-        if (p.x < 0 || p.y < 0 || p.x > rect.width || p.y > rect.height) return;
+      var rect = el.getBoundingClientRect();
+      if (p.x < 0 || p.y < 0 || p.x > rect.width || p.y > rect.height) {
+        last = null;
+        lastPointer = null;
+        return;
       }
       if (!last) { last = p; spawn(p.x, p.y); lastSpawn = Date.now(); return; }
       var dist = Math.hypot(p.x - last.x, p.y - last.y);
@@ -317,6 +327,7 @@
     }
 
     function onScroll() {
+      if (cfg.fullscreen) fitToParent();
       if (!cfg.scrollSpawnRate || !lastPointer) return;
       var now = Date.now();
       if (now - lastScrollSpawn < cfg.scrollSpawnRate) return;
@@ -347,6 +358,12 @@
       window.removeEventListener("load", fitToParent);
       window.removeEventListener("resize", fitToParent);
       if (resizeObserver) resizeObserver.disconnect();
+      el.classList.remove("gh-trail--fixed");
+      style.removeProperty("left");
+      style.removeProperty("top");
+      style.removeProperty("width");
+      style.removeProperty("height");
+      style.removeProperty("min-height");
       if (idleTimer) window.clearInterval(idleTimer);
       for (var t = 0; t < timers.length; t += 1) window.clearTimeout(timers[t]);
       timers.length = 0;
