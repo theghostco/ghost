@@ -45,7 +45,7 @@
     hoverStyle: "none", hoverScale: 1.04, hoverLift: 8, hoverBrightness: 75, hoverGrayscale: 100, hoverShadow: true,
     hoverDuration: 220, hoverEasing: 'ease',
     inertia: true, momentumStrength: 1.35, friction: 0.975, mouseFollow: false, followSpeed: 140, wheel: true, dragThreshold: 7,
-    autoplay: true, autoplayDirection: 'random', autoplaySpeed: 18, directionInterval: 4000, autoplayX: 18, autoplayY: 0, pauseOnHover: true
+    autoplay: false, autoplayDirection: 'random', autoplaySpeed: 18, directionInterval: 4000, autoplayX: 18, autoplayY: 0, pauseOnHover: true
   };
   const ATTRS = {
     sizeMode: 'size-mode', aspectMode: 'aspect-mode', ratioSeed: 'ratio-seed', imageShape: 'image-shape',
