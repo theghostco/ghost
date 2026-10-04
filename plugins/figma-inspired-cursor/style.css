@@ -1,39 +1,18 @@
-/* Hide the native cursor only while its visible replacement is active. */
 @media (hover: hover) and (pointer: fine) {
   html.fic-cursor-replaced,
-  html.fic-cursor-replaced * {
-    cursor: none !important;
-  }
+  html.fic-cursor-replaced * { cursor: none !important; }
 }
-
 .fic-replacement {
   position: fixed;
   z-index: 2147483647;
-  width: 24px;
-  height: 28px;
   pointer-events: none !important;
   user-select: none;
-  color: var(--fic-color, #000000);
+  color: #000;
 }
-
-.fic-replacement,
-.fic-replacement * {
-  box-sizing: border-box;
-  pointer-events: none !important;
-}
-
-.fic-replacement[hidden],
-.fic-replacement-label[hidden] {
-  display: none !important;
-}
-
-.fic-replacement > svg {
-  display: block;
-  width: 24px;
-  height: 28px;
-  overflow: visible;
-}
-
+.fic-replacement, .fic-replacement * { box-sizing: border-box; pointer-events: none !important; }
+.fic-replacement[hidden], .fic-replacement-label[hidden] { display: none !important; }
+.fic-replacement-icon { display: block; width: 24px; height: 24px; }
+.fic-replacement-icon svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .fic-replacement-label {
   position: absolute;
   left: 16px;
@@ -42,14 +21,11 @@
   max-width: min(240px, calc(100vw - 40px));
   margin: 0;
   padding: 6px 10px;
-  border: 0;
-  border-radius: 0;
-  background: var(--fic-color, #000000);
-  color: var(--fic-text-color, #ffffff);
-  font: 500 14px/1.2 Arial, sans-serif;
-  letter-spacing: 0;
-  text-align: left;
-  text-decoration: none;
-  text-transform: none;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: inherit;
   overflow-wrap: anywhere;
 }
