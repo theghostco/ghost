@@ -109,7 +109,7 @@
     tag = document.createElement('span'); tag.className = 'fic-replacement-label';
     cursor.appendChild(icon); cursor.appendChild(tag);
     document.body.appendChild(cursor);
-    apply(saved());
+    apply(saved() || {});
     window.addEventListener('pointermove', move, { passive: true });
     window.addEventListener('pointerout', leave);
     window.addEventListener('pointerdown', down, { passive: true });
