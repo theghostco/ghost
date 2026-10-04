@@ -8,12 +8,12 @@
   var precise = window.matchMedia('(hover: hover) and (pointer: fine)');
   var html = document.documentElement;
   var current = {
-    label: "Ghost Plugins", color: '#000000', textColor: '#ffffff', cursorIcon: 'outline',
-    iconSize: 40, hoverCursorIcon: 'pointing-hand', hoverIconSize: 24, hoverIconColor: '#000000',
-    labelFill: true, labelShape: 'rectangle', labelOutline: 0, labelRadius: 0,
-    labelPaddingX: 10, labelPaddingY: 6, labelFont: 'inherit', labelWeight: '500',
-    labelStyle: "normal", labelSize: 14, labelLineHeight: 1.2, labelLetterSpacing: 0,
-    labelAlignment: "left", labelTransform: 'none', labelDecoration: 'none'
+    label: 'Ghost Plugins', color: '#000000', labelColor: '#000000', textColor: '#ffffff', cursorIcon: 'solid',
+    iconSize: 40, hoverCursorIcon: 'open-hand', hoverIconSize: 40, hoverIconColor: '#000000',
+    labelFill: true, labelShape: 'pill', labelOutline: 0, labelRadius: 0,
+    labelPaddingX: 10, labelPaddingY: 6, labelFont: 'inherit', labelWeight: '600',
+    labelStyle: 'normal', labelSize: 18, labelLineHeight: 1.2, labelLetterSpacing: 0,
+    labelAlignment: 'left', labelTransform: 'none', labelDecoration: 'none', labelSpacing: 20, labelSpacingY: 20, iconFill: '#000000', hoverIconFill: '#000000'
   };
   var icons = {
     solid: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.92098 2.29927C6.93571 1.53286 5.5 2.23498 5.5 3.48325V20.492C5.5 21.9142 7.2945 22.538 8.17661 21.4224L12.3676 16.1222C12.6806 15.7264 13.1574 15.4956 13.6619 15.4956H20.5143C21.9425 15.4956 22.5626 13.6885 21.4353 12.8116L7.92098 2.29927Z" fill="currentColor"/></svg>',
@@ -49,8 +49,15 @@
   function renderIcon(hover) {
     var key = hover ? current.hoverCursorIcon : current.cursorIcon;
     var markup = key === 'custom' ? safeCustom(hover ? current.hoverCursorSvg : current.cursorSvg) : icons[key];
-    icon.innerHTML = markup || icons.outline;
-    var size = Math.min(300, Math.max(8, finite(hover ? current.hoverIconSize : current.iconSize, 24)));
+    var fill = String((hover ? current.hoverIconFill : current.iconFill) || '');
+    if (!/^(#[0-9a-fA-F]{3,8}|rgba?\([^)<>"]*\)|[a-zA-Z]+)$/.test(fill) || fill === 'transparent') fill = '';
+    markup = markup || icons.outline;
+    if (fill && key === 'outline') markup = markup.replace('<path', '<path d="M7.92098 2.29927C6.93571 1.53286 5.5 2.23498 5.5 3.48325V20.492C5.5 21.9142 7.2945 22.538 8.17661 21.4224L12.3676 16.1222C12.6806 15.7264 13.1574 15.4956 13.6619 15.4956H20.5143C21.9425 15.4956 22.5626 13.6885 21.4353 12.8116L7.92098 2.29927Z" fill="' + fill + '"/><path');
+    else if (fill && key === 'solid') markup = markup.replace('fill="currentColor"', 'fill="' + fill + '" stroke="currentColor" stroke-width="1"');
+    else if (fill && key === 'custom') markup = markup.replace(/fill="[^"]*"/g, 'fill="' + fill + '"').replace(/<svg(?![^>]*\bfill=)/, '<svg fill="' + fill + '"');
+    else if (fill && key !== 'custom') markup = markup.replace(/<svg([^>]*?)fill="none"/, '<svg$1fill="' + fill + '"');
+    icon.innerHTML = markup;
+    var size = Math.min(300, Math.max(8, finite(hover ? current.hoverIconSize : current.iconSize, 40)));
     icon.style.width = size + 'px'; icon.style.height = size + 'px';
     cursor.style.color = hover ? current.hoverIconColor : current.color;
   }
@@ -62,15 +69,15 @@
     if (!cursor || !tag) return;
     tag.textContent = String(current.label);
     tag.hidden = !current.label;
-    tag.style.backgroundColor = current.labelFill === false || current.labelFill === 'false' || current.labelShape === 'text' ? 'transparent' : current.color;
+    tag.style.backgroundColor = current.labelFill === false || current.labelFill === 'false' || current.labelShape === 'text' ? 'transparent' : current.labelColor;
     tag.style.color = current.textColor;
-    tag.style.border = finite(current.labelOutline, 0) + 'px solid ' + current.color;
+    tag.style.border = finite(current.labelOutline, 0) + 'px solid ' + current.labelColor;
     tag.style.borderRadius = shapeRadius();
     tag.style.padding = finite(current.labelPaddingY, 6) + 'px ' + finite(current.labelPaddingX, 10) + 'px';
     tag.style.fontFamily = current.labelFont === 'inherit' ? 'inherit' : String(current.labelFont);
     tag.style.fontWeight = String(current.labelWeight);
     tag.style.fontStyle = String(current.labelStyle);
-    tag.style.fontSize = finite(current.labelSize, 14) + 'px';
+    tag.style.fontSize = finite(current.labelSize, 18) + 'px';
     tag.style.lineHeight = String(current.labelLineHeight);
     tag.style.letterSpacing = finite(current.labelLetterSpacing, 0) + 'px';
     tag.style.textAlign = String(current.labelAlignment);
@@ -93,8 +100,10 @@
     cursor.style.top = event.clientY + 'px';
     cursor.hidden = false;
     var bounds = tag.getBoundingClientRect();
-    tag.style.left = event.clientX + 16 + bounds.width > innerWidth - 8 ? (-bounds.width - 8) + 'px' : '16px';
-    tag.style.top = event.clientY + 28 + bounds.height > innerHeight - 8 ? (-bounds.height - 8) + 'px' : '28px';
+    var gap = Math.max(0, finite(current.labelSpacing, 20));
+    tag.style.left = event.clientX + 8 + gap + bounds.width > innerWidth - 8 ? (-bounds.width - gap) + 'px' : (8 + gap) + 'px';
+    var gapY = finite(current.labelSpacingY, 20);
+    tag.style.top = event.clientY + 20 + gapY + bounds.height > innerHeight - 8 ? (-bounds.height - Math.max(0, gapY)) + 'px' : (20 + gapY) + 'px';
     html.classList.add('fic-cursor-replaced');
   }
   function leave(event) { if (!event.relatedTarget) hide(); }
