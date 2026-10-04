@@ -48,13 +48,13 @@
   function hide() { if (cursor) cursor.hidden = true; html.classList.remove('fic-cursor-replaced'); }
   function renderIcon(hover) {
     var key = hover ? current.hoverCursorIcon : current.cursorIcon;
-    var markup = key === 'custom' ? safeCustom(hover ? current.hoverCursorSvg : current.cursorSvg) : icons[key];
+    var markup = key !== 'custom' && icons[key] ? icons[key] : safeCustom(hover ? current.hoverCursorSvg : current.cursorSvg);
     var fill = String((hover ? current.hoverIconFill : current.iconFill) || '');
     if (!/^(#[0-9a-fA-F]{3,8}|rgba?\([^)<>"]*\)|[a-zA-Z]+)$/.test(fill) || fill === 'transparent') fill = '';
     markup = markup || (hover ? icons['open-hand'] : icons.solid);
     if (fill && key === 'outline') markup = markup.replace('<path', '<path d="M7.92098 2.29927C6.93571 1.53286 5.5 2.23498 5.5 3.48325V20.492C5.5 21.9142 7.2945 22.538 8.17661 21.4224L12.3676 16.1222C12.6806 15.7264 13.1574 15.4956 13.6619 15.4956H20.5143C21.9425 15.4956 22.5626 13.6885 21.4353 12.8116L7.92098 2.29927Z" fill="' + fill + '"/><path');
     else if (fill && key === 'solid') markup = markup.replace('fill="currentColor"', 'fill="' + fill + '" stroke="currentColor" stroke-width="1"');
-    else if (fill && key === 'custom') markup = markup.replace(/fill="[^"]*"/g, 'fill="' + fill + '"').replace(/<svg(?![^>]*\bfill=)/, '<svg fill="' + fill + '"');
+    else if (fill && !icons[key]) markup = markup.replace(/fill="[^"]*"/g, 'fill="' + fill + '"').replace(/<svg(?![^>]*\bfill=)/, '<svg fill="' + fill + '"');
     else if (fill && key !== 'custom') markup = markup.replace(/<svg([^>]*?)fill="none"/, '<svg$1fill="' + fill + '"');
     icon.innerHTML = markup;
     var size = Math.min(300, Math.max(8, finite(hover ? current.hoverIconSize : current.iconSize, 40)));
