@@ -17,6 +17,8 @@
     typographyTextLetterSpacing: "0px",
     typographyTextColor: "#111111",
     typographyTextAlignment: "center",
+    typographyTextDecoration: "none",
+    typographyTextTransform: "none",
     backgroundColor: "#ffffff",
     backgroundImageSrc: "",
     backgroundImagePosition: "center",
@@ -90,7 +92,7 @@
       var mapping = {
         "background-color": "backgroundColor", "background-image-position": "backgroundImagePosition", "background-image-size": "backgroundImageSize",
         "logo-width-size": "imagesLogoWidthSize", "logo-height-size": "imagesLogoHeightSize", "logo-fit-style": "imagesLogoFitStyle",
-        "text-font-family": "typographyTextFontFamily", "text-font-weight": "typographyTextFontWeight", "text-font-style": "typographyTextFontStyle", "text-font-size": "typographyTextFontSize", "text-line-height": "typographyTextLineHeight", "text-letter-spacing": "typographyTextLetterSpacing", "text-color": "typographyTextColor", "text-alignment": "typographyTextAlignment",
+        "text-font-family": "typographyTextFontFamily", "text-font-weight": "typographyTextFontWeight", "text-font-style": "typographyTextFontStyle", "text-font-size": "typographyTextFontSize", "text-line-height": "typographyTextLineHeight", "text-letter-spacing": "typographyTextLetterSpacing", "text-color": "typographyTextColor", "text-alignment": "typographyTextAlignment", "text-decoration": "typographyTextDecoration", "text-transform": "typographyTextTransform",
         "text-width-size": "layoutTextWidthSize", "brand-bar-gap": "layoutBrandBarGap", "content-padding-size": "layoutContentPaddingSize", "bounded-height-size": "layoutBoundedHeightSize",
         "loading-bar-color": "advancedLoadingBarColor", "loading-bar-background-color": "advancedLoadingBarBackgroundColor", "loading-bar-width-size": "advancedLoadingBarWidthSize", "loading-bar-height-size": "advancedLoadingBarHeightSize", "loading-bar-radius": "advancedLoadingBarRadius", "loading-bar-segment-size": "advancedLoadingBarSegmentSize", "loading-slide-distance-size": "advancedLoadingSlideDistanceSize", "loading-fall-distance-size": "advancedLoadingFallDistanceSize"
       };
