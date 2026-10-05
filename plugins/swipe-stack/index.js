@@ -764,7 +764,19 @@
       card.style.setProperty('--card-angle',position.angle+'deg');
       card.style.setProperty('--card-scale',String(position.scale));
     }
+    /* The stylesheet can arrive after the script on Squarespace. Until the
+       cards are laid out by it, their sizes are wrong, so the stack would be
+       measured wrong. Wait for it and paint again once it is applied. */
+    var readyTries = 0, settled = false;
+    function stylesReady() {
+      var card = cards[index] || cards[0];
+      return !card || (getComputedStyle(card).position === 'absolute' && card.offsetHeight > 20 && card.offsetWidth > 20);
+    }
     function paint(heldCard) {
+      if (!heldCard && !stylesReady() && readyTries < 600) {
+        readyTries++;
+        requestAnimationFrame(function () { if (!busy && !drag) paint(); });
+      }
       var count = Math.round(number(settings.layoutStackSize,4,1,cards.length || 1));
       var positions = centeredPoses(count);
       var style = getComputedStyle(root);
@@ -792,6 +804,10 @@
       stage.style.width = '100%';
       stage.style.height = Math.ceil(groupHeight*fit+shadowClearance*2+4)+'px';
       stage.style.minHeight = '';
+      /* Until the first correct layout, place cards instantly so the stack
+         appears already fanned out instead of sliding apart from one spot. */
+      var instant = !settled && !heldCard;
+      if (instant) cards.forEach(function (card) { card.style.transition = 'none'; });
       var focused = document.activeElement;
       cards.forEach(function (card,i) {
         var depth = (i-index+cards.length)%cards.length;
@@ -809,6 +825,11 @@
         if (card.tagName === 'A') card.tabIndex = depth === 0 ? 0 : -1;
         if (card !== heldCard) applyPose(card,pose(leaving ? Math.max(0,Math.min(depth,count-1)) : depth));
       });
+      if (instant) {
+        void stage.offsetWidth;
+        cards.forEach(function (card) { card.style.transition = ''; });
+        if (stylesReady()) settled = true;
+      }
       status.textContent = String(settings.contentPositionText).replace(/\{current\}/g,String(cards.length ? index+1 : 0)).replace(/\{total\}/g,String(cards.length));
       if (window.GhostPlugins && typeof window.GhostPlugins.reveal === 'function') window.GhostPlugins.reveal(root);
     }
@@ -914,10 +935,14 @@
       /* Height depends only on width, so observing the plugin itself is stable. */
       var observer = new ResizeObserver(queueRepaint);
       observer.observe(root);
+      /* Card sizes change when the stylesheet or an image ratio applies. */
+      cards.forEach(function (card) { observer.observe(card); });
       var studioFrame = root.closest('#gp-root');
       if (studioFrame) observer.observe(studioFrame);
       cleanup.push(function () { observer.disconnect(); });
     }
+    listen(window,'load',queueRepaint);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(queueRepaint);
     paint();
   }
   function initAll() { document.querySelectorAll(SELECTOR).forEach(initialize); }
