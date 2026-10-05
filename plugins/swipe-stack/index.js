@@ -724,7 +724,7 @@
       }
       return {x:x,y:y,angle:rotation,scale:Math.max(0.4,1-depth*shrink)};
     }
-    var layoutPositions = [];
+    var layoutPositions = [], groupHeight = 0;
     function centeredPoses(count) {
       var positions = [], left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
       for (var depth = 0; depth < count; depth++) {
@@ -741,6 +741,7 @@
         bottom = Math.max(bottom,position.y+boundsHeight/2);
         positions.push(position);
       }
+      groupHeight = Number.isFinite(top) ? bottom-top : 0;
       var shiftX = Number.isFinite(left) ? -(left+right)/2 : 0;
       var shiftY = Number.isFinite(top) ? -(top+bottom)/2 : 0;
       return positions.map(function (position) {
@@ -763,6 +764,8 @@
       var shadowClearance = settings.imagesShowShadow ? (parseFloat(getComputedStyle(root).getPropertyValue('--image-shadow-blur-size')) || 0) : 0;
       host.style.setProperty('--stack-top-clearance-size',(Math.max.apply(null,positions.map(function (p) { return Math.max(0,-p.y); }))+shadowClearance)+'px');
       host.style.setProperty('--stack-bottom-clearance-size',(Math.max.apply(null,positions.map(function (p) { return Math.max(0,p.y); }))+shadowClearance)+'px');
+      /* Grow the stage to the whole visible group so back cards and shadows never clip. */
+      stage.style.minHeight = Math.ceil(groupHeight+shadowClearance*2+4)+'px';
       var focused = document.activeElement;
       cards.forEach(function (card,i) {
         var depth = (i-index+cards.length)%cards.length;
