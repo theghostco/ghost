@@ -725,17 +725,11 @@
       return {x:x,y:y,angle:rotation,scale:Math.max(0.4,1-depth*shrink)};
     }
     var layoutPositions = [], groupHeight = 0, groupWidth = 0, fit = 1;
-    /* Squarespace Code Blocks are bounded: measure the block's inner height
-       (never the plugin's own height) so the stack can shrink to fit it. */
-    function blockBounds() {
-      var block = root.closest('.fe-block');
-      if (!block) return null;
-      var height = block.clientHeight;
-      for (var node = root.parentElement; node && node !== block; node = node.parentElement) {
-        var cs = getComputedStyle(node);
-        height -= (parseFloat(cs.paddingTop)||0)+(parseFloat(cs.paddingBottom)||0)+(parseFloat(cs.borderTopWidth)||0)+(parseFloat(cs.borderBottomWidth)||0);
-      }
-      return height > 40 ? {block:block,height:height} : null;
+    /* Studio canvas frame: the only container whose height is fixed and
+       independent of the plugin. On Squarespace the Code Block grows to fit. */
+    function frameHeight() {
+      var frame = root.closest('#gp-root');
+      return frame && frame.clientHeight > 80 ? frame.clientHeight : 0;
     }
     function centeredPoses(count) {
       var positions = [], left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
@@ -773,26 +767,31 @@
     function paint(heldCard) {
       var count = Math.round(number(settings.layoutStackSize,4,1,cards.length || 1));
       var positions = centeredPoses(count);
-      var shadowClearance = settings.imagesShowShadow ? (parseFloat(getComputedStyle(root).getPropertyValue('--image-shadow-blur-size')) || 0) : 0;
-      /* Shrink the whole group around its center when it is larger than the
-         space available, so back cards and shadows are never cut off. */
-      var needHeight = groupHeight+shadowClearance*2+4;
-      var needWidth = groupWidth+shadowClearance*2+4;
-      var bounds = blockBounds();
-      var availHeight = bounds ? bounds.height : 0;
-      var availWidth = root.clientWidth;
+      var style = getComputedStyle(root);
+      var blur = parseFloat(style.getPropertyValue('--image-shadow-blur-size')) || 0;
+      var shadowY = Math.abs(parseFloat(style.getPropertyValue('--image-shadow-y-size')) || 0);
+      /* Room for the soft part of the shadow, capped so a big blur never shrinks the images. */
+      var shadowClearance = settings.imagesShowShadow ? Math.min(48,blur/2+shadowY) : 0;
+      var padding = parseFloat(style.getPropertyValue('--stack-padding-size')) || 0;
+      /* One uniform scale for the whole group: images keep their shape and
+         only shrink when the space is narrower (or the Studio canvas shorter). */
+      var width = root.clientWidth;
+      var availWidth = Math.max(width-padding*2,width*0.85);
+      var frame = frameHeight();
+      var availHeight = frame ? Math.max(frame-padding*2,frame*0.8)-shadowClearance*2 : 0;
       fit = 1;
-      if (availHeight && needHeight > availHeight) fit = Math.min(fit,availHeight/needHeight);
-      if (availWidth && needWidth > availWidth) fit = Math.min(fit,availWidth/needWidth);
+      if (width > 40 && groupWidth > availWidth) fit = Math.min(fit,availWidth/groupWidth);
+      if (availHeight > 40 && groupHeight > availHeight) fit = Math.min(fit,availHeight/groupHeight);
       fit = Math.max(0.2,fit);
       positions = positions.map(function (p) { return {x:p.x*fit,y:p.y*fit,angle:p.angle,scale:p.scale*fit}; });
       layoutPositions = positions;
-      shadowClearance *= fit;
-      if (bounds) root.style.height = Math.floor(availHeight)+'px';
       host.style.setProperty('--stack-top-clearance-size',(Math.max.apply(null,positions.map(function (p) { return Math.max(0,-p.y); }))+shadowClearance)+'px');
       host.style.setProperty('--stack-bottom-clearance-size',(Math.max.apply(null,positions.map(function (p) { return Math.max(0,p.y); }))+shadowClearance)+'px');
-      /* Grow the stage to the whole visible group so back cards and shadows never clip. */
-      stage.style.minHeight = Math.ceil(Math.min(groupHeight*fit+shadowClearance*2+4,availHeight || Infinity))+'px';
+      /* The stage is exactly as tall as the visible group, so the Code Block
+         sizes itself around the whole stack and nothing is cut off. */
+      stage.style.width = '100%';
+      stage.style.height = Math.ceil(groupHeight*fit+shadowClearance*2+4)+'px';
+      stage.style.minHeight = '';
       var focused = document.activeElement;
       cards.forEach(function (card,i) {
         var depth = (i-index+cards.length)%cards.length;
@@ -904,8 +903,7 @@
     listen(stage,'keydown',function (event) {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1); }
     });
-    /* Repaint when the Code Block or window is resized (observe the block,
-       not the plugin, so sizing never loops). */
+    /* Repaint when the plugin's width or the Studio canvas changes. */
     var resizeFrame = 0;
     function queueRepaint() {
       if (resizeFrame) return;
@@ -913,12 +911,12 @@
     }
     listen(window,'resize',queueRepaint);
     if (typeof ResizeObserver === 'function') {
-      var watched = root.closest('.fe-block') || root.parentElement;
-      if (watched) {
-        var observer = new ResizeObserver(queueRepaint);
-        observer.observe(watched);
-        cleanup.push(function () { observer.disconnect(); });
-      }
+      /* Height depends only on width, so observing the plugin itself is stable. */
+      var observer = new ResizeObserver(queueRepaint);
+      observer.observe(root);
+      var studioFrame = root.closest('#gp-root');
+      if (studioFrame) observer.observe(studioFrame);
+      cleanup.push(function () { observer.disconnect(); });
     }
     paint();
   }
