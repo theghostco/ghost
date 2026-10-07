@@ -1,4 +1,5 @@
 
+
 (function () {
   "use strict";
   var DEFAULTS = {
@@ -9,6 +10,8 @@
     copyErrorText: "Copy unavailable. Select the code:",
     closeLabel: "Close announcement",
     announcementLabel: "Coupon announcement",
+    messageLink: "",
+    messageLink_new_tab: false,
     showClose: true,
     resetAfterClose: "visit",
     storageKey: "welcome-offer"
@@ -180,7 +183,15 @@
     if (str(settings.messageText)) {
       var message = document.createElement("p");
       message.className = "gp-message";
-      message.textContent = str(settings.messageText);
+      var url = str(settings.messageLink).trim();
+      if (/^(https?:\/\/|\/(?!\/)|#|mailto:|tel:)/i.test(url)) {
+        var link = document.createElement("a");
+        link.className = "gp-message-link";
+        link.href = url;
+        link.textContent = str(settings.messageText);
+        if (bool(settings.messageLink_new_tab)) { link.target = "_blank"; link.rel = "noopener noreferrer"; }
+        message.appendChild(link);
+      } else { message.textContent = str(settings.messageText); }
       group.appendChild(message);
     }
     var code = str(settings.couponCode);
