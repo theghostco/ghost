@@ -323,9 +323,16 @@
       img.setAttribute("aria-hidden", "true");
       img.decoding = "async";
       img.loading = "eager";
+      /* Inline layout so host-site image styles can never shift a tile. */
+      img.style.margin = "0";
+      img.style.top = "0";
+      img.style.left = "0";
+      img.style.maxWidth = "none";
+      img.style.width = "var(--it-img-w)";
+      img.style.height = "var(--it-img-h)";
 
       var rotate = (Math.random() * 2 - 1) * cfg.maxRotation;
-      var base = "translate3d(" + Math.round(x) + "px," + Math.round(y) + "px,0) rotate(" + rotate.toFixed(2) + "deg)";
+      var base = "translate3d(" + Math.round(x) + "px," + Math.round(y) + "px,0) translate(-50%,-50%) rotate(" + rotate.toFixed(2) + "deg)";
       img.dataset.base = base;
       img.style.transform = base + " " + enterTransform(cfg.animateIn);
 
