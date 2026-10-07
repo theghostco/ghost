@@ -1,0 +1,64 @@
+/* Swipe Stack Images | Ghost Plugins | v1.0.0 | Stylesheet */
+.gp-shuffle-stack {
+  --image-width-size: 360px;
+  --image-height-size: 440px;
+  --image-aspect-ratio: auto;
+  --image-fit: cover;
+  --image-position: center;
+  --image-border-style: solid;
+  --image-border-size: 0px;
+  --image-border-color: #ffffff;
+  --image-radius: 22px;
+  --image-shadow-x-size: 0px;
+  --image-shadow-y-size: 16px;
+  --image-shadow-blur-size: 36px;
+  --image-shadow-spread-size: 0px;
+  --image-shadow-color: rgba(0,0,0,0.18);
+  --stack-layer-gap: 28px;
+  --stack-rotation-size: 7deg;
+  --stack-scale-size: 0.045;
+  --stack-padding-size: 0px;
+  --stack-mobile-padding-size: 0px;
+  --swipe-distance-size: 0.65;
+  --swipe-rotation-size: 18deg;
+  --animation-duration: 380ms;
+  --animation-easing: cubic-bezier(0.22,0.8,0.25,1);
+  --focus-color: #2463eb;
+  --focus-border-size: 3px;
+  --focus-offset-size: 5px;
+  display: block;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  isolation: isolate;
+}
+.gp-shuffle-stack *, .gp-shuffle-stack *::before, .gp-shuffle-stack *::after { box-sizing: border-box; }
+.gp-shuffle-stack .gp-stage { position: relative; width: 100%; touch-action: pan-y pinch-zoom; user-select: none; cursor: grab; }
+.gp-shuffle-stack .gp-stage[data-dragging="true"] { cursor: grabbing; }
+.gp-shuffle-stack .gp-card {
+  display: block;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: var(--image-border-size) var(--image-border-style) var(--image-border-color);
+  border-radius: var(--image-radius);
+  box-shadow: var(--image-shadow-x-size) var(--image-shadow-y-size) var(--image-shadow-blur-size) var(--image-shadow-spread-size) var(--image-shadow-color);
+  text-decoration: none;
+  color: inherit;
+  transform-origin: center;
+  transition: transform var(--animation-duration) var(--animation-easing);
+  -webkit-user-drag: none;
+}
+.gp-shuffle-stack[data-shadow="false"] .gp-card { box-shadow: none; }
+.gp-shuffle-stack .gp-card img { display: block; width: 100%; height: 100%; object-fit: var(--image-fit); object-position: var(--image-position); pointer-events: none; }
+.gp-shuffle-stack .gp-stage:focus-visible, .gp-shuffle-stack .gp-card:focus-visible { outline: var(--focus-border-size) solid var(--focus-color); outline-offset: var(--focus-offset-size); }
+.gp-shuffle-stack .gp-stage[data-dragging="true"] .gp-card, .gp-shuffle-stack[data-reduced="true"] .gp-card { transition: none; }
+.gp-shuffle-stack .gp-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.gp-shuffle-stack [hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .gp-shuffle-stack .gp-card { transition: none; } }
