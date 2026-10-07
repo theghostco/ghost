@@ -24,6 +24,8 @@
   --button-outline-color: #ffffff;
   --button-outline-width: 1px;
   --button-radius: 6px;
+  --button-fill: var(--button-background-color);
+  --copy-icon-gap: 6px;
   --button-padding-x: 16px;
   --button-padding-y: 10px;
   --copy-icon-size: 18px;
@@ -87,7 +89,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--bar-content-gap);
+  gap: var(--copy-icon-gap);
   flex: 0 1 auto;
   max-width: 100%;
   min-width: 0;
@@ -99,9 +101,9 @@
   font-size: var(--button-font-size);
   line-height: var(--title-line-height);
   color: var(--button-text-color);
-  background: var(--button-background-color);
+  background: var(--button-fill, var(--button-background-color));
   border: var(--button-outline-width) solid var(--button-outline-color);
-  border-radius: var(--button-radius);
+  border-radius: var(--button-radius-tl, var(--button-radius)) var(--button-radius-tr, var(--button-radius)) var(--button-radius-br, var(--button-radius)) var(--button-radius-bl, var(--button-radius));
   padding: var(--button-padding-y) var(--button-padding-x);
   text-align: center;
   text-transform: none;
