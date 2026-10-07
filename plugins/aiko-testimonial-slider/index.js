@@ -1,9 +1,4 @@
-
-/*!
- * Aiko Testimonial Slider, Ghost Plugins  v1.6.0
- * Standalone browser plugin. Works on any site (Squarespace, Webflow, WordPress, plain HTML).
- * Configure with window.AikoSliderConfig, window.GhostPluginConfig, or per-slider data-attributes.
- */
+/* Aiko Testimonial Slider | Ghost Plugins | v1.6.0 | JavaScript */
 (function () {
   "use strict";
 
