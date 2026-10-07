@@ -1,7 +1,4 @@
-/*!
- * Infinite Image Wall, Ghost Plugins  v1.0.0
- * All styles stay inside the plugin root.
- */
+/* Infinite Image Wall | Ghost Plugins | v1.0.0 | Stylesheet */
 .gp-infinite-images {
   --gp-bg: #f5f5f5; --gp-background-image: none; --gp-text-color: #252823; --gp-muted-color: #686e62;
   --gp-font-family: inherit; --gp-font-size: 28px; --gp-font-weight: 500;
