@@ -1,3 +1,4 @@
+/* Figma Inspired Cursor | Ghost Plugins | v1.2.5 | JavaScript */
 (function () {
   'use strict';
   var SLUG = 'figma-inspired-cursor';
