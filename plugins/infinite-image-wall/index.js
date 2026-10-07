@@ -1,11 +1,4 @@
-/*!
- * Infinite Image Wall, Ghost Plugins  v1.0.2
- * Standalone browser plugin. Vanilla ES6+, no dependencies.
- * Drag, swipe, momentum, autoplay and endless tile recycling inside a bounded
- * Code Block (default) or, opt-in, the whole enclosing page section.
- * Settings: Ghost Plugins saved preset (data-ghost-key), window.InfiniteImageWallConfig (or legacy window.AtlasInfiniteImagesConfig),
- * or data-gp-* attributes on the root.
- */
+/* Infinite Image Wall | Ghost Plugins | v1.0.2 | JavaScript */
 (function () {
   'use strict';
   const SLUG = 'infinite-image-wall';
@@ -16,8 +9,8 @@
   const COMPACT_WIDTH = 600;
   const MAX_ITEMS = 20;
   const DEMO_IMAGES = [
-    'https://www.ghostplugins.com/__l5e/assets-v1/c5dd9fff-8419-4039-bd53-d1e302c530dd/demo_dark_image.webp',
-    'https://www.ghostplugins.com/__l5e/assets-v1/aa3b89ca-f48e-480f-bf52-94cf97bff6e6/demo_light_image.webp'
+    'https://assets.ghostplugins.com/storage/v1/object/public/customer-files/assets/demo/demo_light_image.webp',
+    'https://assets.ghostplugins.com/storage/v1/object/public/customer-files/assets/demo/demo_light_image.webp'
   ];
   const DEMO_CAPTIONS = [
     ['Alpine stillness', 'Rocky peaks rise into the clouds, catching the first light of a new day.'],
@@ -34,7 +27,7 @@
      variables on the root; behavior keys become data-gp-* attributes that the
      engine below already reads. */
   const DEFAULTS = {
-    sizeMode: "block", height: 600, mobileHeight: 420, width: 100, mobileWidth: 100,
+    sizeMode: "section", height: 600, mobileHeight: 420, width: 100, mobileWidth: 100,
     spacing: 100, separateSpacing: false, horizontalSpacing: 90, verticalSpacing: 90, mobileSpacing: 52, rotation: 0,
     background: "#", padding: 0, mobilePadding: 0, radius: 0,
     aspectMode: "uniform", aspectRatio: '3 / 4', ratioSeed: 7, imageWidth: 200, mobileImageWidth: 140,
@@ -51,9 +44,9 @@
     sizeMode: 'size-mode', aspectMode: 'aspect-mode', ratioSeed: 'ratio-seed', imageShape: 'image-shape',
     captionMode: 'caption-mode', showDescription: 'caption-description', captionPosition: 'caption-position',
     inertia: 'inertia', momentumStrength: 'momentum-strength', friction: 'friction', mouseFollow: 'mouse-follow',
-    followSpeed: 140, wheel: 'wheel', dragThreshold: 'drag-threshold', autoplay: 'autoplay',
-    autoplayDirection: "random", autoplaySpeed: 'autoplay-speed', directionInterval: 'direction-interval',
-    autoplayX: 18, autoplayY: 'autoplay-y', pauseOnHover: 'pause-hover', hoverStyle: 'hover-style'
+    followSpeed: 'follow-speed', wheel: 'wheel', dragThreshold: 'drag-threshold', autoplay: 'autoplay',
+    autoplayDirection: 'autoplay-direction', autoplaySpeed: 'autoplay-speed', directionInterval: 'direction-interval',
+    autoplayX: 'autoplay-x', autoplayY: 'autoplay-y', pauseOnHover: 'pause-hover', hoverStyle: 'hover-style'
   };
   const FONTS = {
     inherit: 'inherit', 'sans-serif': 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
@@ -261,6 +254,7 @@
       // Restore only the inline positioning owned by this instance.
       if (sectionHost.style.position === 'relative' && sectionPosition === '') sectionHost.style.removeProperty('position');
       else if (sectionHost.style.position === 'relative') sectionHost.style.position = sectionPosition;
+      if (sectionHost.dataset.gpMinH) { sectionHost.style.removeProperty('min-height'); delete sectionHost.dataset.gpMinH; }
       sectionHost = null; sectionPlaceholder = null; delete root.dataset.gpSectionActive;
     }
     function updateSectionMode() {
@@ -274,6 +268,7 @@
       root.before(sectionPlaceholder); sectionHost = host; sectionPosition = host.style.position;
       if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
       host.appendChild(root); root.dataset.gpSectionActive = 'true';
+      if (host.getBoundingClientRect().height < 320) { host.dataset.gpMinH = '1'; host.style.minHeight = window.innerWidth < 768 ? '420px' : 'max(600px, 70vh)'; }
     }
     const measure = make('div', 'gp-ii-measure', viewport);
     measure.setAttribute('aria-hidden', 'true');
@@ -290,8 +285,8 @@
         autoplay: bool('autoplay', false), direction: root.dataset.gpAutoplayDirection || 'right',
         speed: number('autoplay-speed', 18, 0, 300), randomInterval: number('direction-interval', 4000, 500, 30000), pauseHover: bool('pause-hover', true),
         speedX: number('autoplay-x', 18, -300, 300), speedY: number('autoplay-y', 0, -300, 300),
-        momentumStrength: 1.35, 1.35, 0, 3), followSpeed: number('follow-speed', 100, 0, 400), friction: number('friction', 0.975, 0.5, 0.995),
-        ratioSeed: 7, 7, 0, 100000), threshold: number('drag-threshold', 7, 3, 30)
+        momentumStrength: number('momentum-strength', 1.35, 0, 3), followSpeed: number('follow-speed', 100, 0, 400), friction: number('friction', 0.975, 0.5, 0.995),
+        ratioSeed: number('ratio-seed', 7, 0, 100000), threshold: number('drag-threshold', 7, 3, 30)
       };
       tiles.forEach((tile) => { tile.index = -1; });
       selectAutoplayDirection(); autoX = targetAutoX; autoY = targetAutoY; randomElapsed = 0;
