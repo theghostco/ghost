@@ -1,6 +1,4 @@
-/* Scrolling Logo Marquee, Ghost Plugins  v1.2.1
-   Standalone browser script. No dependencies.
-   Config: window.LogoMarqueeConfig, live Plugin Studio settings, or per block data attributes. */
+/* Scrolling Logo Marquee | Ghost Plugins | v1.2.3 | JavaScript */
 (function () {
   "use strict";
 
@@ -21,7 +19,7 @@
     grayscale: false,
     background: "transparent",
     padding: 52,
-    splitRows: false,
+    splitRows: true,
     rowDirection: "opposite",
     rowGap: 24,
     linkNewTab: true,
@@ -39,7 +37,7 @@
     { name: "NORTHBAY", tm: false, weight: 700, spacing: 2 }
   ];
 
-  var STYLE_ID = "gh-marquee-runtime-style";
+  var STYLE_ID = "gh-marquee-runtime-style-v123";
   var ROOT_SELECTOR = "[data-logo-marquee], .gh-marquee";
 
   function ensureStyles() {
@@ -59,14 +57,17 @@
       ".gh-marquee__img,.gh-marquee__mark svg{display:block;height:var(--mq-logo-height)!important;width:auto!important;max-width:var(--mq-logo-max-width)!important;object-fit:contain}" +
       ".gh-marquee__mark{display:inline-flex;align-items:center;color:currentColor}" +
       "@keyframes gh-marquee-scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}" +
-      "@media (prefers-reduced-motion:reduce){.gh-marquee__track{animation:none!important}}";
+      ".gh-marquee--wave .gh-marquee__row{padding:var(--mq-wave-height,12px) 0}" +
+      ".gh-marquee--wave .gh-marquee__logo{animation:gh-marquee-wave var(--mq-wave-speed,3s) ease-in-out infinite;animation-delay:var(--mq-wave-delay,0s);will-change:transform}" +
+      "@keyframes gh-marquee-wave{0%,100%{transform:translateY(calc(var(--mq-wave-height,12px) / 2))}50%{transform:translateY(calc(var(--mq-wave-height,12px) / -2))}}" +
+      "@media (prefers-reduced-motion:reduce){.gh-marquee__track,.gh-marquee__logo{animation:none!important}}";
     (document.head || document.documentElement).appendChild(style);
   }
 
   function isEditor() {
     try {
-      if (/\/config\//.test(window.location.pathname)) return true;
-      return !!document.querySelector(".sqs-edit-mode,.sqs-edit-mode-active,body[data-edit-mode],#sqs-cms");
+      var b = document.body;
+      return !!(b && b.classList.contains("sqs-edit-mode-active"));
     } catch (_error) {
       return true;
     }
@@ -123,7 +124,8 @@
 
   function readConfig(el) {
     var global = window.LogoMarqueeConfig || {};
-    var live = (window.GhostPlugins && window.GhostPlugins.config && window.GhostPlugins.config["scrolling-logo-marquee"]) || {};
+    var G0 = window.GhostPlugins;
+    var live = (G0 && (G0.configFor ? G0.configFor(el, "scrolling-logo-marquee") : (G0.config && G0.config["scrolling-logo-marquee"]))) || {};
     var out = {};
     var key;
     for (key in DEFAULTS) if (Object.prototype.hasOwnProperty.call(DEFAULTS, key)) out[key] = DEFAULTS[key];
@@ -329,6 +331,8 @@
   else boot();
   document.addEventListener("ghost:config", boot);
   window.addEventListener("load", boot);
+  document.addEventListener("mercury:load", boot);
+  window.addEventListener("pageshow", boot);
   var editorWasActive = isEditor();
   var editorObserver = new MutationObserver(function () {
     var editing = syncEditorState();
