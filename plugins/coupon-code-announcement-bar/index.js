@@ -1,5 +1,4 @@
-
-
+/* Coupon Code Announcement Bar | Ghost Plugins | v1.0.6 | JavaScript */
 (function () {
   "use strict";
   var DEFAULTS = {
