@@ -1,5 +1,4 @@
-/* Doodle Pen, Ghost Plugins  v1.3.2
-   Lets visitors draw and doodle inside a Code Block on your Squarespace site. */
+/* Doodle Pen | Ghost Plugins | v1.4.0 | JavaScript */
 (function () {
   "use strict";
 
@@ -11,7 +10,8 @@
     cursorPreset: "pen",       // seven built-in icons or custom
     cursorSize: 64,            // cursor size in px
     cursorColor: "#111111",    // color applied to the preset cursors
-    cursorSvg: ""              // self-contained Icon Library image or legacy hosted cursor
+    cursorSvg: "",             // self-contained Icon Library image or legacy hosted cursor
+    sizeMode: "block"          // block = stays in its Code Block | section = fills the page section
   };
 
   var CURSORS = {
@@ -27,8 +27,8 @@
 
   function cfg(root) {
     var global = Object.assign({}, window.DoodlePenConfig || {}, window.GhostPluginConfig || {});
-    var live = (window.GhostPlugins && window.GhostPlugins.config &&
-      window.GhostPlugins.config["doodle-pen"]) || {};
+    var G0 = window.GhostPlugins;
+    var live = (G0 && (G0.configFor ? G0.configFor(root, "doodle-pen") : (G0.config && G0.config["doodle-pen"]))) || {};
     var out = {};
     for (var k in DEFAULTS) if (Object.prototype.hasOwnProperty.call(DEFAULTS, k)) out[k] = DEFAULTS[k];
     [global, live].forEach(function (src) {
@@ -59,10 +59,41 @@
     return (x - Math.floor(x)) - 0.5;
   }
 
+  /* Cursor essentials live in the script so the pen shows even when style.css
+     is blocked, cached, or slow on the host site. */
+  function ensureCursorStyles() {
+    if (document.getElementById("gh-doodle-cursor-style-v133")) return;
+    var st = document.createElement("style");
+    st.id = "gh-doodle-cursor-style-v133";
+    st.textContent =
+      ".gh-doodle__canvas{cursor:none}" +
+      ".gh-doodle__cursor{width:var(--dp-cursor-size,64px);height:var(--dp-cursor-size,64px);margin:calc(var(--dp-cursor-size,64px) * -0.92) 0 0 calc(var(--dp-cursor-size,64px) * -0.08);transition:opacity .15s ease;line-height:0;z-index:2}" +
+      ".gh-doodle__cursor.is-visible{opacity:1!important}" +
+      ".gh-doodle__cursor svg,.gh-doodle__cursor img{width:100%;height:100%;display:block}" +
+      "@media (pointer:coarse){.gh-doodle__canvas{cursor:default}.gh-doodle__cursor{display:none!important}}";
+    (document.head || document.documentElement).appendChild(st);
+  }
+
   function init(root) {
     if (!root || root.getAttribute("data-dp-ready") === "1") return;
     root.setAttribute("data-dp-ready", "1");
     var o = cfg(root);
+
+    /* Plugin Canvas: Code Block by default; opt-in Full Page Section moves the
+       canvas over its enclosing section and is fully reversed on teardown. */
+    var sectionHost = null, sectionMark = null, sectionPos = "", sectionMinH = false;
+    if (String(o.sizeMode) === "section" && root.getAttribute("data-gp-preview") !== "true") {
+      var sec = root.parentElement && root.parentElement.closest("section");
+      if (sec && !sec.querySelector('[data-dp-section="1"]')) {
+        sectionMark = document.createComment("Doodle Pen original Code Block location");
+        root.parentNode.insertBefore(sectionMark, root);
+        sectionHost = sec; sectionPos = sec.style.position;
+        if (getComputedStyle(sec).position === "static") sec.style.position = "relative";
+        sec.appendChild(root);
+        root.setAttribute("data-dp-section", "1");
+        if (sec.getBoundingClientRect().height < 320) { sec.style.minHeight = "max(600px, 70vh)"; sectionMinH = true; }
+      }
+    }
 
     root.style.setProperty("--dp-cursor-size", num(o.cursorSize, 64) + "px");
 
@@ -75,9 +106,10 @@
     cursor.className = "gh-doodle__cursor";
     /* Inline safety styles so the pen never flashes in page flow before the stylesheet arrives. */
     cursor.style.cssText = "position:absolute;top:0;left:0;opacity:0;pointer-events:none;";
+    ensureCursorStyles();
     cursor.setAttribute("aria-hidden", "true");
     cursor.style.color = String(o.cursorColor || "#111111");
-    if (o.cursorPreset === "custom" && (/^https:\/\//.test(String(o.cursorSvg || "")) || /^data:image\/svg\+xml;charset=utf-8,%3Csvg/i.test(String(o.cursorSvg || "")))) {
+    if (o.cursorPreset === "custom" && (/^https:\/\//.test(String(o.cursorSvg || "")) || /^data:image\/svg\+xml[;,]/i.test(String(o.cursorSvg || "")))) {
       var image = document.createElement("img");
       image.src = /^data:image\/svg\+xml/i.test(String(o.cursorSvg))
         ? String(o.cursorSvg).replace(/currentColor/gi, encodeURIComponent(String(o.cursorColor || "#111111")))
@@ -268,6 +300,13 @@
       if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
       root.classList.remove("gh-ready");
       root.removeAttribute("data-dp-ready");
+      if (sectionHost) {
+        root.removeAttribute("data-dp-section");
+        if (sectionMark && sectionMark.parentNode) { sectionMark.parentNode.insertBefore(root, sectionMark); sectionMark.parentNode.removeChild(sectionMark); }
+        sectionHost.style.position = sectionPos;
+        if (sectionMinH) sectionHost.style.removeProperty("min-height");
+        sectionHost = null;
+      }
       delete root.ghDoodleDestroy;
     };
   }
@@ -289,6 +328,9 @@
     });
   }
   document.addEventListener("ghost:config", reboot);
+  document.addEventListener("mercury:load", boot);
+  window.addEventListener("pageshow", boot);
   window.DoodlePen = { init: boot, cursors: CURSORS };
 })();
+
 
