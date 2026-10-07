@@ -1,3 +1,4 @@
+
 (function () {
   "use strict";
   var DEFAULTS = {
@@ -271,6 +272,30 @@
     restoreHeader();
     states.forEach(function (state, root) { destroy(root, state); });
   }
+  // Never show the bar until its stylesheet and saved preset are both ready, so
+  // visitors never see unstyled markup or demo copy before the real bar.
+  function cssReady(root) {
+    return !!getComputedStyle(root).getPropertyValue("--bar-content-gap").trim();
+  }
+  function configReady(root) {
+    var G = window.GhostPlugins;
+    if (!G || !G.installs) return true;
+    var pending = Object.keys(G.installs).some(function (k) { return G.installs[k] && G.installs[k].loading; });
+    if (!pending) return true;
+    return sources(root).some(function (src) { return src && typeof src === "object" && Object.keys(src).length; });
+  }
+  function gate(root) {
+    root.style.setProperty("visibility", "hidden", "important");
+    var started = Date.now();
+    (function check() {
+      if (!root.isConnected) return;
+      if ((cssReady(root) && configReady(root)) || Date.now() - started > 4000) {
+        root.style.removeProperty("visibility");
+        return;
+      }
+      setTimeout(check, 30);
+    })();
+  }
   function initAll() {
     if (!document.body) return;
     stopInstances();
@@ -287,6 +312,7 @@
       roots = [autoRoot];
     }
     roots.forEach(build);
+    roots.forEach(gate);
     roots.slice().reverse().forEach(function (root) { document.body.insertBefore(root, document.body.firstChild); });
     measureHeader();
     if (typeof MutationObserver === "function") {
