@@ -1,7 +1,4 @@
-
-/* Cursor Image Flow, Ghost Plugins  v1.5.0
-   Standalone browser script. No dependencies.
-   Config: window.CursorImageTrailConfig, or per block data attributes. */
+/* Cursor Image Flow | Ghost Plugins | v1.5.0 | JavaScript */
 (function () {
   "use strict";
 
