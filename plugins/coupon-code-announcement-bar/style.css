@@ -159,3 +159,5 @@
   white-space: nowrap;
   border: 0;
 }
+
+.gp-coupon-announcement .gp-message-link { color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 3px; }
