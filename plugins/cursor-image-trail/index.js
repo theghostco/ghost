@@ -1,4 +1,5 @@
-/* Cursor Image Trail, Ghost Plugins  v1.4.3
+
+/* Cursor Image Flow, Ghost Plugins  v1.5.0
    Standalone browser script. No dependencies.
    Config: window.CursorImageTrailConfig, or per block data attributes. */
 (function () {
@@ -30,17 +31,19 @@
     idleSpawnRate: 0,
     removalStagger: 60,
     fullscreen: false,
+    activeOn: "all",
+    pageSlugs: "",
     image1: "", image2: "", image3: "", image4: "",
     image5: "", image6: "", image7: "", image8: ""
   };
 
   var DEMO_IMAGES = [
-    "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=70&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=70&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=70&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=70&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=70&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=600&q=70&auto=format&fit=crop"
+    "https://www.ghostplugins.com/demo_light_image.webp",
+    "https://www.ghostplugins.com/demo_light_image.webp",
+    "https://www.ghostplugins.com/demo_light_image.webp",
+    "https://www.ghostplugins.com/demo_light_image.webp",
+    "https://www.ghostplugins.com/demo_light_image.webp",
+    "https://www.ghostplugins.com/demo_light_image.webp"
   ];
 
   var EASINGS = {
@@ -120,6 +123,36 @@
     return "translate3d(0,0,0) scale(1)"; /* fade */
   }
 
+  /* Page targeting: "all" runs everywhere; "specific" runs only on the listed
+     page slugs. A trailing * matches every page under that path. Ghost Plugins
+     previews always run so the Studio canvas never goes blank. */
+  function normPath(p) {
+    p = String(p || "").trim();
+    if (!p) return "";
+    if (/^https?:\/\//i.test(p)) { try { p = new URL(p).pathname; } catch (e) { return ""; } }
+    p = p.split("?")[0].split("#")[0];
+    if (p.charAt(0) !== "/") p = "/" + p;
+    if (p.length > 1) p = p.replace(/\/+$/, "");
+    return p.toLowerCase();
+  }
+  function pageAllowed(cfg) {
+    if (String(cfg.activeOn) !== "specific") return true;
+    var host = window.location.hostname;
+    if (/(^|\.)ghostplugins\.com$|lovable\.app$|lovableproject\.com$|^localhost$/.test(host)) return true;
+    var here = normPath(window.location.pathname) || "/";
+    var list = String(cfg.pageSlugs || "").split(/[\n,]+/);
+    for (var i = 0; i < list.length; i += 1) {
+      var raw = String(list[i] || "").trim();
+      if (!raw) continue;
+      var wild = /\*$/.test(raw);
+      var p = normPath(raw.replace(/\*$/, ""));
+      if (!p) continue;
+      if (wild) { if (here === p || here.indexOf(p === "/" ? "/" : p + "/") === 0) return true; }
+      else if (here === p) return true;
+    }
+    return false;
+  }
+
   function init(el) {
     if (!el || el.dataset.ghTrailReady === "true") return;
     el.dataset.ghTrailReady = "true";
@@ -142,6 +175,13 @@
     if (el.ghTrailWaitTimer) { window.clearTimeout(el.ghTrailWaitTimer); el.ghTrailWaitTimer = null; }
 
     var cfg = readConfig(el);
+    if (!pageAllowed(cfg)) {
+      el.dataset.ghTrailReady = "";
+      el.classList.remove("gh-ready");
+      el.style.display = "none";
+      return;
+    }
+    el.style.removeProperty("display");
     /* Accessibility: honor the visitor's reduced-motion setting. */
     var reduceMotion = typeof window.matchMedia === "function" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -304,13 +344,24 @@
       scheduleRemoval(img);
     }
 
+    var lastClient = null;
     function point(e) {
       var rect = el.getBoundingClientRect();
       return { x: e.clientX - rect.left, y: e.clientY - rect.top };
     }
+    /* Re-measure the cursor against the canvas's current position, so
+       scroll and idle spawns land under the cursor even after the page moved. */
+    function livePointer() {
+      if (!lastClient) return lastPointer;
+      var p = point(lastClient);
+      var rect = el.getBoundingClientRect();
+      if (p.x < 0 || p.y < 0 || p.x > rect.width || p.y > rect.height) return null;
+      return p;
+    }
 
     function onMove(e) {
       var p = point(e);
+      lastClient = { clientX: e.clientX, clientY: e.clientY };
       lastPointer = p;
       var rect = el.getBoundingClientRect();
       if (p.x < 0 || p.y < 0 || p.x > rect.width || p.y > rect.height) {
@@ -331,9 +382,13 @@
       if (!cfg.scrollSpawnRate || !lastPointer) return;
       var now = Date.now();
       if (now - lastScrollSpawn < cfg.scrollSpawnRate) return;
+      var sp = livePointer();
+      if (!sp) return;
       lastScrollSpawn = now;
       lastSpawn = now;
-      spawn(lastPointer.x, lastPointer.y);
+      lastPointer = sp;
+      last = sp;
+      spawn(sp.x, sp.y);
     }
 
     var idleTimer = null;
@@ -341,8 +396,10 @@
       idleTimer = window.setInterval(function () {
         if (!lastPointer) return;
         if (Date.now() - lastSpawn < cfg.idleSpawnRate) return;
+        var ip = livePointer();
+        if (!ip) return;
         lastSpawn = Date.now();
-        spawn(lastPointer.x, lastPointer.y);
+        spawn(ip.x, ip.y);
       }, Math.max(80, cfg.idleSpawnRate / 2));
     }
 
@@ -398,8 +455,11 @@
     boot();
   }
   window.addEventListener("load", boot);
+  document.addEventListener("mercury:load", reboot);
+  window.addEventListener("pageshow", boot);
   document.addEventListener("sqs-announcement-bar-ready", boot);
   window.GhostCursorImageTrail = { init: init, boot: boot };
 })();
+
 
 
