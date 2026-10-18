@@ -165,7 +165,8 @@
       var w = Math.max(1, Math.round(rect.width));
       var h = Math.round(rect.height);
       if (h < 80) {
-        var hostH = host ? Math.round(host.getBoundingClientRect().height) : 0;
+        /* Code Block mode: fill only the space left inside the block, so the block never grows to fit the plugin. */
+        var hostH = host ? (function(el,blk){el.style.boxSizing='border-box';var r=el.getBoundingClientRect(),b=blk.getBoundingClientRect(),inset=0,n=el.parentElement,s;while(n&&n!==blk){s=getComputedStyle(n);inset+=(parseFloat(s.paddingBottom)||0)+(parseFloat(s.borderBottomWidth)||0);n=n.parentElement}s=getComputedStyle(blk);inset+=(parseFloat(s.paddingBottom)||0)+(parseFloat(s.borderBottomWidth)||0)+(parseFloat(getComputedStyle(el).marginBottom)||0);return Math.max(0,Math.floor(b.bottom-r.top-inset))})(root, host) : 0;
         h = hostH >= 80 ? hostH : 320;
         root.style.height = h + "px";
       }
