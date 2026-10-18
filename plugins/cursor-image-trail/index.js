@@ -239,7 +239,8 @@
           node.style.minHeight = "0";
           node = node.parentElement;
         }
-        var ch = Math.round(cell.getBoundingClientRect().height);
+        /* Code Block mode: fill only the space left inside the block, so the block never grows to fit the plugin. */
+        var ch = (function(el,blk){el.style.boxSizing='border-box';var r=el.getBoundingClientRect(),b=blk.getBoundingClientRect(),inset=0,n=el.parentElement,s;while(n&&n!==blk){s=getComputedStyle(n);inset+=(parseFloat(s.paddingBottom)||0)+(parseFloat(s.borderBottomWidth)||0);n=n.parentElement}s=getComputedStyle(blk);inset+=(parseFloat(s.paddingBottom)||0)+(parseFloat(s.borderBottomWidth)||0)+(parseFloat(getComputedStyle(el).marginBottom)||0);return Math.max(0,Math.floor(b.bottom-r.top-inset))})(el, cell);
         style.height = ch > 40 ? ch + "px" : "360px";
         return;
       }
