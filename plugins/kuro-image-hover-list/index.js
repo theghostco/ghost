@@ -121,7 +121,7 @@
   function show(i,event){var row=rows[i];if(!row)return;if(active===i){position(event);return;}rows.forEach(function(r){r.li.classList.remove('is-active');r.title.setAttribute('aria-expanded','false');});active=i;row.li.classList.add('is-active');root.classList.add('has-active');row.title.setAttribute('aria-expanded','true');
    var src=safe(row.item.image,true);if(!src){media.classList.remove('is-visible');return;}
    if(image.getAttribute('src')!==src)image.src=src;image.alt=row.item.alt;var cap=row.item.caption||row.item.title;caption.textContent=cap;caption.hidden=!truth(c.showCaption)||c.captionPosition==='hidden'||!cap;caption.dataset.position=c.captionPosition;
-   if(tap){row.li.appendChild(media);media.style.transform='none';}else root.appendChild(media);
+   if(tap){if(media.parentNode!==row.li)row.li.appendChild(media);media.style.transform='none';}else if(media.parentNode!==root)root.appendChild(media);
    media.classList.add('is-visible');position(event);
   }
   listen(image,'error',function(){media.classList.remove('is-visible');});listen(image,'load',function(){if(active>=0){media.classList.add('is-visible');position();}});
