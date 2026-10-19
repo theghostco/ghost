@@ -1,681 +1,91 @@
-/* Kuro Image Hover List — Ghost Plugins  v1.0.0
-   Master stylesheet. Do not edit on the customer site;
-   use the Visual Editor overrides in your Custom CSS instead. */
-
-.kuro-list {
-  /* Layout */
-  --kuro-max-width: 100%;
-  --kuro-padding: 40px;
-  --kuro-bg: transparent;
-  --kuro-row-gap: 4px;
-  --kuro-row-padding: 6px;
-  --kuro-text-align: left;
-  --kuro-list-width: 100%;
-  --kuro-list-align: flex-start;
-
-  /* Titles */
-  --kuro-title-font: inherit;
-  --kuro-title-size: 64px;
-  --kuro-title-weight: 800;
-  --kuro-title-style: normal;
+.gp-kuro-image-hover-list {
+  --kuro-title-font: Arial, Helvetica, sans-serif;
+  --kuro-title-size: 88px;
+  --kuro-title-weight: 700;
+  --kuro-title-tracking: -2px;
   --kuro-title-transform: none;
-  --kuro-title-tracking: -0.03em;
-  --kuro-title-line-height: 1.05;
   --kuro-title-color: #111111;
+  --kuro-caption-font: inherit;
+  --kuro-caption-size: 14px;
+  --kuro-caption-weight: 700;
+  --kuro-caption-tracking: 0px;
+  --kuro-caption-transform: none;
+  --kuro-caption-color: #ffffff;
+  --kuro-title-style: normal;
+  --kuro-title-line-height: 1.05;
+  --kuro-mobile-title-size: 36px;
+  --kuro-mobile-caption-size: 12px;
+  --kuro-caption-style: normal;
+  --kuro-caption-line-height: 1.3;
   --kuro-title-hover-color: #111111;
   --kuro-title-idle-opacity: 1;
-  --kuro-title-dim-opacity: 0.25;
-
-  /* Dividers */
-  --kuro-divider-width: 0px;
-  --kuro-divider-color: #e6e6e6;
-  --kuro-divider-style: solid;
-
-  /* Image */
+  --kuro-title-dim-opacity: 0.35;
   --kuro-image-width: 380px;
-  --kuro-image-ratio: 4 / 3;
-  --kuro-image-radius: 14px;
+  --kuro-image-ratio: 4/3;
   --kuro-image-fit: cover;
-  --kuro-image-border-width: 0px;
   --kuro-image-border-style: solid;
-  --kuro-image-border-color: #111111;
+  --kuro-image-border-width: 0px;
+  --kuro-image-border-color: #dddddd;
+  --kuro-divider-style: solid;
+  --kuro-divider-width: 0px;
+  --kuro-divider-color: #dddddd;
+  --kuro-image-radius: 14px;
+  --kuro-image-shadow: 0 24px 60px rgba(0,0,0,.18);
+  --kuro-image-speed: 380ms;
+  --kuro-image-ease: ease-out;
+  --kuro-image-scale-from: 0.92;
   --kuro-image-tilt: -6deg;
-  --kuro-image-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  --kuro-bg: transparent;
+  --kuro-caption-bg: #000000;
+  --kuro-caption-padding: 8px;
+  --kuro-caption-radius: 24px;
+  --kuro-padding: 24px;
+  --kuro-max-width: 1600px;
+  --kuro-list-width: 1200px;
+  --kuro-list-align: center;
+  --kuro-text-align: left;
+  --kuro-row-gap: 12px;
+  --kuro-row-padding: 5px;
   --kuro-image-offset-x: 0px;
   --kuro-image-offset-y: 0px;
-  --kuro-image-speed: 380ms;
-  --kuro-image-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --kuro-image-scale-from: 0.94;
   --kuro-image-z: 2;
-
-  /* Image caption */
-  --kuro-caption-color: #ffffff;
-  --kuro-caption-bg: rgba(0, 0, 0, 0.55);
-  --kuro-caption-size: 12px;
-  --kuro-caption-weight: 700;
-  --kuro-caption-font: inherit;
-  --kuro-caption-transform: uppercase;
-  --kuro-caption-tracking: 0.08em;
-  --kuro-caption-radius: 500px;
-  --kuro-caption-padding: 6px 12px;
   --kuro-caption-inset: 14px;
-
-  /* Mobile */
-  --kuro-mobile-title-size: 32px;
-  --kuro-mobile-image-width: 100%;
-  --kuro-mobile-image-display: none;
-
-  position: relative;
-  container-type: inline-size;
-  container-name: kuro;
-  display: block;
-  width: 100%;
-  max-width: var(--kuro-max-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding: var(--kuro-padding);
-  background: var(--kuro-bg);
-  box-sizing: border-box;
-}
-
-.kuro-list *,
-.kuro-list *::before,
-.kuro-list *::after {
-  box-sizing: border-box;
-}
-
-.kuro-list__source {
-  display: none;
-}
-
-.kuro-list__items {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--kuro-row-gap);
-  align-items: var(--kuro-list-align);
-  width: var(--kuro-list-width);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.kuro-item {
-  display: block;
-  width: 100%;
-  text-align: var(--kuro-text-align);
-  border-bottom: var(--kuro-divider-width) var(--kuro-divider-style) var(--kuro-divider-color);
-}
-
-.kuro-item:last-child {
-  border-bottom: 0;
-}
-
-.kuro-item__link {
-  display: block;
-  width: 100%;
-  padding: var(--kuro-row-padding) 0;
-  margin: 0;
-  border: 0;
-  background: none;
-  color: var(--kuro-title-color);
-  font-family: var(--kuro-title-font);
-  font-size: var(--kuro-title-size);
-  font-weight: var(--kuro-title-weight);
-  font-style: var(--kuro-title-style);
-  text-transform: var(--kuro-title-transform);
-  letter-spacing: var(--kuro-title-tracking);
-  line-height: var(--kuro-title-line-height);
-  text-align: inherit;
-  text-decoration: none;
-  opacity: var(--kuro-title-idle-opacity);
-  cursor: default;
-  transition:
-    color var(--kuro-image-speed) var(--kuro-image-ease),
-    opacity var(--kuro-image-speed) var(--kuro-image-ease),
-    transform var(--kuro-image-speed) var(--kuro-image-ease);
-  -webkit-tap-highlight-color: transparent;
-}
-
-.kuro-list--clickable .kuro-item__link {
-  cursor: pointer;
-}
-
-/* ---------------------------------------------------------------- hover */
-
-.kuro-list.is-hovering .kuro-item:not(.is-active) .kuro-item__link {
-  opacity: var(--kuro-title-dim-opacity);
-}
-
-.kuro-item.is-active .kuro-item__link {
-  color: var(--kuro-title-hover-color);
-}
-
-/* Hover style: slide */
-.kuro-list--hover-slide .kuro-item.is-active .kuro-item__link {
-  transform: translateX(18px);
-}
-.kuro-list--hover-slide[data-align="right"] .kuro-item.is-active .kuro-item__link {
-  transform: translateX(-18px);
-}
-
-/* Hover style: underline */
-.kuro-list--hover-underline .kuro-item__link {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 92%;
-  background-size: 0% 2px;
-  transition: background-size var(--kuro-image-speed) var(--kuro-image-ease), color var(--kuro-image-speed) var(--kuro-image-ease), opacity var(--kuro-image-speed) var(--kuro-image-ease);
-}
-.kuro-list--hover-underline .kuro-item.is-active .kuro-item__link {
-  background-size: 100% 2px;
-}
-
-/* Hover style: outline (knockout text) */
-.kuro-list--hover-outline .kuro-item.is-active .kuro-item__link {
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--kuro-title-hover-color);
-}
-
-/* Hover style: italic */
-.kuro-list--hover-italic .kuro-item.is-active .kuro-item__link {
-  font-style: italic;
-}
-
-/* Hover style: scale */
-.kuro-list--hover-scale .kuro-item.is-active .kuro-item__link {
-  transform: scale(1.04);
-  transform-origin: var(--kuro-text-align) center;
-}
-
-/* ---------------------------------------------------------------- image */
-
-.kuro-list__media {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: var(--kuro-image-z);
-  width: var(--kuro-image-width);
-  max-width: 100%;
-  aspect-ratio: var(--kuro-image-ratio);
-  pointer-events: none;
-  opacity: 0;
-  transform: translate3d(0, 0, 0) rotate(var(--kuro-image-tilt)) scale(var(--kuro-image-scale-from));
-  transition:
-    opacity var(--kuro-image-speed) var(--kuro-image-ease),
-    transform var(--kuro-image-speed) var(--kuro-image-ease);
-  will-change: transform, opacity;
-}
-
-.kuro-list__media.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) rotate(var(--kuro-image-tilt)) scale(1);
-}
-
-.kuro-list__media-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: var(--kuro-image-radius);
-  border: var(--kuro-image-border-width) var(--kuro-image-border-style) var(--kuro-image-border-color);
-  box-shadow: var(--kuro-image-shadow);
-  background: #f2f2f2;
-}
-
-.kuro-list__media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: var(--kuro-image-fit);
-  opacity: 0;
-  transition: opacity 220ms linear;
-}
-
-.kuro-list__media img.is-current {
-  opacity: 1;
-}
-
-.kuro-list__caption {
-  position: absolute;
-  z-index: 2;
-  max-width: calc(100% - (var(--kuro-caption-inset) * 2));
-  padding: var(--kuro-caption-padding);
-  border-radius: var(--kuro-caption-radius);
-  background: var(--kuro-caption-bg);
-  color: var(--kuro-caption-color);
-  font-family: var(--kuro-caption-font);
-  font-size: var(--kuro-caption-size);
-  font-weight: var(--kuro-caption-weight);
-  text-transform: var(--kuro-caption-transform);
-  letter-spacing: var(--kuro-caption-tracking);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.kuro-list__caption--top-left {
-  top: var(--kuro-caption-inset);
-  left: var(--kuro-caption-inset);
-}
-.kuro-list__caption--top-right {
-  top: var(--kuro-caption-inset);
-  right: var(--kuro-caption-inset);
-}
-.kuro-list__caption--bottom-left {
-  bottom: var(--kuro-caption-inset);
-  left: var(--kuro-caption-inset);
-}
-.kuro-list__caption--bottom-right {
-  bottom: var(--kuro-caption-inset);
-  right: var(--kuro-caption-inset);
-}
-.kuro-list__caption--hidden {
-  display: none;
-}
-
-/* ---------------------------------------------------- image placements */
-
-/* Cursor-following placement is positioned entirely from JS. */
-.kuro-list--place-right .kuro-list__media {
-  top: 50%;
-  left: auto;
-  right: var(--kuro-padding);
-  margin-top: calc(var(--kuro-image-offset-y) - 0px);
-  transform-origin: center;
-  translate: var(--kuro-image-offset-x) -50%;
-}
-
-.kuro-list--place-left .kuro-list__media {
-  top: 50%;
-  left: var(--kuro-padding);
-  translate: var(--kuro-image-offset-x) -50%;
-}
-
-.kuro-list--place-center .kuro-list__media {
-  top: 50%;
-  left: 50%;
-  translate: calc(-50% + var(--kuro-image-offset-x)) calc(-50% + var(--kuro-image-offset-y));
-}
-
-.kuro-list--place-overlap .kuro-list__media {
-  top: 50%;
-  left: 50%;
-  translate: calc(-38% + var(--kuro-image-offset-x)) calc(-50% + var(--kuro-image-offset-y));
-}
-
-/* --------------------------------------------------------------- mobile */
-
-@container kuro (max-width: 700px) {
-  .kuro-list__items {
-    width: 100%;
-  }
-  .kuro-item__link {
-    font-size: var(--kuro-mobile-title-size);
-  }
-  .kuro-list__media {
-    display: var(--kuro-mobile-image-display);
-  }
-}
-
-@media (max-width: 700px) {
-  .kuro-list {
-    padding: calc(var(--kuro-padding) / 2);
-  }
-  .kuro-item__link {
-    font-size: var(--kuro-mobile-title-size);
-  }
-  .kuro-list__media {
-    display: var(--kuro-mobile-image-display);
-  }
-}
-
-/* Mobile "stacked" mode: each row shows its own image inline. */
-.kuro-item__thumb {
-  display: none;
-  width: var(--kuro-mobile-image-width);
-  aspect-ratio: var(--kuro-image-ratio);
-  margin: 10px 0 4px;
-  overflow: hidden;
-  border-radius: var(--kuro-image-radius);
-  border: var(--kuro-image-border-width) var(--kuro-image-border-style) var(--kuro-image-border-color);
-}
-
-.kuro-item__thumb img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: var(--kuro-image-fit);
-}
-
-@media (max-width: 700px) {
-  .kuro-list--mobile-stacked .kuro-item__thumb {
-    display: block;
-  }
-  .kuro-list--mobile-stacked .kuro-list__media {
-    display: none;
-  }
-}
-
-/* == GHOST MASTER DEFAULTS — edited in Plugin Hub == */
-/* // -- KURO IMAGE HOVER LIST – GHOST PLUGINS -- // */
-
-/* Content — Row 1 */
-.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
-  /* Row 1 — title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
-  /* Row 1 — link URL — typography */
-  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
-  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
-  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
-  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--kuro-caption-transform, none))))) !important;
-  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
-  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
-}
-
-.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
-  /* Row 1 — image title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-/* Content — Row 2 */
-.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
-  /* Row 2 — title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
-  /* Row 2 — link URL — typography */
-  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
-  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
-  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
-  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--kuro-caption-transform, none))))) !important;
-  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
-  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
-}
-
-.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
-  /* Row 2 — image title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-/* Content — Row 3 */
-.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
-  /* Row 3 — title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
-  /* Row 3 — link URL — typography */
-  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
-  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
-  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
-  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--kuro-caption-transform, none))))) !important;
-  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
-  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
-}
-
-.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
-  /* Row 3 — image title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-/* Content — Row 4 */
-.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
-  /* Row 4 — title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
-  /* Row 4 — link URL — typography */
-  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
-  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
-  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
-  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--kuro-caption-transform, none))))) !important;
-  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
-  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
-}
-
-.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
-  /* Row 4 — image title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-/* Content — Row 5 */
-.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
-  /* Row 5 — title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
-  /* Row 5 — link URL — typography */
-  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
-  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
-  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
-  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--kuro-caption-transform, none))))) !important;
-  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
-  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
-}
-
-.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
-  /* Row 5 — image title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-/* Content — Row 6 */
-.kuro-list, .kuro-list :is(h1, h2, h3, h4, h5, h6, [class*="title"], [class*="heading"], [class*="headline"], [class*="name"]) {
-  /* Row 6 — title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-.kuro-list, .kuro-list :is(p, [class*="text"], [class*="quote"], [class*="body"], [class*="desc"], [class*="content"], [class*="label"]) {
-  /* Row 6 — link URL — typography */
-  font-family: var(--paragraph-medium-font-font-family, var(--paragraph-medium-font-family, var(--paragraph-font-font-family, var(--paragraph-font-family, inherit)))) !important;
-  font-weight: var(--paragraph-medium-font-font-weight, var(--paragraph-medium-font-weight, var(--paragraph-font-font-weight, var(--paragraph-font-weight, inherit)))) !important;
-  font-style: var(--paragraph-medium-font-font-style, var(--paragraph-medium-font-style, var(--paragraph-font-font-style, var(--paragraph-font-style, inherit)))) !important;
-  text-transform: var(--paragraph-medium-font-text-transform, var(--paragraph-medium-text-transform, var(--paragraph-font-text-transform, var(--paragraph-text-transform, var(--kuro-caption-transform, none))))) !important;
-  letter-spacing: var(--paragraph-medium-font-letter-spacing, var(--paragraph-medium-letter-spacing, var(--paragraph-font-letter-spacing, var(--paragraph-letter-spacing, normal)))) !important;
-  line-height: var(--paragraph-medium-font-line-height, var(--paragraph-medium-line-height, var(--paragraph-font-line-height, var(--paragraph-line-height, normal)))) !important;
-}
-
-.kuro-list, .kuro-list :is([class*="subtitle"], [class*="author"], [class*="role"], [class*="meta"], [class*="caption"]) {
-  /* Row 6 — image title — typography */
-  font-family: var(--heading-1-font-font-family, var(--heading-1-font-family, var(--heading-font-font-family, var(--heading-font-family, inherit)))) !important;
-  font-weight: var(--heading-1-font-font-weight, var(--heading-1-font-weight, var(--heading-font-font-weight, var(--heading-font-weight, inherit)))) !important;
-  font-style: var(--heading-1-font-font-style, var(--heading-1-font-style, var(--heading-font-font-style, var(--heading-font-style, inherit)))) !important;
-  text-transform: var(--heading-1-font-text-transform, var(--heading-1-text-transform, var(--heading-font-text-transform, var(--heading-text-transform, var(--kuro-title-transform, none))))) !important;
-  letter-spacing: var(--heading-1-font-letter-spacing, var(--heading-1-letter-spacing, var(--heading-font-letter-spacing, var(--heading-letter-spacing, var(--kuro-title-tracking, normal))))) !important;
-  line-height: var(--heading-1-font-line-height, var(--heading-1-line-height, var(--heading-font-line-height, var(--heading-line-height, var(--kuro-title-line-height, normal))))) !important;
-}
-
-/* Images — Image */
-.kuro-list {
-  --kuro-image-width: 380px; /* Image width */
-  --kuro-image-ratio: 4 / 3; /* Image ratio */
-  --kuro-image-radius: 14px; /* Image corner radius */
-  --kuro-image-fit: cover; /* Image fit */
-  --kuro-image-border-width: 0px; /* Image border thickness */
-  --kuro-image-border-style: solid; /* Image border style */
-  --kuro-image-tilt: -6deg; /* Image tilt */
-}
-
-/* Style — Dividers */
-.kuro-list {
-  --kuro-divider-width: 0px; /* Divider thickness */
-  --kuro-divider-style: solid; /* Divider style */
-}
-
-/* Style — Image */
-.kuro-list {
-  --kuro-image-shadow: 0 24px 60px rgba(0,0,0,0.18); /* Image shadow */
-  --kuro-image-speed: 380ms; /* Reveal speed */
-}
-
-/* Style — Image title */
-.kuro-list {
-  --kuro-caption-radius: 500px; /* Image title corner radius */
-}
-
-/* Colors — Titles */
-.kuro-list {
-  --kuro-title-color: #111111; /* Title colour */
-  --kuro-title-hover-color: #111111; /* Title colour on hover */
-  --kuro-title-dim-opacity: 0.4; /* Dimmed title opacity */
-}
-
-/* Colors — Dividers */
-.kuro-list {
-  --kuro-divider-color: #e6e6e6; /* Divider colour */
-}
-
-/* Colors — Image title */
-.kuro-list {
-  --kuro-caption-color: #ffffff; /* Image title colour */
-  --kuro-caption-bg: #000000; /* Image title background */
-}
-
-/* Colors — Image */
-.kuro-list {
-  --kuro-image-border-color: #111111; /* Image border colour */
-}
-
-/* Layout — Container */
-.kuro-list {
-  --kuro-max-width: 100%; /* Maximum width */
-  --kuro-padding: 40px; /* Container padding */
-}
-
-/* Layout — Rows */
-.kuro-list {
-  --kuro-row-gap: 10px; /* Space between titles */
-  --kuro-row-padding: 5px; /* Row padding */
-  --kuro-text-align: left; /* Text alignment */
-  --kuro-list-width: 100%; /* List width */
-}
-
-/* Layout — Image */
-.kuro-list {
-  --kuro-image-offset-x: 0px; /* Image nudge — horizontal */
-  --kuro-image-offset-y: 0px; /* Image nudge — vertical */
-}
-
-/* Layout — Image title */
-.kuro-list {
-  --kuro-caption-inset: 14px; /* Image title inset */
-}
-
-/* Fonts — Titles */
-.kuro-list {
-  --kuro-title-font: inherit; /* Title font family */
-  --kuro-title-size: 100px; /* Title size */
-  --kuro-title-weight: 700; /* Title weight */
-  --kuro-title-transform: none; /* Title capitalisation */
-  --kuro-title-tracking: -0.03em; /* Title letter spacing */
-  --kuro-title-line-height: 1.05; /* Title line height */
-}
-
-/* Fonts — Mobile */
-.kuro-list {
-  --kuro-mobile-title-size: 32px; /* Mobile title size */
-}
-
-/* Fonts — Image title */
-.kuro-list {
-  --kuro-caption-font: inherit; /* Image title font */
-  --kuro-caption-size: 14px; /* Image title size */
-  --kuro-caption-weight: 700; /* Image title weight */
-  --kuro-caption-transform: uppercase; /* Image title capitalisation */
-}
-
-/* // -- KURO IMAGE HOVER LIST – GHOST PLUGINS -- // */
-/* == END GHOST MASTER DEFAULTS == */
-
-
-/* Mobile "tap" mode: keep the hover image, revealed by tapping a row. */
-@media (max-width: 700px) {
-  .kuro-list--mobile-tap .kuro-item__thumb {
-    display: none;
-  }
-  .kuro-list--mobile-tap .kuro-list__media {
-    display: block;
-  }
-  /* Mobile "hidden" mode: titles only. */
-  .kuro-list--mobile-hidden .kuro-item__thumb,
-  .kuro-list--mobile-hidden .kuro-list__media {
-    display: none;
-  }
-}
-
-@container kuro (max-width: 700px) {
-  .kuro-list--mobile-stacked .kuro-item__thumb {
-    display: block;
-  }
-  .kuro-list--mobile-stacked .kuro-list__media,
-  .kuro-list--mobile-hidden .kuro-item__thumb,
-  .kuro-list--mobile-hidden .kuro-list__media {
-    display: none;
-  }
-  .kuro-list--mobile-tap .kuro-list__media {
-    display: block;
-  }
+  --kuro-mobile-image-width: 380px;
+  --kuro-mobile-image-display: block;
+  width:100%; max-width:100%; box-sizing:border-box; position:relative; isolation:isolate; overflow:clip; container:kuro / inline-size; background:var(--kuro-bg); padding:var(--kuro-padding);
+}
+.gp-kuro-image-hover-list *, .gp-kuro-image-hover-list *::before, .gp-kuro-image-hover-list *::after {box-sizing:border-box; min-width:0; max-width:100%;}
+.gp-kuro-image-hover-list .kuro-content {width:100%; max-width:var(--kuro-max-width); margin-inline:auto; display:flex; flex-direction:column; align-items:var(--kuro-list-align);}
+.gp-kuro-image-hover-list .kuro-rows {list-style:none; padding:0; margin:0; width:var(--kuro-list-width); display:flex; flex-direction:column; gap:var(--kuro-row-gap);}
+.gp-kuro-image-hover-list .kuro-row {padding:var(--kuro-row-padding) 0; text-align:var(--kuro-text-align);}
+.gp-kuro-image-hover-list .kuro-row + .kuro-row {border-top:var(--kuro-divider-width) var(--kuro-divider-style) var(--kuro-divider-color);}
+.gp-kuro-image-hover-list .kuro-title {display:inline-block; background:none; border:0; padding:0; margin:0; cursor:pointer; text-decoration:none; overflow-wrap:anywhere; color:var(--kuro-title-color); font-family:var(--kuro-title-font); font-size:var(--kuro-title-size); font-weight:var(--kuro-title-weight); font-style:var(--kuro-title-style); line-height:var(--kuro-title-line-height); letter-spacing:var(--kuro-title-tracking); text-transform:var(--kuro-title-transform); opacity:var(--kuro-title-idle-opacity); transition:opacity var(--kuro-image-speed), transform var(--kuro-image-speed);}
+.gp-kuro-image-hover-list .kuro-title:focus-visible {outline:2px solid currentColor; outline-offset:4px;}
+.gp-kuro-image-hover-list .is-active > .kuro-title {color:var(--kuro-title-hover-color); opacity:1;}
+.gp-kuro-image-hover-list[data-hover="dim"].has-active .kuro-row:not(.is-active) > .kuro-title {opacity:var(--kuro-title-dim-opacity);}
+.gp-kuro-image-hover-list[data-hover="slide"] .is-active > .kuro-title {transform:translateX(8px);}
+.gp-kuro-image-hover-list[data-hover="underline"] .is-active > .kuro-title {text-decoration:underline;}
+.gp-kuro-image-hover-list[data-hover="outline"] .is-active > .kuro-title {-webkit-text-stroke:1px var(--kuro-title-hover-color); color:transparent;}
+.gp-kuro-image-hover-list[data-hover="italic"] .is-active > .kuro-title {font-style:italic;}
+.gp-kuro-image-hover-list[data-hover="scale"] .is-active > .kuro-title {transform:scale(1.03);}
+.gp-kuro-image-hover-list .kuro-media {position:absolute; left:0; top:0; width:var(--kuro-image-width); margin:0; pointer-events:none; z-index:var(--kuro-image-z); visibility:hidden; opacity:0; transition:opacity var(--kuro-image-speed) var(--kuro-image-ease);}
+.gp-kuro-image-hover-list .kuro-media.is-visible {visibility:visible; opacity:1;}
+.gp-kuro-image-hover-list .kuro-frame {position:relative; transform:rotate(var(--kuro-image-tilt)) scale(var(--kuro-image-scale-from)); transition:transform var(--kuro-image-speed) var(--kuro-image-ease); border:var(--kuro-image-border-width) var(--kuro-image-border-style) var(--kuro-image-border-color); border-radius:var(--kuro-image-radius); box-shadow:var(--kuro-image-shadow); overflow:hidden;}
+.gp-kuro-image-hover-list .is-visible > .kuro-frame {transform:rotate(var(--kuro-image-tilt)) scale(1);}
+.gp-kuro-image-hover-list .kuro-image {display:block; width:100%; height:auto; aspect-ratio:var(--kuro-image-ratio); object-fit:var(--kuro-image-fit);}
+.gp-kuro-image-hover-list .kuro-caption {position:absolute; margin:0; padding:var(--kuro-caption-padding); border-radius:var(--kuro-caption-radius); background:var(--kuro-caption-bg); color:var(--kuro-caption-color); font-family:var(--kuro-caption-font); font-size:var(--kuro-caption-size); font-weight:var(--kuro-caption-weight); font-style:var(--kuro-caption-style); line-height:var(--kuro-caption-line-height); letter-spacing:var(--kuro-caption-tracking); text-transform:var(--kuro-caption-transform); overflow-wrap:anywhere; max-width:calc(100% - 2 * var(--kuro-caption-inset));}
+.gp-kuro-image-hover-list .kuro-caption[data-position^="top"] {top:var(--kuro-caption-inset);}
+.gp-kuro-image-hover-list .kuro-caption[data-position^="bottom"] {bottom:var(--kuro-caption-inset);}
+.gp-kuro-image-hover-list .kuro-caption[data-position$="left"] {left:var(--kuro-caption-inset);}
+.gp-kuro-image-hover-list .kuro-caption[data-position$="right"] {right:var(--kuro-caption-inset);}
+.gp-kuro-image-hover-list .kuro-caption[hidden] {display:none;}
+.gp-kuro-image-hover-list[data-tap="true"] .kuro-media {position:relative; transform:none!important; width:100%; display:var(--kuro-mobile-image-display); margin-top:var(--kuro-row-gap);}
+.gp-kuro-image-hover-list[data-tap="true"] .kuro-media:not(.is-visible) {display:none;}
+.gp-kuro-image-hover-list[data-tap="true"] .kuro-frame {transform:none;}
+@container kuro (max-width:700px) {
+ .gp-kuro-image-hover-list .kuro-title {font-size:var(--kuro-mobile-title-size);}
+ .gp-kuro-image-hover-list .kuro-caption {font-size:var(--kuro-mobile-caption-size);}
+}
+@media (prefers-reduced-motion:reduce) {
+ .gp-kuro-image-hover-list *, .gp-kuro-image-hover-list *::before, .gp-kuro-image-hover-list *::after {transition:none!important; animation:none!important;}
 }
