@@ -41,7 +41,7 @@
     } else root.dataset.placement = 'block';
     // Stretch only this Code Block's wrappers inside its Fluid Engine grid area.
     if (config.placement !== 'section' || !section) {
-      var gridArea = root.closest('.fe-block');
+      var gridArea = root.closest('.fe-block, .codemodule-block, #gp-root');
       if (gridArea) {
         var wrapper = root.parentElement;
         while (wrapper && wrapper !== gridArea) {
@@ -81,7 +81,7 @@
       root.dataset.shadow = css.getPropertyValue('--image-shadow-style').trim() === 'none' ? 'none' : 'solid';
       root.dataset.desktop = String(desktop.matches);
       var size = (function () {
-        var box = config.placement === 'section' && section ? section : root.closest('.fe-block');
+        var box = config.placement === 'section' && section ? section : root.closest('.fe-block, .codemodule-block, #gp-root');
         var own = root.getBoundingClientRect();
         var bounds = box ? box.getBoundingClientRect() : own;
         var bw = Math.round(bounds.width) || Math.round(own.width) || 320;
