@@ -231,7 +231,7 @@
       /* Fluid Engine: the grid cell (.fe-block) owns the size the customer
          dragged. Stretch only the wrappers inside that cell so the canvas
          fills the whole Code Block and never leaves it. */
-      var cell = typeof el.closest === "function" ? el.closest(".fe-block") : null;
+      var cell = typeof el.closest === "function" ? el.closest(".fe-block, .codemodule-block, #gp-root") : null;
       if (cell) {
         var node = el.parentElement;
         while (node && node !== cell) {
@@ -254,7 +254,7 @@
     window.addEventListener("load", fitToParent);
     if (typeof ResizeObserver === "function") {
       resizeObserver = new ResizeObserver(fitToParent);
-      var watch = (cfg.fullscreen && section) || (typeof el.closest === "function" && el.closest(".fe-block")) || el.parentElement;
+      var watch = (cfg.fullscreen && section) || (typeof el.closest === "function" && el.closest(".fe-block, .codemodule-block, #gp-root")) || el.parentElement;
       if (watch) resizeObserver.observe(watch);
     } else {
       window.addEventListener("resize", fitToParent);
