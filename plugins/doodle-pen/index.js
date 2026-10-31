@@ -153,7 +153,7 @@
       return window.matchMedia("(pointer: fine)").matches;
     }
 
-    var host = (root.closest && (root.closest(".fe-block") || root.closest(".sqs-block"))) || null;
+    var host = (root.closest && (root.closest(".fe-block, .codemodule-block, #gp-root") || root.closest(".sqs-block"))) || null;
     function resize() {
       /* Measure the natural height first, then fall back to the Squarespace
          block height (Fluid Engine gives the block an explicit size even when
