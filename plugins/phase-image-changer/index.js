@@ -126,7 +126,7 @@
     var attributes = ["data-image-side", "data-image-ratio", "data-shadow-style"].map(function (name) { return [name, root.getAttribute(name)]; });
     var originalNodes = Array.from(root.childNodes);
     var section = root.closest("section.page-section, section[data-section-id], section");
-    var block = root.closest(".fe-block");
+    var block = root.closest(".fe-block, .codemodule-block, #gp-root");
     var anchor = null;
     var releaseSection = null;
     var animation = null;
