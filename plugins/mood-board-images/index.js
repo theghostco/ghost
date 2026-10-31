@@ -48,10 +48,15 @@
           (function (element) {
             var value = element.style.getPropertyValue('height');
             var priority = element.style.getPropertyPriority('height');
+            var wValue = element.style.getPropertyValue('width');
+            var wPriority = element.style.getPropertyPriority('width');
             element.style.setProperty('height', '100%');
+            element.style.setProperty('width', '100%');
             cleanups.push(function () {
               if (value) element.style.setProperty('height', value, priority);
               else element.style.removeProperty('height');
+              if (wValue) element.style.setProperty('width', wValue, wPriority);
+              else element.style.removeProperty('width');
             });
           })(wrapper);
           wrapper = wrapper.parentElement;
