@@ -18,7 +18,7 @@ function init(root){
  root.tabIndex=0;root.setAttribute('role','button');root.setAttribute('aria-label',String(c.areaLabel));
  var label=document.createElement('span');label.className='gp-label';label.textContent=String(c.cursorLabel);label.hidden=!c.cursorLabel;root.appendChild(label);
  var status=document.createElement('span');status.className='gp-status';status.setAttribute('aria-live','polite');root.appendChild(status);
- var feBlock=c.placement!=='section'?root.closest('.fe-block'):null,oldHeight=[root.style.getPropertyValue('height'),root.style.getPropertyPriority('height')],feRo=null;
+ var feBlock=c.placement!=='section'?root.closest('.fe-block, .codemodule-block, #gp-root'):null,oldHeight=[root.style.getPropertyValue('height'),root.style.getPropertyPriority('height')],feRo=null;
  /* Code Block mode: fill only the space left inside the block, so the block never grows to fit the plugin. */var gpFit=function(el,blk){el.style.boxSizing='border-box';var r=el.getBoundingClientRect(),b=blk.getBoundingClientRect(),inset=0,n=el.parentElement,s;while(n&&n!==blk){s=getComputedStyle(n);inset+=(parseFloat(s.paddingBottom)||0)+(parseFloat(s.borderBottomWidth)||0);n=n.parentElement}s=getComputedStyle(blk);inset+=(parseFloat(s.paddingBottom)||0)+(parseFloat(s.borderBottomWidth)||0)+(parseFloat(getComputedStyle(el).marginBottom)||0);return Math.max(0,Math.floor(b.bottom-r.top-inset))};function fitBlock(){if(feBlock&&feBlock.clientHeight)root.style.setProperty('height',gpFit(root,feBlock)+'px','important')}
  if(feBlock){fitBlock();if(typeof ResizeObserver!=='undefined'){feRo=new ResizeObserver(fitBlock);feRo.observe(feBlock)}}
  var mq=matchMedia('(prefers-reduced-motion: reduce)'),box,iw=0,ih=0,stackGap=0,bounds;
