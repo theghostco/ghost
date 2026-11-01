@@ -1,0 +1,30 @@
+.gp-retro-spectrum-trail {
+  --trail-width-size: 26px;
+  --trail-opacity: 1;
+  --trail-layer-index: 9999;
+  --trail-color-1: #6a1b17;
+  --trail-color-2: #a33536;
+  --trail-color-3: #c95034;
+  --trail-color-4: #de793a;
+  --trail-color-5: #eebf59;
+  --trail-border-color: #000000;
+  --trail-border-width: 0px;
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  box-sizing: border-box; pointer-events: none; overflow: hidden;
+  opacity: var(--trail-opacity); z-index: var(--trail-layer-index);
+}
+.gp-retro-spectrum-trail[hidden] { display: none; }
+.gp-retro-spectrum-trail .gp-trail-svg { display: block; width: 100%; height: 100%; pointer-events: none; }
+.gp-retro-spectrum-trail .gp-trail-path { fill: none; stroke-width: var(--trail-width-size); stroke-linecap: round; stroke-linejoin: round; }
+.gp-retro-spectrum-trail .gp-trail-color-1 { stroke: var(--trail-color-1); }
+.gp-retro-spectrum-trail .gp-trail-color-2 { stroke: var(--trail-color-2); }
+.gp-retro-spectrum-trail .gp-trail-color-3 { stroke: var(--trail-color-3); }
+.gp-retro-spectrum-trail .gp-trail-color-4 { stroke: var(--trail-color-4); }
+.gp-retro-spectrum-trail .gp-trail-color-5 { stroke: var(--trail-color-5); }
+.gp-retro-spectrum-trail .gp-trail-outline { fill: none; stroke: var(--trail-border-color); stroke-width: calc(var(--trail-width-size) + var(--trail-border-width) * 2); stroke-linecap: round; stroke-linejoin: round; }
+.gp-retro-spectrum-trail.gp-border-none .gp-trail-outline { display: none; }
+.gp-retro-spectrum-trail.gp-border-dashed .gp-trail-outline { stroke-dasharray: calc(var(--trail-border-width) * 3) calc(var(--trail-border-width) * 2); }
+.gp-retro-spectrum-trail.gp-border-dotted .gp-trail-outline { stroke-dasharray: 0 calc(var(--trail-border-width) * 2); }
+@media (prefers-reduced-motion: reduce) {
+  .gp-retro-spectrum-trail { display: none; }
+}
